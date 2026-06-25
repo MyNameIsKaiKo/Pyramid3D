@@ -14,7 +14,7 @@
 # define PYRAMID_MLX_H
 
 # include "./minilibx/mlx.h"
-# include "./libft/libft.h"
+# include "./libft/include/libft.h"
 # include <math.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -26,10 +26,16 @@
 // -- KeyBoard Close --
 # define K_ESC 65307
 
+// -- Moving Keys -- 
+# define K_A 97
+# define K_D 100
+# define K_S 115
+# define K_W 119
+
 // -- KeyBoard Arrow --
 # define K_LEFT 65361
-# define K_RIGHT 65363
 # define K_UP 65362
+# define K_RIGHT 65363
 # define K_DOWN 65364
 
 typedef struct s_img
@@ -50,5 +56,8 @@ typedef struct s_map
 	void	*win;
 	t_img	img;
 }			t_map;
+
+// -- Free Function --
+void	f_init(t_map *map);
 
 #endif
