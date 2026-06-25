@@ -9,8 +9,8 @@ NAME = pyramid
 INCLUDE = includes/
 
 #LIBFT
-INCLUDE_LIBFT = include/libft/
-LIBFT_A = include/libft/libft.a
+INCLUDE_LIBFT = includes/libft/
+LIBFT_A = includes/libft/libft.a
 
 CFLAGS += -I$(INCLUDE) -I $(INCLUDE_LIBFT)
 
@@ -32,12 +32,12 @@ OBJ_DIR = $(sort $(shell dirname $(OBJ)))
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT_A)
 	@$(CC) $(CFLAGS) $^ -o $@
 	@echo "link Pyramide3D"
 
 $(LIBFT_A):
-	@make -C include/libft
+	@make -C includes/libft
 
 $(BUILD_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I$(INCLUDE)
