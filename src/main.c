@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/25 18:55:21 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/25 19:36:49 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 		printf("Enter a map.cub in first argument please\n");
 		return (0);
 	}
-	if (parse_name(av[1]) > 0)
-		return (1);
+	if (parsing(av[1]) > 0)
+		return (0);
 	return (0);
 }

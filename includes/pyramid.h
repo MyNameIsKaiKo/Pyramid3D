@@ -6,21 +6,35 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:57:08 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/25 18:57:38 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/25 20:10:59 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PYRAMID_H
 # define PYRAMID_H
 
+# include "libft/include/libft.h"
+# include "gnl/get_next_line.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 
-# include "libft/include/libft.h"
+# ifndef EXT_FILE
+#  define EXT_FILE ".cub"
+# endif
 
-//parse_arg.c
-int		parse_name(char *s);
+typedef struct s_data
+{
+	char	*NO_texture;
+	char	*SO_texture;
+	char	*WE_texture;
+	char	*EA_texture;
+	char	*F_color;
+	char	*C_color;
+}	t_data;
+
+//parsing.c
+int		parsing(char *file);
 
 //utils.c
 void	print_error(char *err_msg);
