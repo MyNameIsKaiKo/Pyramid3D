@@ -46,7 +46,7 @@ $(OBJ_DIR):
 	@mkdir -p $@
 
 clean:
-	@make -C include/libft/ clean
+	@make -C includes/libft/ clean
 	@rm -rf $(BUILD_DIR)
 	@echo "clean obj/"
 
