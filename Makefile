@@ -20,7 +20,8 @@ SRC_DIR = src/
 #SRC___________________________
 
 SRC=main.c \
-	parse_arg.c
+	parse_arg.c \
+	utils.c
 
 #OBJ___________________________
 

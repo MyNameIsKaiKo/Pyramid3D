@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   pyramid.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 15:00:05 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/25 18:54:10 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/06/25 18:57:08 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/06/25 18:57:38 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#ifndef PYRAMID_H
+# define PYRAMID_H
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	unsigned char	*uc_s1;
-	unsigned char	*uc_s2;
-	size_t			i;
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
 
-	i = 0;
-	uc_s1 = (unsigned char *)s1;
-	uc_s2 = (unsigned char *)s2;
-	if (n == 0)
-		return (0);
-	while ((uc_s1[i] == uc_s2[i])
-		&& uc_s1[i] && (i < n - 1))
-		i++;
-	return (uc_s1[i] - uc_s2[i]);
-}
+# include "libft/include/libft.h"
+
+//parse_arg.c
+int		parse_name(char *s);
+
+//utils.c
+void	print_error(char *err_msg);
+
+#endif

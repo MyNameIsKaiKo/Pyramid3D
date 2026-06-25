@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   parse_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 15:00:05 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/25 18:54:10 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/06/25 18:55:26 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/06/25 18:56:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "pyramid.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	parse_name(char *s)
 {
-	unsigned char	*uc_s1;
-	unsigned char	*uc_s2;
-	size_t			i;
+	char	*ext;
+	int		size_ext;
 
-	i = 0;
-	uc_s1 = (unsigned char *)s1;
-	uc_s2 = (unsigned char *)s2;
-	if (n == 0)
-		return (0);
-	while ((uc_s1[i] == uc_s2[i])
-		&& uc_s1[i] && (i < n - 1))
-		i++;
-	return (uc_s1[i] - uc_s2[i]);
+	ext = ft_strrchr(s, '.');
+	size_ext = ft_strlen(ext);
+	if (ft_strncmp(ext, ".cub", size_ext + 1) != 0)
+	{
+		print_error("Enter a <file_name>.cub");
+		return (1);
+	}
+	return (0);
 }
