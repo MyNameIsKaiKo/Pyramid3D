@@ -1,0 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pyramid_mlx.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/25 17:19:42 by jleray            #+#    #+#             */
+/*   Updated: 2026/06/25 17:19:42 by jleray           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PYRAMID_MLX_H
+# define PYRAMID_MLX_H
+
+# include "./minilibx/mlx.h"
+# include "./libft/libft.h"
+# include <math.h>
+# include <unistd.h>
+# include <stdlib.h>
+
+// -- WINDOW SIZE --
+# define WIDTH 800
+# define HEIGHT 800
+
+// -- KeyBoard Close --
+# define K_ESC 65307
+
+// -- KeyBoard Arrow --
+# define K_LEFT 65361
+# define K_RIGHT 65363
+# define K_UP 65362
+# define K_DOWN 65364
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_lenght;
+	int		endian;
+}			t_img;
+
+typedef struct s_map
+{
+	float	x;
+	float	y;
+	float	**map_tab;
+	void	*mlx;
+	void	*win;
+	t_img	img;
+}			t_map;
+
+#endif
