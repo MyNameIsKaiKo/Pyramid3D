@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 15:00:05 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/25 18:54:10 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/06/26 23:27:41 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "pyramid.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void print_error(char *err_msg)
 {
-	unsigned char	*uc_s1;
-	unsigned char	*uc_s2;
-	size_t			i;
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(err_msg, 2);
+}
 
-	i = 0;
-	uc_s1 = (unsigned char *)s1;
-	uc_s2 = (unsigned char *)s2;
-	if (n == 0)
-		return (0);
-	while ((uc_s1[i] == uc_s2[i])
-		&& uc_s1[i] && (i < n - 1))
-		i++;
-	return (uc_s1[i] - uc_s2[i]);
+void free_ctx(t_ctx *ctx)
+{
+	if (ctx->textures.NO_texture)
+		free(ctx->textures.NO_texture);
+	free(ctx->textures.SO_texture);
+	free(ctx->textures.WE_texture);
+	free(ctx->textures.EA_texture);
+	free(ctx->textures.F_color);
+	free(ctx->textures.C_color);
 }

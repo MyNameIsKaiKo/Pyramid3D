@@ -1,6 +1,5 @@
 CC=cc
 CFLAGS=-I$(INCLUDE) -Wall -Wextra -Werror
-HEADER=libft.h
 
 NAME=libft.a
 
@@ -51,14 +50,14 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
-	@echo "libft link"
+	@echo "Compiles LIBF successfully"
 
 $(BUILD_DIR)%.o:$(SRC_DIR)%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(NAME) $(OBJ_BONUS)
 	@ar rcs $(NAME) $(OBJ_BONUS)
-	@echo "link libft_bonus"
+	@echo "Compiles LIBFT bonus successfully"
 	touch bonus
 
 $(OBJ_DIR):

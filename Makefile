@@ -1,58 +1,68 @@
-#COMPILE_______________________
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -MMD -MP
-MAKEFLAGS += --no-print-directory
+#COMPILE_________________________________
 
-NAME = pyramid
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -MMD -MP -g
+MAKEFLAGS	+= --no-print-directory
 
-#INCLUDES______________________
-INCLUDE = includes/
+NAME		= pyramid
+
+#INCLUDES_AND_DIR________________________
+
+#DIR
+SRC_DIR		= src/
+BUILD_DIR	= obj/
+INC_DIR		= includes/
+
+INCLUDES	= -I$(INC_DIR) -I$(INC_DIR)libft/ -I$(INC_DIR)gnl/
+CFLAGS		+= $(INCLUDES)
 
 #LIBFT
-INCLUDE_LIBFT = includes/libft/
-LIBFT_A = includes/libft/libft.a
+LIBFT		= $(INC_DIR)libft/libft.a
 
-CFLAGS += -I$(INCLUDE) -I $(INCLUDE_LIBFT)
+#SRC_____________________________________
 
-BUILD_DIR = obj/
-SRC_DIR = src/
+SRC_FILES	= ../includes/gnl/get_next_line.c \
+			../includes/gnl/get_next_line_utils.c \
+			main.c \
+			parsing.c \
+			parse_textures.c \
+			utils.c
 
-#SRC___________________________
 
-SRC=main.c \
-	parse_arg.c
+SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
-#OBJ___________________________
+#OBJ_AND_DEPS____________________________
 
-OBJ = $(SRC:%.c=$(BUILD_DIR)%.o)
-DEPS = $(SRC:%.c=$(BUILD_DIR)%.d)
-OBJ_DIR = $(sort $(shell dirname $(OBJ)))
+OBJS		= $(SRC_FILES:%.c=$(BUILD_DIR)%.o)
+DEPS		= $(OBJS:.o=.d)
+OBJ_DIR		= $(sort $(dir $(OBJS)))
 
-#_________________________________
+#________________________________________
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT_A)
+$(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) $^ -o $@
-	@echo "link Pyramide3D"
-
-$(LIBFT_A):
-	@make -C includes/libft
+	@echo "Compiles PYRAMID successfully"
 
 $(BUILD_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@ -I$(INCLUDE)
+	@echo "Compile: $<"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(LIBFT):
+	@make -C $(INC_DIR)libft
 
 $(OBJ_DIR):
 	@mkdir -p $@
 
 clean:
-	@make -C includes/libft/ clean
-	@rm -rf $(BUILD_DIR)
-	@echo "clean obj/"
+	@make -C $(INC_DIR)libft/ clean
+	@rm -rf $(INC_DIR)gnl/*.d $(INC_DIR)gnl/*.o $(BUILD_DIR)
+	@echo "clean gnl (.o/.d)\nclean obj/"
 
 fclean: clean
 	rm -rf $(NAME)
-	@rm -f $(LIBFT_A)
+	@rm -f $(LIBFT)
 
 re: fclean all
 
