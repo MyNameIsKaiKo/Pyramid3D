@@ -21,7 +21,7 @@ static int	shoot(int button, int x, int y, t_map *map)
 	return (1);
 }
 
-int	undlebutton(int button, int x, int y, t_map *map)
+int	handlebutton(int button, int x, int y, void *map)
 {
 	if (button == 1 || button == 2)
 		shoot(button, x, y, map);

@@ -38,3 +38,19 @@ int	map_init(t_map *map)
 	}
 	return (0);
 }
+
+int	pyramid_loop(t_map *map)
+{
+	if (map_init(map))
+		return (1);
+	mlx_hook(map->win, 17, 0, close_app, map);
+	mlx_hook(map->win, 2, 1l << 0, close_app, map);
+	mlx_hook(map->win, 3, 1L << 1, close_app, map);
+	mlx_mouse_hook(map->win, handlebutton, map);
+	mlx_loop(map->mlx);
+	mlx_destroy_image(map->mlx, map->img.img);
+	mlx_destroy_window(map->mlx, map->win);
+	mlx_destroy_display(map->mlx);
+	free(map->mlx);
+	return (0);
+}

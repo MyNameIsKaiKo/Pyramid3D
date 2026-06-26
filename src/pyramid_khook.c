@@ -31,9 +31,16 @@ static int	player_move(int keycode, t_map *map)
 	return (0);
 }
 
-int	handlekey(int keycode, t_map *map)
+int	handlekey_press(int keycode, void *map)
 {
 	if (keycode == K_ESC)
 		close_app(map);
+	if (keycode == K_W)
+		player_move(keycode, map);
+	return (0);
+}
+
+int	handlekey_release(int keycode, void *map)
+{
 	return (0);
 }
