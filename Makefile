@@ -1,7 +1,7 @@
 #COMPILE_________________________________
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -MMD -MP
+CFLAGS		= -Wall -Wextra -Werror -MMD -MP -g
 MAKEFLAGS	+= --no-print-directory
 
 NAME		= pyramid
@@ -25,6 +25,7 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			../includes/gnl/get_next_line_utils.c \
 			main.c \
 			parsing.c \
+			parse_textures.c \
 			utils.c
 
 

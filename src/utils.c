@@ -5,16 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/25 18:56:52 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/26 14:26:14 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/06/26 23:27:41 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pyramid.h"
 
-void	print_error(char *err_msg)
+void print_error(char *err_msg)
 {
-	write(2, "Error\n", 6);
-	write(2, err_msg, ft_strlen(err_msg));
-	write(2, "\n", 1);
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(err_msg, 2);
+}
+
+void free_ctx(t_ctx *ctx)
+{
+	if (ctx->textures.NO_texture)
+		free(ctx->textures.NO_texture);
+	free(ctx->textures.SO_texture);
+	free(ctx->textures.WE_texture);
+	free(ctx->textures.EA_texture);
+	free(ctx->textures.F_color);
+	free(ctx->textures.C_color);
 }
