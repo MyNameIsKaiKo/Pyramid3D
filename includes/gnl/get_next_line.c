@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:35:24 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/25 20:13:42 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/26 16:47:05 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static char	*line_formatting(char **s_line, size_t i)
 
 	result = NULL;
 	if (i > 0)
-		result = ft_strndup(*s_line, i);
+		result = gnl_strndup(*s_line, i);
 	len = gnl_strlen(*s_line) - i;
 	if (len == 0 || !result)
 	{

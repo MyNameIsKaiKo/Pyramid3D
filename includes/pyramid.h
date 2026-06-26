@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:57:08 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/25 20:10:59 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/26 09:33:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <fcntl.h>
 
 # ifndef EXT_FILE
 #  define EXT_FILE ".cub"
