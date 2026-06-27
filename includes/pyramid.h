@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:57:08 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/26 23:27:24 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/27 12:10:43 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ typedef struct s_map
 
 typedef struct s_ctx
 {
-	t_textures	textures;
-	t_map		map;
+	t_textures	*textures;
+	t_map		*map;
 }	t_ctx;
 
 //parsing.c

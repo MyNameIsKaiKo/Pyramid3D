@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/26 23:27:29 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/27 12:11:02 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	parsing(char *file, t_ctx *ctx)
 {
 	if (parse_name(file) > 0)
 		return (1);
-	if (check_textures(file, &ctx->textures) > 0)
+	if (check_textures(file, ctx->textures) > 0)
 		return (1);
 	//check map
 	return (0);

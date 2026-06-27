@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/26 23:27:41 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/27 12:42:41 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,18 @@ void print_error(char *err_msg)
 
 void free_ctx(t_ctx *ctx)
 {
-	if (ctx->textures.NO_texture)
-		free(ctx->textures.NO_texture);
-	free(ctx->textures.SO_texture);
-	free(ctx->textures.WE_texture);
-	free(ctx->textures.EA_texture);
-	free(ctx->textures.F_color);
-	free(ctx->textures.C_color);
+	if (ctx->textures->NO_texture)
+		free(ctx->textures->NO_texture);
+	if (ctx->textures->SO_texture)
+		free(ctx->textures->SO_texture);
+	if (ctx->textures->WE_texture)
+		free(ctx->textures->WE_texture);
+	if (ctx->textures->EA_texture)
+		free(ctx->textures->EA_texture);
+	if (ctx->textures->F_color)
+		free(ctx->textures->F_color);
+	if (ctx->textures->C_color)
+		free(ctx->textures->C_color);
+	free(ctx->textures);
+	ctx->textures = NULL;
 }
