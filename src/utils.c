@@ -12,13 +12,13 @@
 
 #include "pyramid.h"
 
-void print_error(char *err_msg)
+void	print_error(char *err_msg)
 {
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(err_msg, 2);
 }
 
-void free_ctx(t_ctx *ctx)
+void	free_ctx(t_ctx *ctx)
 {
 	if (ctx->textures.NO_texture)
 		free(ctx->textures.NO_texture);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pyramid_mlx.h"
+#include "../../includes/pyramid_mlx.h"
 
 int	close_app(t_map *map)
 {
@@ -20,6 +20,7 @@ int	close_app(t_map *map)
 
 static int	player_move(int keycode, t_map *map)
 {
+	(void)map;
 	if (keycode == K_W)
 		ft_putstr_fd("Go Forward\n", 1);
 	if (keycode == K_S)
@@ -42,5 +43,7 @@ int	handlekey_press(int keycode, void *map)
 
 int	handlekey_release(int keycode, void *map)
 {
+	(void)keycode;
+	(void)map;
 	return (0);
 }

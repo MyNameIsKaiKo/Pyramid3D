@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pyramid_mlx.h"
+#include "../../includes/pyramid_mlx.h"
 
 void	f_init(t_map *map)
 {

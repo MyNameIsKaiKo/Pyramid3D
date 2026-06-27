@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pyramid_bhook.c                                    :+:      :+:    :+:   */
+/*   mlx_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/25 19:35:20 by jleray            #+#    #+#             */
-/*   Updated: 2026/06/25 19:35:20 by jleray           ###   ########.fr       */
+/*   Created: 2026/06/27 01:28:44 by jleray            #+#    #+#             */
+/*   Updated: 2026/06/27 01:28:44 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pyramid_mlx.h"
+#include "../../includes/pyramid_mlx.h"
 
-static int	shoot(int button, int x, int y, t_map *map)
+void	my_mlx_pixel_put(t_map *map, int x, int y, int color)
 {
-	if (button == 1)
-		ft_putstr_fd("SHOOT", 1);
-	if (button == 2)
-		ft_putstr_fd("SHOW MAP", 1);
-	return (1);
-}
+	char	*dst;
 
-int	handlebutton(int button, int x, int y, void *map)
-{
-	if (button == 1 || button == 2)
-		shoot(button, x, y, map);
-	return (0);
+	dst = map->img.addr + (y * map->img.line_lenght + x
+			* (map->img.bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
