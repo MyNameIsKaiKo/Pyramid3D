@@ -38,6 +38,27 @@
 # define K_RIGHT 65363
 # define K_DOWN 65364
 
+typedef struct s_ray
+{
+	double		camera_x;
+	double		dir_x;
+	double		dir_y;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	double		sidedist_x;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	double		wall_dist;
+	int			hit;
+	int			side;
+	int			ligne_height;
+	int			draw_start;
+	int			draw_end;
+}				t_ray;
+
 typedef struct s_pos
 {
 	double		x;
@@ -58,6 +79,7 @@ typedef struct s_plane
 
 typedef struct s_player
 {
+	t_ray		ray;
 	t_pos		pos;
 	t_dir		dir;
 	t_plane		plane;
