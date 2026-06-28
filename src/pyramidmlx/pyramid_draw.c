@@ -14,8 +14,14 @@
 
 void	setup_ray_for_col(t_map *map, int x)
 {
-	(void)map;
-	(void)x;
+	t_ray	*ray;
+
+	ray = &map->player.ray;
+	ray->camera_x = 2.0 * x / (double)WIDTH - 1.0;
+	ray->dir_x = map->player.dir.x + map->player.plane.x * ray->camera_x;
+	ray->dir_y = map->player.dir.y + map->player.plane.y * ray->camera_x;
+	ray->map_x = (int)map->player.pos.x;
+	ray->map_y = (int)map->player.pos.y;
 }
 
 void	exec_dda(t_map *map)
