@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/27 13:05:35 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/29 11:56:42 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,18 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	ft_memset(&ctx, 0, sizeof(t_ctx));
-	ctx.textures = malloc(sizeof(t_textures));
-	if (!ctx.textures)
-	{
-		print_error("Malloc Failed");
-		return (1);
-	}
+	// ctx.textures = malloc(sizeof(t_textures));
+	// if (!ctx.textures)
+	// {
+	// 	print_error("Malloc Failed");
+	// 	return (1);
+	// }
 	ft_memset(ctx.textures, 0, sizeof(t_textures));
 	if (parsing(av[1], &ctx) > 0)
+	{
+		free_ctx(&ctx);
 		return (0);
+	}
 	free_ctx(&ctx);
 	return (0);
 }

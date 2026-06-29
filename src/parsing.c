@@ -6,22 +6,25 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/27 12:11:02 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/29 11:55:08 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pyramid.h"
 
-static int	check_textures(char *file, t_textures *textures)
+static int	check_textures(char *file, t_ctx *ctx)
 {
-	extract_textures(file, textures);
-	printf("NO: %s\n", textures->NO_texture);
-	printf("SO: %s\n", textures->SO_texture);
-	printf("WE: %s\n", textures->WE_texture);
-	printf("EA: %s\n", textures->EA_texture);
-	printf("F: %s\n", textures->F_color);
-	printf("C: %s\n", textures->C_color);
-	//review, est ce que j'ai tout
+	int	i;
+
+	extract_textures(file, ctx);
+	i = 0;
+	while (ctx->textures[i] != NULL)
+		i++;
+	if (i < NB_TEXTURES)
+	{
+		print_error("Not all textures are accessible");
+		return (1);
+	}
 	return (0);
 }
 
@@ -44,7 +47,7 @@ int	parsing(char *file, t_ctx *ctx)
 {
 	if (parse_name(file) > 0)
 		return (1);
-	if (check_textures(file, ctx->textures) > 0)
+	if (check_textures(file, ctx) > 0)
 		return (1);
 	//check map
 	return (0);

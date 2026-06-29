@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:57:08 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/27 12:10:43 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/29 11:21:53 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,29 @@
 # include <string.h>
 # include <fcntl.h>
 
-# ifndef EXT_FILE
-#  define EXT_FILE ".cub"
-# endif
+# define EXT_FILE ".cub"
+# define NB_TEXTURES 6
 
-typedef struct s_texures
+
+typedef enum e_textures
 {
-	char	*NO_texture;
-	char	*SO_texture;
-	char	*WE_texture;
-	char	*EA_texture;
-	char	*F_color;
-	char	*C_color;
+	NO,
+	SO,
+	WE,
+	EA,
+	F,
+	C
 }	t_textures;
+
+// typedef struct s_texures
+// {
+// 	char	*NO_texture;
+// 	char	*SO_texture;
+// 	char	*WE_texture;
+// 	char	*EA_texture;
+// 	char	*F_color;
+// 	char	*C_color;
+// }	t_textures;
 
 typedef struct s_map
 {
@@ -44,15 +54,15 @@ typedef struct s_map
 
 typedef struct s_ctx
 {
-	t_textures	*textures;
-	t_map		*map;
+	char	*textures[NB_TEXTURES];
+	t_map	*map;
 }	t_ctx;
 
 //parsing.c
 int		parsing(char *file, t_ctx *ctx);
 
 //parse_textures.c
-void	extract_textures(char *file, t_textures *textures);
+void	extract_textures(char *file, t_ctx *ctx);
 
 //utils.c
 void	print_error(char *err_msg);
