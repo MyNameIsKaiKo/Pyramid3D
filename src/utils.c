@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/29 11:42:13 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/29 14:26:18 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void free_ctx(t_ctx *ctx)
 	size_t	i;
 
 	i = 0;
-	while (i < NB_TEXTURES)
+	while (i < NB_ALL_TEXTURES)
 	{
 		free(ctx->textures[i]);
 		++i;

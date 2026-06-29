@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/29 11:55:08 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:45:16 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ static int	check_textures(char *file, t_ctx *ctx)
 	i = 0;
 	while (ctx->textures[i] != NULL)
 		i++;
-	if (i < NB_TEXTURES)
+	if (i < NB_ALL_TEXTURES)
 	{
-		print_error("Not all textures are accessible");
+		print_error("There is a problem with the textures");
 		return (1);
 	}
+	if (parse_path(ctx->textures) > 0)
+		return (1);
+	if (parse_color(ctx->textures) > 0)
+		return (1);
 	return (0);
 }
 

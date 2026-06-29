@@ -6,22 +6,42 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:41:53 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/29 11:31:39 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/29 16:27:58 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pyramid.h"
 
-static int init_texture(char *line_read, char **this_textures)
+int	parse_path(char **textures)
+{
+	int	i;
+	int fd;
+
+	i = 0;
+	while (i < NB_PATH_TEXTURES)
+	{
+		fd = open(textures[i], O_RDONLY);
+		if (fd < 0)
+		{
+			print_error("A texture is inaccessible");
+			return (1);
+		}
+		i++;
+		close(fd);
+	}
+	return (0);
+}
+
+static int init_texture(char *line_read, char **this_textures, int start)
 {
 	if (*this_textures)
+		return (1);
+	*this_textures = ft_substr(line_read, start, strlen(line_read) - (start + 1));
+	if (!*this_textures)
 	{
-		print_error("a texture is duplicated");
+		print_error("Malloc failed");
 		return (1);
 	}
-	*this_textures = ft_strdup(line_read);
-	if (!*this_textures)
-		return (1);
 	return (0);
 }
 
@@ -31,17 +51,17 @@ static int parse_textures(char *line_read, t_ctx *ctx)
 
 	var_return = 1;
 	if (ft_strncmp(line_read, "NO ", 3) == 0)
-		var_return = init_texture(line_read, &ctx->textures[NO]);
+		var_return = init_texture(line_read, &ctx->textures[NO_WALL], 3);
 	if (ft_strncmp(line_read, "SO ", 3) == 0)
-		var_return = init_texture(line_read, &ctx->textures[SO]);
+		var_return = init_texture(line_read, &ctx->textures[SO_WALL], 3);
 	if (ft_strncmp(line_read, "WE ", 3) == 0)
-		var_return = init_texture(line_read, &ctx->textures[WE]);
+		var_return = init_texture(line_read, &ctx->textures[WE_WALL], 3);
 	if (ft_strncmp(line_read, "EA ", 3) == 0)
-		var_return = init_texture(line_read, &ctx->textures[EA]);
+		var_return = init_texture(line_read, &ctx->textures[EA_WALL], 3);
 	if (ft_strncmp(line_read, "F ", 2) == 0)
-		var_return = init_texture(line_read, &ctx->textures[F]);
+		var_return = init_texture(line_read, &ctx->textures[FLOOR_COLOR], 2);
 	if (ft_strncmp(line_read, "C ", 2) == 0)
-		var_return = init_texture(line_read, &ctx->textures[C]);
+		var_return = init_texture(line_read, &ctx->textures[CEILING_COLOR], 2);
 	if (ft_strlen(line_read) <= 1)
 		var_return = 0;
 	return (var_return);

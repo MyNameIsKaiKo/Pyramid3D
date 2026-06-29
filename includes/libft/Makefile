@@ -50,7 +50,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
-	@echo "Compiles LIBF successfully"
+	@echo "Compiles LIBFT successfully"
 
 $(BUILD_DIR)%.o:$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@

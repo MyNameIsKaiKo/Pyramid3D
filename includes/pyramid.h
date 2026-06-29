@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:57:08 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/29 11:21:53 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/29 16:30:21 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,20 @@
 # include <fcntl.h>
 
 # define EXT_FILE ".cub"
-# define NB_TEXTURES 6
+# define NB_COLOR 2
+# define NB_PATH_TEXTURES 4
+# define NB_ALL_TEXTURES NB_COLOR + NB_PATH_TEXTURES
 
-
+/** @important Textures with paths must be placed before the RGB colours */
 typedef enum e_textures
 {
-	NO,
-	SO,
-	WE,
-	EA,
-	F,
-	C
+	NO_WALL,
+	SO_WALL,
+	WE_WALL,
+	EA_WALL,
+	FLOOR_COLOR,
+	CEILING_COLOR
 }	t_textures;
-
-// typedef struct s_texures
-// {
-// 	char	*NO_texture;
-// 	char	*SO_texture;
-// 	char	*WE_texture;
-// 	char	*EA_texture;
-// 	char	*F_color;
-// 	char	*C_color;
-// }	t_textures;
 
 typedef struct s_map
 {
@@ -54,7 +46,7 @@ typedef struct s_map
 
 typedef struct s_ctx
 {
-	char	*textures[NB_TEXTURES];
+	char	*textures[NB_ALL_TEXTURES];
 	t_map	*map;
 }	t_ctx;
 
@@ -62,7 +54,11 @@ typedef struct s_ctx
 int		parsing(char *file, t_ctx *ctx);
 
 //parse_textures.c
+int		parse_path(char **textures);
 void	extract_textures(char *file, t_ctx *ctx);
+
+//parse_color.c
+int		parse_color(char **color);
 
 //utils.c
 void	print_error(char *err_msg);

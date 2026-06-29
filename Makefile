@@ -26,6 +26,7 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			main.c \
 			parsing.c \
 			parse_textures.c \
+			parse_color.c \
 			utils.c
 
 
