@@ -14,16 +14,16 @@
 
 void	rotate_vector(t_map *map, double angle)
 {
-	t_player	player;
-	double		old_x;
-	double		x;
-	double		y;
+	t_player	*player;
+	double		old_dir_x;
+	double		old_plane_x;
 
-	player = map->player;
-	old_x = player.dir.x;
-	x = player.dir.x;
-	y = player.dir.y;
-	player.dir.x = ((old_x * cos(angle)) - (y * sin(angle)));
-	player.dir.y = ((old_x * sin(angle) - (y * cos(angle))));
+	player = &map->player;
+	old_dir_x = player->dir.x;
+	player->dir.x = player->dir.x * cos(angle) - player->dir.y * sin(angle);
+	player->dir.y = old_dir_x * sin(angle) + player->dir.y * cos(angle);
+	old_plane_x = player->plane.x;
+	player->plane.x = player->plane.x * cos(angle) - player->plane.y * sin(angle);
+	player->plane.y = old_plane_x * sin(angle) + player->plane.y * cos(angle);
 	return ;
 }
