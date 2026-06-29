@@ -22,6 +22,8 @@ void	setup_ray_for_col(t_map *map, int x)
 	ray->dir_y = map->player.dir.y + map->player.plane.y * ray->camera_x;
 	ray->map_x = (int)map->player.pos.x;
 	ray->map_y = (int)map->player.pos.y;
+	calc_deltadist(ray);
+	calc_sidedist(ray, map);
 }
 
 void	exec_dda(t_map *map)
