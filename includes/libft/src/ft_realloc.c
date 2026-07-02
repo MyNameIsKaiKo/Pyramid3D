@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/02 13:42:38 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/07/01 15:21:10 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/07/02 14:16:25 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pyramid.h"
+#include "libft.h"
 
-void print_error(char *err_msg)
+void	*ft_realloc(void *tab, size_t current_size, size_t new_size)
 {
-	ft_putendl_fd("Error", 2);
-	ft_putendl_fd(err_msg, 2);
-}
+	void	*new_tab;
 
-void free_ctx(t_ctx *ctx)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < NB_ALL_TEXTURES)
+	if (new_size < current_size || !tab)
 	{
-		free(ctx->textures[i]);
-		++i;
+		free(tab);
+		return (NULL);
 	}
-	// free(ctx->map);
+	new_tab = malloc(new_size);
+	if (!new_tab)
+	{
+		free(tab);
+		return (NULL);
+	}
+	ft_memcpy(new_tab, tab, current_size);
+	free(tab);
+	return (new_tab);
 }

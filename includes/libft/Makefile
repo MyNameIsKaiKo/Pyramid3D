@@ -20,6 +20,7 @@ SRC= function_fd.c \
 	ft_strrchr.c \
 	ft_strncmp.c \
 	ft_strnstr.c \
+	ft_realloc.c \
 	ft_atoi.c \
 	ft_atol.c \
 	ft_calloc.c \
