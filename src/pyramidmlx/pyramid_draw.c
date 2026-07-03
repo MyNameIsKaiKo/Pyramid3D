@@ -28,7 +28,26 @@ void	setup_ray_for_col(t_map *map, int x)
 
 void	exec_dda(t_map *map)
 {
-	(void)map;
+	t_ray	*ray;
+
+	ray = &map->player.ray;
+	while (ray->hit == 0)
+	{
+		if (ray->sidedist_x < ray->sidedist_y)
+		{
+			ray->sidedist_x += ray->deltadist_x;
+			ray->map_x += ray->step_x;
+			ray->side = 0;
+		}
+		else
+		{
+			ray->sidedist_y += ray->deltadist_y;
+			ray->map_y += ray->step_y;
+			ray->side = 1;
+		}
+		if (map->map_tab[ray->map_y][ray->map_x])
+			ray->hit = 1;
+	}
 }
 
 void	calc_wall(t_map *map)
