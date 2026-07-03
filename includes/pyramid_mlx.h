@@ -54,7 +54,7 @@ typedef struct s_ray
 	double		wall_dist;
 	int			hit;
 	int			side;
-	int			ligne_height;
+	int			line_height;
 	int			draw_start;
 	int			draw_end;
 }				t_ray;
