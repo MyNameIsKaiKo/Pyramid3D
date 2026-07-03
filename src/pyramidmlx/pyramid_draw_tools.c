@@ -34,7 +34,8 @@ void	calc_sidedist(t_ray *ray, t_map *map)
 	else
 	{
 		ray->step_x = 1;
-		ray->sidedist_x = (ray->map_x + 1.0 - map->player.pos.x) * ray->deltadist_x;
+		ray->sidedist_x = (ray->map_x + 1.0 - map->player.pos.x)
+			* ray->deltadist_x;
 	}
 	if (ray->dir_y < 0)
 	{
@@ -44,7 +45,19 @@ void	calc_sidedist(t_ray *ray, t_map *map)
 	else
 	{
 		ray->step_y = 1;
-		ray->sidedist_y = (ray->map_y + 1.0 - map->player.pos.y) * ray->deltadist_y;
+		ray->sidedist_y = (ray->map_y + 1.0 - map->player.pos.y)
+			* ray->deltadist_y;
 	}
 }
 
+void	calc_drawing_value(t_ray *ray)
+{
+	if (ray->wall_dist != 0)
+		ray->line_height = HEIGHT / ray->wall_dist;
+	ray->draw_start = -ray->line_height / 2 + HEIGHT / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->draw_end = ray->line_height / 2 + HEIGHT / 2;
+	if (ray->draw_end >= HEIGHT)
+		ray->draw_end = HEIGHT - 1;
+}

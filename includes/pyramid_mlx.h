@@ -122,6 +122,9 @@ void			my_mlx_pixel_put(t_map *map, int x, int y, int color);
 
 // -- pyramid_math Function --
 void			rotate_vector(t_map *map, double angle);
+
+// -- pyramod_draw_tools Function --
 void			calc_deltadist(t_ray *ray);
 void			calc_sidedist(t_ray *ray, t_map *map);
+void			calc_drawing_value(t_ray *ray);
 #endif

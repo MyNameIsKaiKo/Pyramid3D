@@ -45,7 +45,7 @@ void	exec_dda(t_map *map)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (map->map_tab[ray->map_y][ray->map_x])
+		if (map->map_tab[ray->map_y][ray->map_x] != '0')
 			ray->hit = 1;
 	}
 }
@@ -66,17 +66,12 @@ void	draw_img(t_map *map, int x)
 	t_ray	*ray;
 	int		y;
 
-	y = 0;
+	y = -1;
 	ray = &map->player.ray;
-	if (ray->wall_dist != 0)
-		ray->line_height = HEIGHT / ray->wall_dist;
-	ray->draw_start = -ray->line_height / 2 + HEIGHT / 2;
-	ray->draw_end = ray->line_height / 2 + HEIGHT / 2;
-	if (ray->draw_end >= HEIGHT)
-		ray->draw_end = HEIGHT - 1;
-	while (y < HEIGHT)
+	calc_drawing_value(ray);
+	while (++y < HEIGHT)
 	{
-		if (y < ray->draw_end && y > ray->draw_start)
+		if (y <= ray->draw_end && y >= ray->draw_start)
 		{
 			if (ray->side == 1)
 				my_mlx_pixel_put(map, x, y, 0x00000000);
@@ -101,6 +96,8 @@ int	draw_frame(t_map *map)
 		exec_dda(map);
 		calc_wall(map);
 		draw_img(map, x);
+		map->player.ray.hit = 0;
+		x++;
 	}
 	mlx_put_image_to_window(map->mlx, map->win, map->img.img, 0, 0);
 	return (0);
