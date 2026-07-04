@@ -15,7 +15,7 @@
 // player->plane.y represent the fov
 void	player_init(t_map *map)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = &map->player;
 	player->pos = map->starting_coord;
@@ -37,19 +37,17 @@ void	player_init(t_map *map)
 
 int	player_moved(t_player *player)
 {
-	if (player->moves.backward
-			|| player->moves.forward
-			|| player->moves.left
-			|| player->moves.right)
+	if (player->moves.backward || player->moves.forward || player->moves.left
+		|| player->moves.right)
 		return (1);
 	if (player->moves.left_turn || player->moves.right_turn)
 		return (1);
 	return (0);
 }
 
-void apply_rotation(t_map *map)
+void	apply_rotation(t_map *map)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = &map->player;
 	if (player->moves.left_turn)
@@ -66,16 +64,16 @@ void apply_rotation(t_map *map)
 
 void	apply_movement(t_map *map)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = &map->player;
 	apply_rotation(map);
 	if (player->moves.forward)
-	{
-		if (map->map_tab[(int)(player->pos.x + player->dir.x * player->velocity)][(int)player->pos.y] == '0')
-			player->pos.x += player->dir.x * player->velocity;
-		if (map->map_tab[(int)player->pos.x][(int)(player->pos.y + player->dir.y * player->velocity)] == '0')
-			player->pos.y += player->dir.y * player->velocity;
-		player->moves.forward = 0;
-	}
+		player_forward(map);
+	if (player->moves.backward)
+		player_backward(map);
+	if (player->moves.left)
+		player_left(map);
+	if (player->moves.right)
+		player_right(map);
 }

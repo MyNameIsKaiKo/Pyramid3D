@@ -34,7 +34,8 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			./pyramidmlx/pyramid_khook.c \
 			./pyramidmlx/pyramid_bhook.c \
 			./pyramid_math/matrix.c \
-			./player_handler/player.c
+			./player_handler/player.c \
+			./player_handler/player_movement.c
 
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 

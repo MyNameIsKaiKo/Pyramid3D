@@ -156,4 +156,11 @@ void			calc_drawing_value(t_ray *ray);
 void			player_init(t_map *map);
 void			apply_movement(t_map *map);
 int				player_moved(t_player *player);
+
+// -- player_movement Function --
+void			player_forward(t_map *map);
+void			player_backward(t_map *map);
+void			player_right(t_map *map);
+void			player_left(t_map *map);
+
 #endif

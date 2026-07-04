@@ -20,7 +20,7 @@ int	close_app(t_map *map)
 
 static int	player_move(int keycode, t_map *map)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = &map->player;
 	if (keycode == K_W)
