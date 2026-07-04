@@ -93,6 +93,8 @@ int	draw_frame(t_map *map)
 	int	x;
 
 	x = 0;
+	if (player_moved(&map->player))
+		apply_movement(map);
 	while (x < WIDTH)
 	{
 		setup_ray_for_col(map, x);

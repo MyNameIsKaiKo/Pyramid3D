@@ -39,6 +39,16 @@
 # define K_RIGHT 65363
 # define K_DOWN 65364
 
+typedef struct s_moves
+{
+	int			forward;
+	int			backward;
+	int			left;
+	int			right;
+	int			left_turn;
+	int			right_turn;
+}				t_moves;
+
 typedef struct s_ray
 {
 	double		camera_x;
@@ -84,10 +94,11 @@ typedef struct s_player
 	t_pos		pos;
 	t_dir		dir;
 	t_plane		plane;
+	t_moves		moves;
 	double		rotation_speed;
 	double		time;
 	double		old_time;
-	int			velocity;
+	double		velocity;
 }				t_player;
 
 typedef struct s_img
@@ -143,4 +154,6 @@ void			calc_drawing_value(t_ray *ray);
 // -- player_handler SECTION --
 // -- player Function --
 void			player_init(t_map *map);
+void			apply_movement(t_map *map);
+int				player_moved(t_player *player);
 #endif
