@@ -64,27 +64,55 @@ void	calc_wall(t_map *map)
 		ray->wall_dist = ray->sidedist_y - ray->deltadist_y;
 }
 
+// void	draw_img(t_map *map, int x)
+// {
+// t_ray	*ray;
+// int		y;
+//
+// y = -1;
+// ray = &map->player.ray;
+// calc_drawing_value(ray);
+// while (++y < HEIGHT)
+// {
+// if (y <= ray->draw_end && y >= ray->draw_start)
+// {
+// if (ray->side == 1)
+// my_mlx_pixel_put(map, x, y, 0x00000000);
+// else if (ray->side == 0)
+// my_mlx_pixel_put(map, x, y, 0x00FFFFFF);
+// }
+// if (y < ray->draw_start)
+// my_mlx_pixel_put(map, x, y, 0x00F02DC3);
+// if (y > ray->draw_end)
+// my_mlx_pixel_put(map, x, y, 0x00F02D00);
+// }
+// }
+
 void	draw_img(t_map *map, int x)
 {
 	t_ray	*ray;
 	int		y;
+	int		tex_y;
 
 	y = -1;
 	ray = &map->player.ray;
 	calc_drawing_value(ray);
+	calc_wallx(map);
+	calc_tex_x(map);
+	calc_tex_step(map);
+	calc_tex_start(map);
 	while (++y < HEIGHT)
 	{
-		if (y <= ray->draw_end && y >= ray->draw_start)
-		{
-			if (ray->side == 1)
-				my_mlx_pixel_put(map, x, y, 0x00000000);
-			else if (ray->side == 0)
-				my_mlx_pixel_put(map, x, y, 0x00FFFFFF);
-		}
 		if (y < ray->draw_start)
 			my_mlx_pixel_put(map, x, y, 0x00F02DC3);
-		if (y > ray->draw_end)
+		else if (y > ray->draw_end)
 			my_mlx_pixel_put(map, x, y, 0x00F02D00);
+		else
+		{
+			tex_y = (int)map->tex.start % map->tex.height;
+			map->tex.start += map->tex.step;
+			my_mlx_pixel_put(map, x, y, 0x00FFFFFF);
+		}
 	}
 }
 

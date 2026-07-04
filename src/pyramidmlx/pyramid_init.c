@@ -39,10 +39,17 @@ int	map_init(t_map *map)
 	return (0);
 }
 
+void	texture_data(t_map *map)
+{
+	map->tex.height = 32;
+	map->tex.witdh = 32;
+}
+
 int	pyramid_loop(t_map *map)
 {
 	if (map_init(map))
 		return (1);
+	texture_data(map);
 	mlx_loop_hook(map->mlx, draw_frame, map);
 	mlx_hook(map->win, 17, 0, close_app, map);
 	mlx_hook(map->win, 2, 1l << 0, handlekey_press, map);
