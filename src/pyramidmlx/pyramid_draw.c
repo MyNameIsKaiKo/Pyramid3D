@@ -45,8 +45,8 @@ void	exec_dda(t_map *map)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_x < 0 || ray->map_x >= WIDTH
-				|| ray->map_y < 0 || ray->map_y >= HEIGHT)
+		if (ray->map_x < 0 || ray->map_x >= map->width
+				|| ray->map_y < 0 || ray->map_y >= map->height)
 			break ;
 		if (map->map_tab[ray->map_y][ray->map_x] != '0')
 			ray->hit = 1;
@@ -84,7 +84,7 @@ void	draw_img(t_map *map, int x)
 		if (y < ray->draw_start)
 			my_mlx_pixel_put(map, x, y, 0x00F02DC3);
 		if (y > ray->draw_end)
-			my_mlx_pixel_put(map, x, y, 0x00F02DFF);
+			my_mlx_pixel_put(map, x, y, 0x00F02D00);
 	}
 }
 

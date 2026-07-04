@@ -28,7 +28,7 @@ void	calc_sidedist(t_ray *ray, t_map *map)
 {
 	if (ray->dir_x < 0)
 	{
-		ray->dir_x = -1;
+		ray->step_x = -1;
 		ray->sidedist_x = (map->player.pos.x - ray->map_x) * ray->deltadist_x;
 	}
 	else

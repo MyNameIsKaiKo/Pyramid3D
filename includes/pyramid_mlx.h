@@ -107,6 +107,8 @@ typedef struct s_map
 	void		*mlx;
 	void		*win;
 	t_img		img;
+	int			width;
+	int			height;
 }				t_map;
 
 // -- falsemap Function --
