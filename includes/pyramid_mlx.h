@@ -101,6 +101,17 @@ typedef struct s_player
 	double		velocity;
 }				t_player;
 
+typedef struct s_texture
+{
+	int			x;
+	int			y;
+	double		wallx;
+	int			height;
+	int			witdh;
+	int			step;
+	int			start;
+}				t_texture;
+
 typedef struct s_img
 {
 	void		*img;
@@ -114,6 +125,7 @@ typedef struct s_map
 {
 	t_pos		starting_coord;
 	t_player	player;
+	t_texture	tex;
 	char		**map_tab;
 	void		*mlx;
 	void		*win;
@@ -150,6 +162,12 @@ int				draw_frame(t_map *map);
 void			calc_deltadist(t_ray *ray);
 void			calc_sidedist(t_ray *ray, t_map *map);
 void			calc_drawing_value(t_ray *ray);
+
+// -- texture Function --
+void			calc_tex_start(t_map *map);
+void			calc_tex_step(t_map *map);
+void			calc_tex_x(t_map *map);
+void			calc_wallx(t_map *map);
 
 // -- player_handler SECTION --
 // -- player Function --
