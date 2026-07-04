@@ -72,7 +72,10 @@ void	apply_movement(t_map *map)
 	apply_rotation(map);
 	if (player->moves.forward)
 	{
-		player->pos.x -= player->velocity;
+		if (map->map_tab[(int)(player->pos.x + player->dir.x * player->velocity)][(int)player->pos.y] == '0')
+			player->pos.x += player->dir.x * player->velocity;
+		if (map->map_tab[(int)player->pos.x][(int)(player->pos.y + player->dir.y * player->velocity)] == '0')
+			player->pos.y += player->dir.y * player->velocity;
 		player->moves.forward = 0;
 	}
 }
