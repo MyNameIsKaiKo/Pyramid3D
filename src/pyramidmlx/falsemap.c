@@ -29,8 +29,8 @@ void	fill_fmap(t_map *map)
 	map->map_tab[8] = ft_strdup("1000000001");
 	map->map_tab[9] = ft_strdup("1111111111");
 	map->map_tab[10] = ft_strdup("\0");
-	map->starting_coord.x = 2;
-	map->starting_coord.y = 3;
+	map->starting_coord.x = 5.5;
+	map->starting_coord.y = 8.5;
 	map->width = 10;
 	map->height = 10;
 	return ;
