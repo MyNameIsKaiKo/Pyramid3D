@@ -45,6 +45,9 @@ void	exec_dda(t_map *map)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
+		if (ray->map_x < 0 || ray->map_x >= WIDTH
+				|| ray->map_y < 0 || ray->map_y >= HEIGHT)
+			break ;
 		if (map->map_tab[ray->map_y][ray->map_x] != '0')
 			ray->hit = 1;
 	}

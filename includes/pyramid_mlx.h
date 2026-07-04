@@ -16,6 +16,7 @@
 # include "./libft/include/libft.h"
 # include "./minilibx/mlx.h"
 # include <math.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -108,6 +109,9 @@ typedef struct s_map
 	t_img		img;
 }				t_map;
 
+// -- falsemap Function --
+void			fill_fmap(t_map *map);
+
 // -- Free Function --
 void			f_init(t_map *map);
 
@@ -120,11 +124,21 @@ int				close_app(t_map *map);
 // -- mlx_tools Function --
 void			my_mlx_pixel_put(t_map *map, int x, int y, int color);
 
+// -- pyramid_init Function --
+int				pyramid_loop(t_map *map);
+
 // -- pyramid_math Function --
 void			rotate_vector(t_map *map, double angle);
 
-// -- pyramod_draw_tools Function --
+// -- pyramid_draw Function --
+int				draw_frame(t_map *map);
+
+// -- pyramid_draw_tools Function --
 void			calc_deltadist(t_ray *ray);
 void			calc_sidedist(t_ray *ray, t_map *map);
 void			calc_drawing_value(t_ray *ray);
+
+// -- player_handler SECTION --
+// -- player Function --
+void			player_init(t_map *map);
 #endif
