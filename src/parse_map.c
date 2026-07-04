@@ -5,76 +5,64 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/29 19:37:43 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/02 14:57:34 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/07/04 15:57:25 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pyramid.h"
 
-	// FLOOR,
-	// WALL,
-	// EMPTY,
-	// PLAYER
+// static int	char_association(char c, t_map *map)
+// {
+// 	if ()
+// }
 
-static int	distribution(char *line, t_map *map)
+static int	retrieve_map(char *line_read, t_map *map)
 {
-	int		i;
-	char	c;
+	int			i;
+	t_tile_type	*new_line;
 
 	i = 0;
-	printf("in distribution:\n");
-	while (line[i])
+	if (!map->tab_map)
+		map->tab_map = malloc(sizeof(t_tile_type *));
+	else
+		map->tab_map = ft_realloc(map->tab_map, sizeof(t_tile_type *)
+			* map->height, sizeof(t_tile_type *) * (map->height + 1));
+	new_line = malloc(sizeof(t_tile_type) * ft_strlen(line_read));
+	if (!map->tab_map || !new_line)
 	{
-		c = line[i];
-		printf("c: '%c'\n", c);
-		if (c == ' ')
-		{
-			printf("space\n");
-			map->tab_map[map->height][i] = EMPTY;
-		}
-		else if (c == '0')
-		{
-			printf("0\n");
-			map->tab_map[map->height][i] = FLOOR;
-		}
-		else if (c == '1')
-		{
-			printf("1\n");
-			map->tab_map[map->height][i] = WALL;
-		}
-		else if ((c == 'N' || c == 'S' || c == 'W' || c == 'E') && map->n_player == false)
-		{
-			printf("%c\n", c);
-			map->tab_map[map->height][i] = WALL;
-			map->n_player = true;
-		}
-		else
-		{
-			printf("return\n");
-			return (1);
-		}
+		print_error("Malloc failed");
+		return (1);
+	}
+	map->tab_map[map->height] = new_line;
+	while (line_read[i])
+	{
+		// if (char_association(line_read[i], map) > 0)
+		// 	return (1);
+		i++;
 	}
 	return (0);
 }
 
-int	parse_map(char *line_read, t_map *map)
+int	check_line_map(char *line_read, t_map *map)
 {
-	size_t	current_size;
-	size_t	new_size;
+	size_t	max_width;
 
-	current_size = map->height * sizeof(t_tile_type *);
-	new_size = (map->height + 1) * sizeof(t_tile_type *);
-	if (map->height < 1)
-		map->tab_map = malloc(sizeof(t_tile_type *) * ft_strlen(line_read));
-	else
-		map->tab_map = ft_realloc(map->tab_map, current_size, new_size);
-	if (!map->tab_map)
+	if (ft_strncmp(line_read, "\n", ft_strlen(line_read)) == 0)
 	{
-		print_error("ft_realloc failed");
-		return (1);
+		if (map->height == 0)
+			return (0);
+		else
+		{
+			print_error("The map is open");
+			return (1);
+		}
 	}
-	if (distribution(line_read, map) > 0)
+	max_width = ft_strlen(line_read);
+	if (max_width > map->width)
+		map->width = max_width;
+	if (retrieve_map(line_read, map) > 0)
 		return (1);
+	map->height++;
 	return (0);
 }
