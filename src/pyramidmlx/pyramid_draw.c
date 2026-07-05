@@ -92,7 +92,6 @@ void	draw_img(t_map *map, int x)
 {
 	t_ray	*ray;
 	int		y;
-	int		tex_y;
 	int		color;
 
 	y = -1;
@@ -106,9 +105,11 @@ void	draw_img(t_map *map, int x)
 			my_mlx_pixel_put(map, x, y, 0x00F02D00);
 		else
 		{
-			tex_y = (int)map->tex.start % map->tex.height;
+			calc_tex_y(map);
 			map->tex.start += map->tex.step;
-			color = get_texture_pixel(&map->wall_tex[0], map->tex.x, tex_y);
+			color = get_texture_pixel(&map->wall_tex[0], map->tex.x, map->tex.y);
+			if (x == WIDTH / 2 && y == HEIGHT / 2)
+    			printf("Couleur lue : %08X, tex_x: %d, tex_y: %d\n", color, map->tex.x, map->tex.y);
 			my_mlx_pixel_put(map, x, y, color);
 		}
 	}

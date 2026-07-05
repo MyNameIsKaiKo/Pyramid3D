@@ -108,8 +108,8 @@ typedef struct s_texture
 	double		wallx;
 	int			height;
 	int			witdh;
-	int			step;
-	int			start;
+	double		step;
+	double		start;
 }				t_texture;
 
 typedef struct s_img
@@ -171,6 +171,7 @@ void			calc_tex_step(t_map *map);
 void			calc_tex_x(t_map *map);
 void			calc_wallx(t_map *map);
 int				get_texture_pixel(t_img *tex_img, int x, int y);
+void			calc_tex_y(t_map *map);
 
 // -- player_handler SECTION --
 // -- player Function --

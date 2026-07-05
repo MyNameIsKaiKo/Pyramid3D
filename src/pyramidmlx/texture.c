@@ -36,6 +36,10 @@ void	calc_tex_x(t_map *map)
 	ray = &player->ray;
 	tex = &map->tex;
 	tex->x = (int)(tex->wallx * tex->witdh);
+	if (tex->x < 0)
+		tex->x = 0;
+	if (tex->x >= tex->witdh)
+		tex->x = tex->witdh - 1;
 	if (ray->side == 0 && ray->dir_x > 0)
 		tex->x = tex->witdh - tex->x - 1;
 	if (ray->side == 1 && ray->dir_y < 0)
