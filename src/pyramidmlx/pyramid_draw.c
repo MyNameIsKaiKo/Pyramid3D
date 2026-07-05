@@ -93,14 +93,11 @@ void	draw_img(t_map *map, int x)
 	t_ray	*ray;
 	int		y;
 	int		tex_y;
+	int		color;
 
 	y = -1;
 	ray = &map->player.ray;
-	calc_drawing_value(ray);
-	calc_wallx(map);
-	calc_tex_x(map);
-	calc_tex_step(map);
-	calc_tex_start(map);
+	setup_draw_img(map);
 	while (++y < HEIGHT)
 	{
 		if (y < ray->draw_start)
@@ -111,7 +108,8 @@ void	draw_img(t_map *map, int x)
 		{
 			tex_y = (int)map->tex.start % map->tex.height;
 			map->tex.start += map->tex.step;
-			my_mlx_pixel_put(map, x, y, 0x00FFFFFF);
+			color = get_texture_pixel(&map->wall_tex[0], map->tex.x, tex_y);
+			my_mlx_pixel_put(map, x, y, color);
 		}
 	}
 }

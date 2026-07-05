@@ -35,3 +35,37 @@ void	fill_fmap(t_map *map)
 	map->height = 10;
 	return ;
 }
+
+void	texture_data(t_map *map)
+{
+	int		i;
+	int		w;
+	int		h;
+	char	*paths[4];
+
+	i = 0;
+	printf("\n 2.1 - Je suis la \n");
+	paths[0] = ft_strdup("./src/texture/texture1.xpm");
+	paths[1] = ft_strdup("./src/texture/texture2.xpm");
+	paths[2] = ft_strdup("./src/texture/texture3.xpm");
+	paths[3] = ft_strdup("./src/texture/texture4.xpm");
+	printf("\n 2.2 - Je suis la \n");
+	while (i < 4)
+	{
+		printf("\n 2.2.1 - Je suis la \n");
+		map->wall_tex[i].img = mlx_xpm_file_to_image(map->mlx, paths[i], &w,
+				&h);
+		printf("\n 2.2.2- Je suis la \n");
+		map->wall_tex[i].addr = mlx_get_data_addr(map->wall_tex[i].img,
+				&map->wall_tex[i].bits_per_pixel, &map->wall_tex[i].line_lenght,
+				&map->wall_tex[i].endian);
+		printf("\n 2.2.3 - Je suis la \n");
+		i++;
+	}
+	printf("\n 2.3 - Je suis la \n");
+	map->tex.height = 32;
+	map->tex.witdh = 32;
+	i = -1;
+	while (++i < 4)
+		free(paths[i]);
+}

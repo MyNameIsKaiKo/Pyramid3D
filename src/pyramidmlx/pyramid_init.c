@@ -39,23 +39,20 @@ int	map_init(t_map *map)
 	return (0);
 }
 
-void	texture_data(t_map *map)
-{
-	map->tex.height = 32;
-	map->tex.witdh = 32;
-}
-
 int	pyramid_loop(t_map *map)
 {
 	if (map_init(map))
 		return (1);
+	printf("\n 1 - Je suis la \n");
 	texture_data(map);
+	printf("\n 2 - Je suis la \n");
 	mlx_loop_hook(map->mlx, draw_frame, map);
 	mlx_hook(map->win, 17, 0, close_app, map);
 	mlx_hook(map->win, 2, 1l << 0, handlekey_press, map);
 	mlx_hook(map->win, 3, 1L << 1, handlekey_release, map);
 	mlx_mouse_hook(map->win, handlebutton, map);
 	mlx_loop(map->mlx);
+	printf("\n 3 - Je suis la \n");
 	mlx_destroy_image(map->mlx, map->img.img);
 	mlx_destroy_window(map->mlx, map->win);
 	mlx_destroy_display(map->mlx);

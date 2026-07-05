@@ -126,6 +126,7 @@ typedef struct s_map
 	t_pos		starting_coord;
 	t_player	player;
 	t_texture	tex;
+	t_img		wall_tex[4];
 	char		**map_tab;
 	void		*mlx;
 	void		*win;
@@ -136,7 +137,7 @@ typedef struct s_map
 
 // -- falsemap Function --
 void			fill_fmap(t_map *map);
-
+void			texture_data(t_map *map);
 // -- Free Function --
 void			f_init(t_map *map);
 
@@ -162,12 +163,14 @@ int				draw_frame(t_map *map);
 void			calc_deltadist(t_ray *ray);
 void			calc_sidedist(t_ray *ray, t_map *map);
 void			calc_drawing_value(t_ray *ray);
+void			setup_draw_img(t_map *map);
 
 // -- texture Function --
 void			calc_tex_start(t_map *map);
 void			calc_tex_step(t_map *map);
 void			calc_tex_x(t_map *map);
 void			calc_wallx(t_map *map);
+int				get_texture_pixel(t_img *tex_img, int x, int y);
 
 // -- player_handler SECTION --
 // -- player Function --

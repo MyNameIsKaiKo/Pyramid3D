@@ -61,3 +61,12 @@ void	calc_drawing_value(t_ray *ray)
 	if (ray->draw_end >= HEIGHT)
 		ray->draw_end = HEIGHT - 1;
 }
+
+void	setup_draw_img(t_map *map)
+{
+	calc_drawing_value(&map->player.ray);
+	calc_wallx(map);
+	calc_tex_x(map);
+	calc_tex_step(map);
+	calc_tex_start(map);
+}

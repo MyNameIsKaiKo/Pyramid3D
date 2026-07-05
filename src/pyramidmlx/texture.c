@@ -62,3 +62,12 @@ void	calc_tex_start(t_map *map)
 	tex->start = (ray->draw_start - (HEIGHT / 2) + (ray->line_height / 2))
 		* tex->step;
 }
+
+int	get_texture_pixel(t_img *tex_img, int x, int y)
+{
+	char	*dst;
+
+	dst = tex_img->addr + (y * tex_img->line_lenght + x
+			* (tex_img->bits_per_pixel / 8));
+	return (*(unsigned int *)dst);
+}
