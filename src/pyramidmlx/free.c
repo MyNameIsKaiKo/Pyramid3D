@@ -29,3 +29,16 @@ void	f_init(t_map *map)
 		free(map->mlx);
 	ft_putstr_fd("Malloc Error\n", 1);
 }
+
+void	map_free(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < 11)
+	{
+		free(map->map_tab[i]);
+		i++;
+	}
+	free(map->map_tab);
+}

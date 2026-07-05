@@ -54,5 +54,6 @@ int	pyramid_loop(t_map *map)
 	mlx_destroy_window(map->mlx, map->win);
 	mlx_destroy_display(map->mlx);
 	free(map->mlx);
+	map_free(map);
 	return (0);
 }
