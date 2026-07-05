@@ -142,6 +142,7 @@ void			texture_data(t_map *map);
 // -- Free Function --
 void			f_init(t_map *map);
 void			map_free(t_map *map);
+void			tex_free(t_map *map);
 
 // -- Pyramid Hook Function --
 int				handlebutton(int button, int x, int y, void *map);

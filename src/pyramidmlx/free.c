@@ -42,3 +42,15 @@ void	map_free(t_map *map)
 	}
 	free(map->map_tab);
 }
+
+void	tex_free(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		mlx_destroy_image(map->mlx, map->wall_tex[i].img);
+		i++;
+	}
+}

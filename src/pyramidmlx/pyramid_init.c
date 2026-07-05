@@ -51,6 +51,7 @@ int	pyramid_loop(t_map *map)
 	mlx_mouse_hook(map->win, handlebutton, map);
 	mlx_loop(map->mlx);
 	mlx_destroy_image(map->mlx, map->img.img);
+	tex_free(map);
 	mlx_destroy_window(map->mlx, map->win);
 	mlx_destroy_display(map->mlx);
 	free(map->mlx);
