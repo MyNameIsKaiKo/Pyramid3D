@@ -14,9 +14,6 @@
 
 void	fill_fmap(t_map *map)
 {
-	int	i;
-
-	i = 0;
 	map->map_tab = malloc(sizeof(char *) * 11);
 	map->map_tab[0] = ft_strdup("1111111111");
 	map->map_tab[1] = ft_strdup("1000000001");
