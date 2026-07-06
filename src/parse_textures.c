@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:54:23 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/04 12:46:38 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/06 20:05:35 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ int	parse_path(char **textures)
 	{
 		fd = open(textures[i], O_RDONLY);
 		if (fd < 0)
-		{
-			print_error("A texture is inaccessible");
-			return (1);
-		}
+			return (print_error("A texture is inaccessible"));
 		i++;
 		close(fd);
 	}
@@ -46,17 +43,14 @@ static int	init_texture(char *line_read, char **ctx_texture, t_ctx *ctx)
 	}
 	*ctx_texture = ft_substr(line_read, 0, len);
 	if (!*ctx_texture)
-	{
-		print_error("Malloc failed");
-		return (1);
-	}
+		return (print_error("Malloc failed"));
 	ctx->n_textures++;
 	return (0);
 }
 
 static int	is_texture(char *line_read, t_ctx *ctx, int i)
 {
-	t_mgmnt_tex	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL}, {"WE ", WE_WALL},
+	t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL}, {"WE ", WE_WALL},
 	{"EA ", EA_WALL}, {"F ", FLOOR_COLOR}, {"C ", CEILING_COLOR}};
 	char		**ctx_textures;
 	int			len;
@@ -75,11 +69,8 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 			break ;
 		}
 	}
-	if (i_tab == NB_ALL_TEXTURES)
-	{
-		print_error("Incorrect texture");
-		return (1);
-	}
+	if (i_tab >= NB_ALL_TEXTURES)
+		return (print_error("Incorrect texture"));
 	return (0);
 }
 

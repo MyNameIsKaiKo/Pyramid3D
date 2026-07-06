@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:49:55 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/04 15:15:49 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/06 20:06:01 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ static int	parse_line(char *line_read, t_ctx *ctx)
 	return (0);
 }
 
-static void	read_map(char *file, t_ctx *ctx)
+static int	read_map(char *file, t_ctx *ctx)
 {
 	int		fd_map;
+	int		var_return;
 	char	*line_read;
 
 	fd_map = open(file, O_RDONLY);
@@ -47,19 +48,20 @@ static void	read_map(char *file, t_ctx *ctx)
 		print_error("Failed read the map");
 		close(fd_map);
 		free(ctx);
-		return ;
+		return (1);
 	}
 	while (line_read)
 	{
-		if (parse_line(line_read, ctx) > 0)
+		var_return = parse_line(line_read, ctx);
+		if (var_return > 0)
 			break ;
 		free(line_read);
 		line_read = get_next_line(fd_map);
 	}
-	if (line_read)
-		free(line_read);
+	free(line_read);
 	close(fd_map);
 	get_next_line(fd_map);
+	return (var_return);
 }
 
 static int	parse_name(char *file)
@@ -69,16 +71,10 @@ static int	parse_name(char *file)
 
 	ext = ft_strrchr(file, '.');
 	if (!ext)
-	{
-		print_error("Enter a <file_name>.cub");
-		return (1);
-	}
+		return (print_error("Enter a <file_name>.cub"));
 	size_ext = ft_strlen(ext);
 	if (ft_strncmp(ext, EXT_FILE, size_ext + 1) != 0)
-	{
-		print_error("Enter a <file_name>.cub");
-		return (1);
-	}
+		return (print_error("Enter a <file_name>.cub"));
 	return (0);
 }
 
@@ -86,9 +82,13 @@ int	parsing(char *file, t_ctx *ctx)
 {
 	if (parse_name(file) > 0)
 		return (1);
-	read_map(file, ctx);
-	parse_path(ctx->textures);
-	parse_color(ctx->textures);
-	// retrieve_map(file, ctx)
+	if (read_map(file, ctx) > 0)
+		return (1);
+	if (parse_path(ctx->textures) > 0)
+		return (1);
+	if (parse_color(ctx->textures) > 0)
+		return (1);
+	if (parse_map(ctx->map) > 0)
+		return (1);
 	return (0);
 }

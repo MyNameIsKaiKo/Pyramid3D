@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:23:52 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/04 14:54:27 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/06 20:02:43 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,25 @@ typedef enum e_textures
 
 typedef enum e_tile_type
 {
-	FLOOR,
-	WALL,
-	EMPTY,
-	PLAYER
+	FLOOR = '0',
+	WALL = '1',
+	EMPTY = ' ',
+	N_PLAYER = 'N',
+	E_PLAYER = 'E',
+	S_PLAYER = 'S',
+	W_PLAYER = 'W'
 }	t_tile_type;
 
-typedef struct s_mgmnt_tex
+typedef struct s_tex_mgnt
 {
 	char		*cmp;
 	t_textures	textures;
-}	t_mgmnt_tex;
+}	t_tex_mgnt;
+
+typedef struct s_ttype_mgnt
+{
+	t_tile_type	tile_type;
+}	t_ttype_mgnt;
 
 typedef struct s_vec2
 {
@@ -58,11 +66,13 @@ typedef struct s_vec2
 
 typedef struct s_map
 {
-	t_tile_type	**tab_map;
-	size_t		height;
-	size_t		width;
-	t_vec2		p_pos;
-	char		p_orient;
+	char	**tab_map;
+	size_t	height;
+	size_t	max_width;
+	size_t	current_width;
+	size_t	nb_player;
+	char	p_orient;
+	t_vec2	p_pos;
 }	t_map;
 
 typedef struct s_ctx
@@ -73,7 +83,7 @@ typedef struct s_ctx
 }	t_ctx;
 
 //utils.c
-void	print_error(char *err_msg);
+int		print_error(char *err_msg);
 void	free_ctx(t_ctx *ctx);
 
 //parsing.c
@@ -87,6 +97,12 @@ int		parse_textures(char *line_read, t_ctx *ctx);
 int		parse_color(char **color);
 
 //parse_map.c
+int		parse_map(t_map *map);
 int		check_line_map(char *line_read, t_map *map);
+
+//valid_map.c
+int		valid_lcolumn_border(char **tab_map, size_t height);
+int		valid_rcolumn_border(char **tab_map, size_t height);
+int		valid_border_line(char **tab_map, size_t max_height);
 
 #endif

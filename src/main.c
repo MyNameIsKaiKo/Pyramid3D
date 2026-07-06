@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/04 15:36:41 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/06 16:56:12 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ int	main(int ac, char **av)
 	if (set_struct(&ctx) > 0)
 		return (1);
 	if (parsing(av[1], &ctx) > 0)
+	{
+		free_ctx(&ctx);
 		return (1);
+	}
 	free_ctx(&ctx);
 	return (0);
 }

@@ -24,11 +24,12 @@ LIBFT		= $(INC_DIR)libft/libft.a
 SRC_FILES	= ../includes/gnl/get_next_line.c \
 			../includes/gnl/get_next_line_utils.c \
 			main.c \
+			utils.c \
 			parsing.c \
 			parse_textures.c \
 			parse_color.c \
 			parse_map.c \
-			utils.c
+			valid_map.c
 
 
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
