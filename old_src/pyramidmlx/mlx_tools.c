@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/27 01:28:44 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:31:50 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/27 01:28:44 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../../includes/pyramid_mlx.h"
 
 void	my_mlx_pixel_put(t_map *map, int x, int y, int color)
 {

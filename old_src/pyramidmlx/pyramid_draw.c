@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_draw.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 18:23:49 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:32:07 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/28 18:23:49 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../../includes/pyramid_mlx.h"
 
 void	setup_ray_for_col(t_map *map, int x)
 {

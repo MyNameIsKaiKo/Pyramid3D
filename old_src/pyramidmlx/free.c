@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 19:26:37 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:31:42 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/25 19:26:37 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../../includes/pyramid_mlx.h"
 
 void	f_init(t_map *map)
 {

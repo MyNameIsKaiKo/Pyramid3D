@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_draw_tools.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 18:20:17 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:32:02 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/29 18:20:17 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../../includes/pyramid_mlx.h"
 
 void	calc_deltadist(t_ray *ray)
 {

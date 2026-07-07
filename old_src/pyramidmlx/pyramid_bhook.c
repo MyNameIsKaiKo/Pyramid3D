@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_bhook.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 19:35:20 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:31:54 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/25 19:35:20 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../../includes/pyramid_mlx.h"
 
 static int	shoot(int button, int x, int y, t_map *map)
 {
