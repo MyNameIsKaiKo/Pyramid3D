@@ -6,19 +6,19 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 00:35:59 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:52:57 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/07 21:48:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../includes/pyramid_mlx.h"
 
-/** @brief player->plane.y represent the fov */
-void	player_init(t_ctx *ctx)
+// player->plane.y represent the fov
+void	player_init(t_map *map)
 {
 	t_player	*player;
 
-	player = &ctx->player;
-	player->pos = ctx->map->starting_coord;
+	player = &map->player;
+	player->pos = map->starting_coord;
 	player->dir.x = -1.0;
 	player->dir.y = 0.0;
 	player->plane.x = 0.0;
@@ -45,35 +45,35 @@ int	player_moved(t_player *player)
 	return (0);
 }
 
-void	apply_rotation(t_ctx *ctx)
+void	apply_rotation(t_map *map)
 {
 	t_player	*player;
 
-	player = &ctx->player;
+	player = &map->player;
 	if (player->moves.left_turn)
 	{
-		rotate_vector(ctx->map, player->rotation_speed);
+		rotate_vector(map, player->rotation_speed);
 		player->moves.left_turn = 0;
 	}
 	else if (player->moves.right_turn)
 	{
-		rotate_vector(ctx->map, player->rotation_speed * -1);
+		rotate_vector(map, player->rotation_speed * -1);
 		player->moves.right_turn = 0;
 	}
 }
 
-void	apply_movement(t_ctx *ctx)
+void	apply_movement(t_map *map)
 {
 	t_player	*player;
 
-	player = &ctx->player;
-	apply_rotation(ctx);
+	player = &map->player;
+	apply_rotation(map);
 	if (player->moves.forward)
-		player_forward(ctx);
+		player_forward(map);
 	if (player->moves.backward)
-		player_backward(ctx);
+		player_backward(map);
 	if (player->moves.left)
-		player_left(ctx);
+		player_left(map);
 	if (player->moves.right)
-		player_right(ctx);
+		player_right(map);
 }

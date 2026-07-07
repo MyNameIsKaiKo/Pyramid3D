@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:23:52 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/07 17:18:17 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/07 21:51:18 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,12 @@
 
 # include "gnl/get_next_line.h"
 # include "libft/include/libft.h"
-# include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
 
-# ifndef EXT_FILE
-#  define EXT_FILE ".cub"
-# endif
+# define EXT_FILE ".cub"
 
 # define NB_COLOR 2
 # define NB_TEXTURES 4

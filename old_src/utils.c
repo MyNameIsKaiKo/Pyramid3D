@@ -6,17 +6,17 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/07 22:50:10 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/07 22:29:51 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "pyramid.h"
 
 void	data_player(t_map *map, size_t height, size_t width)
 {
-	map->starting_coord.x = width;
-	map->starting_coord.y = height;
-	map->p_orient = map->map_tab[height][width];
+	map->p_pos.x = width;
+	map->p_pos.y = height;
+	map->p_orient = map->tab_map[height][width];
 	map->nb_player++;
 }
 
@@ -34,14 +34,14 @@ static void	free_map(t_map *map)
 	i = 0;
 	while (map && i < map->height)
 	{
-		free(map->map_tab[i]);
-		map->map_tab[i] = NULL;
+		free(map->tab_map[i]);
+		map->tab_map[i] = NULL;
 		i++;
 	}
-	if (map && map->map_tab)
+	if (map && map->tab_map)
 	{
-		free(map->map_tab);
-		map->map_tab = NULL;
+		free(map->tab_map);
+		map->tab_map = NULL;
 	}
 	if (map)
 	{
@@ -57,10 +57,10 @@ void	free_ctx(t_ctx *ctx)
 	i = 0;
 	while (i < NB_ALL_TEXTURES)
 	{
-		if (ctx->tab_textures[i])
+		if (ctx->textures[i])
 		{
-			free(ctx->tab_textures[i]);
-			ctx->tab_textures[i] = NULL;
+			free(ctx->textures[i]);
+			ctx->textures[i] = NULL;
 		}
 		++i;
 	}

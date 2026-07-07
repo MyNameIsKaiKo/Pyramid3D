@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture_scd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 02:43:16 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:32:50 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/05 02:43:16 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../../includes/pyramid_mlx.h"
 
 void	calc_tex_y(t_map *map)
 {

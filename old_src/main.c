@@ -6,11 +6,11 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/07 22:07:21 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/06 16:56:12 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "pyramid.h"
 
 static int	set_struct(t_ctx *ctx)
 {
@@ -42,8 +42,6 @@ int	main(int ac, char **av)
 		free_ctx(&ctx);
 		return (1);
 	}
-	player_init(&ctx);
-	pyramid_loop(&ctx);
 	free_ctx(&ctx);
 	return (0);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 17:28:13 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:32:14 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/25 18:43:26 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../../includes/pyramid_mlx.h"
 
 int	map_init(t_map *map)
 {

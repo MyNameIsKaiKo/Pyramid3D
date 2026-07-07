@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_khook.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 19:38:42 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:32:21 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/06/25 19:38:42 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "../../includes/pyramid_mlx.h"
 
 int	close_app(t_map *map)
 {
