@@ -30,21 +30,21 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			parse_textures.c \
 			parse_color.c \
 			parse_map.c \
-			valid_map.c
+			valid_map.c \
+			pyramidmlx/falsemap.c \
+			pyramidmlx/free.c \
+			pyramidmlx/mlx_tools.c \
+			pyramidmlx/pyramid_draw.c \
+			pyramidmlx/pyramid_draw_tools.c \
+			pyramidmlx/pyramid_init.c \
+			pyramidmlx/pyramid_khook.c \
+			pyramidmlx/pyramid_bhook.c \
+			pyramidmlx/texture.c \
+			pyramidmlx/texture_scd.c \
+			pyramid_math/matrix.c \
+			player_handler/player.c \
+			player_handler/player_movement.c \
 			maintest.c \
-			./pyramidmlx/falsemap.c \
-			./pyramidmlx/free.c \
-			./pyramidmlx/mlx_tools.c \
-			./pyramidmlx/pyramid_draw.c \
-			./pyramidmlx/pyramid_draw_tools.c \
-			./pyramidmlx/pyramid_init.c \
-			./pyramidmlx/pyramid_khook.c \
-			./pyramidmlx/pyramid_bhook.c \
-			./pyramidmlx/texture.c \
-			./pyramidmlx/texture_scd.c \
-			./pyramid_math/matrix.c \
-			./player_handler/player.c \
-			./player_handler/player_movement.c \
 
 
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
