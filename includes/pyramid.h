@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:23:52 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/06 20:02:43 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/07 13:42:09 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_ctx
 }	t_ctx;
 
 //utils.c
+void	data_player(t_map *map, size_t height, size_t width);
 int		print_error(char *err_msg);
 void	free_ctx(t_ctx *ctx);
 

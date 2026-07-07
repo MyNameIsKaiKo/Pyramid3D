@@ -6,17 +6,48 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/06 20:06:23 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/07 13:47:12 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pyramid.h"
+
+void	data_player(t_map *map, size_t height, size_t width)
+{
+	map->p_pos.x = width;
+	map->p_pos.y = height;
+	map->p_orient = map->tab_map[height][width];
+	map->nb_player++;
+}
 
 int	print_error(char *err_msg)
 {
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(err_msg, 2);
 	return (1);
+}
+
+static void	free_map(t_map *map)
+{
+	size_t	i;
+
+	i = 0;
+	while (map && i < map->height)
+	{
+		free(map->tab_map[i]);
+		map->tab_map[i] = NULL;
+		i++;
+	}
+	if (map && map->tab_map)
+	{
+		free(map->tab_map);
+		map->tab_map = NULL;
+	}
+	if (map)
+	{
+		free(map);
+		map = NULL;
+	}
 }
 
 void	free_ctx(t_ctx *ctx)
@@ -33,13 +64,5 @@ void	free_ctx(t_ctx *ctx)
 		}
 		++i;
 	}
-	size_t j = 0;
-	while (j < ctx->map->height)
-	{
-		free(ctx->map->tab_map[j]);
-		ctx->map->tab_map[j] = NULL;
-		j++;
-	}
-	free(ctx->map->tab_map);
-	free(ctx->map);
+	free_map(ctx->map);
 }

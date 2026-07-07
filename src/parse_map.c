@@ -6,21 +6,25 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/06 20:05:02 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/07 13:42:17 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pyramid.h"
 
-static void	data_player(t_map *map, size_t height, size_t width)
+static int	space_in_map(char **tab, size_t height, size_t width)
 {
-	map->p_pos.x = width;
-	map->p_pos.y = height;
-	map->p_orient = map->tab_map[height][width];
-	map->nb_player++;
+	if (!tab[height][width - 1] || !tab[height][width + 1]
+		|| !tab[height - 1][width] || !tab[height + 1][width])
+		return (print_error("Map is open"));
+	if (tab[height][width - 1] == EMPTY || tab[height][width + 1] == EMPTY
+		|| tab[height - 1][width] == EMPTY
+		|| tab[height + 1][width] == EMPTY)
+		return (print_error("There is a space in map"));
+	return (0);
 }
 
-static int	check_char(char ** tab, size_t height, size_t width, t_map *map)
+static int	check_char(char **tab, size_t height, size_t width, t_map *map)
 {
 	char	c;
 
@@ -29,9 +33,8 @@ static int	check_char(char ** tab, size_t height, size_t width, t_map *map)
 		return (0);
 	if (c == FLOOR)
 	{
-		if (tab[height][width - 1] == EMPTY || tab[height][width + 1] == EMPTY
-			|| tab[height - 1][width] == EMPTY || tab[height + 1][width] == EMPTY)
-			return (print_error("There is a space in map"));
+		if (space_in_map(tab, height, width) > 0)
+			return (1);
 		return (0);
 	}
 	if (c == N_PLAYER || c == E_PLAYER || c == S_PLAYER || c == W_PLAYER)
@@ -40,9 +43,6 @@ static int	check_char(char ** tab, size_t height, size_t width, t_map *map)
 		return (0);
 	}
 	print_error("A char in map is incorrect");
-	if (valid_lcolumn_border(map->tab_map, height) == 0
-		&& valid_rcolumn_border(map->tab_map, height) == 0 )
-		return (0);
 	return (1);
 }
 
@@ -54,8 +54,12 @@ int	parse_map(t_map *map)
 	if (valid_border_line(map->tab_map, map->height - 1) > 0)
 		return (1);
 	height = 1;
-	while (height < map->height)
+	while (height < map->height - 1)
 	{
+		if (valid_lcolumn_border(map->tab_map, height) > 0)
+			return (1);
+		if (valid_rcolumn_border(map->tab_map, height) > 0)
+			return (1);
 		width = 0;
 		while (map->tab_map[height][width] && width < map->max_width)
 		{
@@ -76,14 +80,17 @@ static int	retrieve_map(char *line_read, t_map *map)
 
 	i = 0;
 	if (!map->tab_map)
-		map->tab_map = malloc(sizeof(char *));
+		map->tab_map = malloc(sizeof(char *) + 1);
 	else
 		map->tab_map = ft_realloc(map->tab_map, sizeof(char *)
-			* map->height, sizeof(char *) * (map->height + 1));
+				* map->height, sizeof(char *) * ((map->height + 1) + 1));
 	if (!map->tab_map)
 		return (print_error("Malloc failed"));
-	line_read[ft_strlen(line_read) - 1] ='\0';
+	if (line_read[ft_strlen(line_read) - 1] == '\n')
+		line_read[ft_strlen(line_read) - 1] = '\0';
 	map->tab_map[map->height] = ft_strndup(line_read, ft_strlen(line_read));
+	if (!map->tab_map[map->height])
+		return (print_error("Malloc failed"));
 	return (0);
 }
 

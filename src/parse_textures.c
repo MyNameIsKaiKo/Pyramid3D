@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:54:23 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/06 20:05:35 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/07 13:44:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ static int	init_texture(char *line_read, char **ctx_texture, t_ctx *ctx)
 
 static int	is_texture(char *line_read, t_ctx *ctx, int i)
 {
-	t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL}, {"WE ", WE_WALL},
-	{"EA ", EA_WALL}, {"F ", FLOOR_COLOR}, {"C ", CEILING_COLOR}};
-	char		**ctx_textures;
-	int			len;
-	int			i_tab;
+	int					len;
+	int					i_tab;
+	char				**ctx_textures;
+	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL},
+	{"WE ", WE_WALL}, {"EA ", EA_WALL}, {"F ", FLOOR_COLOR},
+	{"C ", CEILING_COLOR}};
 
 	i_tab = -1;
 	while (++i_tab < NB_ALL_TEXTURES)

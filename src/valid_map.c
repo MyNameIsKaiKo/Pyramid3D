@@ -6,13 +6,13 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 18:48:57 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/06 20:08:22 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/07 13:43:49 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pyramid.h"
 
-int	valid_lcolumn_border(char **tab_map, size_t height)
+int	valid_rcolumn_border(char **tab_map, size_t height)
 {
 	size_t	i;
 	int		top_wall;
@@ -25,22 +25,21 @@ int	valid_lcolumn_border(char **tab_map, size_t height)
 		i--;
 	while (tab_map[height][i] && tab_map[height][i] == WALL)
 	{
-		if (tab_map[height + 1][i] == WALL)
+		if (ft_strlen(tab_map[height - 1]) >= i
+			&& tab_map[height - 1][i] == WALL)
 			top_wall = 1;
-		if (tab_map[height - 1][i] == WALL)
+		if (ft_strlen(tab_map[height + 1]) >= i
+			&& tab_map[height + 1][i] == WALL)
 			bottom_wall = 1;
-		if (top_wall == 0 || bottom_wall == 0)
-		{
-			i--;
-			continue;
-		}
-		else
+		if (top_wall == 1 && bottom_wall == 1)
 			return (0);
+		else
+			i--;
 	}
 	return (print_error("The map is open"));
 }
 
-int	valid_rcolumn_border(char **tab_map, size_t height)
+int	valid_lcolumn_border(char **tab_map, size_t height)
 {
 	size_t	i;
 	int		top_wall;
@@ -53,17 +52,16 @@ int	valid_rcolumn_border(char **tab_map, size_t height)
 		i++;
 	while (tab_map[height][i] && tab_map[height][i] == WALL)
 	{
-		if (tab_map[height + 1][i] == WALL)
+		if (ft_strlen(tab_map[height - 1]) >= i
+			&& tab_map[height - 1][i] == WALL)
 			top_wall = 1;
-		if (tab_map[height - 1][i] == WALL)
+		if (ft_strlen(tab_map[height + 1]) >= i
+			&& tab_map[height + 1][i] == WALL)
 			bottom_wall = 1;
-		if (top_wall == 0 || bottom_wall == 0)
-		{
-			i++;
-			continue;
-		}
-		else
+		if (top_wall == 1 && bottom_wall == 1)
 			return (0);
+		else
+			i++;
 	}
 	return (print_error("The map is open"));
 }
@@ -82,7 +80,8 @@ int	valid_border_line(char **tab_map, size_t max_height)
 	i = 0;
 	while (tab_map[max_height][i])
 	{
-		if (!(tab_map[max_height][i] == EMPTY || tab_map[max_height][i] == WALL))
+		if (!(tab_map[max_height][i] == EMPTY
+			|| tab_map[max_height][i] == WALL))
 			return (print_error("A border line is incorrect"));
 		i++;
 	}
@@ -91,4 +90,3 @@ int	valid_border_line(char **tab_map, size_t max_height)
 		return (print_error("A border line is incorrect"));
 	return (0);
 }
-
