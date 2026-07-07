@@ -6,27 +6,31 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:23:52 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/07 13:42:09 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/07 17:18:17 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PYRAMID_H
 # define PYRAMID_H
 
-# include "libft/include/libft.h"
 # include "gnl/get_next_line.h"
+# include "libft/include/libft.h"
+# include <fcntl.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
-# include <stdio.h>
 
-# define EXT_FILE ".cub"
+# ifndef EXT_FILE
+#  define EXT_FILE ".cub"
+# endif
+
 # define NB_COLOR 2
 # define NB_TEXTURES 4
 # define NB_ALL_TEXTURES 6
 
 /** @important Textures with paths must be placed before the RGB colours */
-typedef enum e_textures
+typedef enum e_text
 {
 	NO_WALL,
 	SO_WALL,
@@ -35,6 +39,16 @@ typedef enum e_textures
 	FLOOR_COLOR,
 	CEILING_COLOR
 }	t_textures;
+
+// typedef struct s_jtexures
+// {
+// 	char	*NO_texture;
+// 	char	*SO_texture;
+// 	char	*WE_texture;
+// 	char	*EA_texture;
+// 	char	*F_color;
+// 	char	*C_color;
+// }	t_jtextures;
 
 typedef enum e_tile_type
 {
@@ -82,13 +96,8 @@ typedef struct s_ctx
 	size_t	n_textures;
 }	t_ctx;
 
-//utils.c
-void	data_player(t_map *map, size_t height, size_t width);
-int		print_error(char *err_msg);
-void	free_ctx(t_ctx *ctx);
-
 //parsing.c
-int		parsing(char *file, t_ctx *ctx);
+int				parsing(char *file, t_ctx *ctx);
 
 //parse_textures.c
 int		parse_path(char **textures);
