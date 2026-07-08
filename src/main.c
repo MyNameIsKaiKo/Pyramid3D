@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/07 22:07:21 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 13:31:20 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	main(int ac, char **av)
 	}
 	if (set_struct(&ctx) > 0)
 		return (1);
-	if (parsing(av[1], &ctx) > 0)
-	{
-		free_ctx(&ctx);
-		return (1);
-	}
+	// if (parsing(av[1], &ctx) > 0)
+	// {
+	// 	free_ctx(&ctx);
+	// 	return (1);
+	// }
 	player_init(&ctx);
 	pyramid_loop(&ctx);
 	free_ctx(&ctx);

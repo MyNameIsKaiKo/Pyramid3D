@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/07 22:34:58 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 10:55:32 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static int	check_char(char **tab, size_t height, size_t width, t_map *map)
 
 int	parse_map(t_map *map)
 {
-	size_t	height;
-	size_t	width;
+	int	height;
+	int	width;
 
 	if (valid_border_line(map->map_tab, map->height - 1) > 0)
 		return (1);
@@ -96,7 +96,7 @@ static int	retrieve_map(char *line_read, t_map *map)
 
 int	check_line_map(char *line_read, t_map *map)
 {
-	size_t	max_width;
+	int	max_width;
 
 	if (ft_strncmp(line_read, "\n", ft_strlen(line_read)) == 0)
 	{

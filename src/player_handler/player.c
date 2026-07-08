@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 00:35:59 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:52:57 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 10:58:15 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void	apply_rotation(t_ctx *ctx)
 	player = &ctx->player;
 	if (player->moves.left_turn)
 	{
-		rotate_vector(ctx->map, player->rotation_speed);
+		rotate_vector(ctx, player->rotation_speed);
 		player->moves.left_turn = 0;
 	}
 	else if (player->moves.right_turn)
 	{
-		rotate_vector(ctx->map, player->rotation_speed * -1);
+		rotate_vector(ctx, player->rotation_speed * -1);
 		player->moves.right_turn = 0;
 	}
 }

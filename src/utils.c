@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/07 22:50:10 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 10:50:47 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	print_error(char *err_msg)
 
 static void	free_map(t_map *map)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (map && i < map->height)
@@ -52,7 +52,7 @@ static void	free_map(t_map *map)
 
 void	free_ctx(t_ctx *ctx)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < NB_ALL_TEXTURES)

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:54:23 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/07 22:35:34 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 10:54:53 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	init_texture(char *line_read, char **ctx_texture, t_ctx *ctx)
 
 	if (*ctx_texture)
 		return (1);
-	len = strlen(line_read);
+	len = ft_strlen(line_read);
 	if (line_read[len - 1] == '\n')
 	{
 		line_read[len - 1] = '\0';

@@ -13,24 +13,28 @@ SRC_DIR		= src/
 BUILD_DIR	= obj/
 INC_DIR		= includes/
 
-LINKER		= -L$(INC_DIR)minilibx -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 INCLUDES	= -I$(INC_DIR) -I$(INC_DIR)libft/ -I$(INC_DIR)gnl/ -I$(INC_DIR)minilibx
 CFLAGS		+= $(INCLUDES)
 
 #LIBFT
 LIBFT		= $(INC_DIR)libft/libft.a
 
+#MLX
+MLX			= $(INC_DIR)minilibx/libmlx.a
+MFLAGS		= -L$(INC_DIR)minilibx -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+# MFLAGS		= $(MLX) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+
 #SRC_____________________________________
 
 SRC_FILES	= ../includes/gnl/get_next_line.c \
 			../includes/gnl/get_next_line_utils.c \
-			main.c \
+			maintest.c \
 			utils.c \
-			parsing.c \
-			parse_textures.c \
-			parse_color.c \
-			parse_map.c \
-			valid_map.c \
+			parsing/parsing.c \
+			parsing/parse_textures.c \
+			parsing/parse_color.c \
+			parsing/parse_map.c \
+			parsing/valid_map.c \
 			pyramidmlx/falsemap.c \
 			pyramidmlx/free.c \
 			pyramidmlx/mlx_tools.c \
@@ -44,7 +48,6 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			pyramid_math/matrix.c \
 			player_handler/player.c \
 			player_handler/player_movement.c \
-			maintest.c \
 
 
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
@@ -59,8 +62,8 @@ OBJ_DIR		= $(sort $(dir $(OBJS)))
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $^ $(LINKER) -o $@
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+	@$(CC) $(CFLAGS) $^ $(MFLAGS) -o $@
 	@echo "Compiles PYRAMID successfully"
 
 $(BUILD_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
@@ -69,6 +72,9 @@ $(BUILD_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 
 $(LIBFT):
 	@make -C $(INC_DIR)libft
+
+$(MLX):
+	@make -C $(INC_DIR)minilibx
 
 $(OBJ_DIR):
 	@mkdir -p $@

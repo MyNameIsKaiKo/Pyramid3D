@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   maintest.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 01:20:05 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/04 01:20:05 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/08 13:32:58 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pyramid_mlx.h"
+#include "cub.h"
 
 int	main(void)
 {
-	t_map	map;
+	t_ctx	ctx;
 
-	ft_memset(&map, 0, sizeof(t_map));
-	fill_fmap(&map);
-	player_init(&map);
-	pyramid_loop(&map);
+	ft_memset(&ctx, 0, sizeof(t_ctx));
+	fill_fmap(&ctx);
+	player_init(&ctx);
+	pyramid_loop(&ctx);
 	return (0);
 }

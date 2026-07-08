@@ -6,17 +6,17 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 02:43:16 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:32:50 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 11:09:51 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	calc_tex_y(t_map *map)
+void	calc_tex_y(t_ctx *ctx)
 {
 	t_texture	*tex;
 
-	tex = &map->tex;
+	tex = &ctx->tex;
 	tex->y = (int)tex->start % tex->height;
 	if (tex->y < 0)
 		tex->y = 0;
@@ -24,17 +24,17 @@ void	calc_tex_y(t_map *map)
 		tex->y = tex->height - 1;
 }
 
-void	get_tex_index(t_map *map)
+void	get_tex_index(t_ctx *ctx)
 {
 	t_ray	*ray;
 
-	ray = &map->player.ray;
+	ray = &ctx->player.ray;
 	if (ray->side == 0 && ray->dir_x < 0)
-		map->tex.index = 0;
+		ctx->tex.index = 0;
 	if (ray->side == 1 && ray->dir_y > 0)
-		map->tex.index = 1;
+		ctx->tex.index = 1;
 	if (ray->side == 0 && ray->dir_x > 0)
-		map->tex.index = 2;
+		ctx->tex.index = 2;
 	if (ray->side == 1 && ray->dir_y < 0)
-		map->tex.index = 3;
+		ctx->tex.index = 3;
 }

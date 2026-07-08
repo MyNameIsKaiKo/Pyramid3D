@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 18:20:17 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:32:02 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 09:54:12 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,28 @@ void	calc_deltadist(t_ray *ray)
 		ray->deltadist_y = fabs(1.0 / ray->dir_y);
 }
 
-void	calc_sidedist(t_ray *ray, t_map *map)
+void	calc_sidedist(t_ray *ray, t_ctx *ctx)
 {
 	if (ray->dir_x < 0)
 	{
 		ray->step_x = -1;
-		ray->sidedist_x = (map->player.pos.x - ray->map_x) * ray->deltadist_x;
+		ray->sidedist_x = (ctx->player.pos.x - ray->map_x) * ray->deltadist_x;
 	}
 	else
 	{
 		ray->step_x = 1;
-		ray->sidedist_x = (ray->map_x + 1.0 - map->player.pos.x)
+		ray->sidedist_x = (ray->map_x + 1.0 - ctx->player.pos.x)
 			* ray->deltadist_x;
 	}
 	if (ray->dir_y < 0)
 	{
 		ray->step_y = -1;
-		ray->sidedist_y = (map->player.pos.y - ray->map_y) * ray->deltadist_y;
+		ray->sidedist_y = (ctx->player.pos.y - ray->map_y) * ray->deltadist_y;
 	}
 	else
 	{
 		ray->step_y = 1;
-		ray->sidedist_y = (ray->map_y + 1.0 - map->player.pos.y)
+		ray->sidedist_y = (ray->map_y + 1.0 - ctx->player.pos.y)
 			* ray->deltadist_y;
 	}
 }
@@ -62,11 +62,11 @@ void	calc_drawing_value(t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
-void	setup_draw_img(t_map *map)
+void	setup_draw_img(t_ctx *ctx)
 {
-	calc_drawing_value(&map->player.ray);
-	calc_wallx(map);
-	calc_tex_x(map);
-	calc_tex_step(map);
-	calc_tex_start(map);
+	calc_drawing_value(&ctx->player.ray);
+	calc_wallx(ctx);
+	calc_tex_x(ctx);
+	calc_tex_step(ctx);
+	calc_tex_start(ctx);
 }
