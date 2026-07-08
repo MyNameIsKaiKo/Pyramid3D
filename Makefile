@@ -28,7 +28,7 @@ MFLAGS		= -L$(INC_DIR)minilibx -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
 SRC_FILES	= ../includes/gnl/get_next_line.c \
 			../includes/gnl/get_next_line_utils.c \
-			maintest.c \
+			main.c \
 			utils.c \
 			parsing/parsing.c \
 			parsing/parse_textures.c \

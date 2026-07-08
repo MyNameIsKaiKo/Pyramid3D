@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2026/07/08 13:47:04 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 14:11:29 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	pyramid_loop(t_ctx *ctx)
 {
 	if (map_init(ctx))
 		return (1);
-	// texture_data(ctx);
+	texture_data(ctx);
 	mlx_loop_hook(ctx->mlx, draw_frame, ctx);
 	mlx_hook(ctx->win, 17, 0, close_app, ctx);
 	mlx_hook(ctx->win, 2, 1l << 0, handlekey_press, ctx);

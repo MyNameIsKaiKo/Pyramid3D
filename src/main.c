@@ -6,11 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:19 by ldepenne          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2026/07/08 13:31:20 by ldepenne         ###   ########.fr       */
-=======
-/*   Updated: 2026/07/07 22:07:21 by ldepenne         ###   ########.fr       */
->>>>>>> e5337110844645489a1ee995b8e94313b9bd190e
+/*   Updated: 2026/07/08 14:12:23 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +30,20 @@ int	main(int ac, char **av)
 {
 	t_ctx	ctx;
 
-	if (ac < 2)
-	{
-		printf("Enter a map.cub in first argument please\n");
-		return (0);
-	}
+	// if (ac < 2)
+	// {
+	// 	printf("Enter a map.cub in first argument please\n");
+	// 	return (0);
+	// }
 	if (set_struct(&ctx) > 0)
 		return (1);
-<<<<<<< HEAD
 	// if (parsing(av[1], &ctx) > 0)
 	// {
 	// 	free_ctx(&ctx);
 	// 	return (1);
 	// }
-=======
-	if (parsing(av[1], &ctx) > 0)
-	{
-		free_ctx(&ctx);
-		return (1);
-	}
->>>>>>> e5337110844645489a1ee995b8e94313b9bd190e
+	(void)av;
+	(void)ac;
 	player_init(&ctx);
 	pyramid_loop(&ctx);
 	free_ctx(&ctx);

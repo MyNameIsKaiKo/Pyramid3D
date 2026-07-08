@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2026/07/08 13:44:20 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 14:09:19 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,9 @@ int	player_moved(t_player *player)
 }
 
 void	apply_rotation(t_ctx *ctx)
-void	apply_rotation(t_ctx *ctx)
 {
 	t_player	*player;
 
-	player = &ctx->player;
 	player = &ctx->player;
 	if (player->moves.left_turn)
 	{
@@ -67,24 +65,17 @@ void	apply_rotation(t_ctx *ctx)
 }
 
 void	apply_movement(t_ctx *ctx)
-void	apply_movement(t_ctx *ctx)
 {
 	t_player	*player;
 
 	player = &ctx->player;
 	apply_rotation(ctx);
-	player = &ctx->player;
-	apply_rotation(ctx);
 	if (player->moves.forward)
-		player_forward(ctx);
 		player_forward(ctx);
 	if (player->moves.backward)
 		player_backward(ctx);
-		player_backward(ctx);
 	if (player->moves.left)
 		player_left(ctx);
-		player_left(ctx);
 	if (player->moves.right)
-		player_right(ctx);
 		player_right(ctx);
 }
