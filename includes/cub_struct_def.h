@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/08 13:41:43 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 13:54:46 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ typedef struct s_ray
 
 typedef struct s_vec2
 {
-	size_t	x;
-	size_t	y;
+	double	x;
+	double	y;
 }	t_vec2;
 
 typedef struct s_tex_mgnt
@@ -157,8 +157,6 @@ typedef struct s_map
 	char		p_orient;
 	size_t		nb_player;
 	// t_player	player;
-	t_texture	tex;
-	void		*win;
 }				t_map;
 
 typedef struct s_ctx
@@ -169,6 +167,8 @@ typedef struct s_ctx
 	t_player	player;
 	t_img		wall_tex[4];
 	t_img		img;
+	t_texture	tex;
+	void		*win;
 	void		*mlx;
 }	t_ctx;
 
