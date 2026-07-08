@@ -5,10 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/25 17:28:13 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/08 10:56:40 by ldepenne         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2026/07/08 13:47:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+
 
 #include "cub.h"
 

@@ -5,11 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/29 18:20:17 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/08 09:54:12 by ldepenne         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2026/07/08 13:45:58 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#include "cub.h"
 #include "cub.h"
 
 void	calc_deltadist(t_ray *ray)

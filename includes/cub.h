@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/08 13:34:04 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 13:41:59 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 // -- Local --
 # include "cub_struct_def.h"
-# include "libft/include/libft.h"
-# include "gnl/get_next_line.h"
-# include "minilibx/mlx.h"
+# include "./libft/include/libft.h"
+# include "./minilibx/mlx.h"
 
 // -- Externe --
 # include <math.h>
@@ -52,46 +51,46 @@ int		valid_rcolumn_border(char **map_tab, size_t height);
 int		valid_border_line(char **map_tab, size_t max_height);
 
 // -- falsemap Function --
-void	fill_fmap(t_ctx *ctx);
-void	texture_data(t_ctx *ctx);
+// void	fill_fmap(t_map *map);
+// void	texture_data(t_map *map);
 
 // -- Free Function --
-void	f_init(t_ctx *ctx);
+void	f_init(t_map *map);
 void	map_free(t_map *map);
-void	tex_free(t_ctx *ctx);
+void	tex_free(t_map *map);
 
 // -- Pyramid Hook Function --
 int		handlebutton(int button, int x, int y, void *map);
-int		handlekey_release(int keycode, void *ctx);
-int		handlekey_press(int keycode, void *ctx);
-int		close_app(t_ctx *ctx);
+int		handlekey_release(int keycode, void *map);
+int		handlekey_press(int keycode, void *map);
+int		close_app(t_map *map);
 
 // -- mlx_tools Function --
-void	my_mlx_pixel_put(t_ctx *ctx, int x, int y, int color);
+void	my_mlx_pixel_put(t_map *map, int x, int y, int color);
 
 // -- pyramid_init Function --
-int		pyramid_loop(t_ctx *ctx);
+int		pyramid_loop(t_map *map);
 
 // -- pyramid_math Function --
 void	rotate_vector(t_ctx *ctx, double angle);
 
 // -- pyramid_draw Function --
-int		draw_frame(t_ctx *ctx);
+int		draw_frame(t_map *map);
 
 // -- pyramid_draw_tools Function --
 void	calc_deltadist(t_ray *ray);
-void	calc_sidedist(t_ray *ray, t_ctx *ctx);
+void	calc_sidedist(t_ray *ray, t_map *map);
 void	calc_drawing_value(t_ray *ray);
-void	setup_draw_img(t_ctx *ctx);
+void	setup_draw_img(t_map *map);
 
 // -- texture Function --
-void	calc_tex_start(t_ctx *ctx);
-void	calc_tex_step(t_ctx *ctx);
-void	calc_tex_x(t_ctx *ctx);
-void	calc_wallx(t_ctx *ctx);
+void	calc_tex_start(t_map *map);
+void	calc_tex_step(t_map *map);
+void	calc_tex_x(t_map *map);
+void	calc_wallx(t_map *map);
 int		get_texture_pixel(t_img *tex_img, int x, int y);
-void	calc_tex_y(t_ctx *ctx);
-void	get_tex_index(t_ctx *ctx);
+void	calc_tex_y(t_map *map);
+void	get_tex_index(t_map *map);
 
 // -- player_handler SECTION --
 // -- player Function --
