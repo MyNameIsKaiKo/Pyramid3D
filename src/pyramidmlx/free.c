@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2026/07/08 13:45:31 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/07/08 14:17:05 by jleray            #+#    #+#             */
+/*   Updated: 2026/07/08 14:17:05 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub.h"
 
@@ -29,19 +28,6 @@ void	f_init(t_ctx *ctx)
 	else if (!ctx->win)
 		free(ctx->mlx);
 	ft_putstr_fd("Malloc Error\n", 1);
-}
-
-void	map_free(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (i < 11)
-	{
-		free(map->map_tab[i]);
-		i++;
-	}
-	free(map->map_tab);
 }
 
 void	tex_free(t_ctx *ctx)

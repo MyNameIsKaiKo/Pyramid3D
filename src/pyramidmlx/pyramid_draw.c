@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_draw.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2026/07/08 13:46:11 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/07/08 14:17:52 by jleray            #+#    #+#             */
+/*   Updated: 2026/07/08 14:17:52 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "cub.h"
 
@@ -103,9 +101,9 @@ static void	draw_img(t_ctx *ctx, int x)
 	while (++y < HEIGHT)
 	{
 		if (y < ray->draw_start)
-			my_mlx_pixel_put(ctx, x, y, 0x00F02DC3);
+			my_mlx_pixel_put(ctx, x, y, ctx->colors[0]);
 		else if (y > ray->draw_end)
-			my_mlx_pixel_put(ctx, x, y, 0x00F02D00);
+			my_mlx_pixel_put(ctx, x, y, ctx->colors[1]);
 		else
 		{
 			calc_tex_y(ctx);

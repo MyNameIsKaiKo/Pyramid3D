@@ -51,7 +51,7 @@ typedef enum e_tile_type
 	E_PLAYER = 'E',
 	S_PLAYER = 'S',
 	W_PLAYER = 'W'
-}	t_tile_type;
+}					t_tile_type;
 
 /** @important Textures with paths must be placed before the RGB colours */
 typedef enum e_e_textures
@@ -62,114 +62,115 @@ typedef enum e_e_textures
 	EA_WALL,
 	FLOOR_COLOR,
 	CEILING_COLOR
-}	t_e_textures;
+}					t_e_textures;
 
 typedef struct s_texture
 {
-	int			x;
-	int			y;
-	double		wallx;
-	int			height;
-	int			witdh;
-	double		step;
-	double		start;
-	int			index;
-}				t_texture;
+	int				x;
+	int				y;
+	double			wallx;
+	int				height;
+	int				witdh;
+	double			step;
+	double			start;
+	int				index;
+}					t_texture;
 
 typedef struct s_moves
 {
-	int			forward;
-	int			backward;
-	int			left;
-	int			right;
-	int			left_turn;
-	int			right_turn;
-}				t_moves;
+	int				forward;
+	int				backward;
+	int				left;
+	int				right;
+	int				left_turn;
+	int				right_turn;
+}					t_moves;
 
 typedef struct s_ray
 {
-	double		camera_x;
-	double		dir_x;
-	double		dir_y;
-	int			map_x;
-	int			map_y;
-	int			step_x;
-	int			step_y;
-	double		sidedist_x;
-	double		sidedist_y;
-	double		deltadist_x;
-	double		deltadist_y;
-	double		wall_dist;
-	int			hit;
-	int			side;
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
-}				t_ray;
+	double			camera_x;
+	double			dir_x;
+	double			dir_y;
+	int				map_x;
+	int				map_y;
+	int				step_x;
+	int				step_y;
+	double			sidedist_x;
+	double			sidedist_y;
+	double			deltadist_x;
+	double			deltadist_y;
+	double			wall_dist;
+	int				hit;
+	int				side;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+}					t_ray;
 
 typedef struct s_vec2
 {
-	double	x;
-	double	y;
-}	t_vec2;
+	double			x;
+	double			y;
+}					t_vec2;
 
 typedef struct s_tex_mgnt
 {
 	char			*cmp;
 	t_e_textures	textures;
-}	t_tex_mgnt;
+}					t_tex_mgnt;
 
 typedef struct s_ttype_mgnt
 {
-	t_tile_type	tile_type;
-}	t_ttype_mgnt;
+	t_tile_type		tile_type;
+}					t_ttype_mgnt;
 
 typedef struct s_player
 {
-	t_ray		ray;
-	t_vec2		pos;
-	t_vec2		dir;
-	t_vec2		plane;
-	t_moves		moves;
-	double		rotation_speed;
-	double		time;
-	double		old_time;
+	t_ray			ray;
+	t_vec2			pos;
+	t_vec2			dir;
+	t_vec2			plane;
+	t_moves			moves;
+	double			rotation_speed;
+	double			time;
+	double			old_time;
 	// double		velocity;
-	double		veloville;
-}				t_player;
+	double			veloville;
+}					t_player;
 
 typedef struct s_img
 {
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_lenght;
-	int			endian;
-}				t_img;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_lenght;
+	int				endian;
+}					t_img;
 
 typedef struct s_map
 {
-	char		**map_tab;
-	int			height;
-	int			width;
+	char			**map_tab;
+	int				height;
+	int				width;
 	// t_pos	starting_coord;
-	t_vec2		starting_coord;
-	char		p_orient;
-	size_t		nb_player;
+	t_vec2			starting_coord;
+	char			p_orient;
+	size_t			nb_player;
 	// t_player	player;
-}				t_map;
+}					t_map;
 
 typedef struct s_ctx
 {
-	char		*tab_textures[NB_ALL_TEXTURES];
-	t_map		*map;
-	size_t		n_textures;
-	t_player	player;
-	t_img		wall_tex[4];
-	t_img		img;
-	t_texture	tex;
-	void		*win;
-	void		*mlx;
-}	t_ctx;
+	char			*tab_textures[NB_ALL_TEXTURES];
+	t_map			*map;
+	size_t			n_textures;
+	t_player		player;
+	t_img			wall_tex[NB_ALL_TEXTURES];
+	int				colors[NB_COLOR];
+	t_img			img;
+	t_texture		tex;
+	void			*win;
+	void			*mlx;
+}					t_ctx;
 
 #endif

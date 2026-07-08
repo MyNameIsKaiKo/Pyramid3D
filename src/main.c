@@ -30,20 +30,18 @@ int	main(int ac, char **av)
 {
 	t_ctx	ctx;
 
-	// if (ac < 2)
-	// {
-	// 	printf("Enter a map.cub in first argument please\n");
-	// 	return (0);
-	// }
+	if (ac < 2)
+	{
+		printf("Enter a map.cub in first argument please\n");
+		return (0);
+	}
 	if (set_struct(&ctx) > 0)
 		return (1);
-	// if (parsing(av[1], &ctx) > 0)
-	// {
-	// 	free_ctx(&ctx);
-	// 	return (1);
-	// }
-	(void)av;
-	(void)ac;
+	if (parsing(av[1], &ctx) > 0)
+	{
+		free_ctx(&ctx);
+		return (1);
+	}
 	player_init(&ctx);
 	pyramid_loop(&ctx);
 	free_ctx(&ctx);

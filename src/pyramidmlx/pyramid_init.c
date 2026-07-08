@@ -3,15 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2026/07/08 14:11:29 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/07/08 14:47:22 by jleray            #+#    #+#             */
+/*   Updated: 2026/07/08 14:47:22 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-
 
 #include "cub.h"
 
@@ -58,6 +55,5 @@ int	pyramid_loop(t_ctx *ctx)
 	mlx_destroy_window(ctx->mlx, ctx->win);
 	mlx_destroy_display(ctx->mlx);
 	free(ctx->mlx);
-	map_free(ctx->map);
 	return (0);
 }

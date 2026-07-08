@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_khook.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2026/07/08 13:47:13 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/07/08 14:26:13 by jleray            #+#    #+#             */
+/*   Updated: 2026/07/08 14:26:13 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub.h"
 
