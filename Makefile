@@ -4,7 +4,7 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -MMD -MP -g
 MAKEFLAGS	+= --no-print-directory
 
-NAME		= pyramid
+NAME		= cub3D
 
 #INCLUDES_AND_DIR________________________
 
@@ -22,7 +22,6 @@ LIBFT		= $(INC_DIR)libft/libft.a
 #MLX
 MLX			= $(INC_DIR)minilibx/libmlx.a
 MFLAGS		= -L$(INC_DIR)minilibx -lmlx -L/usr/lib -lXext -lX11 -lm -lz
-# MFLAGS		= $(MLX) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 
 #SRC_____________________________________
 
@@ -81,6 +80,7 @@ $(OBJ_DIR):
 
 clean:
 	@make -C $(INC_DIR)libft/ clean
+	@make -C $(INC_DIR)minilibx/ clean
 	@rm -rf $(INC_DIR)gnl/*.d $(INC_DIR)gnl/*.o $(BUILD_DIR)
 	@echo "clean gnl (.o/.d)\nclean obj/"
 

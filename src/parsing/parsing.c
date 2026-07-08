@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:49:55 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/07 22:20:07 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 16:01:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,7 @@ int	parsing(char *file, t_ctx *ctx)
 		return (1);
 	if (parse_map(ctx->map) > 0)
 		return (1);
+	if (ctx->map->nb_player != 1)
+		return (print_error("The number of player is incorrect"));
 	return (0);
 }
