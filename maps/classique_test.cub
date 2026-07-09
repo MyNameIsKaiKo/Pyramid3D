@@ -1,7 +1,7 @@
-NO ./img_test.png
-SO ./img_test.png
-WE ./img_test.png
-EA ./img_test.png
+NO ./texture/texture1.xpm
+SO ./texture/texture2.xpm
+WE ./texture/texture2.xpm
+EA ./texture/texture2.xpm
 
 F 220,100,0
 C 225,30,0

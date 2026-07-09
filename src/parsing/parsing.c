@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:49:55 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/08 16:01:04 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:36:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	read_map(char *file, t_ctx *ctx)
 	{
 		print_error("Failed read the map");
 		close(fd_map);
-		free(ctx);
+		free_ctx(ctx);
 		return (1);
 	}
 	while (line_read)
@@ -64,23 +64,25 @@ static int	read_map(char *file, t_ctx *ctx)
 	return (var_return);
 }
 
-static int	parse_name(char *file)
+int	parse_extention(char *file, char *extention)
 {
-	char	*ext;
+	char	*ext_file;
 	int		size_ext;
 
-	ext = ft_strrchr(file, '.');
-	if (!ext)
-		return (print_error("Enter a <file_name>.cub"));
-	size_ext = ft_strlen(ext);
-	if (ft_strncmp(ext, EXT_FILE, size_ext + 1) != 0)
-		return (print_error("Enter a <file_name>.cub"));
+	ext_file = ft_strrchr(file, '.');
+	if (!ext_file)
+		return (print_error(
+			"a file don't have a good extention (.cub or .xpm for textures)"));
+	size_ext = ft_strlen(ext_file);
+	if (ft_strncmp(ext_file, extention, size_ext + 1) != 0)
+		return (print_error(
+			"a file don't have a good extention (.cub or .xpm for textures)"));
 	return (0);
 }
 
 int	parsing(char *file, t_ctx *ctx)
 {
-	if (parse_name(file) > 0)
+	if (parse_extention(file, EXT_FILE) > 0)
 		return (1);
 	if (read_map(file, ctx) > 0)
 		return (1);

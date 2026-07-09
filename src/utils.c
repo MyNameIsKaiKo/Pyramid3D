@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/08 14:07:23 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:35:29 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ static void	free_map(t_map *map)
 	int	i;
 
 	i = 0;
-	while (map && i < map->height)
+	printf("%d\n", map->height);
+	while (map && map->height
+		&& i < map->height)
 	{
 		free(map->map_tab[i]);
 		map->map_tab[i] = NULL;

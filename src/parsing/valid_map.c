@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 18:48:57 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/08 19:42:32 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/09 13:20:33 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,15 @@ int	valid_lcolumn_border(char **map_tab, size_t height)
 		i++;
 	while (map_tab[height][i] && map_tab[height][i] == WALL)
 	{
-		if (ft_strlen(map_tab[height - 1]) >= i
-			&& (map_tab[height - 1][i] == WALL
-			|| map_tab[height - 1][i - 1] == WALL))
+		if (map_tab[height - 1][i] == WALL
+			|| (i > 0 && map_tab[height - 1][i - 1] == WALL))
 			top_wall = 1;
-		else if (ft_strlen(map_tab[height - 1]) > i
-			&& map_tab[height - 1][i + 1] == WALL)
+		else if (map_tab[height - 1][i + 1] == WALL)
 			top_wall = 1;
-		if (ft_strlen(map_tab[height + 1]) >= i
-			&& (map_tab[height + 1][i] == WALL
-			|| map_tab[height + 1][i - 1] == WALL))
+		if (map_tab[height + 1][i] == WALL
+			|| (i > 0 && map_tab[height + 1][i - 1] == WALL))
 			bottom_wall = 1;
-		else if (ft_strlen(map_tab[height + 1]) > i
-			&& map_tab[height + 1][i + 1] == WALL)
+		else if (map_tab[height + 1][i + 1] == WALL)
 			bottom_wall = 1;
 		if (top_wall == 1 && bottom_wall == 1)
 			return (0);

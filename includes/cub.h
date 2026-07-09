@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/08 14:11:49 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 19:52:32 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	free_ctx(t_ctx *ctx);
 
 // -- parsing SECTION --
 // -- parsing Function --
+int		parse_extention(char *file, char *extention);
 int		parsing(char *file, t_ctx *ctx);
 
 // -- parse_textures Function --

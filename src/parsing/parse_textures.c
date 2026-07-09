@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:54:23 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/08 14:08:13 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/09 13:37:00 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 			i += ft_strlen(tab[i].cmp);
 			ctx_textures = &ctx->tab_textures[tab[i_tab].textures];
 			if (init_texture(line_read + i, ctx_textures, ctx) > 0)
+				return (1);
+			if (ft_strncmp(line_read, tab[0].cmp, len) == 0
+			&& parse_extention(line_read, EXT_TEXT) != 0)
 				return (1);
 			break ;
 		}

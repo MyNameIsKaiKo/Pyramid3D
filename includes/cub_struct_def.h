@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/08 13:54:46 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/08 19:52:57 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 
 // -- EXecutable --
 # define EXT_FILE ".cub"
+# define EXT_TEXT ".xpm"
 
 // -- Textures --
 # define NB_COLOR 2
