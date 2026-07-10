@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_struct_def.h                                   :+:      :+:    :+:   */
+/*   cub_struct_def_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/10 13:27:18 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/10 17:05:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_STRUCT_DEF_H
-# define CUB_STRUCT_DEF_H
+#ifndef CUB_STRUCT_DEF_BONUS_H
+# define CUB_STRUCT_DEF_BONUS_H
 
 # include <stdio.h>
 
@@ -40,8 +40,8 @@
 
 // -- Textures --
 # define NB_COLOR 2
-# define NB_TEXTURES 4
-# define NB_ALL_TEXTURES 6
+# define NB_TEXTURES 5
+# define NB_ALL_TEXTURES 7
 
 typedef enum e_tile_type
 {
@@ -51,7 +51,8 @@ typedef enum e_tile_type
 	N_PLAYER = 'N',
 	E_PLAYER = 'E',
 	S_PLAYER = 'S',
-	W_PLAYER = 'W'
+	W_PLAYER = 'W',
+	ENNEMIES = 'L'
 }					t_tile_type;
 
 /** @important Textures with paths must be placed before the RGB colours */
@@ -61,6 +62,7 @@ typedef enum e_e_textures
 	SO_WALL,
 	WE_WALL,
 	EA_WALL,
+	ENNEMIES_T,
 	FLOOR_COLOR,
 	CEILING_COLOR
 }					t_e_textures;

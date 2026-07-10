@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_textures.c                                   :+:      :+:    :+:   */
+/*   parse_textures_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:54:23 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/10 17:12:50 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/10 17:15:58 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "cub_bonus.h"
 
 int	parse_path(char **textures)
 {
@@ -53,7 +53,7 @@ static int	texture_extention(char *line_read)
 	int					i_tab;
 	int					len;
 	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL},
-	{"WE ", WE_WALL}, {"EA ", EA_WALL}};
+	{"WE ", WE_WALL}, {"EA ", EA_WALL}, {"LO ", ENNEMIES_T}};
 
 	i_tab = 0;
 	while (i_tab < NB_TEXTURES)
@@ -78,7 +78,7 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 	char				**ctx_textures;
 	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL},
 	{"WE ", WE_WALL}, {"EA ", EA_WALL}, {"F ", FLOOR_COLOR},
-	{"C ", CEILING_COLOR}};
+	{"C ", CEILING_COLOR}, {"LO ", ENNEMIES_T}};
 
 	i_tab = -1;
 	while (++i_tab < NB_ALL_TEXTURES)

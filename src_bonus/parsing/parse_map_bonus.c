@@ -6,11 +6,11 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/10 16:42:40 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/10 16:43:26 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub.h"
+#include "cub_bonus.h"
 
 static int	space_in_map(char **tab, size_t height, size_t width)
 {
@@ -29,7 +29,7 @@ static int	check_char(char **tab, size_t height, size_t width, t_map *map)
 	char	c;
 
 	c = tab[height][width];
-	if (c == WALL || c == EMPTY)
+	if (c == WALL || c == EMPTY || c == ENNEMIES)
 		return (0);
 	if (c == FLOOR)
 	{
