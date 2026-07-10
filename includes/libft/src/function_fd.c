@@ -6,18 +6,18 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:34:37 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/02/15 17:20:41 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/09 17:07:00 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(const char c, int fd)
 {
 	write(fd, &c, 1);
 }
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(const char *s, int fd)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(const char *s, int fd)
 {
 	if (!s)
 		return ;

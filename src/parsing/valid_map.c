@@ -6,11 +6,37 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 18:48:57 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/09 13:20:33 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/10 12:03:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+static int	rcolumn_isclose(char **map_tab, t_vec2 coor, int *twall, int *bwall)
+{
+	size_t	x;
+	size_t	height;
+
+	x = (size_t)coor.x;
+	height = (size_t)coor.y;
+	if (ft_strlen(map_tab[height - 1]) >= x
+		&& (map_tab[height - 1][x] == WALL
+		|| map_tab[height - 1][x - 1] == WALL))
+		*twall = 1;
+	else if (ft_strlen(map_tab[height - 1]) > x
+		&& map_tab[height - 1][x + 1] == WALL)
+		*twall = 1;
+	if (ft_strlen(map_tab[height + 1]) >= x
+		&& (map_tab[height + 1][x] == WALL
+		|| map_tab[height + 1][x - 1] == WALL))
+		*bwall = 1;
+	else if (ft_strlen(map_tab[height + 1]) > x
+		&& map_tab[height + 1][x + 1] == WALL)
+		*bwall = 1;
+	if (*twall == 1 && *bwall == 1)
+		return (0);
+	return (1);
+}
 
 int	valid_rcolumn_border(char **map_tab, size_t height)
 {
@@ -25,26 +51,35 @@ int	valid_rcolumn_border(char **map_tab, size_t height)
 		i--;
 	while (map_tab[height][i] && map_tab[height][i] == WALL)
 	{
-		if (ft_strlen(map_tab[height - 1]) >= i
-			&& (map_tab[height - 1][i] == WALL
-			|| map_tab[height - 1][i - 1] == WALL))
-			top_wall = 1;
-		else if (ft_strlen(map_tab[height - 1]) > i
-			&& map_tab[height - 1][i + 1] == WALL)
-			top_wall = 1;
-		if (ft_strlen(map_tab[height + 1]) >= i
-			&& (map_tab[height + 1][i] == WALL
-			|| map_tab[height + 1][i - 1] == WALL))
-			bottom_wall = 1;
-		else if (ft_strlen(map_tab[height + 1]) > i
-			&& map_tab[height + 1][i + 1] == WALL)
-			bottom_wall = 1;
-		if (top_wall == 1 && bottom_wall == 1)
+		if (rcolumn_isclose(map_tab, (t_vec2){i, height},
+			&top_wall, &bottom_wall) == 0)
 			return (0);
 		else
 			i--;
 	}
 	return (print_error("The map is open"));
+}
+
+static int	lcolumn_isclose(char **map_tab, t_vec2 coor, int *twall, int *bwall)
+{
+	size_t	x;
+	size_t	height;
+
+	x = (size_t)coor.x;
+	height = (size_t)coor.y;
+	if (map_tab[height - 1][x] == WALL
+		|| (x > 0 && map_tab[height - 1][x - 1] == WALL))
+		*twall = 1;
+	else if (map_tab[height - 1][x + 1] == WALL)
+		*twall = 1;
+	if (map_tab[height + 1][x] == WALL
+		|| (x > 0 && map_tab[height + 1][x - 1] == WALL))
+		*bwall = 1;
+	else if (map_tab[height + 1][x + 1] == WALL)
+		*bwall = 1;
+	if (*twall == 1 && *bwall == 1)
+		return (0);
+	return (1);
 }
 
 int	valid_lcolumn_border(char **map_tab, size_t height)
@@ -60,17 +95,8 @@ int	valid_lcolumn_border(char **map_tab, size_t height)
 		i++;
 	while (map_tab[height][i] && map_tab[height][i] == WALL)
 	{
-		if (map_tab[height - 1][i] == WALL
-			|| (i > 0 && map_tab[height - 1][i - 1] == WALL))
-			top_wall = 1;
-		else if (map_tab[height - 1][i + 1] == WALL)
-			top_wall = 1;
-		if (map_tab[height + 1][i] == WALL
-			|| (i > 0 && map_tab[height + 1][i - 1] == WALL))
-			bottom_wall = 1;
-		else if (map_tab[height + 1][i + 1] == WALL)
-			bottom_wall = 1;
-		if (top_wall == 1 && bottom_wall == 1)
+		if (lcolumn_isclose(map_tab, (t_vec2){i, height},
+			&top_wall, &bottom_wall) == 0)
 			return (0);
 		else
 			i++;

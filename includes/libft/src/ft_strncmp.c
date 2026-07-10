@@ -6,12 +6,12 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 15:00:05 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/09 09:42:50 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/10 11:02:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
-#include <stdio.h>
+
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned char	*uc_s1;

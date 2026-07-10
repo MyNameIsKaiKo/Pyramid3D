@@ -34,7 +34,7 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			parsing/parse_color.c \
 			parsing/parse_map.c \
 			parsing/valid_map.c \
-			pyramidmlx/falsemap.c \
+			pyramidmlx/extract_texture.c \
 			pyramidmlx/free.c \
 			pyramidmlx/mlx_tools.c \
 			pyramidmlx/pyramid_draw.c \

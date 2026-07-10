@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:49:55 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/09 16:36:37 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/10 12:06:12 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,49 +19,55 @@ static int	parse_line(char *line_read, t_ctx *ctx)
 		if (ft_strncmp(line_read, "\n", 2) == 0)
 			return (0);
 		if (parse_textures(line_read, ctx) > 0)
-		{
-			free_ctx(ctx);
 			return (1);
-		}
 	}
 	else
 	{
 		if (check_line_map(line_read, ctx->map) > 0)
+			return (1);
+	}
+	return (0);
+}
+
+static int	read_line(t_ctx *ctx, int fd_map)
+{
+	char	*line_read;
+
+	line_read = get_next_line(fd_map);
+	if (!line_read)
+	{
+		print_error("Failed read the map");
+		return (1);
+	}
+	while (line_read)
+	{
+		if (parse_line(line_read, ctx) > 0)
 		{
-			free_ctx(ctx);
+			free(line_read);
 			return (1);
 		}
+		free(line_read);
+		line_read = get_next_line(fd_map);
 	}
+	free(line_read);
 	return (0);
 }
 
 static int	read_map(char *file, t_ctx *ctx)
 {
 	int		fd_map;
-	int		var_return;
-	char	*line_read;
+	int		result;
 
 	fd_map = open(file, O_RDONLY);
-	line_read = get_next_line(fd_map);
-	if (!line_read)
+	if (fd_map < 0)
 	{
 		print_error("Failed read the map");
-		close(fd_map);
-		free_ctx(ctx);
 		return (1);
 	}
-	while (line_read)
-	{
-		var_return = parse_line(line_read, ctx);
-		if (var_return > 0)
-			break ;
-		free(line_read);
-		line_read = get_next_line(fd_map);
-	}
-	free(line_read);
+	result = read_line(ctx, fd_map);
 	close(fd_map);
 	get_next_line(fd_map);
-	return (var_return);
+	return (result);
 }
 
 int	parse_extention(char *file, char *extention)
@@ -71,12 +77,10 @@ int	parse_extention(char *file, char *extention)
 
 	ext_file = ft_strrchr(file, '.');
 	if (!ext_file)
-		return (print_error(
-			"a file don't have a good extention (.cub or .xpm for textures)"));
+		return (print_error("bad extention (.cub or .xpm)"));
 	size_ext = ft_strlen(ext_file);
 	if (ft_strncmp(ext_file, extention, size_ext + 1) != 0)
-		return (print_error(
-			"a file don't have a good extention (.cub or .xpm for textures)"));
+		return (print_error("bad extention (.cub or .xpm)"));
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 13:15:23 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/07 22:53:45 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/10 12:07:34 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	rotate_vector(t_ctx *ctx, double angle)
 	player->dir.x = player->dir.x * cos(angle) - player->dir.y * sin(angle);
 	player->dir.y = old_dir_x * sin(angle) + player->dir.y * cos(angle);
 	old_plane_x = player->plane.x;
-	player->plane.x = player->plane.x * cos(angle) - player->plane.y * sin(angle);
+	player->plane.x = player->plane.x * cos(angle) - player->plane.y
+		* sin(angle);
 	player->plane.y = old_plane_x * sin(angle) + player->plane.y * cos(angle);
 	return ;
 }

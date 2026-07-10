@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/08 19:52:32 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/10 12:05:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 // -- utils Function --
 void	data_player(t_map *map, size_t height, size_t width);
-int		print_error(char *err_msg);
+int		print_error(const char *err_msg);
 void	free_ctx(t_ctx *ctx);
 
 // -- parsing SECTION --

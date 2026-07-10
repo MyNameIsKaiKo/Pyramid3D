@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/09 16:35:29 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/09 17:06:36 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	data_player(t_map *map, size_t height, size_t width)
 	map->nb_player++;
 }
 
-int	print_error(char *err_msg)
+int	print_error(const char *err_msg)
 {
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(err_msg, 2);
@@ -32,7 +32,6 @@ static void	free_map(t_map *map)
 	int	i;
 
 	i = 0;
-	printf("%d\n", map->height);
 	while (map && map->height
 		&& i < map->height)
 	{

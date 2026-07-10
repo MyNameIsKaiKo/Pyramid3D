@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:54:23 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/09 13:37:00 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/10 12:04:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,29 @@ static int	init_texture(char *line_read, char **ctx_texture, t_ctx *ctx)
 	return (0);
 }
 
+static int	texture_extention(char *line_read)
+{
+	int					i_tab;
+	int					len;
+	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL},
+	{"WE ", WE_WALL}, {"EA ", EA_WALL}};
+
+	i_tab = 0;
+	while (i_tab < NB_TEXTURES)
+	{
+		len = ft_strlen(tab[i_tab].cmp);
+		if (ft_strncmp(line_read, tab[i_tab].cmp, len) == 0)
+		{
+			if (parse_extention(line_read, EXT_TEXT) > 0)
+				return (1);
+			else
+				return (0);
+		}
+		i_tab++;
+	}
+	return (0);
+}
+
 static int	is_texture(char *line_read, t_ctx *ctx, int i)
 {
 	int					len;
@@ -67,8 +90,7 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 			ctx_textures = &ctx->tab_textures[tab[i_tab].textures];
 			if (init_texture(line_read + i, ctx_textures, ctx) > 0)
 				return (1);
-			if (ft_strncmp(line_read, tab[0].cmp, len) == 0
-			&& parse_extention(line_read, EXT_TEXT) != 0)
+			if (texture_extention(line_read) > 0)
 				return (1);
 			break ;
 		}
