@@ -20,6 +20,7 @@ SRC= function_fd.c \
 	ft_strrchr.c \
 	ft_strncmp.c \
 	ft_strnstr.c \
+	ft_realloc.c \
 	ft_atoi.c \
 	ft_atol.c \
 	ft_calloc.c \
@@ -50,7 +51,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
-	@echo "Compiles LIBF successfully"
+	@echo "Compiles LIBFT successfully"
 
 $(BUILD_DIR)%.o:$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@

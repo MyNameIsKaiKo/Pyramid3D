@@ -5,32 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/28 18:23:49 by jleray            #+#    #+#             */
-/*   Updated: 2026/06/28 18:23:49 by jleray           ###   ########.fr       */
+/*   Created: 2026/07/08 14:17:52 by jleray            #+#    #+#             */
+/*   Updated: 2026/07/08 14:17:52 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/pyramid_mlx.h"
+#include "cub.h"
 
-void	setup_ray_for_col(t_map *map, int x)
+static void	setup_ray_for_col(t_ctx *ctx, int x)
 {
 	t_ray	*ray;
 
-	ray = &map->player.ray;
+	ray = &ctx->player.ray;
 	ray->camera_x = 2.0 * x / (double)WIDTH - 1.0;
-	ray->dir_x = map->player.dir.x + map->player.plane.x * ray->camera_x;
-	ray->dir_y = map->player.dir.y + map->player.plane.y * ray->camera_x;
-	ray->map_x = (int)map->player.pos.x;
-	ray->map_y = (int)map->player.pos.y;
+	ray->dir_x = ctx->player.dir.x + ctx->player.plane.x * ray->camera_x;
+	ray->dir_y = ctx->player.dir.y + ctx->player.plane.y * ray->camera_x;
+	ray->map_x = (int)ctx->player.pos.x;
+	ray->map_y = (int)ctx->player.pos.y;
 	calc_deltadist(ray);
-	calc_sidedist(ray, map);
+	calc_sidedist(ray, ctx);
 }
 
-void	exec_dda(t_map *map)
+static void	exec_dda(t_map *map, t_ctx *ctx)
 {
 	t_ray	*ray;
 
-	ray = &map->player.ray;
+	ray = &ctx->player.ray;
 	while (ray->hit == 0)
 	{
 		if (ray->sidedist_x < ray->sidedist_y)
@@ -53,11 +53,11 @@ void	exec_dda(t_map *map)
 	}
 }
 
-void	calc_wall(t_map *map)
+static void	calc_wall(t_ctx *ctx)
 {
 	t_ray	*ray;
 
-	ray = &map->player.ray;
+	ray = &ctx->player.ray;
 	if (ray->side == 0)
 		ray->wall_dist = ray->sidedist_x - ray->deltadist_x;
 	else if (ray->side == 1)
@@ -88,49 +88,49 @@ void	calc_wall(t_map *map)
 // }
 // }
 
-void	draw_img(t_map *map, int x)
+static void	draw_img(t_ctx *ctx, int x)
 {
 	t_ray	*ray;
 	int		y;
 	int		color;
 
 	y = -1;
-	ray = &map->player.ray;
-	setup_draw_img(map);
-	get_tex_index(map);
+	ray = &ctx->player.ray;
+	setup_draw_img(ctx);
+	get_tex_index(ctx);
 	while (++y < HEIGHT)
 	{
 		if (y < ray->draw_start)
-			my_mlx_pixel_put(map, x, y, 0x00F02DC3);
+			my_mlx_pixel_put(ctx, x, y, ctx->colors[0]);
 		else if (y > ray->draw_end)
-			my_mlx_pixel_put(map, x, y, 0x00F02D00);
+			my_mlx_pixel_put(ctx, x, y, ctx->colors[1]);
 		else
 		{
-			calc_tex_y(map);
-			map->tex.start += map->tex.step;
-			color = get_texture_pixel(&map->wall_tex[map->tex.index],
-					map->tex.x, map->tex.y);
-			my_mlx_pixel_put(map, x, y, color);
+			calc_tex_y(ctx);
+			ctx->tex.start += ctx->tex.step;
+			color = get_texture_pixel(&ctx->wall_tex[ctx->tex.index],
+					ctx->tex.x, ctx->tex.y);
+			my_mlx_pixel_put(ctx, x, y, color);
 		}
 	}
 }
 
-int	draw_frame(t_map *map)
+int	draw_frame(t_ctx *ctx)
 {
 	int	x;
 
 	x = 0;
-	if (player_moved(&map->player))
-		apply_movement(map);
+	if (player_moved(&ctx->player))
+		apply_movement(ctx);
 	while (x < WIDTH)
 	{
-		setup_ray_for_col(map, x);
-		exec_dda(map);
-		calc_wall(map);
-		draw_img(map, x);
-		map->player.ray.hit = 0;
+		setup_ray_for_col(ctx, x);
+		exec_dda(ctx->map, ctx);
+		calc_wall(ctx);
+		draw_img(ctx, x);
+		ctx->player.ray.hit = 0;
 		x++;
 	}
-	mlx_put_image_to_window(map->mlx, map->win, map->img.img, 0, 0);
+	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img.img, 0, 0);
 	return (0);
 }

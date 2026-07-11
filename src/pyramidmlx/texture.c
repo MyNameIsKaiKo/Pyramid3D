@@ -5,36 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/05 01:13:49 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/05 01:13:49 by jleray           ###   ########.fr       */
+/*   Created: 2026/07/08 14:32:25 by jleray            #+#    #+#             */
+/*   Updated: 2026/07/08 14:32:25 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/pyramid_mlx.h"
+#include "cub.h"
 
-void	calc_wallx(t_map *map)
+void	calc_wallx(t_ctx *ctx)
 {
 	t_player	*player;
 	t_ray		*ray;
 
-	player = &map->player;
+	player = &ctx->player;
 	ray = &player->ray;
 	if (ray->side == 0)
-		map->tex.wallx = player->pos.y + ray->wall_dist * ray->dir_y;
+		ctx->tex.wallx = player->pos.y + ray->wall_dist * ray->dir_y;
 	if (ray->side == 1)
-		map->tex.wallx = player->pos.x + ray->wall_dist * ray->dir_x;
-	map->tex.wallx = map->tex.wallx - (int)map->tex.wallx;
+		ctx->tex.wallx = player->pos.x + ray->wall_dist * ray->dir_x;
+	ctx->tex.wallx = ctx->tex.wallx - (int)ctx->tex.wallx;
 }
 
-void	calc_tex_x(t_map *map)
+void	calc_tex_x(t_ctx *ctx)
 {
 	t_player	*player;
 	t_ray		*ray;
 	t_texture	*tex;
 
-	player = &map->player;
+	player = &ctx->player;
 	ray = &player->ray;
-	tex = &map->tex;
+	tex = &ctx->tex;
 	tex->x = (int)(tex->wallx * tex->witdh);
 	if (tex->x < 0)
 		tex->x = 0;
@@ -46,23 +46,23 @@ void	calc_tex_x(t_map *map)
 		tex->x = tex->witdh - tex->x - 1;
 }
 
-void	calc_tex_step(t_map *map)
+void	calc_tex_step(t_ctx *ctx)
 {
 	t_ray		*ray;
 	t_texture	*tex;
 
-	ray = &map->player.ray;
-	tex = &map->tex;
+	ray = &ctx->player.ray;
+	tex = &ctx->tex;
 	tex->step = (1.0 * tex->height) / ray->line_height;
 }
 
-void	calc_tex_start(t_map *map)
+void	calc_tex_start(t_ctx *ctx)
 {
 	t_ray		*ray;
 	t_texture	*tex;
 
-	ray = &map->player.ray;
-	tex = &map->tex;
+	ray = &ctx->player.ray;
+	tex = &ctx->tex;
 	tex->start = (ray->draw_start - (HEIGHT / 2) + (ray->line_height / 2))
 		* tex->step;
 }

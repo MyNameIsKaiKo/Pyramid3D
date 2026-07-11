@@ -6,11 +6,25 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/06/26 23:05:12 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/09 16:48:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pyramid.h"
+#include "cub.h"
+
+static int	set_struct(t_ctx *ctx)
+{
+	ft_memset(ctx, 0, sizeof(t_ctx));
+	ctx->map = malloc(sizeof(t_map));
+	if (!ctx->map)
+	{
+		print_error("Malloc failed");
+		free_ctx(ctx);
+		return (1);
+	}
+	ft_memset(ctx->map, 0, sizeof(t_map));
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
@@ -18,12 +32,18 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 	{
-		printf("Enter a map.cub in first argument please\n");
+		print_error("Enter a map.cub in first argument please\n");
 		return (0);
 	}
-	ft_memset(&ctx, 0, sizeof(t_ctx));
+	if (set_struct(&ctx) > 0)
+		return (1);
 	if (parsing(av[1], &ctx) > 0)
-		return (0);
+	{
+		free_ctx(&ctx);
+		return (1);
+	}
+	player_init(&ctx);
+	pyramid_loop(&ctx);
 	free_ctx(&ctx);
 	return (0);
 }

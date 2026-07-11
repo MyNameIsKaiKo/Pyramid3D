@@ -5,56 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/25 17:28:13 by jleray            #+#    #+#             */
-/*   Updated: 2026/06/25 18:43:26 by jleray           ###   ########.fr       */
+/*   Created: 2026/07/08 14:47:22 by jleray            #+#    #+#             */
+/*   Updated: 2026/07/08 14:47:22 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/pyramid_mlx.h"
+#include "cub.h"
 
-int	map_init(t_map *map)
+int	map_init(t_ctx *ctx)
 {
-	map->mlx = mlx_init();
-	if (!map->mlx)
+	ctx->mlx = mlx_init();
+	if (!ctx->mlx)
 		return (1);
-	map->win = mlx_new_window(map->mlx, WIDTH, HEIGHT, "Pyramid3d");
-	if (!map->win)
+	ctx->win = mlx_new_window(ctx->mlx, WIDTH, HEIGHT, "Pyramid3d");
+	if (!ctx->win)
 	{
-		f_init(map);
-		return (1);
-	}
-	map->img.img = mlx_new_image(map->mlx, WIDTH, HEIGHT);
-	if (!map->img.img)
-	{
-		f_init(map);
+		f_init(ctx);
 		return (1);
 	}
-	map->img.addr = mlx_get_data_addr(map->img.img, &map->img.bits_per_pixel,
-			&map->img.line_lenght, &map->img.endian);
-	if (!map->img.addr)
+	ctx->img.img = mlx_new_image(ctx->mlx, WIDTH, HEIGHT);
+	if (!ctx->img.img)
 	{
-		f_init(map);
+		f_init(ctx);
+		return (1);
+	}
+	ctx->img.addr = mlx_get_data_addr(ctx->img.img, &ctx->img.bits_per_pixel,
+			&ctx->img.line_lenght, &ctx->img.endian);
+	if (!ctx->img.addr)
+	{
+		f_init(ctx);
 		return (1);
 	}
 	return (0);
 }
 
-int	pyramid_loop(t_map *map)
+int	pyramid_loop(t_ctx *ctx)
 {
-	if (map_init(map))
+	if (map_init(ctx))
 		return (1);
-	texture_data(map);
-	mlx_loop_hook(map->mlx, draw_frame, map);
-	mlx_hook(map->win, 17, 0, close_app, map);
-	mlx_hook(map->win, 2, 1l << 0, handlekey_press, map);
-	mlx_hook(map->win, 3, 1L << 1, handlekey_release, map);
-	mlx_mouse_hook(map->win, handlebutton, map);
-	mlx_loop(map->mlx);
-	mlx_destroy_image(map->mlx, map->img.img);
-	tex_free(map);
-	mlx_destroy_window(map->mlx, map->win);
-	mlx_destroy_display(map->mlx);
-	free(map->mlx);
-	map_free(map);
+	texture_data(ctx);
+	mlx_loop_hook(ctx->mlx, draw_frame, ctx);
+	mlx_hook(ctx->win, 17, 0, close_app, ctx);
+	mlx_hook(ctx->win, 2, 1l << 0, handlekey_press, ctx);
+	mlx_hook(ctx->win, 3, 1L << 1, handlekey_release, ctx);
+	mlx_mouse_hook(ctx->win, handlebutton, ctx);
+	mlx_loop(ctx->mlx);
+	mlx_destroy_image(ctx->mlx, ctx->img.img);
+	tex_free(ctx);
+	mlx_destroy_window(ctx->mlx, ctx->win);
+	mlx_destroy_display(ctx->mlx);
+	free(ctx->mlx);
 	return (0);
 }

@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/27 01:28:44 by jleray            #+#    #+#             */
-/*   Updated: 2026/06/27 01:28:44 by jleray           ###   ########.fr       */
+/*   Created: 2026/07/08 14:17:22 by jleray            #+#    #+#             */
+/*   Updated: 2026/07/08 14:17:22 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/pyramid_mlx.h"
+#include "cub.h"
 
-void	my_mlx_pixel_put(t_map *map, int x, int y, int color)
+void	my_mlx_pixel_put(t_ctx *ctx, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = map->img.addr + (y * map->img.line_lenght + x
-			* (map->img.bits_per_pixel / 8));
+	dst = ctx->img.addr + (y * ctx->img.line_lenght + x
+			* (ctx->img.bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
