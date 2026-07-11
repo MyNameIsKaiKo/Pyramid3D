@@ -55,8 +55,8 @@ static int	read_line(t_ctx *ctx, int fd_map)
 
 static int	read_map(char *file, t_ctx *ctx)
 {
-	int		fd_map;
-	int		result;
+	int	fd_map;
+	int	result;
 
 	fd_map = open(file, O_RDONLY);
 	if (fd_map < 0)
