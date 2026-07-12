@@ -15,6 +15,10 @@
 
 # include <stdio.h>
 
+# ifndef BONUS
+#  define BONUS 0
+# endif
+
 // -- WINDOW SIZE --
 # define WIDTH 800
 # define HEIGHT 800

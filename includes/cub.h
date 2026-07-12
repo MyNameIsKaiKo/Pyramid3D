@@ -20,11 +20,11 @@
 # include "minilibx/mlx.h"
 
 // -- Externe --
+# include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
 
 // -- utils Function --
 void	data_player(t_map *map, size_t height, size_t width);
@@ -105,5 +105,9 @@ void	player_forward(t_ctx *ctx);
 void	player_backward(t_ctx *ctx);
 void	player_right(t_ctx *ctx);
 void	player_left(t_ctx *ctx);
+
+// -- BONUS SECTION --
+// -- Parser bonus Function --
+int		parse_color_bonus(char **color);
 
 #endif

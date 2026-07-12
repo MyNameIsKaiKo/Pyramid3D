@@ -92,7 +92,9 @@ int	parsing(char *file, t_ctx *ctx)
 		return (1);
 	if (parse_path(ctx->tab_textures) > 0)
 		return (1);
-	if (parse_color(ctx->tab_textures) > 0)
+	if (!BONUS && parse_color(ctx->tab_textures) > 0)
+		return (1);
+	if (BONUS && parse_color_bonus(ctx->tab_textures) > 0)
 		return (1);
 	if (parse_map(ctx->map) > 0)
 		return (1);

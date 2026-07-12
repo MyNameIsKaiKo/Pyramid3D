@@ -35,7 +35,7 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx, int i_tab)
 
 	if (*tex)
 		return (1);
-	if (i_tab >= 5)
+	if (i_tab >= 4)
 		line_read += 2;
 	else
 		line_read += 3;
@@ -56,8 +56,8 @@ static int	texture_extention(char *line_read)
 {
 	int					i_tab;
 	int					len;
-	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL},
-	{"WE ", WE_WALL}, {"EA ", EA_WALL}};
+	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL}, {"WE ",
+		WE_WALL}, {"EA ", EA_WALL}};
 
 	i_tab = 0;
 	while (i_tab < NB_TEXTURES)
@@ -80,9 +80,9 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 	int					len;
 	int					i_tab;
 	char				**ctx_textures;
-	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL},
-	{"WE ", WE_WALL}, {"EA ", EA_WALL}, {"F ", FLOOR_COLOR},
-	{"C ", CEILING_COLOR}};
+	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL}, {"WE ",
+		WE_WALL}, {"EA ", EA_WALL}, {"F ", FLOOR_COLOR}, {"C ",
+		CEILING_COLOR}};
 
 	i_tab = -1;
 	while (++i_tab < NB_ALL_TEXTURES)
