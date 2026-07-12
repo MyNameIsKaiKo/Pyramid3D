@@ -69,11 +69,22 @@ typedef enum e_e_textures
 	CEILING_COLOR
 }					t_e_textures;
 
+typedef struct s_floor
+{
+	double			x;
+	double			y;
+	int				tex_x;
+	int				tex_y;
+	double			cfloor_x;
+	double			cfloor_y;
+}					t_floor;
+
 typedef struct s_texture
 {
 	int				x;
 	int				y;
 	double			wallx;
+	t_floor			floor;
 	int				height;
 	int				witdh;
 	double			step;
@@ -173,6 +184,7 @@ typedef struct s_ctx
 	t_img			wall_tex[NB_ALL_TEXTURES];
 	int				colors[NB_COLOR];
 	char			*colors_bonus[NB_COLOR];
+	t_img			fandc_tex[2];
 	t_img			img;
 	t_texture		tex;
 	void			*win;

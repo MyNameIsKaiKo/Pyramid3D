@@ -36,10 +36,22 @@ static void	get_color(t_ctx *ctx)
 
 static void	get_bonus_color(t_ctx *ctx, int *w, int *h)
 {
-	ctx->colors_bonus[0] = mlx_xpm_file_to_image(ctx->mlx,
+	int	floor;
+	int	ceil;
+
+	floor = 0;
+	ceil = 1;
+	ctx->fandc_tex[floor].img = mlx_xpm_file_to_image(ctx->mlx,
 			ctx->tab_textures[FLOOR_COLOR], w, h);
-	ctx->colors_bonus[1] = mlx_xpm_file_to_image(ctx->mlx,
+	ctx->fandc_tex[floor].addr = mlx_get_data_addr(ctx->fandc_tex[floor].img,
+			&ctx->fandc_tex[floor].bits_per_pixel,
+			&ctx->fandc_tex[floor].line_lenght, &ctx->fandc_tex[floor].endian);
+	ctx->fandc_tex[ceil].img = mlx_xpm_file_to_image(ctx->mlx,
 			ctx->tab_textures[CEILING_COLOR], w, h);
+	ctx->fandc_tex[ceil].addr = mlx_get_data_addr(ctx->fandc_tex[ceil].img,
+			&ctx->fandc_tex[ceil].bits_per_pixel,
+			&ctx->fandc_tex[ceil].line_lenght,
+			&ctx->fandc_tex[ceil].endian);
 }
 
 void	texture_data(t_ctx *ctx)

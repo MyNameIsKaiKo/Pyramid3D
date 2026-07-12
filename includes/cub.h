@@ -110,4 +110,9 @@ void	player_left(t_ctx *ctx);
 // -- Parser bonus Function --
 int		parse_color_bonus(char **color);
 
+// -- draw_bonus Function --
+void	calc_floorxy(t_ctx *ctx);
+void	calc_floortex(t_ctx *ctx, int y);
+void	draw_img_bonus(t_ctx *ctx, int x);
+
 #endif
