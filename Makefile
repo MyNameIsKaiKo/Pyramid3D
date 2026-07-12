@@ -49,6 +49,14 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			player_handler/player_movement.c \
 
 
+SRC_BONUS_FILES = bonus/enemie.c \
+				bonus/parse_color_bonus.c
+
+ifdef WITH_BONUS
+	SRC_FILES += $(SRC_BONUS_FILES)
+	CFLAGS += -DBONUS=1
+endif
+
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 #OBJ_AND_DEPS____________________________
@@ -89,6 +97,11 @@ fclean: clean
 	@rm -f $(LIBFT)
 
 re: fclean all
+
+bonus:
+	@$(MAKE) WITH_BONUS=1 all
+
+reb: fclean bonus
 
 .PHONY: all clean fclean re
 

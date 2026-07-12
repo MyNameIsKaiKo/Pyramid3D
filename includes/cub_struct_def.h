@@ -172,6 +172,7 @@ typedef struct s_ctx
 	t_player		player;
 	t_img			wall_tex[NB_ALL_TEXTURES];
 	int				colors[NB_COLOR];
+	char			*colors_bonus[NB_COLOR];
 	t_img			img;
 	t_texture		tex;
 	void			*win;

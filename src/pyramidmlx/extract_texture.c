@@ -28,6 +28,20 @@ static size_t	extract_color(char *color)
 	return (e_color);
 }
 
+static void	get_color(t_ctx *ctx)
+{
+	ctx->colors[0] = extract_color(ctx->tab_textures[FLOOR_COLOR]);
+	ctx->colors[1] = extract_color(ctx->tab_textures[CEILING_COLOR]);
+}
+
+static void	get_bonus_color(t_ctx *ctx, int *w, int *h)
+{
+	ctx->colors_bonus[0] = mlx_xpm_file_to_image(ctx->mlx,
+			ctx->tab_textures[FLOOR_COLOR], w, h);
+	ctx->colors_bonus[1] = mlx_xpm_file_to_image(ctx->mlx,
+			ctx->tab_textures[CEILING_COLOR], w, h);
+}
+
 void	texture_data(t_ctx *ctx)
 {
 	int	i;
@@ -44,8 +58,10 @@ void	texture_data(t_ctx *ctx)
 				&ctx->wall_tex[i].endian);
 		i++;
 	}
-	ctx->colors[0] = extract_color(ctx->tab_textures[FLOOR_COLOR]);
-	ctx->colors[1] = extract_color(ctx->tab_textures[CEILING_COLOR]);
+	if (!BONUS)
+		get_color(ctx);
+	else
+		get_bonus_color(ctx, &w, &h);
 	ctx->tex.height = h;
 	ctx->tex.witdh = w;
 }
