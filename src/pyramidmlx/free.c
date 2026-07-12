@@ -40,4 +40,13 @@ void	tex_free(t_ctx *ctx)
 		mlx_destroy_image(ctx->mlx, ctx->wall_tex[i].img);
 		i++;
 	}
+	if (BONUS)
+	{
+		i = 0;
+		while (i < 2)
+		{
+			mlx_destroy_image(ctx->mlx, ctx->fandc_tex[i].img);
+			i++;
+		}
+	}
 }
