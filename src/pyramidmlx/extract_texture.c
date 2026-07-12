@@ -25,6 +25,10 @@ static size_t	extract_color(char *color)
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
 	e_color = (r << 16) | (g << 8) | b;
+	free(rgb[0]);
+	free(rgb[1]);
+	free(rgb[2]);
+	free(rgb);
 	return (e_color);
 }
 
