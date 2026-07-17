@@ -41,12 +41,15 @@ int	parse_color_bonus(char **color)
 	{
 		color_texture[++i] = color[index_color];
 		if (parse_extention(color_texture[i], EXT_TEXT))
+		{
+			ft_putendl_fd("BONUS only accept F and C as textures", 2);
 			return (1);
+		}
 		index_color++;
 	}
 	if (index_color != 6)
 	{
-		printf("A texture for eather the floor or the ceiling is missing\n");
+		ft_putendl_fd("Eather F's or C's texture is missing", 2);
 		return (1);
 	}
 	if (parse_color_path(color_texture))

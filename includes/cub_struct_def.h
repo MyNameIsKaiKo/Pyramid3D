@@ -20,8 +20,8 @@
 # endif
 
 // -- WINDOW SIZE --
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1920
+# define HEIGHT 1080
 
 // -- KeyBoard Close --
 # define K_ESC 65307
