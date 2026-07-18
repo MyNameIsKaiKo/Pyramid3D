@@ -44,12 +44,15 @@ int	pyramid_loop(t_ctx *ctx)
 	if (map_init(ctx))
 		return (1);
 	texture_data(ctx);
+	mouse_init(ctx);
 	mlx_loop_hook(ctx->mlx, draw_frame, ctx);
 	mlx_hook(ctx->win, 17, 0, close_app, ctx);
-	mlx_hook(ctx->win, 2, 1l << 0, handlekey_press, ctx);
+	mlx_hook(ctx->win, 6, 1L << 6, mouse_handler, ctx);
+	mlx_hook(ctx->win, 2, 1L << 0, handlekey_press, ctx);
 	mlx_hook(ctx->win, 3, 1L << 1, handlekey_release, ctx);
 	mlx_mouse_hook(ctx->win, handlebutton, ctx);
 	mlx_loop(ctx->mlx);
+	mlx_mouse_show(ctx->mlx, ctx->win);
 	mlx_destroy_image(ctx->mlx, ctx->img.img);
 	tex_free(ctx);
 	mlx_destroy_window(ctx->mlx, ctx->win);

@@ -29,20 +29,24 @@ int	parse_path(char **textures)
 	return (0);
 }
 
-static int	init_texture(char *line_read, char **ctx_texture, t_ctx *ctx)
+static int	init_texture(char *line_read, char **tex, t_ctx *ctx, int i_tab)
 {
 	size_t	len;
 
-	if (*ctx_texture)
+	if (*tex)
 		return (1);
+	if (i_tab >= 4)
+		line_read += 2;
+	else
+		line_read += 3;
 	len = ft_strlen(line_read);
 	if (line_read[len - 1] == '\n')
 	{
 		line_read[len - 1] = '\0';
 		--len;
 	}
-	*ctx_texture = ft_substr(line_read, 0, len);
-	if (!*ctx_texture)
+	*tex = ft_substr(line_read, 0, len);
+	if (!*tex)
 		return (print_error("Malloc failed"));
 	ctx->n_textures++;
 	return (0);
@@ -52,8 +56,8 @@ static int	texture_extention(char *line_read)
 {
 	int					i_tab;
 	int					len;
-	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL},
-	{"WE ", WE_WALL}, {"EA ", EA_WALL}};
+	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL}, {"WE ",
+		WE_WALL}, {"EA ", EA_WALL}};
 
 	i_tab = 0;
 	while (i_tab < NB_TEXTURES)
@@ -76,9 +80,9 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 	int					len;
 	int					i_tab;
 	char				**ctx_textures;
-	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL},
-	{"WE ", WE_WALL}, {"EA ", EA_WALL}, {"F ", FLOOR_COLOR},
-	{"C ", CEILING_COLOR}};
+	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL}, {"WE ",
+		WE_WALL}, {"EA ", EA_WALL}, {"F ", FLOOR_COLOR}, {"C ",
+		CEILING_COLOR}};
 
 	i_tab = -1;
 	while (++i_tab < NB_ALL_TEXTURES)
@@ -88,7 +92,7 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 		{
 			i += ft_strlen(tab[i].cmp);
 			ctx_textures = &ctx->tab_textures[tab[i_tab].textures];
-			if (init_texture(line_read + i, ctx_textures, ctx) > 0)
+			if (init_texture(line_read, ctx_textures, ctx, i_tab) > 0)
 				return (1);
 			if (texture_extention(line_read) > 0)
 				return (1);

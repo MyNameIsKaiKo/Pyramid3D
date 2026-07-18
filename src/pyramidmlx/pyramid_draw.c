@@ -64,30 +64,6 @@ static void	calc_wall(t_ctx *ctx)
 		ray->wall_dist = ray->sidedist_y - ray->deltadist_y;
 }
 
-// void	draw_img(t_map *map, int x)
-// {
-// t_ray	*ray;
-// int		y;
-//
-// y = -1;
-// ray = &map->player.ray;
-// calc_drawing_value(ray);
-// while (++y < HEIGHT)
-// {
-// if (y <= ray->draw_end && y >= ray->draw_start)
-// {
-// if (ray->side == 1)
-// my_mlx_pixel_put(map, x, y, 0x00000000);
-// else if (ray->side == 0)
-// my_mlx_pixel_put(map, x, y, 0x00FFFFFF);
-// }
-// if (y < ray->draw_start)
-// my_mlx_pixel_put(map, x, y, 0x00F02DC3);
-// if (y > ray->draw_end)
-// my_mlx_pixel_put(map, x, y, 0x00F02D00);
-// }
-// }
-
 static void	draw_img(t_ctx *ctx, int x)
 {
 	t_ray	*ray;
@@ -127,7 +103,10 @@ int	draw_frame(t_ctx *ctx)
 		setup_ray_for_col(ctx, x);
 		exec_dda(ctx->map, ctx);
 		calc_wall(ctx);
-		draw_img(ctx, x);
+		if (BONUS)
+			draw_img_bonus(ctx, x);
+		else
+			draw_img(ctx, x);
 		ctx->player.ray.hit = 0;
 		x++;
 	}

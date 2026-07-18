@@ -26,7 +26,7 @@ static int	check_format(char *color)
 	}
 	check_color = ft_atoi(color);
 	if (check_color < 0 || check_color > 255)
-		return (print_error("Color is invalid"));
+		return (print_error("Color is invalid, range is 0 to 255"));
 	return (0);
 }
 
@@ -42,7 +42,7 @@ static int	valid_color(char **tab_color)
 		i++;
 	}
 	if (i != 3)
-		return (print_error("Color is invalid"));
+		return (print_error("Color is invalid, use R,G,B format"));
 	return (0);
 }
 

@@ -12,6 +12,52 @@
 
 #include "cub.h"
 
+static size_t	extract_color(char *color)
+{
+	size_t	e_color;
+	size_t	r;
+	size_t	g;
+	size_t	b;
+	char	**rgb;
+
+	rgb = ft_split(color, ',');
+	r = ft_atoi(rgb[0]);
+	g = ft_atoi(rgb[1]);
+	b = ft_atoi(rgb[2]);
+	e_color = (r << 16) | (g << 8) | b;
+	free(rgb[0]);
+	free(rgb[1]);
+	free(rgb[2]);
+	free(rgb);
+	return (e_color);
+}
+
+static void	get_color(t_ctx *ctx)
+{
+	ctx->colors[0] = extract_color(ctx->tab_textures[FLOOR_COLOR]);
+	ctx->colors[1] = extract_color(ctx->tab_textures[CEILING_COLOR]);
+}
+
+static void	get_bonus_color(t_ctx *ctx, int *w, int *h)
+{
+	int	floor;
+	int	ceil;
+
+	floor = 0;
+	ceil = 1;
+	ctx->fandc_tex[floor].img = mlx_xpm_file_to_image(ctx->mlx,
+			ctx->tab_textures[FLOOR_COLOR], w, h);
+	ctx->fandc_tex[floor].addr = mlx_get_data_addr(ctx->fandc_tex[floor].img,
+			&ctx->fandc_tex[floor].bits_per_pixel,
+			&ctx->fandc_tex[floor].line_lenght, &ctx->fandc_tex[floor].endian);
+	ctx->fandc_tex[ceil].img = mlx_xpm_file_to_image(ctx->mlx,
+			ctx->tab_textures[CEILING_COLOR], w, h);
+	ctx->fandc_tex[ceil].addr = mlx_get_data_addr(ctx->fandc_tex[ceil].img,
+			&ctx->fandc_tex[ceil].bits_per_pixel,
+			&ctx->fandc_tex[ceil].line_lenght,
+			&ctx->fandc_tex[ceil].endian);
+}
+
 void	texture_data(t_ctx *ctx)
 {
 	int	i;
@@ -28,8 +74,10 @@ void	texture_data(t_ctx *ctx)
 				&ctx->wall_tex[i].endian);
 		i++;
 	}
-	ctx->colors[0] = ft_atoi(ctx->tab_textures[FLOOR_COLOR]);
-	ctx->colors[1] = ft_atoi(ctx->tab_textures[CEILING_COLOR]);
+	if (!BONUS)
+		get_color(ctx);
+	else
+		get_bonus_color(ctx, &w, &h);
 	ctx->tex.height = h;
 	ctx->tex.witdh = w;
 }

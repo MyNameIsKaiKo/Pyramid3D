@@ -55,8 +55,8 @@ static int	read_line(t_ctx *ctx, int fd_map)
 
 static int	read_map(char *file, t_ctx *ctx)
 {
-	int		fd_map;
-	int		result;
+	int	fd_map;
+	int	result;
 
 	fd_map = open(file, O_RDONLY);
 	if (fd_map < 0)
@@ -92,7 +92,9 @@ int	parsing(char *file, t_ctx *ctx)
 		return (1);
 	if (parse_path(ctx->tab_textures) > 0)
 		return (1);
-	if (parse_color(ctx->tab_textures) > 0)
+	if (!BONUS && parse_color(ctx->tab_textures) > 0)
+		return (1);
+	if (BONUS && parse_color_bonus(ctx->tab_textures) > 0)
 		return (1);
 	if (parse_map(ctx->map) > 0)
 		return (1);

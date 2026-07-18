@@ -15,9 +15,13 @@
 
 # include <stdio.h>
 
+# ifndef BONUS
+#  define BONUS 0
+# endif
+
 // -- WINDOW SIZE --
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1920
+# define HEIGHT 1080
 
 // -- KeyBoard Close --
 # define K_ESC 65307
@@ -65,11 +69,22 @@ typedef enum e_e_textures
 	CEILING_COLOR
 }					t_e_textures;
 
+typedef struct s_floor
+{
+	double			x;
+	double			y;
+	int				tex_x;
+	int				tex_y;
+	double			cfloor_x;
+	double			cfloor_y;
+}					t_floor;
+
 typedef struct s_texture
 {
 	int				x;
 	int				y;
 	double			wallx;
+	t_floor			floor;
 	int				height;
 	int				witdh;
 	double			step;
@@ -157,6 +172,12 @@ typedef struct s_map
 	size_t			nb_player;
 }					t_map;
 
+typedef struct s_mouse
+{
+	t_vec2			pos;
+	double			sensivity;
+}					t_mouse;
+
 typedef struct s_ctx
 {
 	char			*tab_textures[NB_ALL_TEXTURES];
@@ -165,6 +186,9 @@ typedef struct s_ctx
 	t_player		player;
 	t_img			wall_tex[NB_ALL_TEXTURES];
 	int				colors[NB_COLOR];
+	char			*colors_bonus[NB_COLOR];
+	t_img			fandc_tex[2];
+	t_mouse			mouse;
 	t_img			img;
 	t_texture		tex;
 	void			*win;

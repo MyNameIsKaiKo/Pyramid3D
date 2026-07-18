@@ -47,33 +47,20 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			pyramidmlx/pyramid_bhook.c \
 			pyramidmlx/texture.c \
 			pyramidmlx/texture_scd.c \
+			pyramidmlx/pyramid_mouse.c \
 			pyramid_math/matrix.c \
 			player_handler/player.c \
 			player_handler/player_movement.c
 
+SRC_FILES_BONUS = bonus/enemie.c \
+				bonus/parse_color_bonus.c \
+				bonus/pyramid_draw_bonus.c \
+				bonus/pyramid_draw_tools_bonus.c
 
-SRC_FILES_BONUS	=../includes/gnl/get_next_line.c \
-				../includes/gnl/get_next_line_utils.c \
-				main_bonus.c \
-				utils_bonus.c \
-				parsing/parsing_bonus.c \
-				parsing/parse_textures_bonus.c \
-				parsing/parse_color_bonus.c \
-				parsing/parse_map_bonus.c \
-				parsing/valid_map_bonus.c \
-				pyramidmlx/extract_texture_bonus.c \
-				pyramidmlx/free_bonus.c \
-				pyramidmlx/mlx_tools_bonus.c \
-				pyramidmlx/pyramid_draw_bonus.c \
-				pyramidmlx/pyramid_draw_tools_bonus.c \
-				pyramidmlx/pyramid_init_bonus.c \
-				pyramidmlx/pyramid_khook_bonus.c \
-				pyramidmlx/pyramid_bhook_bonus.c \
-				pyramidmlx/texture_bonus.c \
-				pyramidmlx/texture_scd_bonus.c \
-				pyramid_math/matrix_bonus.c \
-				player_handler/player_bonus.c \
-				player_handler/player_movement_bonus.c
+ifdef WITH_BONUS
+	SRC_FILES += $(SRC_FILES_BONUS)
+	CFLAGS += -DBONUS=1
+endif
 
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 SRCS_BONUS	= $(addprefix $(SRC_DIR_BONUS), $(SRC_FILES_BONUS))
@@ -133,6 +120,11 @@ fclean: clean
 	@rm -f $(LIBFT)
 
 re: fclean all
+
+bonus:
+	@$(MAKE) WITH_BONUS=1 all
+
+reb: fclean bonus
 
 .PHONY: all clean bonus fclean re
 
