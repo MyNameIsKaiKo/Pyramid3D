@@ -110,6 +110,7 @@ int	draw_frame(t_ctx *ctx)
 		ctx->player.ray.hit = 0;
 		x++;
 	}
+	draw_crossair(ctx);
 	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img.img, 0, 0);
 	return (0);
 }

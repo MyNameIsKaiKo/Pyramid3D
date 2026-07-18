@@ -110,6 +110,9 @@ void	player_left(t_ctx *ctx);
 int		mouse_handler(int x, int y, t_ctx *ctx);
 void	mouse_init(t_ctx *ctx);
 
+// -- draw cross air Function --
+void	draw_crossair(t_ctx *ctx);
+
 // -- BONUS SECTION --
 // -- Parser bonus Function --
 int		parse_color_bonus(char **color);
