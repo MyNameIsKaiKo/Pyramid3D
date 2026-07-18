@@ -175,6 +175,12 @@ typedef struct s_map
 	// t_player	player;
 }					t_map;
 
+typedef struct s_mouse
+{
+	t_vec2			pos;
+	double			sensivity;
+}					t_mouse;
+
 typedef struct s_ctx
 {
 	char			*tab_textures[NB_ALL_TEXTURES];
@@ -185,6 +191,7 @@ typedef struct s_ctx
 	int				colors[NB_COLOR];
 	char			*colors_bonus[NB_COLOR];
 	t_img			fandc_tex[2];
+	t_mouse			mouse;
 	t_img			img;
 	t_texture		tex;
 	void			*win;

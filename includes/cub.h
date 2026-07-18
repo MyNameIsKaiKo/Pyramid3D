@@ -106,6 +106,10 @@ void	player_backward(t_ctx *ctx);
 void	player_right(t_ctx *ctx);
 void	player_left(t_ctx *ctx);
 
+// -- player_mouse Function --
+int		mouse_handler(int x, int y, t_ctx *ctx);
+void	mouse_init(t_ctx *ctx);
+
 // -- BONUS SECTION --
 // -- Parser bonus Function --
 int		parse_color_bonus(char **color);

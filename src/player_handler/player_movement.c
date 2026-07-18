@@ -29,7 +29,6 @@ void	player_forward(t_ctx *ctx)
 		pos->x += dir->x * speed;
 	if (ctx->map->map_tab[(int)(pos->y + dir->y * speed)][(int)pos->x] == '0')
 		pos->y += dir->y * speed;
-	player->moves.forward = 0;
 }
 
 void	player_backward(t_ctx *ctx)
@@ -49,7 +48,6 @@ void	player_backward(t_ctx *ctx)
 		pos->x -= dir->x * speed;
 	if (ctx->map->map_tab[(int)(pos->y - dir->y * speed)][(int)pos->x] == '0')
 		pos->y -= dir->y * speed;
-	player->moves.backward = 0;
 }
 
 void	player_left(t_ctx *ctx)
@@ -69,7 +67,6 @@ void	player_left(t_ctx *ctx)
 		pos->x -= plane->x * speed;
 	if (ctx->map->map_tab[(int)(pos->y - plane->y * speed)][(int)pos->x] == '0')
 		pos->y -= plane->y * speed;
-	player->moves.left = 0;
 }
 
 void	player_right(t_ctx *ctx)
@@ -89,5 +86,4 @@ void	player_right(t_ctx *ctx)
 		pos->x += plane->x * speed;
 	if (ctx->map->map_tab[(int)(pos->y + plane->y * speed)][(int)pos->x] == '0')
 		pos->y += plane->y * speed;
-	player->moves.right = 0;
 }
