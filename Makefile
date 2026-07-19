@@ -5,7 +5,6 @@ CFLAGS		= -Wall -Wextra -Werror -MMD -MP -g
 MAKEFLAGS	+= --no-print-directory
 
 NAME		= cub3D
-NAME_BONUS	= cub3D_bonus
 
 #INCLUDES_AND_DIR________________________
 
@@ -13,8 +12,6 @@ NAME_BONUS	= cub3D_bonus
 SRC_DIR		= src/
 BUILD_DIR	= obj/
 INC_DIR		= includes/
-SRC_DIR_BONUS	= src_bonus/
-BUILD_DIR_BONUS	= obj_bonus/
 
 INCLUDES	= -I$(INC_DIR) -I$(INC_DIR)libft/ -I$(INC_DIR)gnl/ -I$(INC_DIR)minilibx
 CFLAGS		+= $(INCLUDES)
@@ -50,43 +47,39 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			pyramidmlx/pyramid_mouse.c \
 			pyramid_math/matrix.c \
 			player_handler/player.c \
-			player_handler/player_movement.c
+			player_handler/player_movement.c \
 
-SRC_FILES_BONUS = bonus/enemie.c \
+
+SRC_BONUS_FILES = bonus/enemie.c \
 				bonus/parse_color_bonus.c \
 				bonus/pyramid_draw_bonus.c \
-				bonus/pyramid_draw_tools_bonus.c
+				bonus/pyramid_draw_tools_bonus.c \
+				bonus/minimap.c
 
 ifdef WITH_BONUS
-	SRC_FILES += $(SRC_FILES_BONUS)
+	SRC_FILES += $(SRC_BONUS_FILES)
 	CFLAGS += -DBONUS=1
 endif
 
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
-SRCS_BONUS	= $(addprefix $(SRC_DIR_BONUS), $(SRC_FILES_BONUS))
 
 #OBJ_AND_DEPS____________________________
 
 OBJS		= $(SRC_FILES:%.c=$(BUILD_DIR)%.o)
 DEPS		= $(OBJS:.o=.d)
 OBJ_DIR		= $(sort $(dir $(OBJS)))
-OBJS_BONUS	= $(SRC_FILES_BONUS:%.c=$(BUILD_DIR_BONUS)%.o)
-DEPS_BONUS	= $(OBJS_BONUS:.o=.d)
-OBJ_DIR_BONUS	= $(sort $(dir $(OBJS_BONUS)))
 
 #________________________________________
 
 all: $(NAME)
 
-bonus: $(NAME_BONUS)
-
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $^ $(MFLAGS) -o $@
 	@echo "Compiles PYRAMID successfully"
 
-$(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(MLX)
-	@$(CC) $(CFLAGS) $^ $(MFLAGS) -o $@
-	@echo "Compiles BONUS PYRAMID successfully"
+$(BUILD_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
+	@echo "Compile: $<"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBFT):
 	@make -C $(INC_DIR)libft
@@ -94,29 +87,17 @@ $(LIBFT):
 $(MLX):
 	@make -C $(INC_DIR)minilibx
 
-$(BUILD_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
-	@echo "Compile: $<"
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(BUILD_DIR_BONUS)%.o: $(SRC_DIR_BONUS)%.c | $(OBJ_DIR_BONUS)
-	@echo "Compile: $<"
-	@$(CC) $(CFLAGS) -c $< -o $@
-
 $(OBJ_DIR):
-	@mkdir -p $@
-
-$(OBJ_DIR_BONUS):
 	@mkdir -p $@
 
 clean:
 	@make -C $(INC_DIR)libft/ clean
 	@make -C $(INC_DIR)minilibx/ clean
-	@rm -rf $(INC_DIR)gnl/*.d $(INC_DIR)gnl/*.o $(BUILD_DIR) $(BUILD_DIR_BONUS)
+	@rm -rf $(INC_DIR)gnl/*.d $(INC_DIR)gnl/*.o $(BUILD_DIR)
 	@echo "clean gnl (.o/.d)\nclean obj/"
 
 fclean: clean
 	rm -rf $(NAME)
-	rm -rf $(NAME_BONUS)
 	@rm -f $(LIBFT)
 
 re: fclean all
@@ -126,6 +107,6 @@ bonus:
 
 reb: fclean bonus
 
-.PHONY: all clean bonus fclean re
+.PHONY: all clean fclean re
 
--include $(DEPS) $(DEPS_BONUS)
+-include $(DEPS)

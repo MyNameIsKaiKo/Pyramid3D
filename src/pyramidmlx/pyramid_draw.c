@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_draw.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:17:52 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/08 14:17:52 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/19 15:43:26 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int	draw_frame(t_ctx *ctx)
 		ctx->player.ray.hit = 0;
 		x++;
 	}
+	print_minimap(ctx);
 	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img.img, 0, 0);
 	return (0);
 }

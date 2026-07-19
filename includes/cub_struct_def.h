@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/10 13:27:18 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/19 15:46:10 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 // -- WINDOW SIZE --
 # define WIDTH 1920
 # define HEIGHT 1080
+
+// -- MINIMAP SIZE --
+# define START_X 20
+# define START_Y 20
 
 // -- KeyBoard Close --
 # define K_ESC 65307

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/10 12:05:37 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/19 15:44:12 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,8 @@ int		parse_color_bonus(char **color);
 void	calc_floorxy(t_ctx *ctx);
 void	calc_floortex(t_ctx *ctx, int y);
 void	draw_img_bonus(t_ctx *ctx, int x);
+
+// -- minimap Function --
+void	print_minimap(t_ctx *ctx);
 
 #endif
