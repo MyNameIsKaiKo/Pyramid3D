@@ -96,6 +96,7 @@ int	draw_frame(t_ctx *ctx)
 	int	x;
 
 	x = 0;
+	protect_player(ctx);
 	if (player_moved(&ctx->player))
 		apply_movement(ctx);
 	while (x < WIDTH)

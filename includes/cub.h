@@ -105,6 +105,7 @@ void	player_forward(t_ctx *ctx);
 void	player_backward(t_ctx *ctx);
 void	player_right(t_ctx *ctx);
 void	player_left(t_ctx *ctx);
+void	protect_player(t_ctx *ctx);
 
 // -- player_mouse Function --
 int		mouse_handler(int x, int y, t_ctx *ctx);

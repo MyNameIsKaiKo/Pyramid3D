@@ -51,15 +51,9 @@ void	apply_rotation(t_ctx *ctx)
 
 	player = &ctx->player;
 	if (player->moves.left_turn)
-	{
 		rotate_vector(ctx, player->rotation_speed);
-		player->moves.left_turn = 0;
-	}
 	else if (player->moves.right_turn)
-	{
 		rotate_vector(ctx, player->rotation_speed * -1);
-		player->moves.right_turn = 0;
-	}
 }
 
 void	apply_movement(t_ctx *ctx)
