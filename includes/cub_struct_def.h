@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/19 15:46:10 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/20 17:48:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 
-// -- MINIMAP SIZE --
+// -- MINIMAP DATA --
 # define START_X 20
 # define START_Y 20
+# define SIZE_MMAP 240
+# define SIZE_BLOCK 20
+# define MCOLOR_WALL 0xff2E2727
+# define MCOLOR_FLOOR 0xffC7B4E0
 
 // -- KeyBoard Close --
 # define K_ESC 65307
