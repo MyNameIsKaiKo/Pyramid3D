@@ -45,6 +45,7 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			pyramidmlx/texture.c \
 			pyramidmlx/texture_scd.c \
 			pyramidmlx/pyramid_mouse.c \
+			pyramidmlx/cross_air.c \
 			pyramid_math/matrix.c \
 			player_handler/player.c \
 			player_handler/player_movement.c \

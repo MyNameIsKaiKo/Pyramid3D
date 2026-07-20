@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:17:52 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/19 15:43:26 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/20 18:27:25 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int	draw_frame(t_ctx *ctx)
 	int	x;
 
 	x = 0;
+	protect_player(ctx);
 	if (player_moved(&ctx->player))
 		apply_movement(ctx);
 	while (x < WIDTH)
@@ -111,6 +112,7 @@ int	draw_frame(t_ctx *ctx)
 		x++;
 	}
 	print_minimap(ctx);
+	draw_crossair(ctx);
 	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img.img, 0, 0);
 	return (0);
 }
