@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:17:52 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/20 18:27:25 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/20 20:17:02 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static void	exec_dda(t_map *map, t_ctx *ctx)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_x < 0 || ray->map_x >= map->width || ray->map_y < 0
-			|| ray->map_y >= map->height)
+		if (ray->map_x < 0 || ray->map_x >= map->x || ray->map_y < 0
+			|| ray->map_y >= map->y)
 			break ;
 		if (map->map_tab[ray->map_y][ray->map_x] != '0')
 			ray->hit = 1;

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 15:42:32 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/20 18:23:31 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/20 19:47:28 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ void	print_minimap(t_ctx *ctx)
 		while (current_block.x < SIZE_MMAP)
 		{
 			result.x = (int)((current_block.x - START_X) / SIZE_BLOCK) - 5;
-			if ((int)(ctx->player.pos.y + result.y) >= ctx->map->height
+			if ((int)(ctx->player.pos.y + result.y) >= ctx->map->y
 				|| (int)(ctx->player.pos.y + result.y) < 0
-				|| (int)(ctx->player.pos.x + result.x) >= ctx->map->width
+				|| (int)(ctx->player.pos.x + result.x) >= ctx->map->x
 				|| (int)(ctx->player.pos.x + result.x) < 0)
 				my_mlx_pixel_put(ctx, current_block.x, current_block.y, 0xff22605C);
 			else if (ctx->map->map_tab[(int)(ctx->player.pos.y + result.y)][(int)(ctx->player.pos.x + result.x)] == FLOOR)

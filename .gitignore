@@ -1,2 +1,10 @@
 /src/texture/unkown.xpm
 compile_commands.json
+*.o
+*.d
+obj/
+cub3D
+includes/gnl/*.d
+includes/gnl/*.o
+includes/libft/libft.a
+includes/libft/obj/

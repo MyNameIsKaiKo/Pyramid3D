@@ -6,18 +6,19 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/09 17:06:36 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/20 21:41:54 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	data_player(t_map *map, size_t height, size_t width)
+void	data_player(t_map *map, size_t y, size_t x)
 {
-	map->starting_coord.x = width;
-	map->starting_coord.y = height;
-	map->p_orient = map->map_tab[height][width];
+	map->starting_coord.x = x;
+	map->starting_coord.y = y;
+	map->p_orient = map->parse_map[y][x];
 	map->nb_player++;
+	map->parse_map[y][x] = FLOOR;
 }
 
 int	print_error(const char *err_msg)
@@ -32,8 +33,8 @@ static void	free_map(t_map *map)
 	int	i;
 
 	i = 0;
-	while (map && map->height
-		&& i < map->height)
+	while (map && map->y
+		&& i < map->y)
 	{
 		free(map->map_tab[i]);
 		map->map_tab[i] = NULL;

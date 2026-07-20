@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/20 17:48:45 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/20 21:40:41 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,9 +172,10 @@ typedef struct s_img
 
 typedef struct s_map
 {
+	char			**parse_map;
 	char			**map_tab;
-	int				height;
-	int				width;
+	int				y;
+	int				x;
 	t_vec2			starting_coord;
 	char			p_orient;
 	size_t			nb_player;
