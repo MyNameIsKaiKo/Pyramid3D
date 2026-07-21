@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/20 21:41:54 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/21 11:06:17 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,33 @@ int	print_error(const char *err_msg)
 	return (1);
 }
 
-static void	free_map(t_map *map)
+void	free_parse_map(t_map *map)
 {
 	int	i;
 
 	i = 0;
-	while (map && map->y
+	while (map && map->parse_map
+		&& map->y
+		&& i < map->y)
+	{
+		free(map->parse_map[i]);
+		map->parse_map[i] = NULL;
+		i++;
+	}
+	if (map && map->parse_map)
+	{
+		free(map->parse_map);
+		map->parse_map = NULL;
+	}
+}
+
+static void	free_map_tab(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (map && map->map_tab
+		&& map->y
 		&& i < map->y)
 	{
 		free(map->map_tab[i]);
@@ -66,5 +87,6 @@ void	free_ctx(t_ctx *ctx)
 		}
 		++i;
 	}
-	free_map(ctx->map);
+	free_parse_map(ctx->map);
+	free_map_tab(ctx->map);
 }

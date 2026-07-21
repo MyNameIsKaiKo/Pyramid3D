@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/20 21:58:48 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/21 11:04:01 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 // -- utils Function --
 void	data_player(t_map *map, size_t height, size_t width);
 int		print_error(const char *err_msg);
+void	free_parse_map(t_map *map);
 void	free_ctx(t_ctx *ctx);
 
 // -- parsing SECTION --
@@ -126,7 +127,10 @@ void	calc_floorxy(t_ctx *ctx);
 void	calc_floortex(t_ctx *ctx, int y);
 void	draw_img_bonus(t_ctx *ctx, int x);
 
-// -- minimap Function --
+// -- minimap_bonus Function --
 void	print_minimap(t_ctx *ctx);
+
+// -- display_minimap_bonus Function --
+void	display_map(t_ctx *ctx);
 
 #endif

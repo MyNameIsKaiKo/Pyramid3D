@@ -6,13 +6,14 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 18:48:57 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/20 21:43:52 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/21 10:16:07 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	rcolumn_isclose(char **parse_map, t_vec2 coor, int *twall, int *bwall)
+static int	rcolumn_isclose(char **parse_map,
+	t_vec2 coor, int *twall, int *bwall)
 {
 	size_t	x;
 	size_t	y;
@@ -60,7 +61,8 @@ int	valid_rcolumn_border(char **parse_map, size_t y)
 	return (print_error("The map is open"));
 }
 
-static int	lcolumn_isclose(char **parse_map, t_vec2 coor, int *twall, int *bwall)
+static int	lcolumn_isclose(char **parse_map,
+	t_vec2 coor, int *twall, int *bwall)
 {
 	size_t	x;
 	size_t	y;
