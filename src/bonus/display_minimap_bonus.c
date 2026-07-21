@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:36:27 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/21 10:43:32 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/21 11:28:14 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	display_map(t_ctx *ctx)
 		{
 			result.x = (int)((c_block.x - START_X) / SIZE_BLOCK) - 5;
 			if (is_inmap(ctx, result))
-				my_mlx_pixel_put(ctx, c_block.x, c_block.y, 0xff22605C);
+				my_mlx_pixel_put(ctx, c_block.x, c_block.y, MCOLOR_EMPTY);
 			else if (ctx->map->map_tab[(int)(ctx->player.pos.y + result.y)]
 				[(int)(ctx->player.pos.x + result.x)] == FLOOR)
-				my_mlx_pixel_put(ctx, c_block.x, c_block.y, 0xff056C5C);
+				my_mlx_pixel_put(ctx, c_block.x, c_block.y, MCOLOR_FLOOR);
 			else
-				my_mlx_pixel_put(ctx, c_block.x, c_block.y, 0xff80CCAD);
+				my_mlx_pixel_put(ctx, c_block.x, c_block.y, MCOLOR_WALL);
 			c_block.x++;
 		}
 		c_block.y++;

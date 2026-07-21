@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/20 21:40:41 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/21 11:30:16 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 # define START_Y 20
 # define SIZE_MMAP 240
 # define SIZE_BLOCK 20
-# define MCOLOR_WALL 0xff2E2727
-# define MCOLOR_FLOOR 0xffC7B4E0
+# define MCOLOR_WALL 0xff794BB4
+# define MCOLOR_FLOOR 0xffE1CFFA
+# define MCOLOR_EMPTY 0xffE6E6E6
 
 // -- KeyBoard Close --
 # define K_ESC 65307
