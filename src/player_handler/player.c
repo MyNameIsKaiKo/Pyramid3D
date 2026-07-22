@@ -20,8 +20,8 @@ void	player_init(t_ctx *ctx)
 	player = &ctx->player;
 	player->pos = ctx->map->starting_coord;
 	player->dir.x = -1.0;
-	player->dir.y = 0.0;
-	player->plane.x = 0.0;
+	player->dir.y = 1.0 / 1e30f;
+	player->plane.x = 1.0 / 1e30f;
 	player->plane.y = 0.66;
 	player->rotation_speed = 0.1;
 	player->time = 0;

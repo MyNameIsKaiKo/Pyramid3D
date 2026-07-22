@@ -14,8 +14,8 @@
 
 void	data_player(t_map *map, size_t y, size_t x)
 {
-	map->starting_coord.x = x;
-	map->starting_coord.y = y;
+	map->starting_coord.x = (double)x + 0.5;
+	map->starting_coord.y = (double)y + 0.5;
 	map->p_orient = map->parse_map[y][x];
 	map->nb_player++;
 	map->parse_map[y][x] = FLOOR;

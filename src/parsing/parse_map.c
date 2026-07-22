@@ -76,9 +76,6 @@ int	parse_map(t_map *map)
 
 static int	retrieve_map(char *line_read, t_map *map)
 {
-	int	i;
-
-	i = 0;
 	if (!map->parse_map)
 		map->parse_map = malloc(sizeof(char *) + 1);
 	else
