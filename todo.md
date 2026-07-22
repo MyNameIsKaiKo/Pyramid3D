@@ -11,3 +11,6 @@ While (il y a des fct à passer)
 		return ;
 	tab_fct++;
 }
+
+make: pourquoi reb fonctionne et pas bonus ?
+Quand on spone collé à un mur, on est dans se mur

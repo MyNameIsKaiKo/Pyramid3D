@@ -6,13 +6,13 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/20 21:43:48 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/21 17:13:50 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	space_in_map(char **tab, size_t y, size_t x)
+int	space_in_map(char **tab, size_t y, size_t x)
 {
 	if (!tab[y][x - 1] || !tab[y][x + 1]
 		|| !tab[y - 1][x] || !tab[y + 1][x])

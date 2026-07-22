@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 18:48:57 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/21 10:16:07 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/22 09:45:03 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,20 @@ static int	rcolumn_isclose(char **parse_map,
 	return (1);
 }
 
-int	valid_rcolumn_border(char **parse_map, size_t y)
+int	valid_rcolumn_border(char **tab, size_t y)
 {
 	size_t	i;
 	int		top_wall;
 	int		bottom_wall;
 
-	i = ft_strlen(parse_map[y]) - 1;
+	i = ft_strlen(tab[y]) - 1;
 	top_wall = 0;
 	bottom_wall = 0;
-	while (parse_map[y][i] && parse_map[y][i] == EMPTY)
+	while (tab[y][i] && tab[y][i] == EMPTY)
 		i--;
-	while (parse_map[y][i] && parse_map[y][i] == WALL)
+	while (tab[y][i] && tab[y][i] == WALL)
 	{
-		if (rcolumn_isclose(parse_map, (t_vec2){i, y},
+		if (rcolumn_isclose(tab, (t_vec2){i, y},
 			&top_wall, &bottom_wall) == 0)
 			return (0);
 		else
@@ -84,7 +84,7 @@ static int	lcolumn_isclose(char **parse_map,
 	return (1);
 }
 
-int	valid_lcolumn_border(char **parse_map, size_t y)
+int	valid_lcolumn_border(char **tab, size_t y)
 {
 	size_t	i;
 	int		top_wall;
@@ -93,11 +93,11 @@ int	valid_lcolumn_border(char **parse_map, size_t y)
 	i = 0;
 	top_wall = 0;
 	bottom_wall = 0;
-	while (parse_map[y][i] && parse_map[y][i] == EMPTY)
+	while (tab[y][i] && tab[y][i] == EMPTY)
 		i++;
-	while (parse_map[y][i] && parse_map[y][i] == WALL)
+	while (tab[y][i] && tab[y][i] == WALL)
 	{
-		if (lcolumn_isclose(parse_map, (t_vec2){i, y},
+		if (lcolumn_isclose(tab, (t_vec2){i, y},
 			&top_wall, &bottom_wall) == 0)
 			return (0);
 		else
@@ -106,28 +106,28 @@ int	valid_lcolumn_border(char **parse_map, size_t y)
 	return (print_error("The map is open"));
 }
 
-int	valid_border_line(char **parsemap_tab, size_t max_height)
+int	valid_border_line(char **tab, size_t max_y)
 {
 	size_t	i;
 
 	i = 0;
-	while (parsemap_tab[0][i])
+	while (tab[0][i])
 	{
-		if (!(parsemap_tab[0][i] == EMPTY || parsemap_tab[0][i] == WALL))
+		if (!(tab[0][i] == EMPTY || tab[0][i] == WALL))
 			return (print_error("A border line is incorrect"));
 		i++;
 	}
 	i = 0;
-	while (parsemap_tab[max_height][i])
+	while (tab[max_y][i])
 	{
-		if (!(parsemap_tab[max_height][i] == EMPTY
-			|| parsemap_tab[max_height][i] == WALL))
+		if (!(tab[max_y][i] == EMPTY
+			|| tab[max_y][i] == WALL))
 			return (print_error("A border line is incorrect"));
 		i++;
 	}
-	if (parsemap_tab[max_height][i]
-		&& !(parsemap_tab[max_height][i] == EMPTY
-		|| parsemap_tab[max_height][i] == WALL))
+	if (tab[max_y][i]
+		&& !(tab[max_y][i] == EMPTY
+		|| tab[max_y][i] == WALL))
 		return (print_error("A border line is incorrect"));
 	return (0);
 }

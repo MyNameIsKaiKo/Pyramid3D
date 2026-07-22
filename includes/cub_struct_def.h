@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/21 11:30:16 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/21 17:01:47 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ typedef enum e_tile_type
 {
 	FLOOR = '0',
 	WALL = '1',
+	WALL2 = '2',
+	WALL3 = '3',
+	WALL4 = '4',
+	WALL5 = '5',
+	WALL6 = '6',
 	EMPTY = ' ',
 	N_PLAYER = 'N',
 	E_PLAYER = 'E',

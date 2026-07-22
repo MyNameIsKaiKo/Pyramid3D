@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/21 11:04:01 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/22 09:45:24 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 // -- utils Function --
-void	data_player(t_map *map, size_t height, size_t width);
+void	data_player(t_map *map, size_t y, size_t x);
 int		print_error(const char *err_msg);
 void	free_parse_map(t_map *map);
 void	free_ctx(t_ctx *ctx);
@@ -45,6 +46,7 @@ int		parse_textures(char *line_read, t_ctx *ctx);
 int		parse_color(char **color);
 
 // -- copy_map Function --
+int		space_in_map(char **tab, size_t y, size_t x);
 int		copy_map(t_map **map);
 
 // -- parse_map Function --
@@ -52,9 +54,9 @@ int		parse_map(t_map *map);
 int		check_line_map(char *line_read, t_map *map);
 
 // -- valid_map Function --
-int		valid_lcolumn_border(char **map_tab, size_t height);
-int		valid_rcolumn_border(char **map_tab, size_t height);
-int		valid_border_line(char **map_tab, size_t max_height);
+int		valid_lcolumn_border(char **tab, size_t y);
+int		valid_rcolumn_border(char **tab, size_t y);
+int		valid_border_line(char **tab, size_t max_y);
 
 // -- falsemap Function --
 void	fill_fmap(t_ctx *ctx);
@@ -132,5 +134,11 @@ void	print_minimap(t_ctx *ctx);
 
 // -- display_minimap_bonus Function --
 void	display_map(t_ctx *ctx);
+
+// -- parse_map_bonus Function --
+int		parse_map_bonus(t_map *map);
+
+// -- utils_bonus Function --
+bool	iswall(t_tile_type c);
 
 #endif
