@@ -53,7 +53,7 @@ void	draw_img_bonus(t_ctx *ctx, int x)
 	y = -1;
 	ray = &ctx->player.ray;
 	setup_draw_img(ctx);
-	ctx->lutin.buffer[x] = ctx->player.ray.wall_dist;
+	ctx->sprites.buffer[x] = ctx->player.ray.wall_dist;
 	get_tex_index(ctx);
 	calc_floorxy(ctx);
 	while (++y < HEIGHT)

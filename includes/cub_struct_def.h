@@ -83,6 +83,12 @@ typedef enum e_e_textures
 	CEILING_COLOR
 }					t_e_textures;
 
+typedef enum e_sp_type
+{
+	LUTIN,
+	MOINE
+}	t_sp_type;
+
 typedef struct s_floor
 {
 	double			x;
@@ -193,13 +199,37 @@ typedef struct s_mouse
 	double			sensivity;
 }					t_mouse;
 
-typedef struct s_lutin
+typedef struct	s_sprite
 {
-	t_vec2 	pos;
-	t_img 	tex[5];
-	int 	frame;
-	double	buffer[WIDTH];
-}			t_lutin;
+	t_vec2		pos;
+	double		dist;
+	t_sp_type	type;
+}				t_sprite;
+
+typedef struct s_sprites
+{
+	t_sprite	arr[11];
+	int			count;
+	t_img		lutin_t[5];
+	t_img		moine_t[3];
+	int			frame;
+	double		buffer[WIDTH];
+}	t_sprites;
+
+typedef struct s_sprite_calc
+{
+	double	t_x;
+	double	t_y;
+	int		screen_x;
+	int		sprite_h;
+	int		sprite_w;
+	int		draw_start_y;
+	int		draw_end_y;
+	int		tex_x;
+	int		tex_y;
+	int		stripe;
+	t_img	*tex;
+}			t_sprite_calc;
 
 typedef struct s_ctx
 {
@@ -214,7 +244,7 @@ typedef struct s_ctx
 	t_mouse			mouse;
 	t_img			img;
 	t_texture		tex;
-	t_lutin			lutin;
+	t_sprites		sprites;
 	void			*win;
 	void			*mlx;
 }					t_ctx;
