@@ -50,6 +50,7 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			pyramid_math/matrix.c \
 			player_handler/player.c \
 			player_handler/player_movement.c \
+			player_handler/player_tools.c \
 
 
 SRC_BONUS_FILES = bonus/enemie.c \

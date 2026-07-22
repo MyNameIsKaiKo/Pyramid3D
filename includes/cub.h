@@ -105,6 +105,10 @@ void	get_tex_index(t_ctx *ctx);
 void	player_init(t_ctx *ctx);
 void	apply_movement(t_ctx *ctx);
 int		player_moved(t_player *player);
+void	set_north(t_player *player);
+void	set_south(t_player *player);
+void	set_east(t_player *player);
+void	set_west(t_player *player);
 
 // -- player_movement Function --
 void	player_forward(t_ctx *ctx);

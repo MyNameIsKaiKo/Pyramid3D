@@ -12,6 +12,23 @@
 
 #include "cub.h"
 
+static void set_oriant(t_ctx *ctx)
+{
+	t_player *player;
+
+	player = &ctx->player;
+
+	if (ctx->map->p_orient == 'N')
+		set_north(player);
+	if (ctx->map->p_orient == 'S')
+		set_south(player);
+	if (ctx->map->p_orient == 'E')
+		set_east(player);
+	if (ctx->map->p_orient == 'W')
+		set_west(player);
+	return ;
+}
+
 /** @brief player->plane.y represent the fov */
 void	player_init(t_ctx *ctx)
 {
@@ -19,10 +36,7 @@ void	player_init(t_ctx *ctx)
 
 	player = &ctx->player;
 	player->pos = ctx->map->starting_coord;
-	player->dir.x = -1.0;
-	player->dir.y = 1.0 / 1e30f;
-	player->plane.x = 1.0 / 1e30f;
-	player->plane.y = 0.66;
+	set_oriant(ctx);
 	player->rotation_speed = 0.1;
 	player->time = 0;
 	player->old_time = player->time;
@@ -51,9 +65,9 @@ void	apply_rotation(t_ctx *ctx)
 
 	player = &ctx->player;
 	if (player->moves.left_turn)
-		rotate_vector(ctx, player->rotation_speed);
-	else if (player->moves.right_turn)
 		rotate_vector(ctx, player->rotation_speed * -1);
+	else if (player->moves.right_turn)
+		rotate_vector(ctx, player->rotation_speed);
 }
 
 void	apply_movement(t_ctx *ctx)

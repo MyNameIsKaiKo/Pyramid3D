@@ -29,7 +29,7 @@ int	mouse_handler(int x, int y, t_ctx *ctx)
 		return (0);
 	delta.x = x - center_x;
 	tetha = (int)delta.x * ctx->mouse.sensivity;
-	rotate_vector(ctx, tetha * (-1));
+	rotate_vector(ctx, tetha);
 	mlx_mouse_move(ctx->mlx, ctx->win, center_x, center_y);
 	return (0);
 }
