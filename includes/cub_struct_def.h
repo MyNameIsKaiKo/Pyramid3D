@@ -193,6 +193,14 @@ typedef struct s_mouse
 	double			sensivity;
 }					t_mouse;
 
+typedef struct s_lutin
+{
+	t_vec2 	pos;
+	t_img 	tex[5];
+	int 	frame;
+	double	buffer[WIDTH];
+}			t_lutin;
+
 typedef struct s_ctx
 {
 	char			*tab_textures[NB_ALL_TEXTURES];
@@ -206,6 +214,7 @@ typedef struct s_ctx
 	t_mouse			mouse;
 	t_img			img;
 	t_texture		tex;
+	t_lutin			lutin;
 	void			*win;
 	void			*mlx;
 }					t_ctx;
