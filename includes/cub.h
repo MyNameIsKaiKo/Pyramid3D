@@ -22,10 +22,10 @@
 // -- Externe --
 # include <fcntl.h>
 # include <math.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdbool.h>
 
 // -- utils Function --
 void	data_player(t_map *map, size_t y, size_t x);
@@ -144,5 +144,18 @@ int		parse_map_bonus(t_map *map);
 
 // -- utils_bonus Function --
 bool	iswall(t_tile_type c);
+
+// -- Sprites SECTION --
+void	render_all_sprites(t_ctx *ctx);
+
+// -- Sprites Tools Function --
+t_vec2	get_delta(t_ctx *ctx, int i);
+void	set_sprdist(t_ctx *ctx);
+void	sort_sprdist(t_sprites *sprites);
+
+// -- Sprites Calc Function --
+void	sprite_draw_calc(t_sprite_calc *calc);
+void	setup_base_calc(t_sprite_calc *calc);
+void	calc_transform(t_ctx *ctx, t_sprite_calc *calc, int i);
 
 #endif

@@ -12,7 +12,3 @@
 
 #include "cub.h"
 
-void draw_lutin(t_ctx *ctx)
-{
-	
-}

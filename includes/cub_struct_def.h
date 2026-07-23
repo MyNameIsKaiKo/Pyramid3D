@@ -56,6 +56,8 @@
 # define NB_TEXTURES 4
 # define NB_ALL_TEXTURES 6
 
+# define SWIDTH 128
+
 typedef enum e_tile_type
 {
 	FLOOR = '0',
@@ -87,7 +89,7 @@ typedef enum e_sp_type
 {
 	LUTIN,
 	MOINE
-}	t_sp_type;
+}					t_sp_type;
 
 typedef struct s_floor
 {
@@ -199,37 +201,39 @@ typedef struct s_mouse
 	double			sensivity;
 }					t_mouse;
 
-typedef struct	s_sprite
+typedef struct s_sprite
 {
-	t_vec2		pos;
-	double		dist;
-	t_sp_type	type;
-}				t_sprite;
+	t_vec2			pos;
+	double			dist;
+	t_sp_type		type;
+}					t_sprite;
 
 typedef struct s_sprites
 {
-	t_sprite	arr[11];
-	int			count;
-	t_img		lutin_t[5];
-	t_img		moine_t[3];
-	int			frame;
-	double		buffer[WIDTH];
-}	t_sprites;
+	t_sprite		arr[11];
+	int				count;
+	t_img			lutin_t[5];
+	t_img			moine_t[3];
+	int				frame;
+	double			buffer[WIDTH];
+}					t_sprites;
 
 typedef struct s_sprite_calc
 {
-	double	t_x;
-	double	t_y;
-	int		screen_x;
-	int		sprite_h;
-	int		sprite_w;
-	int		draw_start_y;
-	int		draw_end_y;
-	int		tex_x;
-	int		tex_y;
-	int		stripe;
-	t_img	*tex;
-}			t_sprite_calc;
+	double			t_x;
+	double			t_y;
+	int				screen_x;
+	int				sprite_h;
+	int				sprite_w;
+	int				draw_start_y;
+	int				draw_end_y;
+	int				tex_x;
+	int				tex_y;
+	int				stripe;
+	int				draw_start_x;
+	int				draw_end_x;
+	t_img			*tex;
+}					t_sprite_calc;
 
 typedef struct s_ctx
 {
