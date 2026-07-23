@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 14:54:26 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 15:03:13 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,82 +39,4 @@ size_t	ft_strcharlen(char *s, char c)
 	while (s[i] && s[i] == c)
 		i++;
 	return (i);
-}
-
-void	free_parse_map(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (map && map->parse_map
-		&& map->y
-		&& i < map->y)
-	{
-		free(map->parse_map[i]);
-		map->parse_map[i] = NULL;
-		i++;
-	}
-	if (map && map->parse_map)
-	{
-		free(map->parse_map);
-		map->parse_map = NULL;
-	}
-}
-
-static void	free_map_tab(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (map && map->map_tab
-		&& map->y
-		&& i < map->y)
-	{
-		free(map->map_tab[i]);
-		map->map_tab[i] = NULL;
-		i++;
-	}
-	if (map && map->map_tab)
-	{
-		free(map->map_tab);
-		map->map_tab = NULL;
-	}
-	if (map)
-	{
-		free(map);
-		map = NULL;
-	}
-}
-
-void	free_ctx(t_ctx *ctx)
-{
-	int	i;
-
-	i = 0;
-	if (!BONUS)
-	{
-		while (i < NB_ALL_TEXTURES)
-		{
-			if (ctx->tab_textures[i])
-			{
-				free(ctx->tab_textures[i]);
-				ctx->tab_textures[i] = NULL;
-			}
-			++i;
-		}
-	}
-	if (BONUS)
-	{
-		while (i < NB_BONUS_TEXTURES)
-		{
-			if (ctx->tab_tex_bonus[i])
-			{
-				free(ctx->tab_tex_bonus[i]);
-				ctx->tab_tex_bonus[i] = NULL;
-			}
-			++i;
-		}
-	}
-	free_parse_map(ctx->map);
-	free_map_tab(ctx->map);
 }

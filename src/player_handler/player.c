@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:20:00 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/08 14:20:00 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/23 15:36:06 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void set_oriant(t_ctx *ctx)
+static void	set_oriant(t_ctx *ctx)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = &ctx->player;
-
 	if (ctx->map->p_orient == 'N')
 		set_north(player);
 	if (ctx->map->p_orient == 'S')

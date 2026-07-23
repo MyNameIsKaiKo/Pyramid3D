@@ -62,7 +62,6 @@ SRC_BONUS_FILES = bonus/enemie.c \
 				bonus/parse_map_bonus.c \
 				bonus/parse_tex_bonus.c \
 				bonus/utils_bonus.c
-# 				bonus/parse_color_bonus.c \
 
 ifdef WITH_BONUS
 	SRC_FILES += $(SRC_BONUS_FILES)

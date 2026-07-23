@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 12:07:27 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 12:31:07 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 15:38:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	recover_file_bonus(char *file, t_ctx *ctx)
 	return (result);
 }
 
-int	parsing_bonus (char *file, t_ctx *ctx)
+int	parsing_bonus(char *file, t_ctx *ctx)
 {
 	if (recover_file_bonus(file, ctx) > 0)
 		return (1);

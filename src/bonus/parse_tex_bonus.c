@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 14:11:59 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 15:37:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 	int						len;
 	int						i_tab;
 	char					**ctx_textures;
-	const t_tex_mgnt_bonus	tab[] = {{"NO ", B_NO_WALL}, {"SO ", B_SO_WALL}, {"WE ",
-		B_WE_WALL}, {"EA ", B_EA_WALL}, {"L ", B_L_LUTIN}, {"CH ", B_CH_CHALLENGER}, {"F ", B_F_FLOOR_COLOR}, {"C ",
-		B_C_CEILING_COLOR}};
+	const t_tex_mgnt_bonus	tab[] = {{"NO ", B_NO_WALL}, {"SO ", B_SO_WALL},
+	{"WE ", B_WE_WALL}, {"EA ", B_EA_WALL}, {"L ", B_L_LUTIN}, {"CH ",
+		B_CH_CHALLENGER}, {"F ", B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
 
 	i_tab = -1;
 	while (++i_tab < NB_BONUS_TEXTURES)

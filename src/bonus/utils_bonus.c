@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 09:31:33 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 14:09:07 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 15:13:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,20 @@ void	data_lutin(t_map *map, size_t y, size_t x)
 	map->lutin_pos.y = (double)y + 0.5;
 	map->nb_lutin++;
 	map->parse_map[y][x] = FLOOR;
+}
+
+void	free_bonus_struct(t_ctx *ctx)
+{
+	int	i;
+
+	i = 0;
+	while (i < NB_BONUS_TEXTURES)
+	{
+		if (ctx->tab_tex_bonus[i])
+		{
+			free(ctx->tab_tex_bonus[i]);
+			ctx->tab_tex_bonus[i] = NULL;
+		}
+		++i;
+	}
 }

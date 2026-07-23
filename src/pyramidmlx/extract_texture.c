@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:58:03 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 14:52:48 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 15:36:39 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,25 +72,14 @@ void	texture_data(t_ctx *ctx)
 			ctx->wall_tex[i].img = mlx_xpm_file_to_image(ctx->mlx,
 					ctx->tab_textures[i], &w, &h);
 			ctx->wall_tex[i].addr = mlx_get_data_addr(ctx->wall_tex[i].img,
-					&ctx->wall_tex[i].bits_per_pixel, &ctx->wall_tex[i].line_lenght,
-					&ctx->wall_tex[i].endian);
+					&ctx->wall_tex[i].bits_per_pixel,
+					&ctx->wall_tex[i].line_lenght, &ctx->wall_tex[i].endian);
 			i++;
 		}
-			get_color(ctx);
+		get_color(ctx);
 	}
 	else if (BONUS)
-	{
-		while (i < NB_BONUS_TEXTURES)
-		{
-			ctx->wall_tex_bonus[i].img = mlx_xpm_file_to_image(ctx->mlx,
-					ctx->tab_tex_bonus[i], &w, &h);
-			ctx->wall_tex_bonus[i].addr = mlx_get_data_addr(ctx->wall_tex_bonus[i].img,
-					&ctx->wall_tex_bonus[i].bits_per_pixel, &ctx->wall_tex_bonus[i].line_lenght,
-					&ctx->wall_tex_bonus[i].endian);
-			i++;
-		}
-		get_bonus_color(ctx, &w, &h);
-	}
+		texture_data_bonus(ctx);
 	ctx->tex.height = h;
 	ctx->tex.witdh = w;
 }

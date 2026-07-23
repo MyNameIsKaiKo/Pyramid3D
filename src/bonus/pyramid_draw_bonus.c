@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/12 14:31:49 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 14:19:18 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 15:19:27 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	draw_walls(t_ctx *ctx, int x, int y)
 		color = get_texture_pixel(&ctx->wall_tex[ctx->tex.index], ctx->tex.x,
 				ctx->tex.y);
 	else if (BONUS)
-		color = get_texture_pixel(&ctx->wall_tex_bonus[ctx->tex.index], ctx->tex.x,
-			ctx->tex.y);
+		color = get_texture_pixel(&ctx->wall_tex_bonus[ctx->tex.index],
+				ctx->tex.x, ctx->tex.y);
 	my_mlx_pixel_put(ctx, x, y, color);
 }
 
