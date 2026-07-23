@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 11:00:31 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 14:54:26 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,29 @@ void	free_ctx(t_ctx *ctx)
 	int	i;
 
 	i = 0;
-	while (i < NB_ALL_TEXTURES)
+	if (!BONUS)
 	{
-		if (ctx->tab_textures[i])
+		while (i < NB_ALL_TEXTURES)
 		{
-			free(ctx->tab_textures[i]);
-			ctx->tab_textures[i] = NULL;
+			if (ctx->tab_textures[i])
+			{
+				free(ctx->tab_textures[i]);
+				ctx->tab_textures[i] = NULL;
+			}
+			++i;
 		}
-		++i;
+	}
+	if (BONUS)
+	{
+		while (i < NB_BONUS_TEXTURES)
+		{
+			if (ctx->tab_tex_bonus[i])
+			{
+				free(ctx->tab_tex_bonus[i]);
+				ctx->tab_tex_bonus[i] = NULL;
+			}
+			++i;
+		}
 	}
 	free_parse_map(ctx->map);
 	free_map_tab(ctx->map);

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:17:05 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 14:26:07 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 14:55:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void	tex_free(t_ctx *ctx)
 			mlx_destroy_image(ctx->mlx, ctx->wall_tex_bonus[i].img);
 			i++;
 		}
+		mlx_destroy_image(ctx->mlx, ctx->fandc_tex[0].img);
+		mlx_destroy_image(ctx->mlx, ctx->fandc_tex[1].img);
 	}
 }
