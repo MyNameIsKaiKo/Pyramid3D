@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:17:05 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 15:13:58 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 15:49:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	free_ctx(t_ctx *ctx)
 		}
 	}
 	if (BONUS)
-		free_bonus_strutc(ctx);
+		free_bonus_struct(ctx);
 	free_parse_map(ctx->map);
 	free_map_tab(ctx->map);
 }

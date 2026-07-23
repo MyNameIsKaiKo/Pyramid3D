@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:58:03 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 15:36:39 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 15:49:42 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,6 @@ static void	get_color(t_ctx *ctx)
 {
 	ctx->colors[0] = extract_color(ctx->tab_textures[FLOOR_COLOR]);
 	ctx->colors[1] = extract_color(ctx->tab_textures[CEILING_COLOR]);
-}
-
-static void	get_bonus_color(t_ctx *ctx, int *w, int *h)
-{
-	int	floor;
-	int	ceil;
-
-	floor = 0;
-	ceil = 1;
-	ctx->fandc_tex[floor].img = mlx_xpm_file_to_image(ctx->mlx,
-			ctx->tab_tex_bonus[B_F_FLOOR_COLOR], w, h);
-	ctx->fandc_tex[floor].addr = mlx_get_data_addr(ctx->fandc_tex[floor].img,
-			&ctx->fandc_tex[floor].bits_per_pixel,
-			&ctx->fandc_tex[floor].line_lenght, &ctx->fandc_tex[floor].endian);
-	ctx->fandc_tex[ceil].img = mlx_xpm_file_to_image(ctx->mlx,
-			ctx->tab_tex_bonus[B_C_CEILING_COLOR], w, h);
-	ctx->fandc_tex[ceil].addr = mlx_get_data_addr(ctx->fandc_tex[ceil].img,
-			&ctx->fandc_tex[ceil].bits_per_pixel,
-			&ctx->fandc_tex[ceil].line_lenght,
-			&ctx->fandc_tex[ceil].endian);
 }
 
 void	texture_data(t_ctx *ctx)
