@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:17:05 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/08 14:17:05 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/23 14:26:07 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,19 @@ void	tex_free(t_ctx *ctx)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	if (!BONUS)
 	{
-		mlx_destroy_image(ctx->mlx, ctx->wall_tex[i].img);
-		i++;
+		while (i < NB_TEXTURES)
+		{
+			mlx_destroy_image(ctx->mlx, ctx->wall_tex[i].img);
+			i++;
+		}
 	}
 	if (BONUS)
 	{
-		i = 0;
-		while (i < 2)
+		while (i < NB_BONUS_TEXTURES)
 		{
-			mlx_destroy_image(ctx->mlx, ctx->fandc_tex[i].img);
+			mlx_destroy_image(ctx->mlx, ctx->wall_tex_bonus[i].img);
 			i++;
 		}
 	}

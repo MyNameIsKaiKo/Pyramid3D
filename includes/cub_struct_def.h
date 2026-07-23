@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 14:11:09 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 14:18:32 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,7 @@ typedef struct s_ctx
 	size_t			n_textures;
 	t_player		player;
 	t_img			wall_tex[NB_ALL_TEXTURES];
+	t_img			wall_tex_bonus[NB_BONUS_TEXTURES];
 	int				colors[NB_COLOR];
 	// char			*colors_bonus[NB_COLOR];
 	t_img			fandc_tex[2];
