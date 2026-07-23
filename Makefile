@@ -54,13 +54,15 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 
 
 SRC_BONUS_FILES = bonus/enemie.c \
-				bonus/parse_color_bonus.c \
 				bonus/pyramid_draw_bonus.c \
 				bonus/pyramid_draw_tools_bonus.c \
 				bonus/minimap_bonus.c \
 				bonus/display_minimap_bonus.c \
+				bonus/parsing_bonus.c \
 				bonus/parse_map_bonus.c \
+				bonus/parse_tex_bonus.c \
 				bonus/utils_bonus.c
+# 				bonus/parse_color_bonus.c \
 
 ifdef WITH_BONUS
 	SRC_FILES += $(SRC_BONUS_FILES)

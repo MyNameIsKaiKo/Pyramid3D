@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/22 09:45:24 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 14:09:07 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	data_player(t_map *map, size_t y, size_t x);
 int		print_error(const char *err_msg);
 void	free_parse_map(t_map *map);
 void	free_ctx(t_ctx *ctx);
+size_t	ft_strcharlen(char *s, char c);
 
 // -- parsing SECTION --
 // -- parsing Function --
@@ -142,7 +143,17 @@ void	display_map(t_ctx *ctx);
 // -- parse_map_bonus Function --
 int		parse_map_bonus(t_map *map);
 
+// -- parse_tex_bonus Function --
+int		parse_path_bonus(char **textures);
+int		parse_tex_bonus(char *line_read, t_ctx *ctx);
+
 // -- utils_bonus Function --
 bool	iswall(t_tile_type c);
+int		close_map(char **tab, size_t y, size_t x);
+void	data_challenger(t_map *map, size_t y, size_t x);
+void	data_lutin(t_map *map, size_t y, size_t x);
+
+// -- parsing_bonus Function --
+int		parsing_bonus (char *file, t_ctx *ctx);
 
 #endif

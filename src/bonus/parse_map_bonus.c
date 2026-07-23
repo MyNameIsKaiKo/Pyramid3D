@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:36:39 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/22 09:51:52 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 14:11:29 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,32 @@ static int	fst_lst_line(char **tab, size_t max_y)
 	return (0);
 }
 
-static int	close_map(char **tab, size_t y, size_t x)
-{
-	char	top_case;
-	char	left_case;
-	char	right_case;
-	char	bottom_case;
-
-	top_case = tab[y - 1][x];
-	left_case = tab[y][x - 1];
-	right_case = tab[y][x + 1];
-	bottom_case = tab[y + 1][x];
-	if (!iswall(top_case) && top_case != FLOOR)
-		return (1);
-	return (0);
-}
-
 static int	check_floor(char **tab, size_t y, size_t x)
 {
 	if (space_in_map(tab, y, x) > 0
 		|| close_map(tab, y, x) > 0)
 		return (1);
 	return (0);
+}
+
+static int	check_pnj(char c, size_t y, size_t x, t_map *map)
+{
+	if (c == N_PLAYER || c == E_PLAYER || c == S_PLAYER || c == W_PLAYER)
+	{
+		data_player(map, y, x);
+		return (0);
+	}
+	if (c == CHALLENGER)
+	{
+		data_challenger(map, y, x);
+		return (0);
+	}
+	if (c == LUTIN)
+	{
+		data_lutin(map, y, x);
+		return (0);
+	}
+	return (1);
 }
 
 static int	check_charbonus(char **tab, size_t y, size_t x, t_map *map)
@@ -77,11 +81,8 @@ static int	check_charbonus(char **tab, size_t y, size_t x, t_map *map)
 			return (1);
 		return (0);
 	}
-	if (c == N_PLAYER || c == E_PLAYER || c == S_PLAYER || c == W_PLAYER)
-	{
-		data_player(map, y, x);
+	if (check_pnj(c, y, x, map) == 0)
 		return (0);
-	}
 	print_error("A char in map is incorrect");
 	return (1);
 }

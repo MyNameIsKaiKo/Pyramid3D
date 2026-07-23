@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/21 11:06:17 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 11:00:31 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ int	print_error(const char *err_msg)
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(err_msg, 2);
 	return (1);
+}
+
+/** @brief return number of char before char c, c include*/
+size_t	ft_strcharlen(char *s, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	while (s[i] && s[i] == c)
+		i++;
+	return (i);
 }
 
 void	free_parse_map(t_map *map)

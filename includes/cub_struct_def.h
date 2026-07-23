@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/21 17:01:47 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 14:11:09 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define NB_COLOR 2
 # define NB_TEXTURES 4
 # define NB_ALL_TEXTURES 6
+# define NB_BONUS_TEXTURES 8
 
 typedef enum e_tile_type
 {
@@ -69,7 +70,9 @@ typedef enum e_tile_type
 	N_PLAYER = 'N',
 	E_PLAYER = 'E',
 	S_PLAYER = 'S',
-	W_PLAYER = 'W'
+	W_PLAYER = 'W',
+	LUTIN = 'L',
+	CHALLENGER = 'C'
 }					t_tile_type;
 
 /** @important Textures with paths must be placed before the RGB colours */
@@ -82,6 +85,18 @@ typedef enum e_e_textures
 	FLOOR_COLOR,
 	CEILING_COLOR
 }					t_e_textures;
+
+typedef enum e_bonus_tex
+{
+	B_NO_WALL,
+	B_SO_WALL,
+	B_WE_WALL,
+	B_EA_WALL,
+	B_L_LUTIN,
+	B_CH_CHALLENGER,
+	B_F_FLOOR_COLOR,
+	B_C_CEILING_COLOR
+}					t_bonus_tex;
 
 typedef struct s_floor
 {
@@ -149,6 +164,12 @@ typedef struct s_tex_mgnt
 	t_e_textures	textures;
 }					t_tex_mgnt;
 
+typedef struct s_tex_mgnt_bonus
+{
+	char		*cmp;
+	t_bonus_tex	textures;
+}					t_tex_mgnt_bonus;
+
 typedef struct s_ttype_mgnt
 {
 	t_tile_type		tile_type;
@@ -185,6 +206,10 @@ typedef struct s_map
 	t_vec2			starting_coord;
 	char			p_orient;
 	size_t			nb_player;
+	t_vec2			challenger_pos;
+	size_t			nb_challenger;
+	t_vec2			lutin_pos;
+	size_t			nb_lutin;
 }					t_map;
 
 typedef struct s_mouse
@@ -196,12 +221,13 @@ typedef struct s_mouse
 typedef struct s_ctx
 {
 	char			*tab_textures[NB_ALL_TEXTURES];
+	char			*tab_tex_bonus[NB_BONUS_TEXTURES];
 	t_map			*map;
 	size_t			n_textures;
 	t_player		player;
 	t_img			wall_tex[NB_ALL_TEXTURES];
 	int				colors[NB_COLOR];
-	char			*colors_bonus[NB_COLOR];
+	// char			*colors_bonus[NB_COLOR];
 	t_img			fandc_tex[2];
 	t_mouse			mouse;
 	t_img			img;

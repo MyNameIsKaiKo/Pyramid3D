@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/03 13:49:55 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 12:13:10 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/07/23 12:07:27 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/07/23 12:31:07 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	parse_line(char *line_read, t_ctx *ctx)
+static int	parse_line_bonus(char *line_read, t_ctx *ctx)
 {
-	if (ctx->n_textures < NB_ALL_TEXTURES)
+	if (ctx->n_textures < NB_BONUS_TEXTURES)
 	{
 		if (ft_strncmp(line_read, "\n", 2) == 0)
 			return (0);
-		if (parse_textures(line_read, ctx) > 0)
+		else if (parse_tex_bonus(line_read, ctx) > 0)
 			return (1);
 	}
 	else
@@ -29,7 +29,7 @@ static int	parse_line(char *line_read, t_ctx *ctx)
 	return (0);
 }
 
-static int	read_line(t_ctx *ctx, int fd_map)
+static int	read_line_bonus(t_ctx *ctx, int fd_map)
 {
 	char	*line_read;
 
@@ -41,7 +41,7 @@ static int	read_line(t_ctx *ctx, int fd_map)
 	}
 	while (line_read)
 	{
-		if (parse_line(line_read, ctx) > 0)
+		if (parse_line_bonus(line_read, ctx) > 0)
 		{
 			free(line_read);
 			return (1);
@@ -53,7 +53,7 @@ static int	read_line(t_ctx *ctx, int fd_map)
 	return (0);
 }
 
-static int	recover_file(char *file, t_ctx *ctx)
+static int	recover_file_bonus(char *file, t_ctx *ctx)
 {
 	int	fd_map;
 	int	result;
@@ -64,46 +64,19 @@ static int	recover_file(char *file, t_ctx *ctx)
 		print_error("Failed read the map");
 		return (1);
 	}
-	result = read_line(ctx, fd_map);
+	result = read_line_bonus(ctx, fd_map);
 	close(fd_map);
 	get_next_line(fd_map);
 	return (result);
 }
 
-int	parse_extention(char *file, char *extention)
+int	parsing_bonus (char *file, t_ctx *ctx)
 {
-	char	*ext_file;
-	int		size_ext;
-
-	ext_file = ft_strrchr(file, '.');
-	if (!ext_file)
-		return (print_error("bad extention (.cub or .xpm)"));
-	size_ext = ft_strlen(ext_file);
-	if (ft_strncmp(ext_file, extention, size_ext + 1) != 0)
-		return (print_error("bad extention (.cub or .xpm)"));
-	return (0);
-}
-
-int	parsing(char *file, t_ctx *ctx)
-{
-	if (parse_extention(file, EXT_FILE) > 0)
+	if (recover_file_bonus(file, ctx) > 0)
 		return (1);
-	if (BONUS && parsing_bonus(file, ctx) > 0)
+	if (parse_path_bonus(ctx->tab_tex_bonus) > 0)
 		return (1);
-	else if (!BONUS)
-	{
-		if (recover_file(file, ctx) > 0)
-			return (1);
-		if (parse_path(ctx->tab_textures) > 0)
-			return (1);
-		if (parse_color(ctx->tab_textures) > 0)
-			return (1);
-		if (parse_map(ctx->map) > 0)
-			return (1);
-	}
-	if (ctx->map->nb_player != 1)
-		return (print_error("The number of player is incorrect"));
-	if (copy_map(&ctx->map) > 0)
+	if (parse_map_bonus(ctx->map) > 0)
 		return (1);
 	return (0);
 }

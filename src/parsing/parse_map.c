@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/21 17:13:50 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 12:00:38 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	parse_map(t_map *map)
 	return (0);
 }
 
-static int	retrieve_map(char *line_read, t_map *map)
+static int	recover_map(char *line_read, t_map *map)
 {
 	if (!map->parse_map)
 		map->parse_map = malloc(sizeof(char *) + 1);
@@ -105,7 +105,7 @@ int	check_line_map(char *line_read, t_map *map)
 	max_width = ft_strlen(line_read);
 	if (max_width > map->x)
 		map->x = max_width;
-	if (retrieve_map(line_read, map) > 0)
+	if (recover_map(line_read, map) > 0)
 		return (1);
 	map->y++;
 	return (0);

@@ -1,5 +1,16 @@
-(re)ajouter les ennemies (looser)
-ajouter les portes
+ajouter: in map and texture
+
+- C challenger
+- L lutin
+
+Ok - 1: accepter les char
+2: mettre les infos dans les structs
+
+possible de creer une struct pour les challenger et les lutins(lutin)
+si on en veut plusieurs. Il y a un compteur pour chacun.
+
+3: verif les textures
+
 ajouter les sauts et s accroupir
 
 code en road map:
@@ -13,4 +24,3 @@ While (il y a des fct à passer)
 }
 
 make: pourquoi reb fonctionne et pas bonus ?
-Quand on spone collé à un mur, on est dans se mur
