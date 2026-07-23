@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 15:39:37 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 16:03:28 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,6 @@ void	free_bonus_struct(t_ctx *ctx);
 int		parsing_bonus(char *file, t_ctx *ctx);
 
 // -- Texture_data_bonus Function --
-void	texture_data_bonus(t_ctx *ctx);
+void	texture_data_bonus(t_ctx *ctx, int *w, int *h);
 
 #endif

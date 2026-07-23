@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:58:03 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 15:49:42 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 16:03:20 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	texture_data(t_ctx *ctx)
 	int	h;
 
 	i = 0;
+	w = 0;
+	h = 0;
 	if (!BONUS)
 	{
 		while (i < NB_TEXTURES)
@@ -59,7 +61,7 @@ void	texture_data(t_ctx *ctx)
 		get_color(ctx);
 	}
 	else if (BONUS)
-		texture_data_bonus(ctx);
+		texture_data_bonus(ctx, &w, &h);
 	ctx->tex.height = h;
 	ctx->tex.witdh = w;
 }
