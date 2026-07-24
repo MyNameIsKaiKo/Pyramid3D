@@ -40,14 +40,32 @@ static void	draw_sprite(t_ctx *ctx, t_sprite_calc *calc, t_img *img)
 	}
 }
 
+static void	update_animations(t_sprites *sprites)
+{
+	int tick;
+	int anim_speed = 10;
+
+	tick = 1;
+	tick++;
+	if (tick >= anim_speed)
+	{
+		sprites->frame++;
+		if (sprites->frame >= 5)
+			sprites->frame = 0;
+		tick = 0;
+	}
+}
+
 static t_img	get_right_img(t_sprites *sprites, int i)
 {
 	t_img	tmp;
+	int current_frame;
 
+	current_frame = sprites->frame / ANIMATIONSPEED;
 	if (sprites->arr[i].type == LUTIN)
-		tmp = sprites->lutin_t[0];
+		tmp = sprites->lutin_t[current_frame % 5];
 	else
-		tmp = sprites->moine_t[0];
+		tmp = sprites->moine_t[current_frame % 3];
 	return (tmp);
 }
 
@@ -58,6 +76,7 @@ void	render_all_sprites(t_ctx *ctx)
 	t_img			tmp;
 
 	i = 0;
+	ctx->sprites.frame++;
 	set_sprdist(ctx);
 	sort_sprdist(&ctx->sprites);
 	while (i < ctx->sprites.count)

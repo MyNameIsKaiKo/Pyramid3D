@@ -56,7 +56,9 @@
 # define NB_TEXTURES 4
 # define NB_ALL_TEXTURES 6
 
+// -- Sprites --
 # define SWIDTH 128
+# define ANIMATIONSPEED 10
 
 typedef enum e_tile_type
 {

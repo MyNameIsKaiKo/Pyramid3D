@@ -132,6 +132,7 @@ int		parse_color_bonus(char **color);
 void	calc_floorxy(t_ctx *ctx);
 void	calc_floortex(t_ctx *ctx, int y);
 void	draw_img_bonus(t_ctx *ctx, int x);
+void 	draw_bonus(t_ctx *ctx);
 
 // -- minimap_bonus Function --
 void	print_minimap(t_ctx *ctx);
@@ -147,6 +148,7 @@ bool	iswall(t_tile_type c);
 
 // -- Sprites SECTION --
 void	render_all_sprites(t_ctx *ctx);
+void	false_lutin(t_ctx *ctx);
 
 // -- Sprites Tools Function --
 t_vec2	get_delta(t_ctx *ctx, int i);

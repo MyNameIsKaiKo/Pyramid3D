@@ -44,6 +44,8 @@ int	pyramid_loop(t_ctx *ctx)
 	if (map_init(ctx))
 		return (1);
 	texture_data(ctx);
+	if (BONUS)
+		false_lutin(ctx);
 	mouse_init(ctx);
 	mlx_loop_hook(ctx->mlx, draw_frame, ctx);
 	mlx_hook(ctx->win, 17, 0, close_app, ctx);

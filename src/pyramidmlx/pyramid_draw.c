@@ -112,7 +112,7 @@ int	draw_frame(t_ctx *ctx)
 		x++;
 	}
 	if (BONUS)
-		print_minimap(ctx);
+		draw_bonus(ctx);
 	draw_crossair(ctx);
 	mlx_put_image_to_window(ctx->mlx, ctx->win, ctx->img.img, 0, 0);
 	return (0);

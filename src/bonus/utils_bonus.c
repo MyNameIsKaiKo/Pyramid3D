@@ -17,3 +17,9 @@ bool	iswall(t_tile_type c)
 {
 	return (c >= WALL && c <= WALL6);
 }
+
+void draw_bonus(t_ctx *ctx)
+{
+	print_minimap(ctx);
+	render_all_sprites(ctx);
+}
