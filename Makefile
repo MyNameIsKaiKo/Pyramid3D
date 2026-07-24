@@ -53,14 +53,19 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			player_handler/player_tools.c \
 
 
-SRC_BONUS_FILES = bonus/enemie.c \
-				bonus/parse_color_bonus.c \
+SRC_BONUS_FILES = bonus/parse_color_bonus.c \
 				bonus/pyramid_draw_bonus.c \
 				bonus/pyramid_draw_tools_bonus.c \
 				bonus/minimap_bonus.c \
 				bonus/display_minimap_bonus.c \
 				bonus/parse_map_bonus.c \
-				bonus/utils_bonus.c
+				bonus/utils_bonus.c \
+				bonus/sprites/enemie.c \
+				bonus/sprites/lutin.c \
+				bonus/sprites/sprites_calc.c \
+				bonus/sprites/sprites_handler.c \
+				bonus/sprites/sprites_tools.c \
+				pyramidmlx/false_lutin.c
 
 ifdef WITH_BONUS
 	SRC_FILES += $(SRC_BONUS_FILES)
