@@ -1,0 +1,96 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   recover_tex_sprite.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/24 18:27:20 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/07/24 18:44:14 by ldepenne         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub.h"
+
+static int	lutin_sprite(char **tab, t_ctx *ctx)
+{
+	int	i;
+	int	id;
+
+	i = 1;
+	id = 0;
+	while (i < MAXLFRAME + 1)
+	{
+		ctx->sprites.lutin_p[id] = ft_strdup(tab[i]);
+		if (!ctx->sprites.lutin_p[id])
+			return (print_error("ft_strdup failed"));
+		i++;
+		id++;
+	}
+	return (0);
+}
+
+static int	moine_sprite(char **tab, t_ctx *ctx)
+{
+	int	i;
+	int	id;
+
+	i = 1;
+	id = 0;
+	while (i < MAXMFRAME + 1)
+	{
+		ctx->sprites.moine_p[id] = ft_strdup(tab[i]);
+		if (!ctx->sprites.moine_p[id])
+			return (print_error("ft_strdup failed"));
+		i++;
+		id++;
+	}
+	return (0);
+}
+
+static int	pirate_sprite(char **tab, t_ctx *ctx)
+{
+	int	i;
+	int	id;
+
+	i = 1;
+	id = 0;
+	while (i < MAXPFRAME + 1)
+	{
+		ctx->sprites.pirate_p[id] = ft_strdup(tab[i]);
+		if (!ctx->sprites.pirate_p[id])
+			return (print_error("ft_strdup failed"));
+		i++;
+		id++;
+	}
+	return (0);
+}
+
+int	sprite_recover(char *line, t_ctx *ctx)
+{
+	char	**split;
+
+	split = ft_split(line, ' ');
+	if (!split)
+		return (print_error("Malloc failed"));
+	if (split[0][0] == 'L')
+		if (lutin_sprite(split, ctx) > 0)
+		{
+			free_matrix(split);
+			return (1);
+		}
+	if (split[0][0] == 'M')
+		if (moine_sprite(split, ctx) > 0)
+		{
+			free_matrix(split);
+			return (1);
+		}
+	if (split[0][0] == 'P')
+		if (pirate_sprite(split, ctx) > 0)
+		{
+			free_matrix(split);
+			return (1);
+		}
+	free_matrix(split);
+	return (0);
+}

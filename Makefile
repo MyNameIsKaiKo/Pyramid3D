@@ -63,6 +63,7 @@ SRC_BONUS_FILES = bonus/display_minimap_bonus.c \
 				bonus/pyramid_draw_tools_bonus.c \
 				bonus/texture_data_bonus.c \
 				bonus/utils_bonus.c \
+				bonus/recover_tex_sprite_bonus.c \
 				bonus/sprites/enemie.c \
 				bonus/sprites/lutin.c \
 				bonus/sprites/sprites_calc.c \

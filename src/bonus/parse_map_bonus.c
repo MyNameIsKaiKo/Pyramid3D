@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:36:39 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 14:11:29 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/24 18:05:27 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,29 @@ static int	check_floor(char **tab, size_t y, size_t x)
 	return (0);
 }
 
-static int	check_pnj(char c, size_t y, size_t x, t_map *map)
+static int	check_pnj(char c, size_t y, size_t x, t_ctx *ctx)
 {
+	t_sp_type	type;
+
+	type = T_NULL;
 	if (c == N_PLAYER || c == E_PLAYER || c == S_PLAYER || c == W_PLAYER)
 	{
-		data_player(map, y, x);
+		data_player(ctx->map, y, x);
 		return (0);
 	}
-	if (c == CHALLENGER)
-	{
-		data_challenger(map, y, x);
-		return (0);
-	}
+	if (c == MOINE)
+		type = T_MOINE;
 	if (c == LUTIN)
-	{
-		data_lutin(map, y, x);
-		return (0);
-	}
-	return (1);
+		type = T_LUTIN;
+	if (c == PIRATE)
+		type = T_PIRATE;
+	if (type == T_NULL)
+		return (1);
+	data_sprite(ctx, y, x, type);
+	return (0);
 }
 
-static int	check_charbonus(char **tab, size_t y, size_t x, t_map *map)
+static int	check_charbonus(char **tab, size_t y, size_t x, t_ctx *ctx)
 {
 	char	c;
 
@@ -81,17 +83,19 @@ static int	check_charbonus(char **tab, size_t y, size_t x, t_map *map)
 			return (1);
 		return (0);
 	}
-	if (check_pnj(c, y, x, map) == 0)
+	if (check_pnj(c, y, x, ctx) == 0)
 		return (0);
 	print_error("A char in map is incorrect");
 	return (1);
 }
 
-int	parse_map_bonus(t_map *map)
+int	parse_map_bonus(t_ctx *ctx)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
+	t_map	*map;
 
+	map = ctx->map;
 	if (fst_lst_line(map->parse_map, map->y) > 0)
 		return (1);
 	y = 1;
@@ -100,7 +104,7 @@ int	parse_map_bonus(t_map *map)
 		x = 0;
 		while (map->parse_map[y][x] && x < map->x)
 		{
-			if (check_charbonus(map->parse_map, y, x, map) > 0)
+			if (check_charbonus(map->parse_map, y, x, ctx) > 0)
 				return (1);
 			if (map->nb_player > 1)
 				return (print_error("There is too many players"));

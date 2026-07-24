@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/24 17:17:45 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/24 18:55:02 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,14 @@
 # define NB_COLOR 2
 # define NB_TEXTURES 4
 # define NB_ALL_TEXTURES 6
-# define NB_BONUS_TEXTURES 8
+# define NB_BONUS_TEXTURES 9
 
 // -- Sprites --
 # define SWIDTH 128
 # define ANIMATIONSPEED 10
+# define MAXLFRAME 5
+# define MAXMFRAME 3
+# define MAXPFRAME 3
 
 typedef enum e_tile_type
 {
@@ -76,7 +79,8 @@ typedef enum e_tile_type
 	S_PLAYER = 'S',
 	W_PLAYER = 'W',
 	LUTIN = 'L',
-	CHALLENGER = 'C'
+	MOINE = 'M',
+	PIRATE = 'P'
 }					t_tile_type;
 
 /** @important Textures with paths must be placed before the RGB colours */
@@ -97,15 +101,18 @@ typedef enum e_bonus_tex
 	B_WE_WALL,
 	B_EA_WALL,
 	B_L_LUTIN,
-	B_CH_CHALLENGER,
+	B_M_MOINE,
+	B_P_PIRATE,
 	B_F_FLOOR_COLOR,
 	B_C_CEILING_COLOR
 }					t_bonus_tex;
 
 typedef enum e_sp_type
 {
-	LUTIN,
-	MOINE
+	T_LUTIN,
+	T_MOINE,
+	T_PIRATE,
+	T_NULL
 }					t_sp_type;
 
 typedef struct s_floor
@@ -216,8 +223,8 @@ typedef struct s_map
 	t_vec2			starting_coord;
 	char			p_orient;
 	size_t			nb_player;
-	t_vec2			challenger_pos;
-	size_t			nb_challenger;
+	t_vec2			MOINE_pos;
+	size_t			nb_MOINE;
 	t_vec2			lutin_pos;
 	size_t			nb_lutin;
 }					t_map;
@@ -239,8 +246,15 @@ typedef struct s_sprites
 {
 	t_sprite		arr[11];
 	int				count;
-	t_img			lutin_t[5];
-	t_img			moine_t[3];
+	t_img			lutin_t[MAXLFRAME];
+	t_img			moine_t[MAXMFRAME];
+	t_img			pirate_t[MAXPFRAME];
+	char			*lutin_p[MAXLFRAME];
+	char			*moine_p[MAXMFRAME];
+	char			*pirate_p[MAXPFRAME];
+	int				is_l;
+	int				is_m;
+	int				is_p;
 	int				frame;
 	double			buffer[WIDTH];
 }					t_sprites;

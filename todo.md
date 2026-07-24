@@ -1,5 +1,10 @@
-effet miroir minimap
+load les sprites
 ajouter les sauts et s accroupir
+
+
+verif l'acces aux tex dans les tab textures sprite et extention file
+faire les free du tab
+
 
 code en road map:
 

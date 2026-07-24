@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/21 11:09:22 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/24 17:52:27 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	set_struct(t_ctx *ctx)
 		free_ctx(ctx);
 		return (1);
 	}
+	ctx->sprites.count = -1;
 	ft_memset(ctx->map, 0, sizeof(t_map));
 	return (0);
 }

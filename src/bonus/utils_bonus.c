@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 09:31:33 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/24 17:15:31 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/24 18:06:15 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,15 @@ int	close_map(char **tab, size_t y, size_t x)
 	return (0);
 }
 
-void	data_challenger(t_map *map, size_t y, size_t x)
+void	data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type)
 {
-	map->challenger_pos.x = (double)x + 0.5;
-	map->challenger_pos.y = (double)y + 0.5;
-	map->nb_challenger++;
-	map->parse_map[y][x] = FLOOR;
-}
+	t_sprites *sprites;
 
-void	data_lutin(t_map *map, size_t y, size_t x)
-{
-	map->lutin_pos.x = (double)x + 0.5;
-	map->lutin_pos.y = (double)y + 0.5;
-	map->nb_lutin++;
-	map->parse_map[y][x] = FLOOR;
+	sprites = &ctx->sprites;
+	sprites->count++;
+	sprites->arr[sprites->count].pos.x = x + 0.5;
+	sprites->arr[sprites->count].pos.y = y + 0.5;
+	sprites->arr[sprites->count].type = type;
 }
 
 void	free_bonus_struct(t_ctx *ctx)

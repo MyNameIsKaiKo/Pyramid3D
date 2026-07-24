@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 12:07:27 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 15:38:04 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/24 17:23:43 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	parsing_bonus(char *file, t_ctx *ctx)
 		return (1);
 	if (parse_path_bonus(ctx->tab_tex_bonus) > 0)
 		return (1);
-	if (parse_map_bonus(ctx->map) > 0)
+	if (parse_map_bonus(ctx) > 0)
 		return (1);
 	return (0);
 }

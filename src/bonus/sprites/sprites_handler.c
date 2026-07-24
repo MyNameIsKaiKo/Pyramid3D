@@ -3,14 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   sprites_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 13:02:50 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 15:27:04 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/24 18:56:22 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+static void	load_sp_frame(t_ctx *ctx, char *path, t_img *tex)
+{
+	int	w;
+	int	h;
+
+	tex->img = mlx_xpm_file_to_image(ctx->mlx, path, &w, &h);
+	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
+			&tex->line_lenght, &tex->endian);
+}
+
+void	load_sprite(t_ctx *ctx)
+{
+	t_sprites *sprites;
+	int i;
+
+	sprites = &ctx->sprites;
+	if (sprites->is_l)
+	{
+		i = -1;
+		while(++i < MAXLFRAME)
+			load_sp_frame(ctx, ctx->sprites.lutin_p[i], &sprites->lutin_t[i]);
+	}
+	if (sprites->is_m)
+	{
+		i = -1;
+		while(++i < MAXMFRAME)
+			load_sp_frame(ctx, ctx->sprites.moine_p[i], &sprites->moine_t[i]);
+	}
+	if (sprites->is_p)
+	{
+		i = -1;
+		while(++i < MAXPFRAME)
+			load_sp_frame(ctx, ctx->sprites.pirate_p[i], &sprites->pirate_t[i]);
+	}
+}
 
 static void	draw_sprite(t_ctx *ctx, t_sprite_calc *calc, t_img *img)
 {
@@ -47,7 +83,7 @@ static t_img	get_right_img(t_sprites *sprites, int i)
 	int		current_frame;
 
 	current_frame = sprites->frame / ANIMATIONSPEED;
-	if (sprites->arr[i].type == LUTIN)
+	if (sprites->arr[i].type == T_LUTIN)
 		tmp = sprites->lutin_t[current_frame % 5];
 	else
 		tmp = sprites->moine_t[current_frame % 3];

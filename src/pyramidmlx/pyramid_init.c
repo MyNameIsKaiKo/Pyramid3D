@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:47:22 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/08 14:47:22 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/24 18:06:38 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	pyramid_loop(t_ctx *ctx)
 		return (1);
 	texture_data(ctx);
 	if (BONUS)
-		false_lutin(ctx);
+		load_sprite(ctx);
 	mouse_init(ctx);
 	mlx_loop_hook(ctx->mlx, draw_frame, ctx);
 	mlx_hook(ctx->win, 17, 0, close_app, ctx);
