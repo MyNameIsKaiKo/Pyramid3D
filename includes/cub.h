@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/22 09:45:24 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/23 16:03:28 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,19 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+// -- Free Function --
+void	f_init(t_ctx *ctx);
+void	tex_free(t_ctx *ctx);
+void	free_ctx(t_ctx *ctx);
+
+// -- Free_map Function --
+void	free_parse_map(t_map *map);
+void	free_map_tab(t_map *map);
+
 // -- utils Function --
 void	data_player(t_map *map, size_t y, size_t x);
 int		print_error(const char *err_msg);
-void	free_parse_map(t_map *map);
-void	free_ctx(t_ctx *ctx);
+size_t	ft_strcharlen(char *s, char c);
 
 // -- parsing SECTION --
 // -- parsing Function --
@@ -61,11 +69,6 @@ int		valid_border_line(char **tab, size_t max_y);
 // -- falsemap Function --
 void	fill_fmap(t_ctx *ctx);
 void	texture_data(t_ctx *ctx);
-
-// -- Free Function --
-void	f_init(t_ctx *ctx);
-void	map_free(t_map *map);
-void	tex_free(t_ctx *ctx);
 
 // -- Pyramid Hook Function --
 int		handlebutton(int button, int x, int y, void *map);
@@ -125,9 +128,6 @@ void	mouse_init(t_ctx *ctx);
 void	draw_crossair(t_ctx *ctx);
 
 // -- BONUS SECTION --
-// -- Parser bonus Function --
-int		parse_color_bonus(char **color);
-
 // -- draw_bonus Function --
 void	calc_floorxy(t_ctx *ctx);
 void	calc_floortex(t_ctx *ctx, int y);
@@ -143,8 +143,22 @@ void	display_map(t_ctx *ctx);
 // -- parse_map_bonus Function --
 int		parse_map_bonus(t_map *map);
 
+// -- parse_tex_bonus Function --
+int		parse_path_bonus(char **textures);
+int		parse_tex_bonus(char *line_read, t_ctx *ctx);
+
 // -- utils_bonus Function --
 bool	iswall(t_tile_type c);
+int		close_map(char **tab, size_t y, size_t x);
+void	data_challenger(t_map *map, size_t y, size_t x);
+void	data_lutin(t_map *map, size_t y, size_t x);
+void	free_bonus_struct(t_ctx *ctx);
+
+// -- parsing_bonus Function --
+int		parsing_bonus(char *file, t_ctx *ctx);
+
+// -- Texture_data_bonus Function --
+void	texture_data_bonus(t_ctx *ctx, int *w, int *h);
 
 // -- Sprites SECTION --
 void	render_all_sprites(t_ctx *ctx);

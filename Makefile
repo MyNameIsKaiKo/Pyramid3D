@@ -29,6 +29,8 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			../includes/gnl/get_next_line_utils.c \
 			main.c \
 			utils.c \
+			free.c \
+			free_map.c \
 			parsing/parsing.c \
 			parsing/parse_textures.c \
 			parsing/parse_color.c \
@@ -36,7 +38,6 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			parsing/valid_map.c \
 			parsing/copy_map.c \
 			pyramidmlx/extract_texture.c \
-			pyramidmlx/free.c \
 			pyramidmlx/mlx_tools.c \
 			pyramidmlx/pyramid_draw.c \
 			pyramidmlx/pyramid_draw_tools.c \
@@ -53,12 +54,14 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			player_handler/player_tools.c \
 
 
-SRC_BONUS_FILES = bonus/parse_color_bonus.c \
+SRC_BONUS_FILES = bonus/display_minimap_bonus.c \
+				bonus/minimap_bonus.c \
+				bonus/parse_map_bonus.c \
+				bonus/parse_tex_bonus.c \
+				bonus/parsing_bonus.c \
 				bonus/pyramid_draw_bonus.c \
 				bonus/pyramid_draw_tools_bonus.c \
-				bonus/minimap_bonus.c \
-				bonus/display_minimap_bonus.c \
-				bonus/parse_map_bonus.c \
+				bonus/texture_data_bonus.c \
 				bonus/utils_bonus.c \
 				bonus/sprites/enemie.c \
 				bonus/sprites/lutin.c \

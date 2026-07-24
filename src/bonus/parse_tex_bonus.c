@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_textures.c                                   :+:      :+:    :+:   */
+/*   parse_tex_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/03 13:54:23 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 11:46:09 by ldepenne         ###   ########.fr       */
+/*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
+/*   Updated: 2026/07/23 15:37:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-/** @remark it's posssible to change the nb of texture to check */
-int	parse_path(char **textures)
+int	parse_path_bonus(char **textures)
 {
 	int	i;
 	int	fd;
 
 	i = 0;
-	while (i < NB_TEXTURES)
+	while (i < NB_BONUS_TEXTURES)
 	{
 		fd = open(textures[i], O_RDONLY);
 		if (fd < 0)
@@ -50,59 +49,36 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx)
 	return (0);
 }
 
-static int	texture_extention(char *line_read)
-{
-	int					i_tab;
-	int					len;
-	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL}, {"WE ",
-		WE_WALL}, {"EA ", EA_WALL}};
-
-	i_tab = 0;
-	while (i_tab < NB_TEXTURES)
-	{
-		len = ft_strlen(tab[i_tab].cmp);
-		if (ft_strncmp(line_read, tab[i_tab].cmp, len) == 0)
-		{
-			if (parse_extention(line_read, EXT_TEXT) > 0)
-				return (1);
-			else
-				return (0);
-		}
-		i_tab++;
-	}
-	return (0);
-}
-
 static int	is_texture(char *line_read, t_ctx *ctx, int i)
 {
-	int					len;
-	int					i_tab;
-	char				**ctx_textures;
-	const t_tex_mgnt	tab[] = {{"NO ", NO_WALL}, {"SO ", SO_WALL}, {"WE ",
-		WE_WALL}, {"EA ", EA_WALL}, {"F ", FLOOR_COLOR}, {"C ",
-		CEILING_COLOR}};
+	int						len;
+	int						i_tab;
+	char					**ctx_textures;
+	const t_tex_mgnt_bonus	tab[] = {{"NO ", B_NO_WALL}, {"SO ", B_SO_WALL},
+	{"WE ", B_WE_WALL}, {"EA ", B_EA_WALL}, {"L ", B_L_LUTIN}, {"CH ",
+		B_CH_CHALLENGER}, {"F ", B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
 
 	i_tab = -1;
-	while (++i_tab < NB_ALL_TEXTURES)
+	while (++i_tab < NB_BONUS_TEXTURES)
 	{
 		len = ft_strlen(tab[i_tab].cmp);
 		if (ft_strncmp(line_read + i, tab[i_tab].cmp, len) == 0)
 		{
 			i += ft_strlen(tab[i].cmp);
-			ctx_textures = &ctx->tab_textures[tab[i_tab].textures];
+			ctx_textures = &ctx->tab_tex_bonus[tab[i_tab].textures];
 			if (init_texture(line_read, ctx_textures, ctx) > 0)
 				return (1);
-			if (texture_extention(line_read) > 0)
+			if (parse_extention(line_read, EXT_TEXT) > 0)
 				return (1);
 			break ;
 		}
 	}
-	if (i_tab >= NB_ALL_TEXTURES)
+	if (i_tab >= NB_BONUS_TEXTURES)
 		return (print_error("Incorrect texture"));
 	return (0);
 }
 
-int	parse_textures(char *line_read, t_ctx *ctx)
+int	parse_tex_bonus(char *line_read, t_ctx *ctx)
 {
 	int	i;
 

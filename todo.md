@@ -1,5 +1,4 @@
-(re)ajouter les ennemies (looser)
-ajouter les portes
+effet miroir minimap
 ajouter les sauts et s accroupir
 
 code en road map:
@@ -13,4 +12,3 @@ While (il y a des fct à passer)
 }
 
 make: pourquoi reb fonctionne et pas bonus ?
-Quand on spone collé à un mur, on est dans se mur
