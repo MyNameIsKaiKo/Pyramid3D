@@ -36,6 +36,6 @@ void	false_lutin(t_ctx *ctx)
 		&ctx->sprites.lutin_t[4]);
 	ctx->sprites.count = 1;
 	ctx->sprites.arr[0].type = LUTIN;
-	ctx->sprites.arr[0].pos.x = 3.5;
-	ctx->sprites.arr[0].pos.y = 3.5;
+	ctx->sprites.arr[0].pos.x = ctx->player.pos.x - 0.5;
+	ctx->sprites.arr[0].pos.y = ctx->player.pos.y - 0.5;
 }

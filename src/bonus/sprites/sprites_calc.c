@@ -23,15 +23,19 @@ void	calc_transform(t_ctx *ctx, t_sprite_calc *calc, int i)
 	inversion = 1.0 / (player->plane.x * player->dir.y - player->dir.x
 			* player->plane.y);
 	calc->t_x = inversion * (player->dir.y * delta.x - player->dir.x * delta.y);
+	if (calc->t_x == 0)
+		calc->t_x = 1.0 / 1e30f;
 	calc->t_y = inversion * (-player->plane.y * delta.x + player->plane.x
 			* delta.y);
+	if (calc->t_y == 0)
+		calc->t_y = 1.0 / 1e30f;
 }
 
 void	setup_base_calc(t_sprite_calc *calc)
 {
 	calc->screen_x = (int)(WIDTH / 2 * (1 + (calc->t_x / calc->t_y)));
-	calc->sprite_w = (int)(abs(HEIGHT / (int)calc->t_y));
-	calc->sprite_h = (int)(abs(HEIGHT / (int)calc->t_y));
+	calc->sprite_w = (int)(fabs(HEIGHT / calc->t_y));
+	calc->sprite_h = (int)(fabs(HEIGHT / calc->t_y));
 }
 
 void	sprite_draw_calc(t_sprite_calc *calc)
