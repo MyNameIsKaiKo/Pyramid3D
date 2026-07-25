@@ -1,7 +1,7 @@
 /* XPM */
 static char * lutin1_xpm[] = {
 "128 128 1134 2",
-"  	c None",
+"  	c #0000FF",
 ". 	c #108A16",
 "+ 	c #128B16",
 "@ 	c #0B8816",

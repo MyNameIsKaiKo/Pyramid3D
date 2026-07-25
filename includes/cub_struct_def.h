@@ -183,8 +183,8 @@ typedef struct s_tex_mgnt
 
 typedef struct s_tex_mgnt_bonus
 {
-	char		*cmp;
-	t_bonus_tex	textures;
+	char			*cmp;
+	t_bonus_tex		textures;
 }					t_tex_mgnt_bonus;
 
 typedef struct s_ttype_mgnt
@@ -203,6 +203,8 @@ typedef struct s_player
 	double			time;
 	double			old_time;
 	double			veloville;
+	int				hp;
+	int				as;
 }					t_player;
 
 typedef struct s_img
