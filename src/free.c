@@ -30,6 +30,32 @@ void	f_init(t_ctx *ctx)
 	ft_putstr_fd("Malloc Error\n", 1);
 }
 
+static void	sprite_free(t_ctx *ctx)
+{
+	int i;
+
+	i = -1;
+	while (++i < MAXLFRAME)
+		if (ctx->sprites.lutin_t[i].img)
+			mlx_destroy_image(ctx->mlx, ctx->sprites.lutin_t[i].img);
+	i = -1;
+	while (++i < MAXMFRAME)
+		if (ctx->sprites.lutin_t[i].img)
+			mlx_destroy_image(ctx->mlx, ctx->sprites.moine_t[i].img);
+	i = -1;
+	while (++i < MAXPFRAME)
+		if (ctx->sprites.lutin_t[i].img)
+			mlx_destroy_image(ctx->mlx, ctx->sprites.pirate_t[i].img);
+}
+
+static void	fandc_free(t_ctx *ctx)
+{
+	if (ctx->fandc_tex[0].img)
+		mlx_destroy_image(ctx->mlx, ctx->fandc_tex[0].img);
+	if (ctx->fandc_tex[1].img)
+		mlx_destroy_image(ctx->mlx, ctx->fandc_tex[1].img);
+}
+
 void	tex_free(t_ctx *ctx)
 {
 	int	i;
@@ -39,19 +65,21 @@ void	tex_free(t_ctx *ctx)
 	{
 		while (i < NB_TEXTURES)
 		{
-			mlx_destroy_image(ctx->mlx, ctx->wall_tex[i].img);
+			if (ctx->wall_tex[i].img)
+				mlx_destroy_image(ctx->mlx, ctx->wall_tex[i].img);
 			i++;
 		}
 	}
-	if (BONUS)
+	else if (BONUS)
 	{
-		while (i < NB_BONUS_TEXTURES)
+		while (i < NB_BONUS_TEX_WTHT_SPRITE)
 		{
-			mlx_destroy_image(ctx->mlx, ctx->wall_tex_bonus[i].img);
+			if (ctx->wall_tex_bonus[i].img)
+				mlx_destroy_image(ctx->mlx, ctx->wall_tex_bonus[i].img);
 			i++;
 		}
-		mlx_destroy_image(ctx->mlx, ctx->fandc_tex[0].img);
-		mlx_destroy_image(ctx->mlx, ctx->fandc_tex[1].img);
+		sprite_free(ctx);
+		fandc_free(ctx);
 	}
 }
 

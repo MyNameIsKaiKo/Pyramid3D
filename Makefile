@@ -69,7 +69,7 @@ SRC_BONUS_FILES = bonus/display_minimap_bonus.c \
 				bonus/sprites/sprites_calc.c \
 				bonus/sprites/sprites_handler.c \
 				bonus/sprites/sprites_tools.c \
-				pyramidmlx/false_lutin.c
+				bonus/free_bonus.c
 
 ifdef WITH_BONUS
 	SRC_FILES += $(SRC_BONUS_FILES)
