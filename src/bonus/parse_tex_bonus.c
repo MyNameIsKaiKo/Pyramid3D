@@ -40,7 +40,6 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx, char *type)
 			len) == 0 || ft_strncmp(type, "P ", len) == 0)
 		if (sprite_recover(line_read, ctx) > 0)
 			return (1);
-	}
 	line_read += ft_strcharlen(line_read, ' ');
 	len = ft_strlen(line_read);
 	if (line_read[len - 1] == '\n')
