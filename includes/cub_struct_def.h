@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 15:37:50 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 18:26:19 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 # define SIZE_BLOCK 20
 # define MCOLOR_WALL 0xff794BB4
 # define MCOLOR_FLOOR 0xffE1CFFA
+# define MCOLOR_LUTIN 0xff4CB045
+# define MCOLOR_MOINU 0xff693F0D
+# define MCOLOR_PIRATE 0xffFFFFE3
 # define MCOLOR_EMPTY 0xffE6E6E6
 
 // -- KeyBoard Close --
@@ -249,7 +252,7 @@ typedef struct s_sprite
 
 typedef struct s_sprites
 {
-	t_sprite		arr[11];
+	t_sprite		arr[NB_BONUS_TEXTURES];
 	int				count;
 	t_img			lutin_t[MAXLFRAME];
 	t_img			moine_t[MAXMFRAME];
