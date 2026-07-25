@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 15:22:24 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 16:03:49 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 16:18:57 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	texture_data_bonus(t_ctx *ctx, int *w, int *h)
 	int	i;
 
 	i = 0;
-	while (i < NB_BONUS_TEXTURES)
+	while (i < NB_BONUS_TEX_WTHT_SPRITE)
 	{
 		ctx->wall_tex_bonus[i].img = mlx_xpm_file_to_image(ctx->mlx,
 				ctx->tab_tex_bonus[i], w, h);

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 13:02:50 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/24 18:56:22 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 16:27:20 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,10 @@ static t_img	get_right_img(t_sprites *sprites, int i)
 	current_frame = sprites->frame / ANIMATIONSPEED;
 	if (sprites->arr[i].type == T_LUTIN)
 		tmp = sprites->lutin_t[current_frame % 5];
-	else
+	else if (sprites->arr[i].type == T_MOINE)
 		tmp = sprites->moine_t[current_frame % 3];
+	else
+		tmp = sprites->pirate_t[current_frame % 3];
 	return (tmp);
 }
 

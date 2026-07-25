@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 09:31:33 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 16:15:10 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 16:22:32 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type)
 	sprites->arr[sprites->count].pos.x = x + 0.5;
 	sprites->arr[sprites->count].pos.y = y + 0.5;
 	sprites->arr[sprites->count].type = type;
+	ctx->map->parse_map[y][x] = FLOOR;
 }
 
 void	free_bonus_struct(t_ctx *ctx)
