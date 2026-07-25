@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 09:31:33 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/24 18:06:15 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 16:01:53 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ int	close_map(char **tab, size_t y, size_t x)
 	left_case = tab[y][x - 1];
 	right_case = tab[y][x + 1];
 	bottom_case = tab[y + 1][x];
-	if (!iswall(top_case) && top_case != FLOOR)
-		return (1);
+	if ((!iswall(top_case) && top_case != FLOOR)
+		|| (!iswall(left_case) && left_case != FLOOR)
+		|| (!iswall(right_case) && right_case != FLOOR)
+		|| (!iswall(bottom_case) && bottom_case != FLOOR))
+		return (print_error("Map is open in close map"));
 	return (0);
 }
 

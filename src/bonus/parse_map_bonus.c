@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:36:39 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/24 18:05:27 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 16:02:38 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static int	check_pnj(char c, size_t y, size_t x, t_ctx *ctx)
 {
 	t_sp_type	type;
 
+	printf("player\n");
 	type = T_NULL;
 	if (c == N_PLAYER || c == E_PLAYER || c == S_PLAYER || c == W_PLAYER)
 	{
@@ -72,10 +73,9 @@ static int	check_charbonus(char **tab, size_t y, size_t x, t_ctx *ctx)
 	char	c;
 
 	c = tab[y][x];
-	if (c == WALL || c == EMPTY)
-		return (0);
+	printf("%c", c);
 	if (c == WALL || c == WALL2 || c == WALL3 || c == WALL4
-		|| c == WALL5 || c == WALL6)
+		|| c == WALL5 || c == WALL6 || c == EMPTY)
 		return (0);
 	if (c == FLOOR)
 	{
@@ -110,7 +110,9 @@ int	parse_map_bonus(t_ctx *ctx)
 				return (print_error("There is too many players"));
 			x++;
 		}
+		printf("\n");
 		y++;
 	}
+	printf("f\n");
 	return (0);
 }
