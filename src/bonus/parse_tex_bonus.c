@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 17:20:13 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 17:44:16 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx, char *type)
 			len) == 0 || ft_strncmp(type, "P ", len) == 0)
 		if (sprite_recover(line_read, ctx) > 0)
 			return (1);
+	}
 	line_read += ft_strcharlen(line_read, ' ');
 	len = ft_strlen(line_read);
 	if (line_read[len - 1] == '\n')
@@ -59,9 +60,10 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 	int						len;
 	int						i_tab;
 	char					**ctx_textures;
-	const t_tex_mgnt_bonus	tab[] = {{"1 ", B_WALL1}, {"2 ", B_WALL2}, {"3 ", B_WALL3},
-	{"4 ", B_WALL4}, {"5 ", B_WALL5}, {"6 ", B_WALL6}, {"L ", B_L_LUTIN}, {"M ", B_M_MOINE},
-	{"P ", B_P_PIRATE}, {"F ", B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
+	const t_tex_mgnt_bonus	tab[] = {{"1 ", B_WALL1}, {"2 ", B_WALL2}, {"3 ",
+		B_WALL3}, {"4 ", B_WALL4}, {"5 ", B_WALL5}, {"6 ", B_WALL6}, {"L ",
+		B_L_LUTIN}, {"M ", B_M_MOINE}, {"P ", B_P_PIRATE}, {"F ",
+		B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
 
 	i_tab = -1;
 	while (++i_tab < NB_BONUS_TEXTURES)

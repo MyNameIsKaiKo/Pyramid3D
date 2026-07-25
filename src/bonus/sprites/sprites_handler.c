@@ -18,34 +18,29 @@ static void	load_sp_frame(t_ctx *ctx, char *path, t_img *tex)
 	int	h;
 
 	tex->img = mlx_xpm_file_to_image(ctx->mlx, path, &w, &h);
+	if (!tex->img)
+		printf("\n\nerror with the texture \"%s\"\n\n", path);
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
 			&tex->line_lenght, &tex->endian);
+	if (!tex->addr)
+		printf("\n\nerror with the texture \"%s\"\n\n", path);
 }
 
 void	load_sprite(t_ctx *ctx)
 {
-	t_sprites *sprites;
-	int i;
+	t_sprites	*sprites;
+	int			i;
 
 	sprites = &ctx->sprites;
-	if (sprites->is_l)
-	{
-		i = -1;
-		while(++i < MAXLFRAME)
-			load_sp_frame(ctx, ctx->sprites.lutin_p[i], &sprites->lutin_t[i]);
-	}
-	if (sprites->is_m)
-	{
-		i = -1;
-		while(++i < MAXMFRAME)
-			load_sp_frame(ctx, ctx->sprites.moine_p[i], &sprites->moine_t[i]);
-	}
-	if (sprites->is_p)
-	{
-		i = -1;
-		while(++i < MAXPFRAME)
-			load_sp_frame(ctx, ctx->sprites.pirate_p[i], &sprites->pirate_t[i]);
-	}
+	i = -1;
+	while (++i < MAXLFRAME)
+		load_sp_frame(ctx, ctx->sprites.lutin_p[i], &sprites->lutin_t[i]);
+	i = -1;
+	while (++i < MAXMFRAME)
+		load_sp_frame(ctx, ctx->sprites.moine_p[i], &sprites->moine_t[i]);
+	i = -1;
+	while (++i < MAXPFRAME)
+		load_sp_frame(ctx, ctx->sprites.pirate_p[i], &sprites->pirate_t[i]);
 }
 
 static void	draw_sprite(t_ctx *ctx, t_sprite_calc *calc, t_img *img)

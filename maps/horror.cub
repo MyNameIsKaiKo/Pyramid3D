@@ -1,7 +1,13 @@
-NO ./texture/horror/wall.xpm
-SO ./texture/horror/wall.xpm
-WE ./texture/horror/wall.xpm
-EA ./texture/horror/wall.xpm
+1 ./texture/horror/wall.xpm
+2 ./texture/horror/wall.xpm
+3 ./texture/horror/wall.xpm
+4 ./texture/horror/wall.xpm
+5 ./texture/horror/wall.xpm
+6 ./texture/horror/wall.xpm
+
+L ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
+M ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
+P ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
 
 F ./texture/horror/floor.xpm
 C ./texture/horror/ceiling.xpm
