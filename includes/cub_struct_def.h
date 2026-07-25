@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/24 18:55:02 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 15:37:50 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@
 # define NB_COLOR 2
 # define NB_TEXTURES 4
 # define NB_ALL_TEXTURES 6
-# define NB_BONUS_TEXTURES 9
+# define NB_BONUS_TEX_WTHT_SPRITE 8
+# define NB_BONUS_TEXTURES 11
 
 // -- Sprites --
 # define SWIDTH 128
@@ -96,15 +97,17 @@ typedef enum e_e_textures
 
 typedef enum e_bonus_tex
 {
-	B_NO_WALL,
-	B_SO_WALL,
-	B_WE_WALL,
-	B_EA_WALL,
+	B_WALL1,
+	B_WALL2,
+	B_WALL3,
+	B_WALL4,
+	B_WALL5,
+	B_WALL6,
+	B_F_FLOOR_COLOR,
+	B_C_CEILING_COLOR,
 	B_L_LUTIN,
 	B_M_MOINE,
-	B_P_PIRATE,
-	B_F_FLOOR_COLOR,
-	B_C_CEILING_COLOR
+	B_P_PIRATE
 }					t_bonus_tex;
 
 typedef enum e_sp_type
@@ -280,23 +283,21 @@ typedef struct s_sprite_calc
 
 typedef struct s_ctx
 {
+	t_map			*map;
+	t_texture		tex;
 	char			*tab_textures[NB_ALL_TEXTURES];
 	char			*tab_tex_bonus[NB_BONUS_TEXTURES];
-	t_map			*map;
 	size_t			n_textures;
-	t_player		player;
 	t_img			wall_tex[NB_ALL_TEXTURES];
 	t_img			wall_tex_bonus[NB_BONUS_TEXTURES];
 	int				colors[NB_COLOR];
-	// char			*colors_bonus[NB_COLOR];
 	t_img			fandc_tex[2];
-	t_mouse			mouse;
 	t_img			img;
-	t_texture		tex;
 	t_sprites		sprites;
+	t_player		player;
+	t_mouse			mouse;
 	void			*win;
 	void			*mlx;
-	int				bonus_tex;
 }					t_ctx;
 
 #endif

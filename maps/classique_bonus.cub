@@ -1,10 +1,13 @@
-NO ./texture/texture1.xpm
-SO ./texture/texture2.xpm
-WE ./texture/texture2.xpm
-EA ./texture/texture2.xpm
+1 ./texture/texture1.xpm
+2 ./texture/texture2.xpm
+3 ./texture/texture2.xpm
+4 ./texture/texture2.xpm
+5 ./texture/texture2.xpm
+6 ./texture/texture2.xpm
 
-L ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACOON.xpm ./texture/grandRACOON.xpm
+L ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
 M ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
+P ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
 
 F ./texture/bonus/floor.xpm
 C ./texture/bonus/ceiling.xpm
