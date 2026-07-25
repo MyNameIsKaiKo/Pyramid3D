@@ -63,7 +63,7 @@ static void	draw_sprite(t_ctx *ctx, t_sprite_calc *calc, t_img *img)
 			{
 				calc->tex_y = ((y - orig_start_y) * SWIDTH) / calc->sprite_h;
 				color = get_texture_pixel(img, calc->tex_x, calc->tex_y);
-				if (color != 0x000000)
+				if (color != 0x0000FF)
 					my_mlx_pixel_put(ctx, calc->stripe, y, color);
 				y++;
 			}

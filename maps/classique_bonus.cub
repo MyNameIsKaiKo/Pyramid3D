@@ -5,7 +5,7 @@
 5 ./texture/texture2.xpm
 6 ./texture/texture2.xpm
 
-L ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
+L ./texture/assets/lutin/lutin1.xpm ./texture/assets/lutin/lutin2.xpm ./texture/assets/lutin/lutin3.xpm ./texture/assets/lutin/lutin4.xpm ./texture/assets/lutin/lutin5.xpm
 M ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
 P ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
 
