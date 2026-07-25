@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 15:39:51 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 17:44:16 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx, char *type)
 	if (*tex)
 		return (1);
 	len = ft_strlen(type) + 1;
-	printf("\n\n type : %s\n\n", type);
-	if (ft_strncmp(type, "L ", len) == 0 || ft_strncmp(type, "M ", len) == 0
-		|| ft_strncmp(type, "P ", len) == 0)
-	{
+	if (ft_strncmp(type, "L ", len) == 0 || ft_strncmp(type, "M ",
+			len) == 0 || ft_strncmp(type, "P ", len) == 0)
 		if (sprite_recover(line_read, ctx) > 0)
 			return (1);
 	}
