@@ -36,7 +36,8 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx, char *type)
 	if (*tex)
 		return (1);
 	len = ft_strlen(type) + 1;
-	if (ft_strncmp(type, "LUTIN", len) == 0 || ft_strncmp(type, "MOINE", len) == 0 || ft_strncmp(type, "PIRATE", len) == 0)
+	if (ft_strncmp(type, "LUTIN", len) == 0 || ft_strncmp(type, "MOINE",
+			len) == 0 || ft_strncmp(type, "PIRATE", len) == 0)
 	{
 		if (sprite_recover(line_read, ctx) > 0)
 			return (1);
@@ -64,7 +65,8 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 	char					**ctx_textures;
 	const t_tex_mgnt_bonus	tab[] = {{"NO ", B_NO_WALL}, {"SO ", B_SO_WALL},
 	{"WE ", B_WE_WALL}, {"EA ", B_EA_WALL}, {"L ", B_L_LUTIN}, {"M ",
-		B_M_MOINE}, {"P ", B_P_PIRATE}, {"F ", B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
+		B_M_MOINE}, {"P ", B_P_PIRATE}, {"F ", B_F_FLOOR_COLOR}, {"C ",
+		B_C_CEILING_COLOR}};
 
 	i_tab = -1;
 	while (++i_tab < NB_BONUS_TEXTURES)
@@ -82,7 +84,7 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 		}
 	}
 	if (i_tab >= NB_BONUS_TEXTURES)
-		return (print_error("Incorrect texture"));
+		return (print_error("Wrond number : Incorrect texture"));
 	return (0);
 }
 

@@ -132,7 +132,7 @@ void	draw_crossair(t_ctx *ctx);
 void	calc_floorxy(t_ctx *ctx);
 void	calc_floortex(t_ctx *ctx, int y);
 void	draw_img_bonus(t_ctx *ctx, int x);
-void 	draw_bonus(t_ctx *ctx);
+void	draw_bonus(t_ctx *ctx);
 
 // -- minimap_bonus Function --
 void	print_minimap(t_ctx *ctx);

@@ -16,7 +16,7 @@ static int	parse_line_bonus(char *line_read, t_ctx *ctx)
 {
 	if (ctx->n_textures < NB_BONUS_TEXTURES)
 	{
-		if (ft_strncmp(line_read, "\n", 2) == 0)
+		if (ft_strcmp(line_read, "\n") == 0)
 			return (0);
 		else if (parse_tex_bonus(line_read, ctx) > 0)
 			return (1);
