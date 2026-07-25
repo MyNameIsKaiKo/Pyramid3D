@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 18:27:20 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 17:44:32 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 17:47:15 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	lutin_sprite(char **tab, t_ctx *ctx)
 	while (i < MAXLFRAME + 1)
 	{
 		ctx->sprites.lutin_p[id] = ft_strdup(tab[i]);
-		printf("\n id : %d : %s \n", id, ctx->sprites.lutin_p[id]);
 		if (!ctx->sprites.lutin_p[id])
 			return (print_error("ft_strdup failed"));
 		if (parse_sprite_path(ctx->sprites.lutin_p[id]) > 0)
@@ -54,7 +53,6 @@ static int	moine_sprite(char **tab, t_ctx *ctx)
 	while (i < MAXMFRAME + 1)
 	{
 		ctx->sprites.moine_p[id] = ft_strdup(tab[i]);
-		printf("\n id : %d : %s \n", id, ctx->sprites.moine_p[id]);
 		if (!ctx->sprites.moine_p[id])
 			return (print_error("ft_strdup failed"));
 		if (parse_sprite_path(ctx->sprites.moine_p[id]) > 0)
@@ -75,7 +73,6 @@ static int	pirate_sprite(char **tab, t_ctx *ctx)
 	while (i < MAXPFRAME + 1)
 	{
 		ctx->sprites.pirate_p[id] = ft_strdup(tab[i]);
-		printf("\n id : %d : %s \n", id, ctx->sprites.pirate_p[id]);
 		if (!ctx->sprites.pirate_p[id])
 			return (print_error("ft_strdup failed"));
 		if (parse_sprite_path(ctx->sprites.pirate_p[id]) > 0)
@@ -95,14 +92,6 @@ int	sprite_recover(char *line, t_ctx *ctx)
 	split = ft_split(line, ' ');
 	if (!split)
 		return (print_error("Malloc failed"));
-	i = 0;
-	while (split[i])
-	{
-		j = ft_strlen(split[i]) - 1;
-		if (split[i][j] == '\n')
-			split[i][j] = '\0';
-		i++;
-	}
 	if (split[0][0] == 'L')
 	{
 		split[MAXLFRAME] = ft_strtrim(split[MAXLFRAME], "\n");
