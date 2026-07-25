@@ -294,6 +294,7 @@ typedef struct s_ctx
 	t_sprites		sprites;
 	void			*win;
 	void			*mlx;
+	int				bonus_tex;
 }					t_ctx;
 
 #endif

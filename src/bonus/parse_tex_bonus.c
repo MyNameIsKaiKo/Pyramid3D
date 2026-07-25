@@ -83,6 +83,7 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 			break ;
 		}
 	}
+	printf("\n %d \n", i_tab);
 	if (i_tab >= NB_BONUS_TEXTURES)
 		return (print_error("Wrond number : Incorrect texture"));
 	return (0);
