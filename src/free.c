@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:17:05 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 15:49:04 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 19:33:53 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	f_init(t_ctx *ctx)
 
 static void	sprite_free(t_ctx *ctx)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < MAXLFRAME)

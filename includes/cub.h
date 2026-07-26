@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/24 18:52:25 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 21:21:46 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,12 @@ int		parse_textures(char *line_read, t_ctx *ctx);
 // -- parse_color Function --
 int		parse_color(char **color);
 
+// -- parse_char Function --
+int		check_char(char **tab, size_t y, size_t x, t_map *map);
+
 // -- copy_map Function --
 int		space_in_map(char **tab, size_t y, size_t x);
+int		isopen_map(char **tab, size_t y, size_t x);
 int		copy_map(t_map **map);
 
 // -- parse_map Function --
@@ -64,10 +68,9 @@ int		check_line_map(char *line_read, t_map *map);
 // -- valid_map Function --
 int		valid_lcolumn_border(char **tab, size_t y);
 int		valid_rcolumn_border(char **tab, size_t y);
-int		valid_border_line(char **tab, size_t max_y);
+int		border_line_check(char **tab, size_t y);
 
 // -- falsemap Function --
-void	fill_fmap(t_ctx *ctx);
 void	texture_data(t_ctx *ctx);
 
 // -- Pyramid Hook Function --
@@ -146,6 +149,7 @@ int		parse_map_bonus(t_ctx *ctx);
 // -- parse_tex_bonus Function --
 int		parse_path_bonus(char **textures);
 int		parse_tex_bonus(char *line_read, t_ctx *ctx);
+int		first_line(char **tab, size_t y);
 
 // -- utils_bonus Function --
 bool	iswall(t_tile_type c);

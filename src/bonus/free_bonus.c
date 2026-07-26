@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 01:48:50 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/26 13:29:26 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 21:16:11 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	free_sprite_paths(char **paths)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (paths[i])
@@ -37,7 +37,7 @@ void	free_bonus_struct(t_ctx *ctx)
 		{
 			free(ctx->tab_tex_bonus[i]);
 			ctx->tab_tex_bonus[i] = NULL;
-		}	
+		}
 		++i;
 	}
 	free_sprite_paths(ctx->sprites.lutin_p);

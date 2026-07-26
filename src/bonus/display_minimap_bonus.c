@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:36:27 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 13:39:32 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 21:15:39 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,45 +22,64 @@ static int	is_inmap(t_ctx *ctx, t_vec2 result)
 	return (0);
 }
 
-void	display_map(t_ctx *ctx)
+static void	display_sprite(t_ctx *ctx, t_vec2 result, t_vec2 curr_block)
 {
-	t_vec2	c_block;
-	t_vec2	result;
+	int	i;
+	int	y;
+	int	x;
+
+	i = 0;
+	y = (int)(ctx->player.pos.y + result.y);
+	x = (int)(ctx->player.pos.x + result.x);
+	while (i < NB_BONUS_TEXTURES)
+	{
+		if (y == (int)ctx->sprites.arr[i].pos.y
+			&& x == (int)ctx->sprites.arr[i].pos.x)
+		{
+			if (ctx->sprites.arr[i].type == T_LUTIN)
+				my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_LUTIN);
+			else if (ctx->sprites.arr[i].type == T_MOINE)
+				my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_MOINU);
+			else if (ctx->sprites.arr[i].type == T_PIRATE)
+				my_mlx_pixel_put(ctx, curr_block.x, curr_block.y,
+					MCOLOR_PIRATE);
+		}
+		i++;
+	}
+}
+
+static void	display_background(t_ctx *ctx, t_vec2 result, t_vec2 curr_block)
+{
 	int		y;
 	int		x;
 
-	c_block.y = START_Y;
-	while (c_block.y < SIZE_MMAP)
+	y = (int)(ctx->player.pos.y + result.y);
+	x = (int)(ctx->player.pos.x + result.x);
+	if (is_inmap(ctx, result))
+		my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_VOID);
+	else if (ctx->map->map_tab[y][x] == FLOOR)
+		my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_FLOOR);
+	else
+		my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_WALL);
+}
+
+void	display_map(t_ctx *ctx)
+{
+	t_vec2	curr_block;
+	t_vec2	result;
+
+	curr_block.y = START_Y;
+	while (curr_block.y < SIZE_MMAP)
 	{
-		result.y = (int)((c_block.y - START_Y) / SIZE_BLOCK) - 5;
-		c_block.x = START_X;
-		while (c_block.x < SIZE_MMAP)
+		result.y = (int)((curr_block.y - START_Y) / SIZE_BLOCK) - 5;
+		curr_block.x = START_X;
+		while (curr_block.x < SIZE_MMAP)
 		{
-			result.x = (int)((c_block.x - START_X) / SIZE_BLOCK) - 5;
-			y = (int)(ctx->player.pos.y + result.y);
-			x = (int)(ctx->player.pos.x + result.x);
-			if (is_inmap(ctx, result))
-				my_mlx_pixel_put(ctx, c_block.x, c_block.y, MCOLOR_VOID);
-			else if (ctx->map->map_tab[y][x] == FLOOR)
-				my_mlx_pixel_put(ctx, c_block.x, c_block.y, MCOLOR_FLOOR);
-			else
-				my_mlx_pixel_put(ctx, c_block.x, c_block.y, MCOLOR_WALL);
-			int i = 0;
-			while (i < NB_BONUS_TEXTURES)
-			{
-				if (y == (int)ctx->sprites.arr[i].pos.y && x == (int)ctx->sprites.arr[i].pos.x)
-				{
-					if (ctx->sprites.arr[i].type == T_LUTIN)
-						my_mlx_pixel_put(ctx, c_block.x, c_block.y, MCOLOR_LUTIN);
-					else if (ctx->sprites.arr[i].type == T_MOINE)
-						my_mlx_pixel_put(ctx, c_block.x, c_block.y, MCOLOR_MOINU);
-					else if (ctx->sprites.arr[i].type == T_PIRATE)
-						my_mlx_pixel_put(ctx, c_block.x, c_block.y, MCOLOR_PIRATE);
-				}
-				i++;
-			}
-			c_block.x++;
+			result.x = (int)((curr_block.x - START_X) / SIZE_BLOCK) - 5;
+			display_background(ctx, result, curr_block);
+			display_sprite(ctx, result, curr_block);
+			curr_block.x++;
 		}
-		c_block.y++;
+		curr_block.y++;
 	}
 }

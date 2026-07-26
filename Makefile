@@ -34,6 +34,7 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			parsing/parsing.c \
 			parsing/parse_textures.c \
 			parsing/parse_color.c \
+			parsing/parse_char.c \
 			parsing/parse_map.c \
 			parsing/valid_map.c \
 			parsing/copy_map.c \

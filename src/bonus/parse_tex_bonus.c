@@ -6,11 +6,27 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 15:54:10 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 21:21:09 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+int	first_line(char **tab, size_t y)
+{
+	size_t	x;
+	char	*fst_line;
+
+	x = 0;
+	fst_line = tab[y];
+	while (fst_line[x])
+	{
+		if (!(iswall(fst_line[x]) || fst_line[x] == EMPTY))
+			return (print_error("A border line is incorrect"));
+		x++;
+	}
+	return (0);
+}
 
 int	parse_path_bonus(char **textures)
 {
@@ -72,9 +88,8 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 		{
 			i += ft_strlen(tab[i].cmp);
 			ctx_textures = &ctx->tab_tex_bonus[tab[i_tab].textures];
-			if (init_texture(line_read, ctx_textures, ctx, tab[i_tab].cmp) > 0)
-				return (1);
-			if (parse_extention(line_read, EXT_TEXT) > 0)
+			if (init_texture(line_read, ctx_textures, ctx, tab[i_tab].cmp) > 0
+				|| parse_extention(line_read, EXT_TEXT) > 0)
 				return (1);
 			break ;
 		}

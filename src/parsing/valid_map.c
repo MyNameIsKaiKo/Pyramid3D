@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 18:48:57 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/22 09:45:03 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 19:25:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,28 +106,19 @@ int	valid_lcolumn_border(char **tab, size_t y)
 	return (print_error("The map is open"));
 }
 
-int	valid_border_line(char **tab, size_t max_y)
+/** @brief check if the line is only wall or empty char*/
+int	border_line_check(char **tab, size_t y)
 {
-	size_t	i;
+	size_t	x;
+	char	*line;
 
-	i = 0;
-	while (tab[0][i])
+	x = 0;
+	line = tab[y];
+	while (line[x])
 	{
-		if (!(tab[0][i] == EMPTY || tab[0][i] == WALL))
+		if (line[x] != WALL && line[x] != EMPTY)
 			return (print_error("A border line is incorrect"));
-		i++;
+		x++;
 	}
-	i = 0;
-	while (tab[max_y][i])
-	{
-		if (!(tab[max_y][i] == EMPTY
-			|| tab[max_y][i] == WALL))
-			return (print_error("A border line is incorrect"));
-		i++;
-	}
-	if (tab[max_y][i]
-		&& !(tab[max_y][i] == EMPTY
-		|| tab[max_y][i] == WALL))
-		return (print_error("A border line is incorrect"));
 	return (0);
 }
