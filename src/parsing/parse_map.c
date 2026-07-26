@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 15:47:47 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 16:14:06 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	parse_map(t_map *map)
 	int	y;
 	int	x;
 
+	if (!map->parse_map)
+		return (print_error("Don't have map"));
 	if (valid_border_line(map->parse_map, map->y - 1) > 0)
 		return (1);
 	y = 1;

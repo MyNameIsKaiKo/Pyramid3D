@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 13:45:39 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 16:02:15 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@
 # define MAXLFRAME 5
 # define MAXMFRAME 3
 # define MAXPFRAME 3
+# define WEAPONSPRITE 3
 
 
 typedef	enum e_weapon_state
@@ -239,10 +240,6 @@ typedef struct s_map
 	t_vec2			starting_coord;
 	char			p_orient;
 	size_t			nb_player;
-	t_vec2			MOINE_pos;
-	size_t			nb_MOINE;
-	t_vec2			lutin_pos;
-	size_t			nb_lutin;
 }					t_map;
 
 typedef struct s_mouse
@@ -298,15 +295,18 @@ typedef struct s_ctx
 	t_texture		tex;
 	char			*tab_textures[NB_ALL_TEXTURES];
 	char			*tab_tex_bonus[NB_BONUS_TEXTURES];
+	char			*weapon_p[WEAPONSPRITE];
+	t_img			weapon_t[WEAPONSPRITE];
 	size_t			n_textures;
 	t_img			wall_tex[NB_ALL_TEXTURES];
 	t_img			wall_tex_bonus[NB_BONUS_TEXTURES];
 	int				colors[NB_COLOR];
-	t_img			fandc_tex[2];
+	t_img			fandc_tex[NB_COLOR];
 	t_img			img;
 	t_sprites		sprites;
 	t_player		player;
 	t_mouse			mouse;
+	t_weapon_state	state;
 	void			*win;
 	void			*mlx;
 }					t_ctx;
