@@ -36,9 +36,9 @@ void	display_map(t_ctx *ctx)
 		c_block.x = START_X;
 		while (c_block.x < SIZE_MMAP)
 		{
+			result.x = (int)((c_block.x - START_X) / SIZE_BLOCK) - 5;
 			y = (int)(ctx->player.pos.y + result.y);
 			x = (int)(ctx->player.pos.x + result.x);
-			result.x = (int)((c_block.x - START_X) / SIZE_BLOCK) - 5;
 			if (is_inmap(ctx, result))
 				my_mlx_pixel_put(ctx, c_block.x, c_block.y, MCOLOR_EMPTY);
 			else if (ctx->map->map_tab[y][x] == FLOOR)
