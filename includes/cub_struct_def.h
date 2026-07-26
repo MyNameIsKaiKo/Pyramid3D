@@ -67,14 +67,14 @@
 # define MAXLFRAME 5
 # define MAXMFRAME 3
 # define MAXPFRAME 3
+# define MAXWFRAME 3
 
-
-typedef	enum e_weapon_state
+typedef enum e_weapon_state
 {
 	W_IDLE,
 	W_HOLD,
 	W_FIRE
-}	t_weapon_state;
+}					t_weapon_state;
 
 typedef enum e_tile_type
 {
@@ -206,6 +206,15 @@ typedef struct s_ttype_mgnt
 	t_tile_type		tile_type;
 }					t_ttype_mgnt;
 
+typedef struct s_img
+{
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_lenght;
+	int				endian;
+}					t_img;
+
 typedef struct s_player
 {
 	t_ray			ray;
@@ -219,17 +228,12 @@ typedef struct s_player
 	double			veloville;
 	int				hp;
 	int				as;
+	t_weapon_state	wstate;
+	char			*weapon_p[MAXWFRAME];
+	t_img			weapon_t[MAXWFRAME];
+	int				weapon_w;
+	int				weapon_h;
 }					t_player;
-
-typedef struct s_img
-{
-	void			*img;
-	char			*addr;
-	int				bits_per_pixel;
-	int				line_lenght;
-	int				endian;
-}					t_img;
-
 typedef struct s_map
 {
 	char			**parse_map;
@@ -239,10 +243,6 @@ typedef struct s_map
 	t_vec2			starting_coord;
 	char			p_orient;
 	size_t			nb_player;
-	t_vec2			MOINE_pos;
-	size_t			nb_MOINE;
-	t_vec2			lutin_pos;
-	size_t			nb_lutin;
 }					t_map;
 
 typedef struct s_mouse
