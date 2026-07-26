@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 01:48:50 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/26 01:48:50 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/26 13:29:26 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void	free_sprite_paths(char **paths, int max)
+static void	free_sprite_paths(char **paths)
 {
 	int i;
 
 	i = 0;
-	while (i < max)
+	while (paths[i])
 	{
 		if (paths[i])
 			free(paths[i]);
@@ -37,10 +37,10 @@ void	free_bonus_struct(t_ctx *ctx)
 		{
 			free(ctx->tab_tex_bonus[i]);
 			ctx->tab_tex_bonus[i] = NULL;
-		}
+		}	
 		++i;
 	}
-	free_sprite_paths(ctx->sprites.lutin_p, MAXLFRAME);
-	free_sprite_paths(ctx->sprites.moine_p, MAXMFRAME);
-	free_sprite_paths(ctx->sprites.lutin_p, MAXPFRAME);
+	free_sprite_paths(ctx->sprites.lutin_p);
+	free_sprite_paths(ctx->sprites.moine_p);
+	free_sprite_paths(ctx->sprites.lutin_p);
 }
