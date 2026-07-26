@@ -22,7 +22,6 @@ static int	set_struct(t_ctx *ctx)
 		free_ctx(ctx);
 		return (1);
 	}
-	ctx->sprites.count = -1;
 	ft_memset(ctx->map, 0, sizeof(t_map));
 	return (0);
 }

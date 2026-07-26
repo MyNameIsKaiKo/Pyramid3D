@@ -53,25 +53,11 @@ void	data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type)
 	t_sprites *sprites;
 
 	sprites = &ctx->sprites;
-	sprites->count++;
 	sprites->arr[sprites->count].pos.x = x + 0.5;
 	sprites->arr[sprites->count].pos.y = y + 0.5;
 	sprites->arr[sprites->count].type = type;
 	ctx->map->parse_map[y][x] = FLOOR;
+	sprites->count++;
 }
 
-void	free_bonus_struct(t_ctx *ctx)
-{
-	int	i;
 
-	i = 0;
-	while (i < NB_BONUS_TEXTURES)
-	{
-		if (ctx->tab_tex_bonus[i])
-		{
-			free(ctx->tab_tex_bonus[i]);
-			ctx->tab_tex_bonus[i] = NULL;
-		}
-		++i;
-	}
-}
