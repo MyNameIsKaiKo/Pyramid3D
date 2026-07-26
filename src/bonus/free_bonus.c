@@ -22,6 +22,7 @@ static void	free_sprite_paths(char **paths, int max)
 		if (paths[i])
 			free(paths[i]);
 		paths[i] = NULL;
+		i++;
 	}
 }
 
