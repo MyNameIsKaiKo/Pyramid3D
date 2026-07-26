@@ -65,6 +65,14 @@
 # define MAXMFRAME 3
 # define MAXPFRAME 3
 
+
+typedef	enum e_weapon_state
+{
+	W_IDLE,
+	W_HOLD,
+	W_FIRE
+}	t_weapon_state;
+
 typedef enum e_tile_type
 {
 	FLOOR = '0',
