@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 18:27:20 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 17:47:15 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/25 18:10:19 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	lutin_sprite(char **tab, t_ctx *ctx)
 
 	i = 1;
 	id = 0;
-	while (i < MAXLFRAME + 1)
+	while (tab[i] && i < MAXLFRAME + 1)
 	{
 		ctx->sprites.lutin_p[id] = ft_strdup(tab[i]);
 		if (!ctx->sprites.lutin_p[id])
@@ -40,6 +40,8 @@ static int	lutin_sprite(char **tab, t_ctx *ctx)
 		i++;
 		id++;
 	}
+	if (i != MAXLFRAME + 1)
+		return (print_error("Lutin doesn't have five sprite"));
 	return (0);
 }
 
@@ -50,7 +52,7 @@ static int	moine_sprite(char **tab, t_ctx *ctx)
 
 	i = 1;
 	id = 0;
-	while (i < MAXMFRAME + 1)
+	while (tab[i] && i < MAXMFRAME + 1)
 	{
 		ctx->sprites.moine_p[id] = ft_strdup(tab[i]);
 		if (!ctx->sprites.moine_p[id])
@@ -60,6 +62,8 @@ static int	moine_sprite(char **tab, t_ctx *ctx)
 		i++;
 		id++;
 	}
+	if (i != MAXMFRAME + 1)
+		return (print_error("Moinutea doesn't have three sprite"));
 	return (0);
 }
 
@@ -70,7 +74,7 @@ static int	pirate_sprite(char **tab, t_ctx *ctx)
 
 	i = 1;
 	id = 0;
-	while (i < MAXPFRAME + 1)
+	while (tab[i] && i < MAXPFRAME + 1)
 	{
 		ctx->sprites.pirate_p[id] = ft_strdup(tab[i]);
 		if (!ctx->sprites.pirate_p[id])
@@ -80,6 +84,8 @@ static int	pirate_sprite(char **tab, t_ctx *ctx)
 		i++;
 		id++;
 	}
+	if (i != MAXPFRAME + 1)
+		return (print_error("Pirate doesn't have three sprite"));
 	return (0);
 }
 
