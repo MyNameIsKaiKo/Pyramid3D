@@ -72,6 +72,7 @@ void	texture_data(t_ctx *ctx);
 
 // -- Pyramid Hook Function --
 int		handlebutton(int button, int x, int y, void *map);
+int		handlebutton_release(int button, int x, int y, void *data);
 int		handlekey_release(int keycode, void *map);
 int		handlekey_press(int keycode, void *map);
 int		close_app(t_ctx *ctx);
@@ -128,6 +129,7 @@ void	mouse_init(t_ctx *ctx);
 void	draw_crossair(t_ctx *ctx);
 
 // -- BONUS SECTION --
+void	init_bonus(t_ctx *ctx);
 // -- draw_bonus Function --
 void	calc_floorxy(t_ctx *ctx);
 void	calc_floortex(t_ctx *ctx, int y);
@@ -175,5 +177,9 @@ void	calc_transform(t_ctx *ctx, t_sprite_calc *calc, int i);
 
 // -- recover_tex_sprite_bonus Function --
 int		sprite_recover(char *line, t_ctx *ctx);
+
+// -- Weapon Function --
+void	false_gun(t_ctx *ctx);
+void	draw_gun(t_ctx *ctx);
 
 #endif

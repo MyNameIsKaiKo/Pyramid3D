@@ -12,21 +12,29 @@
 
 #include "cub.h"
 
-static int	shoot(int button, int x, int y, t_map *map)
+int	handlebutton(int button, int x, int y, void *data)
 {
-	(void)map;
+	t_ctx *ctx;
 	(void)x;
 	(void)y;
+
+	ctx = (t_ctx *)data;
 	if (button == 1)
-		ft_putstr_fd("SHOOT", 1);
-	if (button == 2)
-		ft_putstr_fd("SHOW MAP", 1);
-	return (1);
+		ctx->player.wstate = W_HOLD;
+	return (0);
 }
 
-int	handlebutton(int button, int x, int y, void *map)
+int	handlebutton_release(int button, int x, int y, void *data)
 {
-	if (button == 1 || button == 2)
-		shoot(button, x, y, map);
+	t_ctx *ctx;
+	(void)x;
+	(void)y;
+
+	ctx = (t_ctx *)data;
+	if (button == 1 && ctx->player.wstate == W_HOLD)
+	{
+		ctx->player.wstate = W_FIRE;
+		ft_putstr_fd("RHUM IN COMMING\n", 1);
+	}
 	return (0);
 }
