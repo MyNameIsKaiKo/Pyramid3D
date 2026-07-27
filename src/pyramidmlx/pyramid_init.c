@@ -53,7 +53,7 @@ int	pyramid_loop(t_ctx *ctx)
 	mlx_hook(ctx->win, 2, 1L << 0, handlekey_press, ctx);
 	mlx_hook(ctx->win, 3, 1L << 1, handlekey_release, ctx);
 	mlx_mouse_hook(ctx->win, handlebutton, ctx);
-	mlx_hook(ctx->win, 5, 1L << 3, handlekey_release, ctx);
+	mlx_hook(ctx->win, 5, 1L << 3, handlebutton_release, ctx);
 	mlx_loop(ctx->mlx);
 	mlx_mouse_show(ctx->mlx, ctx->win);
 	mlx_destroy_image(ctx->mlx, ctx->img.img);
