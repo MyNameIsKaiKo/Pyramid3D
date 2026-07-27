@@ -23,4 +23,5 @@ void	init_bonus(t_ctx *ctx)
 {
 	load_sprite(ctx);
 	false_gun(ctx);
+	init_player_bonus(ctx);
 }

@@ -18,7 +18,6 @@ void	init_player_bonus(t_ctx *ctx)
 
 	player = &ctx->player;
 	player->hp = 100;
-	player->as = 10;
 }
 
 void	player_take_damage(t_ctx *ctx, int amount)
@@ -28,5 +27,8 @@ void	player_take_damage(t_ctx *ctx, int amount)
 	player = &ctx->player;
 	player->hp = player->hp - amount;
 	if (player->hp <= 0)
-		printf("TODO : GAME OVER SCREEN");
+	{
+		ft_putstr_fd("YOU DIED! GAME OVER. \n", 1);
+		close_app(ctx);
+	}
 }

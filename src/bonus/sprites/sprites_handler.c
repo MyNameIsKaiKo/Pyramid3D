@@ -99,11 +99,19 @@ void	render_all_sprites(t_ctx *ctx)
 	sort_sprdist(&ctx->sprites);
 	while (i < ctx->sprites.count)
 	{
-		calc_transform(ctx, &calc, i);
-		setup_base_calc(&calc);
-		sprite_draw_calc(&calc);
-		tmp = get_right_img(&ctx->sprites, i);
-		draw_sprite(ctx, &calc, &tmp);
+		if (ctx->sprites.arr[i].type == T_MOINE 
+				&& ctx->sprites.arr[i].dist < 0.5)
+		{
+			player_take_damage(ctx, 100);
+		}
+		if (ctx->sprites.arr[i].type != T_NULL)
+		{
+			calc_transform(ctx, &calc, i);
+			setup_base_calc(&calc);
+			sprite_draw_calc(&calc);
+			tmp = get_right_img(&ctx->sprites, i);
+			draw_sprite(ctx, &calc, &tmp);
+		}
 		i++;
 	}
 }

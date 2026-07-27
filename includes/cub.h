@@ -182,4 +182,9 @@ int		sprite_recover(char *line, t_ctx *ctx);
 void	false_gun(t_ctx *ctx);
 void	draw_gun(t_ctx *ctx);
 
+// -- Player Health Function --
+void	player_take_damage(t_ctx *ctx, int amount);
+void	init_player_bonus(t_ctx *ctx);
+
+
 #endif
