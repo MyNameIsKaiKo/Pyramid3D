@@ -71,6 +71,7 @@ SRC_BONUS_FILES = bonus/display_minimap_bonus.c \
 				bonus/sprites/sprites_tools.c \
 				bonus/player_handler/gun_handler.c \
 				bonus/player_handler/player_handler_bonus.c \
+				bonus/player_handler/door.c \
 				bonus/free_bonus.c \
 				bonus/bonus.c
 
