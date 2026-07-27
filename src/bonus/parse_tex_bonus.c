@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/27 15:44:24 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 16:38:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,20 @@ int	weapon_recover(char *line, t_ctx *ctx)
 	tab = ft_split(line, ' ');
 	if (!tab)
 		return (print_error("Malloc failed"));
-	tab[WEAPONSPRITE] = ft_strtrim(tab[WEAPONSPRITE], "\n");
+	tab[MAXWFRAME] = ft_strtrim(tab[MAXWFRAME], "\n");
 	i = 1;
 	id = 0;
-	while (tab[i] && i < WEAPONSPRITE + 1)
+	while (tab[i] && i < MAXWFRAME + 1)
 	{
-		ctx->weapon_p[id] = ft_strdup(tab[i]);
-		if (!ctx->weapon_p[id])
+		ctx->player.weapon_p[id] = ft_strdup(tab[i]);
+		if (!ctx->player.weapon_p[id])
 			return (print_error("ft_strdup failed"));
-		if (parse_sprite_path(ctx->weapon_p[id]) > 0)
+		if (parse_sprite_path(ctx->player.weapon_p[id]) > 0)
 			return (1);
 		i++;
 		id++;
 	}
-	if (i != WEAPONSPRITE + 1)
+	if (i != MAXWFRAME + 1)
 		return (print_error("Weapon doesn't have three sprite"));
 	free_matrix(tab);
 	return (0);

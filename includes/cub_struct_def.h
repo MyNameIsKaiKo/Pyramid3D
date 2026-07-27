@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/27 10:07:32 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 16:37:15 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,15 @@
 # define MAXLFRAME 5
 # define MAXMFRAME 3
 # define MAXPFRAME 3
-# define WEAPONSPRITE 3
+# define MAXWFRAME 3
 
+typedef enum e_weapon_state
 typedef enum e_weapon_state
 {
 	W_IDLE,
 	W_HOLD,
 	W_FIRE
-}	t_weapon_state;
+}					t_weapon_state;
 
 typedef enum e_tile_type
 {
@@ -206,6 +207,15 @@ typedef struct s_ttype_mgnt
 	t_tile_type		tile_type;
 }					t_ttype_mgnt;
 
+typedef struct s_img
+{
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_lenght;
+	int				endian;
+}					t_img;
+
 typedef struct s_player
 {
 	t_ray			ray;
@@ -219,17 +229,12 @@ typedef struct s_player
 	double			veloville;
 	int				hp;
 	int				as;
+	t_weapon_state	wstate;
+	char			*weapon_p[MAXWFRAME];
+	t_img			weapon_t[MAXWFRAME];
+	int				weapon_w;
+	int				weapon_h;
 }					t_player;
-
-typedef struct s_img
-{
-	void			*img;
-	char			*addr;
-	int				bits_per_pixel;
-	int				line_lenght;
-	int				endian;
-}					t_img;
-
 typedef struct s_map
 {
 	char			**parse_map;
@@ -294,8 +299,6 @@ typedef struct s_ctx
 	t_texture		tex;
 	char			*tab_textures[NB_ALL_TEXTURES];
 	char			*tab_tex_bonus[NB_BONUS_TEXTURES];
-	char			*weapon_p[WEAPONSPRITE];
-	t_img			weapon_t[WEAPONSPRITE];
 	size_t			n_textures;
 	t_img			wall_tex[NB_ALL_TEXTURES];
 	t_img			wall_tex_bonus[NB_BONUS_TEXTURES];
