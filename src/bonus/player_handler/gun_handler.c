@@ -83,3 +83,24 @@ void	draw_gun(t_ctx *ctx)
 		}
 	}
 }
+
+void	shoot_weapon(t_ctx *ctx)
+{
+	int	i;
+	double	hit;
+	double	dot;
+	t_vec2	delta;
+
+	i = -1;
+	while (++i < ctx->sprites.count)
+	{
+		if (ctx->sprites.arr[i].type == T_MOINE)
+		{
+			delta = get_delta(ctx, i);
+			dot = (ctx->player.dir.x * delta.x) + (ctx->player.dir.y * delta.y);
+			hit = fabs(ctx->player.dir.x * delta.y - ctx->player.dir.y * delta.x);
+			if (dot > 0 && hit < 0.5 && ctx->sprites.arr[i].dist < 50.0)
+				ctx->sprites.arr[i].type = T_NULL;
+		}
+	}
+}

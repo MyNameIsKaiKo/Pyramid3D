@@ -181,6 +181,7 @@ int		sprite_recover(char *line, t_ctx *ctx);
 // -- Weapon Function --
 void	false_gun(t_ctx *ctx);
 void	draw_gun(t_ctx *ctx);
+void	shoot_weapon(t_ctx *ctx);
 
 // -- Player Health Function --
 void	player_take_damage(t_ctx *ctx, int amount);
