@@ -69,15 +69,15 @@ void	draw_gun(t_ctx *ctx)
 	int			f;
 
 	f = get_weapon_frame(&ctx->player);
-	start.x = WIDTH - ctx->player.weapon_w;
-	start.y = HEIGHT - ctx->player.weapon_h;
+	start.x = (WIDTH / 2.0) - ((ctx->player.weapon_w * 3) / 2.0) + 160;
+	start.y = HEIGHT - (ctx->player.weapon_h * 3);
 	x = -1;
-	while (++x < ctx->player.weapon_w)
+	while (++x < ctx->player.weapon_w * 3)
 	{
 		y = -1;
-		while (++y < ctx->player.weapon_h)
+		while (++y < ctx->player.weapon_h * 3)
 		{
-			color = get_texture_pixel(&ctx->player.weapon_t[f], x, y);
+			color = get_texture_pixel(&ctx->player.weapon_t[f], x / 3, y / 3);
 			if (color != 0x0000FF)
 				my_mlx_pixel_put(ctx, start.x + x, start.y + y, color);
 		}
