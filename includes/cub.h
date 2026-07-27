@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 21:21:46 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 10:06:44 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	free_map_tab(t_map *map);
 void	data_player(t_map *map, size_t y, size_t x);
 int		print_error(const char *err_msg);
 size_t	ft_strcharlen(char *s, char c);
+int		isplayer(char c);
 
 // -- parsing SECTION --
 // -- parsing Function --

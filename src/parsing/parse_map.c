@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 21:27:43 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 10:07:00 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ int	space_in_map(char **tab, size_t y, size_t x)
 	return (0);
 }
 
-int	isplayer(char c)
-{
-	return (c >= N_PLAYER && c <= W_PLAYER);
-}
-
 /** @brief look around the floor, return error if map is open */
 int	isopen_map(char **tab, size_t y, size_t x)
 {
@@ -44,7 +39,8 @@ int	isopen_map(char **tab, size_t y, size_t x)
 	if ((top_case != WALL && top_case != FLOOR && !isplayer(top_case))
 		|| (left_case != WALL && left_case != FLOOR && !isplayer(left_case))
 		|| (right_case != WALL && right_case != FLOOR && !isplayer(right_case))
-		|| (bottom_case != WALL && bottom_case != FLOOR && !isplayer(bottom_case)))
+		|| (bottom_case != WALL && bottom_case != FLOOR
+			&& !isplayer(bottom_case)))
 		return (print_error("Map is open"));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 16:02:15 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 10:07:32 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@
 # define MAXPFRAME 3
 # define WEAPONSPRITE 3
 
-
-typedef	enum e_weapon_state
+typedef enum e_weapon_state
 {
 	W_IDLE,
 	W_HOLD,
