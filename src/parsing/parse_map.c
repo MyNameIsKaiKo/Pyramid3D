@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/27 10:07:00 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 11:48:19 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	isopen_map(char **tab, size_t y, size_t x)
 		|| (right_case != WALL && right_case != FLOOR && !isplayer(right_case))
 		|| (bottom_case != WALL && bottom_case != FLOOR
 			&& !isplayer(bottom_case)))
-		return (print_error("Map is open"));
+		return (print_error("Map is open or have a char invalid"));
 	return (0);
 }
 

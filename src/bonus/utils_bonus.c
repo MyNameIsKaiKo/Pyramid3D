@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 09:31:33 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 19:36:39 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 12:07:05 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,14 @@ int	close_map(char **tab, size_t y, size_t x)
 	left_case = tab[y][x - 1];
 	right_case = tab[y][x + 1];
 	bottom_case = tab[y + 1][x];
-	if ((!iswall(top_case) && top_case != FLOOR && !issprite(top_case))
-		|| (!iswall(left_case) && left_case != FLOOR && !issprite(left_case))
-		|| (!iswall(right_case) && right_case != FLOOR && !issprite(right_case))
-		|| (!iswall(bottom_case)
-			&& bottom_case != FLOOR && !issprite(bottom_case)))
+	if ((!iswall(top_case) && top_case != FLOOR
+			&& !issprite(top_case) && !isplayer(top_case))
+		|| (!iswall(left_case) && left_case != FLOOR
+			&& !issprite(left_case) && !isplayer(left_case))
+		|| (!iswall(right_case) && right_case != FLOOR
+			&& !issprite(right_case) && !isplayer(right_case))
+		|| (!iswall(bottom_case) && bottom_case != FLOOR
+			&& !issprite(bottom_case) && !isplayer(bottom_case)))
 		return (print_error("Map is open in close map"));
 	return (0);
 }
