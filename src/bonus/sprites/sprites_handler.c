@@ -6,12 +6,14 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 13:02:50 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/25 16:27:20 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 16:31:47 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
+
+/** @todo change debug printf -> print_error*/
 static void	load_sp_frame(t_ctx *ctx, char *path, t_img *tex)
 {
 	int	w;

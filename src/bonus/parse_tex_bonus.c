@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 21:21:09 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 15:44:24 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,34 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx, char *type)
 	return (0);
 }
 
+int	weapon_recover(char *line, t_ctx *ctx)
+{
+	char	**tab;
+	int		i;
+	int		id;
+
+	tab = ft_split(line, ' ');
+	if (!tab)
+		return (print_error("Malloc failed"));
+	tab[WEAPONSPRITE] = ft_strtrim(tab[WEAPONSPRITE], "\n");
+	i = 1;
+	id = 0;
+	while (tab[i] && i < WEAPONSPRITE + 1)
+	{
+		ctx->weapon_p[id] = ft_strdup(tab[i]);
+		if (!ctx->weapon_p[id])
+			return (print_error("ft_strdup failed"));
+		if (parse_sprite_path(ctx->weapon_p[id]) > 0)
+			return (1);
+		i++;
+		id++;
+	}
+	if (i != WEAPONSPRITE + 1)
+		return (print_error("Weapon doesn't have three sprite"));
+	free_matrix(tab);
+	return (0);
+}
+
 static int	is_texture(char *line_read, t_ctx *ctx, int i)
 {
 	int						len;
@@ -81,6 +109,12 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 		B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
 
 	i_tab = -1;
+	if (ft_strncmp(line_read + i, "W ", ft_strlen("W ")) == 0)
+	{
+		if (weapon_recover(line_read, ctx) > 0)
+			return (1);
+		return (0);
+	}
 	while (++i_tab < NB_BONUS_TEXTURES)
 	{
 		len = ft_strlen(tab[i_tab].cmp);

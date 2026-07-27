@@ -6,13 +6,13 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 18:27:20 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 18:10:19 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 16:15:26 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	parse_sprite_path(char *path_sprite)
+int	parse_sprite_path(char *path_sprite)
 {
 	int	fd;
 

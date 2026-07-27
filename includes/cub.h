@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/27 10:06:44 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 16:15:44 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ void	setup_base_calc(t_sprite_calc *calc);
 void	calc_transform(t_ctx *ctx, t_sprite_calc *calc, int i);
 
 // -- recover_tex_sprite_bonus Function --
+int		parse_sprite_path(char *path_sprite);
 int		sprite_recover(char *line, t_ctx *ctx);
 
 #endif
