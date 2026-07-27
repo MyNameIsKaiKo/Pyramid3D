@@ -35,9 +35,9 @@ void	false_gun(t_ctx *ctx)
 
 	i = -1;
 	player = &ctx->player;
-	player->weapon_p[0] = "./texture/assets/slingshot/slinghot.xpm";
-	player->weapon_p[1] = "./texture/assets/slingshot/slinghot1.xpm";
-	player->weapon_p[2] = "./texture/assets/slingshot/slinghot2.xpm";
+	player->weapon_p[0] = "./texture/assets/slingshot/slingshot.xpm";
+	player->weapon_p[1] = "./texture/assets/slingshot/slingshot2.xpm";
+	player->weapon_p[2] = "./texture/assets/slingshot/slingshot3.xpm";
 	while (++i < MAXWFRAME)
 		load_sp_frame(ctx, player->weapon_p[i], &player->weapon_t[i]);
 }
