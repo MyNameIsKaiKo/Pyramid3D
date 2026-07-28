@@ -193,5 +193,7 @@ void	shoot_weapon(t_ctx *ctx);
 void	player_take_damage(t_ctx *ctx, int amount);
 void	init_player_bonus(t_ctx *ctx);
 
+// -- door Function --
+void	check_alive_moine(t_ctx *ctx);
 
 #endif

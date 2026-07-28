@@ -103,4 +103,5 @@ void	shoot_weapon(t_ctx *ctx)
 				ctx->sprites.arr[i].type = T_NULL;
 		}
 	}
+	check_alive_moine(ctx);
 }
