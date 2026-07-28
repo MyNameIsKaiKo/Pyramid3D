@@ -10,4 +10,5 @@ OK
 
 TO DO:
 
-
+load_sp_frame => print_error
+couleur magic
