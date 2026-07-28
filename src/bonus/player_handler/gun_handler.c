@@ -35,33 +35,72 @@ void	false_gun(t_ctx *ctx)
 
 	i = -1;
 	player = &ctx->player;
-	player->weapon_p[0] = "./texture/grandRACCOON.xpm";
-	player->weapon_p[1] = "./texture/texture1.xpm";
-	player->weapon_p[2] = "./texture/texture4.xpm";
+	player->weapon_p[0] = "./texture/assets/slingshot/slingshot.xpm";
+	player->weapon_p[1] = "./texture/assets/slingshot/slingshot2.xpm";
+	player->weapon_p[2] = "./texture/assets/slingshot/slingshot3.xpm";
 	while (++i < MAXWFRAME)
 		load_sp_frame(ctx, player->weapon_p[i], &player->weapon_t[i]);
 }
 
+static int	get_weapon_frame(t_player *player)
+{
+	if (player->wstate == W_HOLD)
+		return (1);
+	if (player->wstate == W_FIRE)
+	{
+		player->timer++;
+		if (player->timer > 10)
+		{
+			player->timer = 0;
+			player->wstate = W_IDLE;
+			return (0);
+		}
+		return (2);
+	}
+	return (0);
+}
+
 void	draw_gun(t_ctx *ctx)
 {
-	t_player	*player;
 	t_vec2		start;
 	int			x;
 	int			y;
 	int			color;
+	int			f;
 
-	player = &ctx->player;
-	start.x = WIDTH - player->weapon_w;
-	start.y = HEIGHT - player->weapon_h;
+	f = get_weapon_frame(&ctx->player);
+	start.x = (WIDTH / 2.0) - ((ctx->player.weapon_w * 3) / 2.0) + 160;
+	start.y = HEIGHT - (ctx->player.weapon_h * 3);
 	x = -1;
-	while (++x < player->weapon_w)
+	while (++x < ctx->player.weapon_w * 3)
 	{
 		y = -1;
-		while (++y < player->weapon_h)
+		while (++y < ctx->player.weapon_h * 3)
 		{
-			color = get_texture_pixel(&player->weapon_t[0], x, y);
+			color = get_texture_pixel(&ctx->player.weapon_t[f], x / 3, y / 3);
 			if (color != 0x0000FF)
 				my_mlx_pixel_put(ctx, start.x + x, start.y + y, color);
+		}
+	}
+}
+
+void	shoot_weapon(t_ctx *ctx)
+{
+	int	i;
+	double	hit;
+	double	dot;
+	t_vec2	delta;
+
+	i = -1;
+	while (++i < ctx->sprites.count)
+	{
+		if (ctx->sprites.arr[i].type == T_MOINE)
+		{
+			delta = get_delta(ctx, i);
+			dot = (ctx->player.dir.x * delta.x) + (ctx->player.dir.y * delta.y);
+			hit = fabs(ctx->player.dir.x * delta.y - ctx->player.dir.y * delta.x);
+			if (dot > 0 && hit < 0.5 && ctx->sprites.arr[i].dist < 50.0)
+				ctx->sprites.arr[i].type = T_NULL;
 		}
 	}
 }

@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_handler_bonus.c                             :+:      :+:    :+:   */
+/*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/25 14:32:46 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/25 14:32:46 by jleray           ###   ########.fr       */
+/*   Created: 2026/07/27 17:57:27 by jleray            #+#    #+#             */
+/*   Updated: 2026/07/27 17:57:27 by jleray           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	init_player_bonus(t_ctx *ctx)
+void	draw_bonus(t_ctx *ctx)
 {
-	t_player	*player;
-
-	player = &ctx->player;
-	player->hp = 100;
+	print_minimap(ctx);
+	render_all_sprites(ctx);
+	draw_gun(ctx);
 }
 
-void	player_take_damage(t_ctx *ctx, int amount)
+void	init_bonus(t_ctx *ctx)
 {
-	t_player	*player;
-
-	player = &ctx->player;
-	player->hp = player->hp - amount;
-	if (player->hp <= 0)
-	{
-		ft_putstr_fd("YOU DIED! GAME OVER. \n", 1);
-		close_app(ctx);
-	}
+	load_sprite(ctx);
+	false_gun(ctx);
+	init_player_bonus(ctx);
 }

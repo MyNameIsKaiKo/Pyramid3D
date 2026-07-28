@@ -234,6 +234,7 @@ typedef struct s_player
 	t_img			weapon_t[MAXWFRAME];
 	int				weapon_w;
 	int				weapon_h;
+	int				timer;
 }					t_player;
 typedef struct s_map
 {

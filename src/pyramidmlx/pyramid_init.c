@@ -45,7 +45,7 @@ int	pyramid_loop(t_ctx *ctx)
 		return (1);
 	texture_data(ctx);
 	if (BONUS)
-		load_sprite(ctx);
+		init_bonus(ctx);
 	mouse_init(ctx);
 	mlx_loop_hook(ctx->mlx, draw_frame, ctx);
 	mlx_hook(ctx->win, 17, 0, close_app, ctx);
@@ -53,6 +53,7 @@ int	pyramid_loop(t_ctx *ctx)
 	mlx_hook(ctx->win, 2, 1L << 0, handlekey_press, ctx);
 	mlx_hook(ctx->win, 3, 1L << 1, handlekey_release, ctx);
 	mlx_mouse_hook(ctx->win, handlebutton, ctx);
+	mlx_hook(ctx->win, 5, 1L << 3, handlebutton_release, ctx);
 	mlx_loop(ctx->mlx);
 	mlx_mouse_show(ctx->mlx, ctx->win);
 	mlx_destroy_image(ctx->mlx, ctx->img.img);

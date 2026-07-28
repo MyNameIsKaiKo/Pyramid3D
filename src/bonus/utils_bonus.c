@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 09:31:33 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/27 12:07:05 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 19:44:55 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 bool	iswall(t_tile_type c)
 {
 	return (c >= WALL && c <= WALL6);
-}
-
-void	draw_bonus(t_ctx *ctx)
-{
-	print_minimap(ctx);
-	render_all_sprites(ctx);
 }
 
 int	issprite(t_tile_type c)
