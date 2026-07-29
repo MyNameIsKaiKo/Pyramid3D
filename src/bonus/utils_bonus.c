@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 09:31:33 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/27 19:44:55 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 10:30:49 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,22 @@
 bool	iswall(t_tile_type c)
 {
 	return (c >= WALL && c <= WALL6);
+}
+
+int	first_line(char **tab, size_t y)
+{
+	size_t	x;
+	char	*fst_line;
+
+	x = 0;
+	fst_line = tab[y];
+	while (fst_line[x])
+	{
+		if (!(iswall(fst_line[x]) || fst_line[x] == EMPTY))
+			return (print_error("A border line is incorrect"));
+		x++;
+	}
+	return (0);
 }
 
 int	issprite(t_tile_type c)

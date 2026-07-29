@@ -6,26 +6,20 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 13:02:50 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/28 18:44:38 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 10:45:50 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-
-/** @todo change debug printf -> print_error*/
 static void	load_sp_frame(t_ctx *ctx, char *path, t_img *tex)
 {
 	int	w;
 	int	h;
 
 	tex->img = mlx_xpm_file_to_image(ctx->mlx, path, &w, &h);
-	if (!tex->img)
-		printf("\n\nerror with the texture \"%s\"\n\n", path);
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
 			&tex->line_lenght, &tex->endian);
-	if (!tex->addr)
-		printf("\n\nerror with the texture \"%s\"\n\n", path);
 }
 
 void	load_sprite(t_ctx *ctx)
@@ -105,7 +99,7 @@ void	render_all_sprites(t_ctx *ctx)
 	while (i < ctx->sprites.count)
 	{
 		if (ctx->sprites.arr[i].type == T_MOINE
-				&& ctx->sprites.arr[i].dist < 0.5)
+			&& ctx->sprites.arr[i].dist < 0.5)
 		{
 			player_take_damage(ctx, 100);
 		}

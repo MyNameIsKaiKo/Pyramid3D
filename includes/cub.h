@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/28 16:47:08 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 10:48:32 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,12 +152,12 @@ int		parse_map_bonus(t_ctx *ctx);
 // -- parse_tex_bonus Function --
 int		parse_path_bonus(char **textures);
 int		parse_tex_bonus(char *line_read, t_ctx *ctx);
-int		first_line(char **tab, size_t y);
 
 // -- utils_bonus Function --
 bool	iswall(t_tile_type c);
 int		close_map(char **tab, size_t y, size_t x);
 void	data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type);
+int		first_line(char **tab, size_t y);
 void	free_bonus_struct(t_ctx *ctx);
 
 // -- parsing_bonus Function --
@@ -185,7 +185,6 @@ int		parse_sprite_path(char *path_sprite);
 int		sprite_recover(char *line, t_ctx *ctx);
 
 // -- Weapon Function --
-void	false_gun(t_ctx *ctx);
 void	draw_gun(t_ctx *ctx);
 void	shoot_weapon(t_ctx *ctx);
 void	load_wp_frame(t_ctx *ctx, char *path, t_img *tex);
@@ -196,5 +195,8 @@ void	init_player_bonus(t_ctx *ctx);
 
 // -- door Function --
 void	check_alive_moine(t_ctx *ctx);
+
+// -- recover weapon sprite Function --
+int		weapon_recover(char *line, t_ctx *ctx);
 
 #endif

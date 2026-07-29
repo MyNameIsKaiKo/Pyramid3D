@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jb <marvin@d42.fr>                         +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 20:42:08 by jb                #+#    #+#             */
-/*   Updated: 2026/07/27 20:42:08 by jb               ###   ########.fr       */
+/*   Updated: 2026/07/29 10:43:18 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	check_alive_moine(t_ctx *ctx)
 	int	y;
 
 	i = -1;
-	while(++i < ctx->sprites.count)
+	while (++i < ctx->sprites.count)
 	{
 		if (ctx->sprites.arr[i].type == T_MOINE)
 			return ;

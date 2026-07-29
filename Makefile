@@ -65,8 +65,6 @@ SRC_BONUS_FILES = bonus/display_minimap_bonus.c \
 				bonus/texture_data_bonus.c \
 				bonus/utils_bonus.c \
 				bonus/recover_tex_sprite_bonus.c \
-				bonus/sprites/enemie.c \
-				bonus/sprites/lutin.c \
 				bonus/sprites/sprites_calc.c \
 				bonus/sprites/sprites_handler.c \
 				bonus/sprites/sprites_tools.c \
@@ -74,7 +72,8 @@ SRC_BONUS_FILES = bonus/display_minimap_bonus.c \
 				bonus/player_handler/player_handler_bonus.c \
 				bonus/player_handler/door.c \
 				bonus/free_bonus.c \
-				bonus/bonus.c
+				bonus/bonus.c \
+				bonus/recover_weapon_sp_bonus.c
 
 
 ifdef WITH_BONUS

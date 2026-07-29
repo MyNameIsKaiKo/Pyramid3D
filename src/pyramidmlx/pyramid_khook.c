@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:26:13 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/28 18:23:55 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 10:20:23 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	handlekey_press(int keycode, void *ctx)
 {
 	if (keycode == K_ESC)
 		close_app(ctx);
-	if (keycode == K_R)
+	if (BONUS && keycode == K_R)
 		((t_ctx *)ctx)->player.wstate = W_HOLD;
 	else
 		player_move(keycode, ctx, 1);
@@ -51,7 +51,7 @@ int	handlekey_press(int keycode, void *ctx)
 
 int	handlekey_release(int keycode, void *ctx)
 {
-	if (keycode == K_R && ((t_ctx *)ctx)->player.wstate == W_HOLD)
+	if (BONUS && keycode == K_R && ((t_ctx *)ctx)->player.wstate == W_HOLD)
 	{
 		((t_ctx *)ctx)->player.wstate = W_FIRE;
 		shoot_weapon(ctx);

@@ -6,27 +6,11 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/27 16:38:45 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 10:43:29 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-int	first_line(char **tab, size_t y)
-{
-	size_t	x;
-	char	*fst_line;
-
-	x = 0;
-	fst_line = tab[y];
-	while (fst_line[x])
-	{
-		if (!(iswall(fst_line[x]) || fst_line[x] == EMPTY))
-			return (print_error("A border line is incorrect"));
-		x++;
-	}
-	return (0);
-}
 
 int	parse_path_bonus(char **textures)
 {
@@ -70,51 +54,14 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx, char *type)
 	return (0);
 }
 
-int	weapon_recover(char *line, t_ctx *ctx)
+static int	is_texture_tab(t_ctx *ctx, int i,
+	char *line_read, const t_tex_mgnt_bonus tab[])
 {
-	char	**tab;
-	int		i;
-	int		id;
-
-	tab = ft_split(line, ' ');
-	if (!tab)
-		return (print_error("Malloc failed"));
-	tab[MAXWFRAME] = ft_strtrim(tab[MAXWFRAME], "\n");
-	i = 1;
-	id = 0;
-	while (tab[i] && i < MAXWFRAME + 1)
-	{
-		ctx->player.weapon_p[id] = ft_strdup(tab[i]);
-		if (!ctx->player.weapon_p[id])
-			return (print_error("ft_strdup failed"));
-		if (parse_sprite_path(ctx->player.weapon_p[id]) > 0)
-			return (1);
-		i++;
-		id++;
-	}
-	if (i != MAXWFRAME + 1)
-		return (print_error("Weapon doesn't have three sprite"));
-	free_matrix(tab);
-	return (0);
-}
-
-static int	is_texture(char *line_read, t_ctx *ctx, int i)
-{
-	int						len;
-	int						i_tab;
-	char					**ctx_textures;
-	const t_tex_mgnt_bonus	tab[] = {{"1 ", B_WALL1}, {"2 ", B_WALL2}, {"3 ",
-		B_WALL3}, {"4 ", B_WALL4}, {"5 ", B_WALL5}, {"6 ", B_WALL6}, {"L ",
-		B_L_LUTIN}, {"M ", B_M_MOINE}, {"P ", B_P_PIRATE}, {"F ",
-		B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
+	int		len;
+	int		i_tab;
+	char	**ctx_textures;
 
 	i_tab = -1;
-	if (ft_strncmp(line_read + i, "W ", ft_strlen("W ")) == 0)
-	{
-		if (weapon_recover(line_read, ctx) > 0)
-			return (1);
-		return (0);
-	}
 	while (++i_tab < NB_BONUS_TEXTURES)
 	{
 		len = ft_strlen(tab[i_tab].cmp);
@@ -130,6 +77,24 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 	}
 	if (i_tab >= NB_BONUS_TEXTURES)
 		return (print_error("Wrond number : Incorrect texture"));
+	return (0);
+}
+
+static int	is_texture(char *line_read, t_ctx *ctx, int i)
+{
+	const t_tex_mgnt_bonus	tab[] = {{"1 ", B_WALL1}, {"2 ", B_WALL2}, {"3 ",
+		B_WALL3}, {"4 ", B_WALL4}, {"5 ", B_WALL5}, {"6 ", B_WALL6}, {"L ",
+		B_L_LUTIN}, {"M ", B_M_MOINE}, {"P ", B_P_PIRATE}, {"F ",
+		B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
+
+	if (ft_strncmp(line_read + i, "W ", ft_strlen("W ")) == 0)
+	{
+		if (weapon_recover(line_read, ctx) > 0)
+			return (1);
+		return (0);
+	}
+	if (is_texture_tab(ctx, i, line_read, tab) > 0)
+		return (1);
 	return (0);
 }
 
