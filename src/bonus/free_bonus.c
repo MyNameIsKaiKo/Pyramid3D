@@ -6,21 +6,20 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 01:48:50 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/26 21:16:11 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/28 18:42:21 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void	free_sprite_paths(char **paths)
+static void	free_sprite_paths(char **paths, int max)
 {
 	int	i;
 
 	i = 0;
-	while (paths[i])
+	while (i < max)
 	{
-		if (paths[i])
-			free(paths[i]);
+		free(paths[i]);
 		paths[i] = NULL;
 		i++;
 	}
@@ -40,7 +39,8 @@ void	free_bonus_struct(t_ctx *ctx)
 		}
 		++i;
 	}
-	free_sprite_paths(ctx->sprites.lutin_p);
-	free_sprite_paths(ctx->sprites.moine_p);
-	free_sprite_paths(ctx->sprites.lutin_p);
+	free_sprite_paths(ctx->sprites.lutin_p, MAXLFRAME + 1);
+	free_sprite_paths(ctx->sprites.moine_p, MAXMFRAME + 1);
+	free_sprite_paths(ctx->sprites.pirate_p, MAXPFRAME + 1);
+	free_sprite_paths(ctx->player.weapon_p, MAXWFRAME);
 }

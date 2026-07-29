@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:36:39 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 19:04:14 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/28 19:50:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	fst_lst_line(char **tab, size_t max_y)
 	x = 0;
 	while (lst_line[x])
 	{
-		if (!(iswall(fst_line[x]) || fst_line[x] == EMPTY))
+		if (!(iswall(lst_line[x]) || lst_line[x] == EMPTY))
 			return (print_error("A border line is incorrect"));
 		x++;
 	}

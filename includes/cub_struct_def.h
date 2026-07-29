@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/28 10:09:58 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/28 18:44:08 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,13 @@
 # define MCOLOR_PIRATE 0xff8E4DC9
 # define MCOLOR_VOID 0xff070736
 
+# define ERASE_C 0x0000FF
+
 // -- KeyBoard Close --
 # define K_ESC 65307
+
+// -- KeyBoard Weapon --
+# define K_R 114
 
 // -- Moving Keys --
 # define K_A 97

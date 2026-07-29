@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/12 14:31:49 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 15:19:27 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/28 20:03:28 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	draw_img_bonus(t_ctx *ctx, int x)
 	{
 		if (y < ray->draw_start)
 			draw_ceiling(ctx, x, y);
-		else if (y > ray->draw_end)
+		else if (y > ray->draw_end - 1)
 			draw_floor(ctx, x, y);
 		else
 			draw_walls(ctx, x, y);

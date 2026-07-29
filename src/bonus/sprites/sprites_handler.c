@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 13:02:50 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/27 16:31:47 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/28 18:44:38 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void	load_sprite(t_ctx *ctx)
 	i = -1;
 	while (++i < MAXPFRAME)
 		load_sp_frame(ctx, ctx->sprites.pirate_p[i], &sprites->pirate_t[i]);
+	i = -1;
+	while (++i < MAXWFRAME)
+		load_wp_frame(ctx, ctx->player.weapon_p[i], &ctx->player.weapon_t[i]);
 }
 
 static void	draw_sprite(t_ctx *ctx, t_sprite_calc *calc, t_img *img)
@@ -65,7 +68,7 @@ static void	draw_sprite(t_ctx *ctx, t_sprite_calc *calc, t_img *img)
 			{
 				calc->tex_y = ((y - orig_start_y) * SWIDTH) / calc->sprite_h;
 				color = get_texture_pixel(img, calc->tex_x, calc->tex_y);
-				if (color != 0x0000FF)
+				if (color != ERASE_C)
 					my_mlx_pixel_put(ctx, calc->stripe, y, color);
 				y++;
 			}
@@ -101,7 +104,7 @@ void	render_all_sprites(t_ctx *ctx)
 	sort_sprdist(&ctx->sprites);
 	while (i < ctx->sprites.count)
 	{
-		if (ctx->sprites.arr[i].type == T_MOINE 
+		if (ctx->sprites.arr[i].type == T_MOINE
 				&& ctx->sprites.arr[i].dist < 0.5)
 		{
 			player_take_damage(ctx, 100);

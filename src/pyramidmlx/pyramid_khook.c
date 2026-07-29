@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_khook.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:26:13 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/08 14:26:13 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/28 18:23:55 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	handlekey_press(int keycode, void *ctx)
 {
 	if (keycode == K_ESC)
 		close_app(ctx);
+	if (keycode == K_R)
+		((t_ctx *)ctx)->player.wstate = W_HOLD;
 	else
 		player_move(keycode, ctx, 1);
 	return (0);
@@ -49,6 +51,13 @@ int	handlekey_press(int keycode, void *ctx)
 
 int	handlekey_release(int keycode, void *ctx)
 {
-	player_move(keycode, ctx, 0);
+	if (keycode == K_R && ((t_ctx *)ctx)->player.wstate == W_HOLD)
+	{
+		((t_ctx *)ctx)->player.wstate = W_FIRE;
+		shoot_weapon(ctx);
+		ft_putstr_fd("RHUM IN COMMING\n", 1);
+	}
+	else
+		player_move(keycode, ctx, 0);
 	return (0);
 }

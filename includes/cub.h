@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/27 16:15:44 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/28 16:47:08 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ int		sprite_recover(char *line, t_ctx *ctx);
 void	false_gun(t_ctx *ctx);
 void	draw_gun(t_ctx *ctx);
 void	shoot_weapon(t_ctx *ctx);
+void	load_wp_frame(t_ctx *ctx, char *path, t_img *tex);
 
 // -- Player Health Function --
 void	player_take_damage(t_ctx *ctx, int amount);
