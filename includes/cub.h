@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/29 10:48:32 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 15:29:03 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ void	calc_transform(t_ctx *ctx, t_sprite_calc *calc, int i);
 // -- recover_tex_sprite_bonus Function --
 int		parse_sprite_path(char *path_sprite);
 int		sprite_recover(char *line, t_ctx *ctx);
+int		check_nb_frame(char **tab, int target);
 
 // -- Weapon Function --
 void	draw_gun(t_ctx *ctx);
@@ -196,7 +197,10 @@ void	init_player_bonus(t_ctx *ctx);
 // -- door Function --
 void	check_alive_moine(t_ctx *ctx);
 
-// -- recover weapon sprite Function --
+// -- recover sprites Function --
 int		weapon_recover(char *line, t_ctx *ctx);
+int		pirate_sprite(char **tab, t_ctx *ctx);
+int		moine_sprite(char **tab, t_ctx *ctx);
+int		lutin_sprite(char **tab, t_ctx *ctx);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 18:27:20 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/27 16:15:26 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 15:35:57 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,69 +23,17 @@ int	parse_sprite_path(char *path_sprite)
 	return (0);
 }
 
-static int	lutin_sprite(char **tab, t_ctx *ctx)
+/** @brief check if tab have the good nb of textures
+return 1 if false*/
+int	check_nb_frame(char **tab, int target)
 {
 	int	i;
-	int	id;
 
-	i = 1;
-	id = 0;
-	while (tab[i] && i < MAXLFRAME + 1)
-	{
-		ctx->sprites.lutin_p[id] = ft_strdup(tab[i]);
-		if (!ctx->sprites.lutin_p[id])
-			return (print_error("ft_strdup failed"));
-		if (parse_sprite_path(ctx->sprites.lutin_p[id]) > 0)
-			return (1);
+	i = 0;
+	while (tab[i])
 		i++;
-		id++;
-	}
-	if (i != MAXLFRAME + 1)
-		return (print_error("Lutin doesn't have five sprite"));
-	return (0);
-}
-
-static int	moine_sprite(char **tab, t_ctx *ctx)
-{
-	int	i;
-	int	id;
-
-	i = 1;
-	id = 0;
-	while (tab[i] && i < MAXMFRAME + 1)
-	{
-		ctx->sprites.moine_p[id] = ft_strdup(tab[i]);
-		if (!ctx->sprites.moine_p[id])
-			return (print_error("ft_strdup failed"));
-		if (parse_sprite_path(ctx->sprites.moine_p[id]) > 0)
-			return (1);
-		i++;
-		id++;
-	}
-	if (i != MAXMFRAME + 1)
-		return (print_error("Moinutea doesn't have three sprite"));
-	return (0);
-}
-
-static int	pirate_sprite(char **tab, t_ctx *ctx)
-{
-	int	i;
-	int	id;
-
-	i = 1;
-	id = 0;
-	while (tab[i] && i < MAXPFRAME + 1)
-	{
-		ctx->sprites.pirate_p[id] = ft_strdup(tab[i]);
-		if (!ctx->sprites.pirate_p[id])
-			return (print_error("ft_strdup failed"));
-		if (parse_sprite_path(ctx->sprites.pirate_p[id]) > 0)
-			return (1);
-		i++;
-		id++;
-	}
-	if (i != MAXPFRAME + 1)
-		return (print_error("Pirate doesn't have three sprite"));
+	if (i != target)
+		return (1);
 	return (0);
 }
 
@@ -99,20 +47,11 @@ int	sprite_recover(char *line, t_ctx *ctx)
 	if (!split)
 		return (print_error("Malloc failed"));
 	if (split[0][0] == 'L')
-	{
-		split[MAXLFRAME] = ft_strtrim(split[MAXLFRAME], "\n");
 		output = lutin_sprite(split, ctx);
-	}
 	else if (split[0][0] == 'M')
-	{
-		split[MAXMFRAME] = ft_strtrim(split[MAXMFRAME], "\n");
 		output = moine_sprite(split, ctx);
-	}
 	else if (split[0][0] == 'P')
-	{
-		split[MAXPFRAME] = ft_strtrim(split[MAXPFRAME], "\n");
 		output = pirate_sprite(split, ctx);
-	}
 	free_matrix(split);
 	return (output);
 }

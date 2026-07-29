@@ -73,7 +73,7 @@ SRC_BONUS_FILES = bonus/display_minimap_bonus.c \
 				bonus/player_handler/door.c \
 				bonus/free_bonus.c \
 				bonus/bonus.c \
-				bonus/recover_weapon_sp_bonus.c
+				bonus/recover_sprites_bonus.c
 
 
 ifdef WITH_BONUS

@@ -1,0 +1,21 @@
+1 ./texture/bonus/pirate_boat.xpm
+2 ./texture/bonus/pirate_boat_mousse.xpm
+3 ./texture/bonus/pirate_door.xpm
+4 ./texture/bonus/pirate_cave.xpm
+5 ./texture/bonus/pirate_in_boat.xpm
+6 ./texture/bonus/pirate_floor.xpm
+
+L ./texture/assets/lutin/lutin1.xpm ./texture/assets/lutin/lutin2.xpm ./texture/assets/lutin/lutin3.xpm ./texture/assets/lutin/lutin4.xpm ./texture/assets/lutin/lutin5.xpm
+M ./texture/assets/moine/moine.xpm ./texture/assets/moine/moine2.xpm ./texture/assets/moine/moine3.xpm
+P ./texture/assets/pirate/pirate1.xpm ./texture/assets/pirate/pirate2.xpm ./texture/assets/pirate/pirate3.xpm
+
+W ./texture/bonus/W_idle.xpm ./texture/bonus/W_hold.xpm ./texture/bonus/W_fire.xpm
+
+F ./texture/bonus/pirate_floor.xpm
+C ./texture/bonus/pirate_ceiling.xpm
+
+111111
+1010S1
+100001
+100001
+111111

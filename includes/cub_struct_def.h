@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/28 18:44:08 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 11:21:37 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@
 # define NB_ALL_TEXTURES 6
 # define NB_BONUS_TEX_WTHT_SPRITE 8
 # define NB_BONUS_TEXTURES 11
+# define WEAPON_TEXTURE 1
 
 // -- Sprites --
 # define SWIDTH 128

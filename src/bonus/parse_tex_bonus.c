@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/29 10:43:29 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 11:25:05 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 	{
 		if (weapon_recover(line_read, ctx) > 0)
 			return (1);
+		ctx->n_textures++;
 		return (0);
 	}
 	if (is_texture_tab(ctx, i, line_read, tab) > 0)

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 12:07:27 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 16:05:38 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 11:23:44 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	parse_line_bonus(char *line_read, t_ctx *ctx)
 {
-	if (ctx->n_textures < NB_BONUS_TEXTURES)
+	if (ctx->n_textures < NB_BONUS_TEXTURES + WEAPON_TEXTURE)
 	{
 		if (ft_strcmp(line_read, "\n") == 0)
 			return (0);
