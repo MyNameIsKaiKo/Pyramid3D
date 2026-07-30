@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:58:03 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/28 17:10:56 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/30 19:08:51 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static size_t	extract_color(char *color)
 
 static void	get_color(t_ctx *ctx)
 {
-	ctx->colors[0] = extract_color(ctx->tab_textures[FLOOR_COLOR]);
-	ctx->colors[1] = extract_color(ctx->tab_textures[CEILING_COLOR]);
+	ctx->colors[FLOOR_T] = extract_color(ctx->tab_textures[FLOOR_COLOR]);
+	ctx->colors[CEILING_T] = extract_color(ctx->tab_textures[CEILING_COLOR]);
 }
 
 void	texture_data(t_ctx *ctx)

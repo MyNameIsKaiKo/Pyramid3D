@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:36:27 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 21:15:39 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/30 19:31:15 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static void	display_sprite(t_ctx *ctx, t_vec2 result, t_vec2 curr_block)
 
 static void	display_background(t_ctx *ctx, t_vec2 result, t_vec2 curr_block)
 {
-	int		y;
-	int		x;
+	int	y;
+	int	x;
 
 	y = (int)(ctx->player.pos.y + result.y);
 	x = (int)(ctx->player.pos.x + result.x);

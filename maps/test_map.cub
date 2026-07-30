@@ -1,6 +1,6 @@
 1 ./texture/bonus/pirate_boat.xpm
 2 ./texture/bonus/pirate_boat_mousse.xpm
-3 ./texture/bonus/pirate_door.xpm
+3 ./texture/bonus/pirate_dolphin.xpm
 4 ./texture/bonus/pirate_cave.xpm
 5 ./texture/bonus/pirate_in_boat.xpm
 6 ./texture/bonus/pirate_floor.xpm
@@ -15,7 +15,7 @@ F ./texture/bonus/pirate_floor.xpm
 C ./texture/bonus/pirate_ceiling.xpm
 
 111111
-1010S1
-100001
-100001
+141001
+161001
+1N0001
 111111

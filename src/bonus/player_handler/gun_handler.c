@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 16:00:15 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/29 10:44:45 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/30 18:58:48 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,10 @@ void	shoot_weapon(t_ctx *ctx)
 			hit = fabs(ctx->player.dir.x
 					* delta.y - ctx->player.dir.y * delta.x);
 			if (dot > 0 && hit < 0.5 && ctx->sprites.arr[i].dist < 50.0)
+			{
 				ctx->sprites.arr[i].type = T_NULL;
+				ctx->dead_moinu++;
+			}
 		}
 	}
 	check_alive_moine(ctx);

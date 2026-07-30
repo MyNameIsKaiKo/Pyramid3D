@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/12 14:31:49 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/28 20:03:28 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/30 19:51:56 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	draw_floor(t_ctx *ctx, int x, int y)
 	int	color;
 
 	calc_floortex(ctx, y);
-	color = get_texture_pixel(&ctx->fandc_tex[0],
+	color = get_texture_pixel(&ctx->fandc_tex[FLOOR_T],
 			ctx->tex.floor.tex_x,
 			ctx->tex.floor.tex_y);
 	my_mlx_pixel_put(ctx, x, y, color);
@@ -28,7 +28,7 @@ static void	draw_ceiling(t_ctx *ctx, int x, int y)
 	int	color;
 
 	calc_floortex(ctx, HEIGHT - y - 1);
-	color = get_texture_pixel(&ctx->fandc_tex[1],
+	color = get_texture_pixel(&ctx->fandc_tex[CEILING_T],
 			ctx->tex.floor.tex_x,
 			ctx->tex.floor.tex_y);
 	my_mlx_pixel_put(ctx, x, y, color);

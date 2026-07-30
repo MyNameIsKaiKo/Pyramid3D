@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 15:22:24 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/28 17:30:05 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/30 19:18:08 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,23 @@
 
 static void	get_bonus_color(t_ctx *ctx, int *w, int *h)
 {
-	int	floor;
-	int	ceil;
-
-	floor = 0;
-	ceil = 1;
-	ctx->fandc_tex[floor].img = mlx_xpm_file_to_image(ctx->mlx,
+	ctx->fandc_tex[FLOOR_T].img = mlx_xpm_file_to_image(ctx->mlx,
 			ctx->tab_tex_bonus[B_F_FLOOR_COLOR], w, h);
-	ctx->fandc_tex[floor].addr = mlx_get_data_addr(ctx->fandc_tex[floor].img,
-			&ctx->fandc_tex[floor].bits_per_pixel,
-			&ctx->fandc_tex[floor].line_lenght, &ctx->fandc_tex[floor].endian);
-	ctx->fandc_tex[ceil].img = mlx_xpm_file_to_image(ctx->mlx,
+	ctx->fandc_tex[FLOOR_T].addr = mlx_get_data_addr(ctx->fandc_tex[FLOOR_T].img,
+			&ctx->fandc_tex[FLOOR_T].bits_per_pixel,
+			&ctx->fandc_tex[FLOOR_T].line_lenght, &ctx->fandc_tex[FLOOR_T].endian);
+	ctx->fandc_tex[CEILING_T].img = mlx_xpm_file_to_image(ctx->mlx,
 			ctx->tab_tex_bonus[B_C_CEILING_COLOR], w, h);
-	ctx->fandc_tex[ceil].addr = mlx_get_data_addr(ctx->fandc_tex[ceil].img,
-			&ctx->fandc_tex[ceil].bits_per_pixel,
-			&ctx->fandc_tex[ceil].line_lenght,
-			&ctx->fandc_tex[ceil].endian);
+	ctx->fandc_tex[CEILING_T].addr = mlx_get_data_addr(ctx->fandc_tex[CEILING_T].img,
+			&ctx->fandc_tex[CEILING_T].bits_per_pixel,
+			&ctx->fandc_tex[CEILING_T].line_lenght,
+			&ctx->fandc_tex[CEILING_T].endian);
 }
 
 void	texture_data_bonus(t_ctx *ctx, int *w, int *h)
 {
 	int	i;
+	int save;
 
 	i = 0;
 	while (i < NB_BONUS_TEX_WTHT_SPRITE)
@@ -45,6 +41,9 @@ void	texture_data_bonus(t_ctx *ctx, int *w, int *h)
 			(ctx->wall_tex_bonus[i].img, &ctx->wall_tex_bonus[i].bits_per_pixel,
 				&ctx->wall_tex_bonus[i].line_lenght,
 				&ctx->wall_tex_bonus[i].endian);
+		save = *w;
+		if (i > 0 && save != *w && save != *h)
+			printf("A wrong size in tex save : %d, w : %d, h : %d\n", save, *w, *h);
 		i++;
 	}
 	get_bonus_color(ctx, w, h);

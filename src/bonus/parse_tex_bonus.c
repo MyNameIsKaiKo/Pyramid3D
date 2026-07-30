@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/29 11:25:05 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/30 18:42:30 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static int	is_texture_tab(t_ctx *ctx, int i,
 		}
 	}
 	if (i_tab >= NB_BONUS_TEXTURES)
-		return (print_error("Wrond number : Incorrect texture"));
+		return (print_error("Wrong number : Incorrect texture"));
 	return (0);
 }
 

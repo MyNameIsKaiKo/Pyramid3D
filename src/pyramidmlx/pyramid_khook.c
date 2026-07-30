@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:26:13 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/29 10:20:23 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/30 19:37:39 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,20 @@ static int	player_move(int keycode, t_ctx *ctx, int state)
 
 int	handlekey_press(int keycode, void *ctx)
 {
+	t_ctx	*ctx_pt;
+
+	ctx_pt = (t_ctx *)ctx;
 	if (keycode == K_ESC)
 		close_app(ctx);
 	if (BONUS && keycode == K_R)
-		((t_ctx *)ctx)->player.wstate = W_HOLD;
+		ctx_pt->player.wstate = W_HOLD;
+	if (BONUS && keycode == K_Q)
+	{
+		if (ctx_pt->dstate == OPEN_DOOR)
+			ctx_pt->dstate = CLOSE_DOOR;
+		else if (ctx_pt->dstate == CLOSE_DOOR)
+			ctx_pt->dstate = OPEN_DOOR;
+	}
 	else
 		player_move(keycode, ctx, 1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/29 11:21:37 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/30 18:52:21 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@
 // -- KeyBoard Weapon --
 # define K_R 114
 
+// -- KeyBoard Door --
+# define K_Q 113
+
 // -- Moving Keys --
 # define K_A 97
 # define K_D 100
@@ -66,6 +69,8 @@
 # define NB_BONUS_TEX_WTHT_SPRITE 8
 # define NB_BONUS_TEXTURES 11
 # define WEAPON_TEXTURE 1
+# define FLOOR_T 0
+# define CEILING_T 1
 
 // -- Sprites --
 # define SWIDTH 128
@@ -81,6 +86,13 @@ typedef enum e_weapon_state
 	W_HOLD,
 	W_FIRE
 }					t_weapon_state;
+
+typedef enum e_door_state
+{
+	NULL_DOOR,
+	OPEN_DOOR,
+	CLOSE_DOOR
+}					t_door_state;
 
 typedef enum e_tile_type
 {
@@ -313,8 +325,11 @@ typedef struct s_ctx
 	t_img			img;
 	t_sprites		sprites;
 	t_player		player;
+	int				n_moinu;
+	int				dead_moinu;
 	t_mouse			mouse;
 	t_weapon_state	state;
+	t_door_state	dstate;
 	void			*win;
 	void			*mlx;
 }					t_ctx;

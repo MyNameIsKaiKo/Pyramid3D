@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:36:39 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/28 19:50:45 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 16:41:49 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ static int	check_pnj(char c, size_t y, size_t x, t_ctx *ctx)
 		return (0);
 	}
 	if (c == MOINE)
+	{
+		ctx->n_moinu++;
 		type = T_MOINE;
+	}
 	if (c == LUTIN)
 		type = T_LUTIN;
 	if (c == PIRATE)
