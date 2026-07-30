@@ -196,6 +196,8 @@ void	init_player_bonus(t_ctx *ctx);
 
 // -- door Function --
 void	check_alive_moine(t_ctx *ctx);
+void	door_swap(t_ctx *ctx, char old, char new);
+void	early_door_check(t_ctx *ctx);
 
 // -- recover sprites Function --
 int		weapon_recover(char *line, t_ctx *ctx);

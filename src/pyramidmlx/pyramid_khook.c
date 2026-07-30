@@ -50,9 +50,15 @@ int	handlekey_press(int keycode, void *ctx)
 	if (BONUS && keycode == K_Q)
 	{
 		if (ctx_pt->dstate == OPEN_DOOR)
+		{
 			ctx_pt->dstate = CLOSE_DOOR;
+			door_swap(ctx, 'o', '6');
+		}
 		else if (ctx_pt->dstate == CLOSE_DOOR)
+		{
 			ctx_pt->dstate = OPEN_DOOR;
+			door_swap(ctx, '6', 'o');
+		}
 	}
 	else
 		player_move(keycode, ctx, 1);

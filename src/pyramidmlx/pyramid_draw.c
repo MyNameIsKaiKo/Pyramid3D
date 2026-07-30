@@ -99,6 +99,7 @@ int	draw_frame(t_ctx *ctx)
 	protect_player(ctx);
 	if (player_moved(&ctx->player))
 		apply_movement(ctx);
+	early_door_check(ctx);
 	while (x < WIDTH)
 	{
 		setup_ray_for_col(ctx, x);
