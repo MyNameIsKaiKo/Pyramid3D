@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/31 11:01:58 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:55:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define MCOLOR_LUTIN 0xff1B610E
 # define MCOLOR_MOINU 0xff693F0D
 # define MCOLOR_PIRATE 0xff8E4DC9
-# define MCOLOR_VOID 0xff070736
+# define MCOLOR_VOID 0xff0015BA
 
 # define ERASE_C 0x0000FF
 
@@ -103,7 +103,7 @@ typedef enum e_tile_type
 	WALL3 = '3',
 	WALL4 = '4',
 	WALL5 = '5',
-	WALL6 = '6',
+	DOOR6 = '6',
 	EMPTY = ' ',
 	N_PLAYER = 'N',
 	E_PLAYER = 'E',
@@ -132,7 +132,7 @@ typedef enum e_bonus_tex
 	B_WALL3,
 	B_WALL4,
 	B_WALL5,
-	B_WALL6,
+	B_DOOR6,
 	B_F_FLOOR_COLOR,
 	B_C_CEILING_COLOR,
 	B_L_LUTIN,

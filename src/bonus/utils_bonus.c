@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 09:31:33 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/29 10:30:49 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:55:18 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /** @return 1 if is wall or 0 is not wall */
 bool	iswall(t_tile_type c)
 {
-	return (c >= WALL && c <= WALL6);
+	return (c >= WALL && c < DOOR6);
 }
 
 int	first_line(char **tab, size_t y)
@@ -50,13 +50,13 @@ int	close_map(char **tab, size_t y, size_t x)
 	left_case = tab[y][x - 1];
 	right_case = tab[y][x + 1];
 	bottom_case = tab[y + 1][x];
-	if ((!iswall(top_case) && top_case != FLOOR
+	if ((!iswall(top_case) && top_case != FLOOR && top_case != DOOR6
 			&& !issprite(top_case) && !isplayer(top_case))
-		|| (!iswall(left_case) && left_case != FLOOR
+		|| (!iswall(left_case) && left_case != FLOOR && left_case != DOOR6
 			&& !issprite(left_case) && !isplayer(left_case))
-		|| (!iswall(right_case) && right_case != FLOOR
+		|| (!iswall(right_case) && right_case != FLOOR && right_case != DOOR6
 			&& !issprite(right_case) && !isplayer(right_case))
-		|| (!iswall(bottom_case) && bottom_case != FLOOR
+		|| (!iswall(bottom_case) && bottom_case != FLOOR && bottom_case != DOOR6
 			&& !issprite(bottom_case) && !isplayer(bottom_case)))
 		return (print_error("Map is open in close map"));
 	return (0);

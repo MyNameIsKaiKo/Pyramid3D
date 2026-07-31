@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/30 18:42:30 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:55:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int	is_texture_tab(t_ctx *ctx, int i,
 static int	is_texture(char *line_read, t_ctx *ctx, int i)
 {
 	const t_tex_mgnt_bonus	tab[] = {{"1 ", B_WALL1}, {"2 ", B_WALL2}, {"3 ",
-		B_WALL3}, {"4 ", B_WALL4}, {"5 ", B_WALL5}, {"6 ", B_WALL6}, {"L ",
+		B_WALL3}, {"4 ", B_WALL4}, {"5 ", B_WALL5}, {"6 ", B_DOOR6}, {"L ",
 		B_L_LUTIN}, {"M ", B_M_MOINE}, {"P ", B_P_PIRATE}, {"F ",
 		B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
 
