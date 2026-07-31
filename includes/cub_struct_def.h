@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/30 18:52:21 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:01:58 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define SIZE_MMAP 240
 # define SIZE_BLOCK 20
 # define MCOLOR_WALL 0xff3B2E2E
+# define MCOLOR_OPEN_DOOR 0xff946223
 # define MCOLOR_FLOOR 0xffBD9E77
 # define MCOLOR_LUTIN 0xff1B610E
 # define MCOLOR_MOINU 0xff693F0D
@@ -141,10 +142,10 @@ typedef enum e_bonus_tex
 
 typedef enum e_sp_type
 {
+	T_NULL,
 	T_LUTIN,
 	T_MOINE,
-	T_PIRATE,
-	T_NULL
+	T_PIRATE
 }					t_sp_type;
 
 typedef struct s_floor

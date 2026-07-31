@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 22:40:46 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/30 19:23:07 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:02:58 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	player_forward(t_ctx *ctx)
 	if (ctx->map->map_tab[(int)(pos->y + dir->y * speed)][(int)pos->x] == 'o')
 		pos->y += dir->y * speed;
 }
-
 
 void	player_backward(t_ctx *ctx)
 {

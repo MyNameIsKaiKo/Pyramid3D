@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:36:27 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/30 19:31:15 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:01:38 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static void	display_background(t_ctx *ctx, t_vec2 result, t_vec2 curr_block)
 		my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_VOID);
 	else if (ctx->map->map_tab[y][x] == FLOOR)
 		my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_FLOOR);
+	else if (ctx->map->map_tab[y][x] == 'o')
+		my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_OPEN_DOOR);
 	else
 		my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_WALL);
 }
