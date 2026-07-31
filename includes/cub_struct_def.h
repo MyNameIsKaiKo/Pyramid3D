@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/31 11:55:04 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 14:26:10 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define MCOLOR_MOINU 0xff693F0D
 # define MCOLOR_PIRATE 0xff8E4DC9
 # define MCOLOR_VOID 0xff0015BA
+# define MCOLOR_PLAYER 0xffff0000
 
 # define ERASE_C 0x0000FF
 
