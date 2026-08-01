@@ -4,13 +4,24 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -MMD -MP -g
 MAKEFLAGS	+= --no-print-directory
 
+NAME_BONUS	= cub3D_bonus
 NAME		= cub3D
+
+ifdef WITH_BONUS
+	TARGET	= $(NAME_BONUS)
+else
+	TARGET	= $(NAME)
+endif
 
 #INCLUDES_AND_DIR________________________
 
 #DIR
 SRC_DIR		= src/
-BUILD_DIR	= obj/
+ifdef WITH_BONUS
+	BUILD_DIR	= obj_bonus/
+else
+	BUILD_DIR	= obj/
+endif
 INC_DIR		= includes/
 
 INCLUDES	= -I$(INC_DIR) -I$(INC_DIR)libft/ -I$(INC_DIR)gnl/ -I$(INC_DIR)minilibx
@@ -75,7 +86,6 @@ SRC_BONUS_FILES = bonus/display_minimap_bonus.c \
 				bonus/bonus.c \
 				bonus/recover_sprites_bonus.c
 
-
 ifdef WITH_BONUS
 	SRC_FILES += $(SRC_BONUS_FILES)
 	CFLAGS += -DBONUS=1
@@ -91,9 +101,9 @@ OBJ_DIR		= $(sort $(dir $(OBJS)))
 
 #________________________________________
 
-all: $(NAME)
+all: $(TARGET)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
+$(TARGET): $(OBJS) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $^ $(MFLAGS) -o $@
 	@echo "Compiles PYRAMID successfully"
 
@@ -113,11 +123,12 @@ $(OBJ_DIR):
 clean:
 	@make -C $(INC_DIR)libft/ clean
 	@make -C $(INC_DIR)minilibx/ clean
-	@rm -rf $(INC_DIR)gnl/*.d $(INC_DIR)gnl/*.o $(BUILD_DIR)
+	@rm -rf obj obj_bonus
+	@rm -f $(INC_DIR)gnl/*.d $(INC_DIR)gnl/*.o
 	@echo "clean gnl (.o/.d)\nclean obj/"
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(NAME_BONUS)
 	@rm -f $(LIBFT)
 
 re: fclean all
