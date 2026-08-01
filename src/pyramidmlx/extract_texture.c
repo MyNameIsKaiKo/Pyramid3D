@@ -43,6 +43,12 @@ static void	set_img(t_ctx *ctx, int i, int *w, int *h)
 {
 	ctx->wall_tex[i].img = mlx_xpm_file_to_image(ctx->mlx,
 		ctx->tab_textures[i], w, h);
+	if (!ctx->wall_tex[i].img)
+	{
+		print_error("Failed to load XPM texture.");
+		free_ctx(ctx);
+		exit(1);
+	}
 	ctx->wall_tex[i].addr = mlx_get_data_addr(ctx->wall_tex[i].img,
 			&ctx->wall_tex[i].bits_per_pixel,
 			&ctx->wall_tex[i].line_lenght, &ctx->wall_tex[i].endian);
