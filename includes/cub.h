@@ -31,7 +31,7 @@
 void	f_init(t_ctx *ctx);
 void	tex_free(t_ctx *ctx);
 void	free_ctx(t_ctx *ctx);
-void	validate_texture_sizes(t_ctx *ctx, t_img *tex, int max);
+void	img_xpm_error(t_ctx *ctx);
 
 // -- Free_map Function --
 void	free_parse_map(t_map *map);
@@ -108,6 +108,7 @@ void	calc_wallx(t_ctx *ctx);
 int		get_texture_pixel(t_img *tex_img, int x, int y);
 void	calc_tex_y(t_ctx *ctx);
 void	get_tex_index(t_ctx *ctx);
+void	validate_tex_sizes(t_ctx *ctx, t_img *tex, int max);
 
 // -- player_handler SECTION --
 // -- player Function --

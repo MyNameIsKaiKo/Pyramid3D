@@ -42,16 +42,30 @@ static void	get_color(t_ctx *ctx)
 static void	set_img(t_ctx *ctx, int i, int *w, int *h)
 {
 	ctx->wall_tex[i].img = mlx_xpm_file_to_image(ctx->mlx,
-		ctx->tab_textures[i], w, h);
+			ctx->tab_textures[i], w, h);
 	if (!ctx->wall_tex[i].img)
-	{
-		print_error("Failed to load XPM texture.");
-		free_ctx(ctx);
-		exit(1);
-	}
+		img_xpm_error(ctx);
 	ctx->wall_tex[i].addr = mlx_get_data_addr(ctx->wall_tex[i].img,
 			&ctx->wall_tex[i].bits_per_pixel,
 			&ctx->wall_tex[i].line_lenght, &ctx->wall_tex[i].endian);
+}
+
+void	validate_tex_sizes(t_ctx *ctx, t_img *tex, int max)
+{
+	int	i;
+	int	expected;
+
+	i = -1;
+	expected = tex[0].width;
+	while (++i < max)
+	{
+		if (tex[i].width != tex[i].height || tex[i].width != expected)
+		{
+			print_error("Textures must be square and identical in size.");
+			close_app(ctx);
+			return ;
+		}
+	}
 }
 
 void	texture_data(t_ctx *ctx)
@@ -76,9 +90,9 @@ void	texture_data(t_ctx *ctx)
 	else if (BONUS)
 		texture_data_bonus(ctx, &w, &h);
 	if (BONUS)
-		validate_texture_sizes(ctx, ctx->wall_tex_bonus, NB_BONUS_TEX_WTHT_SPRITE);
+		validate_tex_sizes(ctx, ctx->wall_tex_bonus, NB_BONUS_TEX_WTHT_SPRITE);
 	else
-		validate_texture_sizes(ctx, ctx->wall_tex, NB_TEXTURES);
+		validate_tex_sizes(ctx, ctx->wall_tex, NB_TEXTURES);
 	ctx->tex.height = h;
 	ctx->tex.witdh = w;
 }

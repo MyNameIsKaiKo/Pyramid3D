@@ -19,11 +19,7 @@ static void	load_sp_frame(t_ctx *ctx, char *path, t_img *tex)
 
 	tex->img = mlx_xpm_file_to_image(ctx->mlx, path, &w, &h);
 	if (!tex->img)
-	{
-		print_error("Failed to load sprite XPM texture");
-		free_ctx(ctx);
-		exit(1);
-	}
+		img_xpm_error(ctx);
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
 			&tex->line_lenght, &tex->endian);
 }

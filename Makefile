@@ -30,6 +30,7 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			main.c \
 			utils.c \
 			free.c \
+			free_scd.c \
 			free_map.c \
 			parsing/parsing.c \
 			parsing/parse_textures.c \
