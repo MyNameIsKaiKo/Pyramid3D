@@ -5,9 +5,11 @@
 5 ./texture/horror/wall.xpm
 6 ./texture/horror/wall.xpm
 
-L ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
-M ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
-P ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm ./texture/grandRACCOON.xpm
+L ./texture/assets/lutin/lutin1.xpm ./texture/assets/lutin/lutin2.xpm ./texture/assets/lutin/lutin3.xpm ./texture/assets/lutin/lutin4.xpm ./texture/assets/lutin/lutin5.xpm
+M ./texture/assets/moine/moine.xpm ./texture/assets/moine/moine2.xpm ./texture/assets/moine/moine3.xpm
+P ./texture/assets/pirate/pirate1.xpm ./texture/assets/pirate/pirate2.xpm ./texture/assets/pirate/pirate3.xpm
+
+W ./texture/bonus/W_idle.xpm ./texture/bonus/W_hold.xpm ./texture/bonus/W_fire.xpm
 
 F ./texture/horror/floor.xpm
 C ./texture/horror/ceiling.xpm

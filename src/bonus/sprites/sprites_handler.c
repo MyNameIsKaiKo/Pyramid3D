@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 13:02:50 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/25 16:27:20 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 10:45:50 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,8 @@ static void	load_sp_frame(t_ctx *ctx, char *path, t_img *tex)
 	int	h;
 
 	tex->img = mlx_xpm_file_to_image(ctx->mlx, path, &w, &h);
-	if (!tex->img)
-		printf("\n\nerror with the texture \"%s\"\n\n", path);
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
 			&tex->line_lenght, &tex->endian);
-	if (!tex->addr)
-		printf("\n\nerror with the texture \"%s\"\n\n", path);
 }
 
 void	load_sprite(t_ctx *ctx)
@@ -41,6 +37,9 @@ void	load_sprite(t_ctx *ctx)
 	i = -1;
 	while (++i < MAXPFRAME)
 		load_sp_frame(ctx, ctx->sprites.pirate_p[i], &sprites->pirate_t[i]);
+	i = -1;
+	while (++i < MAXWFRAME)
+		load_wp_frame(ctx, ctx->player.weapon_p[i], &ctx->player.weapon_t[i]);
 }
 
 static void	draw_sprite(t_ctx *ctx, t_sprite_calc *calc, t_img *img)
@@ -63,7 +62,7 @@ static void	draw_sprite(t_ctx *ctx, t_sprite_calc *calc, t_img *img)
 			{
 				calc->tex_y = ((y - orig_start_y) * SWIDTH) / calc->sprite_h;
 				color = get_texture_pixel(img, calc->tex_x, calc->tex_y);
-				if (color != 0x0000FF)
+				if (color != ERASE_C)
 					my_mlx_pixel_put(ctx, calc->stripe, y, color);
 				y++;
 			}
@@ -99,8 +98,8 @@ void	render_all_sprites(t_ctx *ctx)
 	sort_sprdist(&ctx->sprites);
 	while (i < ctx->sprites.count)
 	{
-		if (ctx->sprites.arr[i].type == T_MOINE 
-				&& ctx->sprites.arr[i].dist < 0.5)
+		if (ctx->sprites.arr[i].type == T_MOINE
+			&& ctx->sprites.arr[i].dist < 0.5)
 		{
 			player_take_damage(ctx, 100);
 		}

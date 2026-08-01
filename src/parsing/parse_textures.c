@@ -6,13 +6,12 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/03 13:54:23 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 15:26:35 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 15:52:22 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-/** @remark it's posssible to change the nb of texture to check */
 int	parse_path(char **textures)
 {
 	int	i;
@@ -21,6 +20,8 @@ int	parse_path(char **textures)
 	i = 0;
 	while (i < NB_TEXTURES)
 	{
+		if (!textures[i])
+			return (print_error("Texture is missing"));
 		fd = open(textures[i], O_RDONLY);
 		if (fd < 0)
 			return (print_error("A texture is inaccessible"));
@@ -35,7 +36,7 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx)
 	size_t	len;
 
 	if (*tex)
-		return (1);
+		return (print_error("Texture is duplicate"));
 	line_read += ft_strcharlen(line_read, ' ');
 	len = ft_strlen(line_read);
 	if (line_read[len - 1] == '\n')

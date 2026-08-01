@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 17:57:27 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/27 17:57:27 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/30 19:24:11 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	draw_bonus(t_ctx *ctx)
 
 void	init_bonus(t_ctx *ctx)
 {
+	ctx->dstate = NULL_DOOR;
 	load_sprite(ctx);
-	false_gun(ctx);
 	init_player_bonus(ctx);
 }

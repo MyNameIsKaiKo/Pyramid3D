@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cross_air.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 19:47:31 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/18 19:47:31 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/26 13:36:21 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_crossair(t_ctx *ctx)
 	{
 		if (i != 0)
 			my_mlx_pixel_put(ctx, (int)(center.x + i), (int)(center.y),
-				0xFF00AA);
+				MCOLOR_WALL);
 		i++;
 	}
 	i = -size;
@@ -33,7 +33,7 @@ void	draw_crossair(t_ctx *ctx)
 	{
 		if (i != 0)
 			my_mlx_pixel_put(ctx, (int)(center.x), (int)(center.y + i),
-				0xFF00AA);
+				MCOLOR_WALL);
 		i++;
 	}
 }

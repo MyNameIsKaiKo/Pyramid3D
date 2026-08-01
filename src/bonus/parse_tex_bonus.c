@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 17:44:16 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:55:04 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,12 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx, char *type)
 	return (0);
 }
 
-static int	is_texture(char *line_read, t_ctx *ctx, int i)
+static int	is_texture_tab(t_ctx *ctx, int i,
+	char *line_read, const t_tex_mgnt_bonus tab[])
 {
-	int						len;
-	int						i_tab;
-	char					**ctx_textures;
-	const t_tex_mgnt_bonus	tab[] = {{"1 ", B_WALL1}, {"2 ", B_WALL2}, {"3 ",
-		B_WALL3}, {"4 ", B_WALL4}, {"5 ", B_WALL5}, {"6 ", B_WALL6}, {"L ",
-		B_L_LUTIN}, {"M ", B_M_MOINE}, {"P ", B_P_PIRATE}, {"F ",
-		B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
+	int		len;
+	int		i_tab;
+	char	**ctx_textures;
 
 	i_tab = -1;
 	while (++i_tab < NB_BONUS_TEXTURES)
@@ -72,15 +69,33 @@ static int	is_texture(char *line_read, t_ctx *ctx, int i)
 		{
 			i += ft_strlen(tab[i].cmp);
 			ctx_textures = &ctx->tab_tex_bonus[tab[i_tab].textures];
-			if (init_texture(line_read, ctx_textures, ctx, tab[i_tab].cmp) > 0)
-				return (1);
-			if (parse_extention(line_read, EXT_TEXT) > 0)
+			if (init_texture(line_read, ctx_textures, ctx, tab[i_tab].cmp) > 0
+				|| parse_extention(line_read, EXT_TEXT) > 0)
 				return (1);
 			break ;
 		}
 	}
 	if (i_tab >= NB_BONUS_TEXTURES)
-		return (print_error("Wrond number : Incorrect texture"));
+		return (print_error("Wrong number : Incorrect texture"));
+	return (0);
+}
+
+static int	is_texture(char *line_read, t_ctx *ctx, int i)
+{
+	const t_tex_mgnt_bonus	tab[] = {{"1 ", B_WALL1}, {"2 ", B_WALL2}, {"3 ",
+		B_WALL3}, {"4 ", B_WALL4}, {"5 ", B_WALL5}, {"6 ", B_DOOR6}, {"L ",
+		B_L_LUTIN}, {"M ", B_M_MOINE}, {"P ", B_P_PIRATE}, {"F ",
+		B_F_FLOOR_COLOR}, {"C ", B_C_CEILING_COLOR}};
+
+	if (ft_strncmp(line_read + i, "W ", ft_strlen("W ")) == 0)
+	{
+		if (weapon_recover(line_read, ctx) > 0)
+			return (1);
+		ctx->n_textures++;
+		return (0);
+	}
+	if (is_texture_tab(ctx, i, line_read, tab) > 0)
+		return (1);
 	return (0);
 }
 

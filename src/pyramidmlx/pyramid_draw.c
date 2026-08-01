@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:17:52 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/21 10:55:05 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 12:25:17 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static void	exec_dda(t_map *map, t_ctx *ctx)
 		if (ray->map_x < 0 || ray->map_x >= map->x || ray->map_y < 0
 			|| ray->map_y >= map->y)
 			break ;
-		if (map->map_tab[ray->map_y][ray->map_x] != '0')
+		if (map->map_tab[ray->map_y][ray->map_x] != '0'
+			&& map->map_tab[ray->map_y][ray->map_x] != 'o')
 			ray->hit = 1;
 	}
 }
@@ -99,6 +100,8 @@ int	draw_frame(t_ctx *ctx)
 	protect_player(ctx);
 	if (player_moved(&ctx->player))
 		apply_movement(ctx);
+	if (BONUS)
+		early_door_check(ctx);
 	while (x < WIDTH)
 	{
 		setup_ray_for_col(ctx, x);

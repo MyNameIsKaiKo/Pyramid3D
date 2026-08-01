@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 15:42:32 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/21 10:36:44 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 14:26:50 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	is_in_triangle(t_vec2 pt, t_vec2 sum1, t_vec2 sum2, t_vec2 sum3)
 	return (!(has_neg && has_pos));
 }
 
-static void	print_player(t_ctx *ctx)
+static void	display_player(t_ctx *ctx)
 {
 	double	angle;
 	t_vec2	right_pt;
@@ -59,7 +59,7 @@ static void	print_player(t_ctx *ctx)
 		while (pt.x != 140)
 		{
 			if (is_in_triangle(pt, top_pt, right_pt, left_pt) == 1)
-				my_mlx_pixel_put(ctx, pt.x, pt.y, 0xffff0000);
+				my_mlx_pixel_put(ctx, pt.x, pt.y, MCOLOR_PLAYER);
 			pt.x++;
 		}
 		pt.y++;
@@ -69,5 +69,5 @@ static void	print_player(t_ctx *ctx)
 void	print_minimap(t_ctx *ctx)
 {
 	display_map(ctx);
-	print_player(ctx);
+	display_player(ctx);
 }

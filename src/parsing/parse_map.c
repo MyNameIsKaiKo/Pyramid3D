@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 15:47:47 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 12:00:35 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,25 @@ int	space_in_map(char **tab, size_t y, size_t x)
 	return (0);
 }
 
-static int	check_char(char **tab, size_t y, size_t x, t_map *map)
+/** @brief look around the floor, return error if map is open */
+int	isopen_map(char **tab, size_t y, size_t x)
 {
-	char	c;
+	char	top_case;
+	char	left_case;
+	char	right_case;
+	char	bottom_case;
 
-	c = tab[y][x];
-	if (c == WALL || c == EMPTY)
-		return (0);
-	if (c == FLOOR)
-	{
-		if (space_in_map(tab, y, x) > 0)
-			return (1);
-		return (0);
-	}
-	if (c == N_PLAYER || c == E_PLAYER || c == S_PLAYER || c == W_PLAYER)
-	{
-		data_player(map, y, x);
-		return (0);
-	}
-	print_error("A char in map is incorrect");
-	return (1);
+	top_case = tab[y - 1][x];
+	left_case = tab[y][x - 1];
+	right_case = tab[y][x + 1];
+	bottom_case = tab[y + 1][x];
+	if ((top_case != WALL && top_case != FLOOR && !isplayer(top_case))
+		|| (left_case != WALL && left_case != FLOOR && !isplayer(left_case))
+		|| (right_case != WALL && right_case != FLOOR && !isplayer(right_case))
+		|| (bottom_case != WALL && bottom_case != FLOOR
+			&& !isplayer(bottom_case)))
+		return (print_error("Map is open or have a char invalid"));
+	return (0);
 }
 
 int	parse_map(t_map *map)
@@ -51,15 +50,15 @@ int	parse_map(t_map *map)
 	int	y;
 	int	x;
 
-	if (valid_border_line(map->parse_map, map->y - 1) > 0)
+	if (!map->parse_map)
+		return (print_error("Don't have map"));
+	if (border_line_check(map->parse_map, 0) > 0)
+		return (1);
+	if (border_line_check(map->parse_map, map->y - 1) > 0)
 		return (1);
 	y = 1;
 	while (y < map->y - 1)
 	{
-		if (valid_lcolumn_border(map->parse_map, y) > 0)
-			return (1);
-		if (valid_rcolumn_border(map->parse_map, y) > 0)
-			return (1);
 		x = 0;
 		while (map->parse_map[y][x] && x < map->x)
 		{
@@ -100,7 +99,14 @@ int	check_line_map(char *line_read, t_map *map)
 		if (map->y == 0)
 			return (0);
 		else
-			return (print_error("The map is open"));
+		{
+			if (BONUS && map->y - 1 >= 0
+				&& first_line(map->parse_map, map->y - 1))
+				return (print_error("The map is open"));
+			else if (!BONUS && map->y - 1 >= 0
+				&& border_line_check(map->parse_map, map->y - 1))
+				return (print_error("The map is open"));
+		}
 	}
 	max_width = ft_strlen(line_read);
 	if (max_width > map->x)

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/25 18:26:19 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 14:26:10 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,25 @@
 # define START_Y 20
 # define SIZE_MMAP 240
 # define SIZE_BLOCK 20
-# define MCOLOR_WALL 0xff794BB4
-# define MCOLOR_FLOOR 0xffE1CFFA
-# define MCOLOR_LUTIN 0xff4CB045
+# define MCOLOR_WALL 0xff3B2E2E
+# define MCOLOR_OPEN_DOOR 0xff946223
+# define MCOLOR_FLOOR 0xffBD9E77
+# define MCOLOR_LUTIN 0xff1B610E
 # define MCOLOR_MOINU 0xff693F0D
-# define MCOLOR_PIRATE 0xffFFFFE3
-# define MCOLOR_EMPTY 0xffE6E6E6
+# define MCOLOR_PIRATE 0xff8E4DC9
+# define MCOLOR_VOID 0xff0015BA
+# define MCOLOR_PLAYER 0xffff0000
+
+# define ERASE_C 0x0000FF
 
 // -- KeyBoard Close --
 # define K_ESC 65307
+
+// -- KeyBoard Weapon --
+# define K_R 114
+
+// -- KeyBoard Door --
+# define K_Q 113
 
 // -- Moving Keys --
 # define K_A 97
@@ -60,6 +70,9 @@
 # define NB_ALL_TEXTURES 6
 # define NB_BONUS_TEX_WTHT_SPRITE 8
 # define NB_BONUS_TEXTURES 11
+# define WEAPON_TEXTURE 1
+# define FLOOR_T 0
+# define CEILING_T 1
 
 // -- Sprites --
 # define SWIDTH 128
@@ -76,6 +89,13 @@ typedef enum e_weapon_state
 	W_FIRE
 }					t_weapon_state;
 
+typedef enum e_door_state
+{
+	NULL_DOOR,
+	OPEN_DOOR,
+	CLOSE_DOOR
+}					t_door_state;
+
 typedef enum e_tile_type
 {
 	FLOOR = '0',
@@ -84,7 +104,7 @@ typedef enum e_tile_type
 	WALL3 = '3',
 	WALL4 = '4',
 	WALL5 = '5',
-	WALL6 = '6',
+	DOOR6 = '6',
 	EMPTY = ' ',
 	N_PLAYER = 'N',
 	E_PLAYER = 'E',
@@ -113,7 +133,7 @@ typedef enum e_bonus_tex
 	B_WALL3,
 	B_WALL4,
 	B_WALL5,
-	B_WALL6,
+	B_DOOR6,
 	B_F_FLOOR_COLOR,
 	B_C_CEILING_COLOR,
 	B_L_LUTIN,
@@ -123,10 +143,10 @@ typedef enum e_bonus_tex
 
 typedef enum e_sp_type
 {
+	T_NULL,
 	T_LUTIN,
 	T_MOINE,
-	T_PIRATE,
-	T_NULL
+	T_PIRATE
 }					t_sp_type;
 
 typedef struct s_floor
@@ -303,11 +323,15 @@ typedef struct s_ctx
 	t_img			wall_tex[NB_ALL_TEXTURES];
 	t_img			wall_tex_bonus[NB_BONUS_TEXTURES];
 	int				colors[NB_COLOR];
-	t_img			fandc_tex[2];
+	t_img			fandc_tex[NB_COLOR];
 	t_img			img;
 	t_sprites		sprites;
 	t_player		player;
+	int				n_moinu;
+	int				dead_moinu;
 	t_mouse			mouse;
+	t_weapon_state	state;
+	t_door_state	dstate;
 	void			*win;
 	void			*mlx;
 }					t_ctx;

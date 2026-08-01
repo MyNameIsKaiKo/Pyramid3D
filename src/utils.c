@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 22:26:28 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/23 15:03:13 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 11:39:57 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ int	print_error(const char *err_msg)
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(err_msg, 2);
 	return (1);
+}
+
+int	isplayer(char c)
+{
+	if (c == N_PLAYER || c == E_PLAYER
+		|| c == S_PLAYER || c == W_PLAYER)
+		return (1);
+	return (0);
 }
 
 /** @brief return number of char before char c, c include*/

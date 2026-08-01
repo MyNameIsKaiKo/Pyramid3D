@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 11:54:46 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/21 10:58:26 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 16:07:27 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	parse_color(char **color)
 	index_color = NB_TEXTURES;
 	while (index_color < NB_ALL_TEXTURES)
 	{
+		if (!color[index_color])
+			return (print_error("Color is inacessible"));
 		tab_color = ft_split(color[index_color], ',');
 		if (!tab_color)
 			return (print_error("Malloc failed"));

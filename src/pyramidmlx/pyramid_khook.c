@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pyramid_khook.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jleray <marvin@d42.fr>                     +#+  +:+       +#+        */
+/*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:26:13 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/08 14:26:13 by jleray           ###   ########.fr       */
+/*   Updated: 2026/07/31 14:40:16 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@ int	close_app(t_ctx *ctx)
 {
 	mlx_loop_end(ctx->mlx);
 	return (0);
+}
+
+static char	player_pos(t_ctx *ctx)
+{
+	int	y;
+	int	x;
+
+	y = (int)ctx->player.pos.y;
+	x = (int)ctx->player.pos.x;
+	return (ctx->map->map_tab[y][x]);
 }
 
 static int	player_move(int keycode, t_ctx *ctx, int state)
@@ -40,8 +50,27 @@ static int	player_move(int keycode, t_ctx *ctx, int state)
 
 int	handlekey_press(int keycode, void *ctx)
 {
+	t_ctx	*ctx_pt;
+
+	ctx_pt = (t_ctx *)ctx;
 	if (keycode == K_ESC)
 		close_app(ctx);
+	if (BONUS && keycode == K_R)
+		ctx_pt->player.wstate = W_HOLD;
+	if (BONUS && keycode == K_Q
+		&& (player_pos(ctx_pt) != 'o' && player_pos(ctx_pt) != '6'))
+	{
+		if (ctx_pt->dstate == OPEN_DOOR)
+		{
+			ctx_pt->dstate = CLOSE_DOOR;
+			door_swap(ctx, 'o', '6');
+		}
+		else if (ctx_pt->dstate == CLOSE_DOOR)
+		{
+			ctx_pt->dstate = OPEN_DOOR;
+			door_swap(ctx, '6', 'o');
+		}
+	}
 	else
 		player_move(keycode, ctx, 1);
 	return (0);
@@ -49,6 +78,13 @@ int	handlekey_press(int keycode, void *ctx)
 
 int	handlekey_release(int keycode, void *ctx)
 {
-	player_move(keycode, ctx, 0);
+	if (BONUS && keycode == K_R && ((t_ctx *)ctx)->player.wstate == W_HOLD)
+	{
+		((t_ctx *)ctx)->player.wstate = W_FIRE;
+		shoot_weapon(ctx);
+		ft_putstr_fd("RHUM IN COMMING\n", 1);
+	}
+	else
+		player_move(keycode, ctx, 0);
 	return (0);
 }

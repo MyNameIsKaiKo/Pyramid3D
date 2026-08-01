@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/24 18:52:25 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/29 15:29:03 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	free_map_tab(t_map *map);
 void	data_player(t_map *map, size_t y, size_t x);
 int		print_error(const char *err_msg);
 size_t	ft_strcharlen(char *s, char c);
+int		isplayer(char c);
 
 // -- parsing SECTION --
 // -- parsing Function --
@@ -53,8 +54,12 @@ int		parse_textures(char *line_read, t_ctx *ctx);
 // -- parse_color Function --
 int		parse_color(char **color);
 
+// -- parse_char Function --
+int		check_char(char **tab, size_t y, size_t x, t_map *map);
+
 // -- copy_map Function --
 int		space_in_map(char **tab, size_t y, size_t x);
+int		isopen_map(char **tab, size_t y, size_t x);
 int		copy_map(t_map **map);
 
 // -- parse_map Function --
@@ -64,10 +69,9 @@ int		check_line_map(char *line_read, t_map *map);
 // -- valid_map Function --
 int		valid_lcolumn_border(char **tab, size_t y);
 int		valid_rcolumn_border(char **tab, size_t y);
-int		valid_border_line(char **tab, size_t max_y);
+int		border_line_check(char **tab, size_t y);
 
 // -- falsemap Function --
-void	fill_fmap(t_ctx *ctx);
 void	texture_data(t_ctx *ctx);
 
 // -- Pyramid Hook Function --
@@ -153,6 +157,7 @@ int		parse_tex_bonus(char *line_read, t_ctx *ctx);
 bool	iswall(t_tile_type c);
 int		close_map(char **tab, size_t y, size_t x);
 void	data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type);
+int		first_line(char **tab, size_t y);
 void	free_bonus_struct(t_ctx *ctx);
 
 // -- parsing_bonus Function --
@@ -176,12 +181,14 @@ void	setup_base_calc(t_sprite_calc *calc);
 void	calc_transform(t_ctx *ctx, t_sprite_calc *calc, int i);
 
 // -- recover_tex_sprite_bonus Function --
+int		parse_sprite_path(char *path_sprite);
 int		sprite_recover(char *line, t_ctx *ctx);
+int		check_nb_frame(char **tab, int target);
 
 // -- Weapon Function --
-void	false_gun(t_ctx *ctx);
 void	draw_gun(t_ctx *ctx);
 void	shoot_weapon(t_ctx *ctx);
+void	load_wp_frame(t_ctx *ctx, char *path, t_img *tex);
 
 // -- Player Health Function --
 void	player_take_damage(t_ctx *ctx, int amount);
@@ -189,5 +196,13 @@ void	init_player_bonus(t_ctx *ctx);
 
 // -- door Function --
 void	check_alive_moine(t_ctx *ctx);
+void	door_swap(t_ctx *ctx, char old, char new);
+void	early_door_check(t_ctx *ctx);
+
+// -- recover sprites Function --
+int		weapon_recover(char *line, t_ctx *ctx);
+int		pirate_sprite(char **tab, t_ctx *ctx);
+int		moine_sprite(char **tab, t_ctx *ctx);
+int		lutin_sprite(char **tab, t_ctx *ctx);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:17:05 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 15:49:04 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/28 18:33:41 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	f_init(t_ctx *ctx)
 
 static void	sprite_free(t_ctx *ctx)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < MAXLFRAME)
@@ -46,6 +46,10 @@ static void	sprite_free(t_ctx *ctx)
 	while (++i < MAXPFRAME)
 		if (ctx->sprites.lutin_t[i].img)
 			mlx_destroy_image(ctx->mlx, ctx->sprites.pirate_t[i].img);
+	i = -1;
+	while (++i < MAXWFRAME)
+		if (ctx->player.weapon_t[i].img)
+			mlx_destroy_image(ctx->mlx, ctx->player.weapon_t[i].img);
 }
 
 static void	fandc_free(t_ctx *ctx)
