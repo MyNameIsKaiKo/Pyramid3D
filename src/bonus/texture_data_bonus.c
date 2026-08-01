@@ -16,6 +16,12 @@ static void	get_bonus_color(t_ctx *ctx, int *w, int *h)
 {
 	ctx->fandc_tex[FLOOR_T].img = mlx_xpm_file_to_image(ctx->mlx,
 			ctx->tab_tex_bonus[B_F_FLOOR_COLOR], w, h);
+	if (!ctx->fandc_tex[FLOOR_T].img)
+	{
+		print_error("Failed to load floor XPM texture");
+		free_ctx(ctx);
+		exit(1);
+	}
 	ctx->fandc_tex[FLOOR_T].addr = mlx_get_data_addr
 		(ctx->fandc_tex[FLOOR_T].img,
 			&ctx->fandc_tex[FLOOR_T].bits_per_pixel,
@@ -23,6 +29,12 @@ static void	get_bonus_color(t_ctx *ctx, int *w, int *h)
 			&ctx->fandc_tex[FLOOR_T].endian);
 	ctx->fandc_tex[CEILING_T].img = mlx_xpm_file_to_image(ctx->mlx,
 			ctx->tab_tex_bonus[B_C_CEILING_COLOR], w, h);
+	if (!ctx->fandc_tex[CEILING_T].img)
+	{
+		print_error("Failed to load floor XPM texture");
+		free_ctx(ctx);
+		exit(1);
+	}
 	ctx->fandc_tex[CEILING_T].addr = mlx_get_data_addr
 		(ctx->fandc_tex[CEILING_T].img,
 			&ctx->fandc_tex[CEILING_T].bits_per_pixel,
