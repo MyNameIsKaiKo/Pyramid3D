@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub.h"
+#include "cub_struct_def.h"
 
 /** @return 1 if is wall or 0 is not wall */
 bool	iswall(t_tile_type c)
@@ -62,14 +63,17 @@ int	close_map(char **tab, size_t y, size_t x)
 	return (0);
 }
 
-void	data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type)
+int	data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type)
 {
 	t_sprites	*sprites;
 
 	sprites = &ctx->sprites;
+	if (sprites->count >= NB_BONUS_TEXTURES)
+		return (print_error("To many sprites in map"));
 	sprites->arr[sprites->count].pos.x = x + 0.5;
 	sprites->arr[sprites->count].pos.y = y + 0.5;
 	sprites->arr[sprites->count].type = type;
 	ctx->map->parse_map[y][x] = FLOOR;
 	sprites->count++;
+	return (0);
 }

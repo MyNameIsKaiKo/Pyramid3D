@@ -157,7 +157,7 @@ int		parse_tex_bonus(char *line_read, t_ctx *ctx);
 // -- utils_bonus Function --
 bool	iswall(t_tile_type c);
 int		close_map(char **tab, size_t y, size_t x);
-void	data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type);
+int		data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type);
 int		first_line(char **tab, size_t y);
 void	free_bonus_struct(t_ctx *ctx);
 

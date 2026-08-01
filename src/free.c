@@ -41,11 +41,11 @@ static void	sprite_free(t_ctx *ctx)
 			mlx_destroy_image(ctx->mlx, ctx->sprites.lutin_t[i].img);
 	i = -1;
 	while (++i < MAXMFRAME)
-		if (ctx->sprites.lutin_t[i].img)
+		if (ctx->sprites.moine_t[i].img)
 			mlx_destroy_image(ctx->mlx, ctx->sprites.moine_t[i].img);
 	i = -1;
 	while (++i < MAXPFRAME)
-		if (ctx->sprites.lutin_t[i].img)
+		if (ctx->sprites.pirate_t[i].img)
 			mlx_destroy_image(ctx->mlx, ctx->sprites.pirate_t[i].img);
 	i = -1;
 	while (++i < MAXWFRAME)

@@ -66,7 +66,8 @@ static int	check_pnj(char c, size_t y, size_t x, t_ctx *ctx)
 		type = T_PIRATE;
 	if (type == T_NULL)
 		return (1);
-	data_sprite(ctx, y, x, type);
+	if (data_sprite(ctx, y, x, type) > 0)
+		return (1);
 	return (0);
 }
 int	door_place(char **tab, size_t y, size_t x)
