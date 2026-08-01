@@ -33,7 +33,6 @@ static void	get_bonus_color(t_ctx *ctx, int *w, int *h)
 void	texture_data_bonus(t_ctx *ctx, int *w, int *h)
 {
 	int	i;
-	int	save;
 
 	i = 0;
 	while (i < NB_BONUS_TEX_WTHT_SPRITE)
@@ -44,11 +43,8 @@ void	texture_data_bonus(t_ctx *ctx, int *w, int *h)
 			(ctx->wall_tex_bonus[i].img, &ctx->wall_tex_bonus[i].bits_per_pixel,
 				&ctx->wall_tex_bonus[i].line_lenght,
 				&ctx->wall_tex_bonus[i].endian);
-		save = *w;
-		if (i > 0 && save != *w && save != *h)
-			printf("A wrong size in tex save : %d, w : %d, h : %d\n",
-				save, *w, *h);
-		i++;
+		ctx->wall_tex_bonus[i].width = *w;
+		ctx->wall_tex_bonus[i].height = *h;
 	}
 	get_bonus_color(ctx, w, h);
 }

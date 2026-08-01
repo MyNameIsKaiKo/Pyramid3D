@@ -44,19 +44,20 @@ void	texture_data(t_ctx *ctx)
 	int	w;
 	int	h;
 
-	i = 0;
+	i = -1;
 	w = 0;
 	h = 0;
 	if (!BONUS)
 	{
-		while (i < NB_TEXTURES)
+		while (++i < NB_TEXTURES)
 		{
 			ctx->wall_tex[i].img = mlx_xpm_file_to_image(ctx->mlx,
 					ctx->tab_textures[i], &w, &h);
 			ctx->wall_tex[i].addr = mlx_get_data_addr(ctx->wall_tex[i].img,
 					&ctx->wall_tex[i].bits_per_pixel,
 					&ctx->wall_tex[i].line_lenght, &ctx->wall_tex[i].endian);
-			i++;
+			ctx->wall_tex[i].width = w;
+			ctx->wall_tex[i].height = h;
 		}
 		get_color(ctx);
 	}
