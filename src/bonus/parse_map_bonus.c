@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:36:39 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/31 12:30:29 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/01 18:35:55 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,7 @@ static int	check_pnj(char c, size_t y, size_t x, t_ctx *ctx)
 	data_sprite(ctx, y, x, type);
 	return (0);
 }
-int	door_place(char **tab, size_t y, size_t x)
-{
-	char	top_case;
-	char	left_case;
-	char	right_case;
-	char	bottom_case;
 
-	top_case = tab[y - 1][x];
-	left_case = tab[y][x - 1];
-	right_case = tab[y][x + 1];
-	bottom_case = tab[y + 1][x];
-	if (!left_case || !right_case
-		|| !top_case || !bottom_case)
-		return (print_error("Door is in border of map"));
-	if (left_case == EMPTY || right_case == EMPTY
-		|| top_case == EMPTY
-		|| bottom_case == EMPTY)
-		return (print_error("Door is in border of map"));
-	return (0);
-}
 static int	check_charbonus(char **tab, size_t y, size_t x, t_ctx *ctx)
 {
 	char	c;

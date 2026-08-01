@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/29 15:29:03 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/01 18:36:48 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ void	init_player_bonus(t_ctx *ctx);
 void	check_alive_moine(t_ctx *ctx);
 void	door_swap(t_ctx *ctx, char old, char new);
 void	early_door_check(t_ctx *ctx);
+int		door_place(char **tab, size_t y, size_t x);
 
 // -- recover sprites Function --
 int		weapon_recover(char *line, t_ctx *ctx);
