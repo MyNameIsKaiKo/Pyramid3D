@@ -45,6 +45,7 @@ void	texture_data_bonus(t_ctx *ctx, int *w, int *h)
 				&ctx->wall_tex_bonus[i].endian);
 		ctx->wall_tex_bonus[i].width = *w;
 		ctx->wall_tex_bonus[i].height = *h;
+		i++;
 	}
 	get_bonus_color(ctx, w, h);
 }
