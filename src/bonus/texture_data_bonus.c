@@ -39,6 +39,12 @@ void	texture_data_bonus(t_ctx *ctx, int *w, int *h)
 	{
 		ctx->wall_tex_bonus[i].img = mlx_xpm_file_to_image(ctx->mlx,
 				ctx->tab_tex_bonus[i], w, h);
+		if (!ctx->wall_tex_bonus[i].img)
+		{
+			print_error("Failed to lad bonus XPM texture.");
+			free_ctx(ctx);
+			exit (1);
+		}
 		ctx->wall_tex_bonus[i].addr = mlx_get_data_addr
 			(ctx->wall_tex_bonus[i].img, &ctx->wall_tex_bonus[i].bits_per_pixel,
 				&ctx->wall_tex_bonus[i].line_lenght,
