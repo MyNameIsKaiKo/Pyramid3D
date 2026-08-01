@@ -31,6 +31,7 @@
 void	f_init(t_ctx *ctx);
 void	tex_free(t_ctx *ctx);
 void	free_ctx(t_ctx *ctx);
+void	validate_texture_sizes(t_ctx *ctx, t_img *tex, int max);
 
 // -- Free_map Function --
 void	free_parse_map(t_map *map);

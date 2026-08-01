@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:26:13 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/31 14:40:16 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/30 19:37:39 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,6 @@ int	close_app(t_ctx *ctx)
 {
 	mlx_loop_end(ctx->mlx);
 	return (0);
-}
-
-static char	player_pos(t_ctx *ctx)
-{
-	int	y;
-	int	x;
-
-	y = (int)ctx->player.pos.y;
-	x = (int)ctx->player.pos.x;
-	return (ctx->map->map_tab[y][x]);
 }
 
 static int	player_move(int keycode, t_ctx *ctx, int state)
@@ -57,8 +47,7 @@ int	handlekey_press(int keycode, void *ctx)
 		close_app(ctx);
 	if (BONUS && keycode == K_R)
 		ctx_pt->player.wstate = W_HOLD;
-	if (BONUS && keycode == K_Q
-		&& (player_pos(ctx_pt) != 'o' && player_pos(ctx_pt) != '6'))
+	if (BONUS && keycode == K_Q)
 	{
 		if (ctx_pt->dstate == OPEN_DOOR)
 		{

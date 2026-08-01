@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:36:27 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/31 14:45:45 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 11:01:38 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	display_background(t_ctx *ctx, t_vec2 result, t_vec2 curr_block)
 
 	y = (int)(ctx->player.pos.y + result.y);
 	x = (int)(ctx->player.pos.x + result.x);
-	if (is_inmap(ctx, result) || ctx->map->map_tab[y][x] == EMPTY)
+	if (is_inmap(ctx, result))
 		my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_VOID);
 	else if (ctx->map->map_tab[y][x] == FLOOR)
 		my_mlx_pixel_put(ctx, curr_block.x, curr_block.y, MCOLOR_FLOOR);
