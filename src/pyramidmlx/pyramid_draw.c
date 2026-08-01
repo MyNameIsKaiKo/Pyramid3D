@@ -73,8 +73,8 @@ static void	draw_img(t_ctx *ctx, int x)
 
 	y = -1;
 	ray = &ctx->player.ray;
-	get_tex_index(ctx);
 	setup_draw_img(ctx);
+	get_tex_index(ctx);
 	while (++y < HEIGHT)
 	{
 		if (y < ray->draw_start)

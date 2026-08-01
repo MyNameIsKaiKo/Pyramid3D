@@ -64,16 +64,6 @@ void	calc_drawing_value(t_ray *ray)
 
 void	setup_draw_img(t_ctx *ctx)
 {
-	if (!BONUS)
-	{
-		ctx->tex.witdh = ctx->wall_tex[ctx->tex.index].width;
-		ctx->tex.height = ctx->wall_tex[ctx->tex.index].height;
-	}
-	else
-	{
-		ctx->tex.witdh = ctx->wall_tex_bonus[ctx->tex.index].width;
-		ctx->tex.height = ctx->wall_tex_bonus[ctx->tex.index].height;
-	}
 	calc_drawing_value(&ctx->player.ray);
 	calc_wallx(ctx);
 	calc_tex_x(ctx);

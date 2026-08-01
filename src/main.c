@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 15:54:00 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/31 15:21:49 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 	{
-		print_error("Enter a map.cub in first argument please\n");
+		print_error("Enter a map.cub in first argument please");
 		return (0);
 	}
 	if (set_struct(&ctx) > 0)
