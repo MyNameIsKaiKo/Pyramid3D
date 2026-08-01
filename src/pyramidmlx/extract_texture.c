@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub.h"
+#include "cub_struct_def.h"
 
 static size_t	extract_color(char *color)
 {
@@ -38,6 +39,15 @@ static void	get_color(t_ctx *ctx)
 	ctx->colors[CEILING_T] = extract_color(ctx->tab_textures[CEILING_COLOR]);
 }
 
+static void	set_img(t_ctx *ctx, int i, int *w, int *h)
+{
+	ctx->wall_tex[i].img = mlx_xpm_file_to_image(ctx->mlx,
+		ctx->tab_textures[i], w, h);
+	ctx->wall_tex[i].addr = mlx_get_data_addr(ctx->wall_tex[i].img,
+			&ctx->wall_tex[i].bits_per_pixel,
+			&ctx->wall_tex[i].line_lenght, &ctx->wall_tex[i].endian);
+}
+
 void	texture_data(t_ctx *ctx)
 {
 	int	i;
@@ -51,11 +61,7 @@ void	texture_data(t_ctx *ctx)
 	{
 		while (++i < NB_TEXTURES)
 		{
-			ctx->wall_tex[i].img = mlx_xpm_file_to_image(ctx->mlx,
-					ctx->tab_textures[i], &w, &h);
-			ctx->wall_tex[i].addr = mlx_get_data_addr(ctx->wall_tex[i].img,
-					&ctx->wall_tex[i].bits_per_pixel,
-					&ctx->wall_tex[i].line_lenght, &ctx->wall_tex[i].endian);
+			set_img(ctx, i, &w, &h);
 			ctx->wall_tex[i].width = w;
 			ctx->wall_tex[i].height = h;
 		}
@@ -63,6 +69,10 @@ void	texture_data(t_ctx *ctx)
 	}
 	else if (BONUS)
 		texture_data_bonus(ctx, &w, &h);
+	if (BONUS)
+		validate_texture_sizes(ctx, ctx->wall_tex_bonus, NB_BONUS_TEX_WTHT_SPRITE);
+	else
+		validate_texture_sizes(ctx, ctx->wall_tex, NB_TEXTURES);
 	ctx->tex.height = h;
 	ctx->tex.witdh = w;
 }
