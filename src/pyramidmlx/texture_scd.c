@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 02:43:16 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/28 16:59:39 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/02 23:25:58 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	get_tex_index(t_ctx *ctx)
 	else
 	{
 		if (ray->side == 0 && ray->dir_x > 0)
-			ctx->tex.index = 0;
+			ctx->tex.index = EA_WALL;
 		if (ray->side == 0 && ray->dir_x < 0)
-			ctx->tex.index = 1;
+			ctx->tex.index = WE_WALL;
 		if (ray->side == 1 && ray->dir_y < 0)
-			ctx->tex.index = 2;
+			ctx->tex.index = NO_WALL;
 		if (ray->side == 1 && ray->dir_y > 0)
-			ctx->tex.index = 3;
+			ctx->tex.index = SO_WALL;
 	}
 }

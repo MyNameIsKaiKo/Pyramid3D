@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/02 23:09:55 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/02 23:16:12 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # endif
 
 // -- WINDOW SIZE --
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 1920
+# define HEIGHT 1080
 
 // -- MINIMAP DATA --
 # define START_X 20
