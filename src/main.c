@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:55:19 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/31 15:21:49 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/02 15:29:56 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 {
 	t_ctx	ctx;
 
-	if (ac < 2)
+	if (ac != 2)
 	{
 		print_error("Enter a map.cub in first argument please");
 		return (0);

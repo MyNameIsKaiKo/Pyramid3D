@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/01 18:36:48 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/02 15:48:42 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ int		close_map(char **tab, size_t y, size_t x);
 int		data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type);
 int		first_line(char **tab, size_t y);
 void	free_bonus_struct(t_ctx *ctx);
+char	player_pos(t_ctx *ctx);
 
 // -- parsing_bonus Function --
 int		parsing_bonus(char *file, t_ctx *ctx);

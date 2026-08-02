@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 19:35:20 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/29 10:50:12 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/02 16:02:23 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ int	handlebutton(int button, int x, int y, void *data)
 	ctx = (t_ctx *)data;
 	if (button == 1)
 		ctx->player.wstate = W_HOLD;
+	if (BONUS && button == 3 && (player_pos(ctx) != 'o' && player_pos(ctx) != '6'))
+	{
+		if (ctx->dstate == OPEN_DOOR)
+		{
+			ctx->dstate = CLOSE_DOOR;
+			door_swap(ctx, 'o', '6');
+		}
+		else if (ctx->dstate == CLOSE_DOOR)
+		{
+			ctx->dstate = OPEN_DOOR;
+			door_swap(ctx, '6', 'o');
+		}
+	}
 	return (0);
 }
 

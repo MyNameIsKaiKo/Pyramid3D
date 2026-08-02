@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:26:13 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/31 14:40:16 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/02 15:47:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	close_app(t_ctx *ctx)
 	return (0);
 }
 
-static char	player_pos(t_ctx *ctx)
+char	player_pos(t_ctx *ctx)
 {
 	int	y;
 	int	x;
