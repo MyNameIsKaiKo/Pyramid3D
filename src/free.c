@@ -11,22 +11,23 @@
 /* ************************************************************************** */
 
 #include "cub.h"
+#include "mlx.h"
 
 void	f_init(t_ctx *ctx)
 {
-	if (!ctx->img.addr)
-	{
-		mlx_destroy_image(ctx->mlx, ctx->img.img);
-		mlx_destroy_window(ctx->mlx, ctx->win);
+	if (!ctx->win)
 		free(ctx->mlx);
-	}
 	else if (!ctx->img.img)
 	{
 		mlx_destroy_window(ctx->mlx, ctx->win);
 		free(ctx->mlx);
 	}
-	else if (!ctx->win)
+	else if (!ctx->img.addr)
+	{
+		mlx_destroy_image(ctx->mlx, ctx->img.img);
+		mlx_destroy_window(ctx->mlx, ctx->win);
 		free(ctx->mlx);
+	}
 	ft_putstr_fd("Malloc Error\n", 1);
 }
 
@@ -40,11 +41,11 @@ static void	sprite_free(t_ctx *ctx)
 			mlx_destroy_image(ctx->mlx, ctx->sprites.lutin_t[i].img);
 	i = -1;
 	while (++i < MAXMFRAME)
-		if (ctx->sprites.lutin_t[i].img)
+		if (ctx->sprites.moine_t[i].img)
 			mlx_destroy_image(ctx->mlx, ctx->sprites.moine_t[i].img);
 	i = -1;
 	while (++i < MAXPFRAME)
-		if (ctx->sprites.lutin_t[i].img)
+		if (ctx->sprites.pirate_t[i].img)
 			mlx_destroy_image(ctx->mlx, ctx->sprites.pirate_t[i].img);
 	i = -1;
 	while (++i < MAXWFRAME)

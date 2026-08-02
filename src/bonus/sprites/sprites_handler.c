@@ -18,6 +18,8 @@ static void	load_sp_frame(t_ctx *ctx, char *path, t_img *tex)
 	int	h;
 
 	tex->img = mlx_xpm_file_to_image(ctx->mlx, path, &w, &h);
+	if (!tex->img)
+		img_xpm_error(ctx);
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bits_per_pixel,
 			&tex->line_lenght, &tex->endian);
 }

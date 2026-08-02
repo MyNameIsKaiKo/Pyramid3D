@@ -31,6 +31,7 @@
 void	f_init(t_ctx *ctx);
 void	tex_free(t_ctx *ctx);
 void	free_ctx(t_ctx *ctx);
+void	img_xpm_error(t_ctx *ctx);
 
 // -- Free_map Function --
 void	free_parse_map(t_map *map);
@@ -107,6 +108,7 @@ void	calc_wallx(t_ctx *ctx);
 int		get_texture_pixel(t_img *tex_img, int x, int y);
 void	calc_tex_y(t_ctx *ctx);
 void	get_tex_index(t_ctx *ctx);
+void	validate_tex_sizes(t_ctx *ctx, t_img *tex, int max);
 
 // -- player_handler SECTION --
 // -- player Function --
@@ -156,7 +158,7 @@ int		parse_tex_bonus(char *line_read, t_ctx *ctx);
 // -- utils_bonus Function --
 bool	iswall(t_tile_type c);
 int		close_map(char **tab, size_t y, size_t x);
-void	data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type);
+int		data_sprite(t_ctx *ctx, size_t y, size_t x, t_sp_type type);
 int		first_line(char **tab, size_t y);
 void	free_bonus_struct(t_ctx *ctx);
 

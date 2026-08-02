@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub.h"
+#include "cub_struct_def.h"
 
 static size_t	extract_color(char *color)
 {
@@ -38,30 +39,60 @@ static void	get_color(t_ctx *ctx)
 	ctx->colors[CEILING_T] = extract_color(ctx->tab_textures[CEILING_COLOR]);
 }
 
+static void	set_img(t_ctx *ctx, int i, int *w, int *h)
+{
+	ctx->wall_tex[i].img = mlx_xpm_file_to_image(ctx->mlx,
+			ctx->tab_textures[i], w, h);
+	if (!ctx->wall_tex[i].img)
+		img_xpm_error(ctx);
+	ctx->wall_tex[i].addr = mlx_get_data_addr(ctx->wall_tex[i].img,
+			&ctx->wall_tex[i].bits_per_pixel,
+			&ctx->wall_tex[i].line_lenght, &ctx->wall_tex[i].endian);
+}
+
+void	validate_tex_sizes(t_ctx *ctx, t_img *tex, int max)
+{
+	int	i;
+	int	expected;
+
+	i = -1;
+	expected = tex[0].width;
+	while (++i < max)
+	{
+		if (tex[i].width != tex[i].height || tex[i].width != expected)
+		{
+			print_error("Textures must be square and identical in size.");
+			close_app(ctx);
+			return ;
+		}
+	}
+}
+
 void	texture_data(t_ctx *ctx)
 {
 	int	i;
 	int	w;
 	int	h;
 
-	i = 0;
+	i = -1;
 	w = 0;
 	h = 0;
 	if (!BONUS)
 	{
-		while (i < NB_TEXTURES)
+		while (++i < NB_TEXTURES)
 		{
-			ctx->wall_tex[i].img = mlx_xpm_file_to_image(ctx->mlx,
-					ctx->tab_textures[i], &w, &h);
-			ctx->wall_tex[i].addr = mlx_get_data_addr(ctx->wall_tex[i].img,
-					&ctx->wall_tex[i].bits_per_pixel,
-					&ctx->wall_tex[i].line_lenght, &ctx->wall_tex[i].endian);
-			i++;
+			set_img(ctx, i, &w, &h);
+			ctx->wall_tex[i].width = w;
+			ctx->wall_tex[i].height = h;
 		}
 		get_color(ctx);
 	}
 	else if (BONUS)
 		texture_data_bonus(ctx, &w, &h);
+	if (BONUS)
+		validate_tex_sizes(ctx, ctx->wall_tex_bonus, NB_BONUS_TEX_WTHT_SPRITE);
+	else
+		validate_tex_sizes(ctx, ctx->wall_tex, NB_TEXTURES);
 	ctx->tex.height = h;
 	ctx->tex.witdh = w;
 }
