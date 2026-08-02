@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:12 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/31 14:26:10 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/02 23:09:55 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@
 # define START_Y 20
 # define SIZE_MMAP 240
 # define SIZE_BLOCK 20
-# define MCOLOR_WALL 0xff3B2E2E
-# define MCOLOR_OPEN_DOOR 0xff946223
-# define MCOLOR_FLOOR 0xffBD9E77
-# define MCOLOR_LUTIN 0xff1B610E
-# define MCOLOR_MOINU 0xff693F0D
-# define MCOLOR_PIRATE 0xff8E4DC9
-# define MCOLOR_VOID 0xff0015BA
-# define MCOLOR_PLAYER 0xffff0000
+# define MCOLOR_WALL 0xff835720
+# define MCOLOR_OPEN_DOOR 0xff5E3E17
+# define MCOLOR_FLOOR 0xffC29B6B
+# define MCOLOR_LUTIN 0xff317D3E
+# define MCOLOR_MOINU 0xff703926
+# define MCOLOR_PIRATE 0xff683EA3
+# define MCOLOR_VOID 0xff3D4094
+# define MCOLOR_PLAYER 0xffBA3B18
 
 # define ERASE_C 0x0000FF
 

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:20:00 by jleray            #+#    #+#             */
-/*   Updated: 2026/07/23 15:36:06 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/02 22:42:45 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,8 @@ void	player_init(t_ctx *ctx)
 	player->pos = ctx->map->starting_coord;
 	set_oriant(ctx);
 	player->rotation_speed = 0.1;
-	player->time = 0;
 	player->old_time = player->time;
 	player->veloville = 0.1;
-	player->moves.backward = 0;
-	player->moves.forward = 0;
-	player->moves.left = 0;
-	player->moves.right = 0;
-	player->moves.left_turn = 0;
-	player->moves.right_turn = 0;
 }
 
 int	player_moved(t_player *player)
