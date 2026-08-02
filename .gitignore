@@ -3,7 +3,9 @@ compile_commands.json
 *.o
 *.d
 obj/
+obj_bonus/
 cub3D
+cub3D_bonus
 includes/gnl/*.d
 includes/gnl/*.o
 includes/libft/libft.a
