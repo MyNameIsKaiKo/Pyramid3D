@@ -33,13 +33,13 @@ void	get_tex_index(t_ctx *ctx)
 		ctx->tex.index = ctx->map->map_tab[ray->map_y][ray->map_x] - '1';
 	else
 	{
-		if (ray->side == 0 && ray->dir_x < 0)
-			ctx->tex.index = 0;
-		if (ray->side == 1 && ray->dir_y > 0)
-			ctx->tex.index = 1;
 		if (ray->side == 0 && ray->dir_x > 0)
-			ctx->tex.index = 2;
+			ctx->tex.index = 0;
+		if (ray->side == 0 && ray->dir_x < 0)
+			ctx->tex.index = 1;
 		if (ray->side == 1 && ray->dir_y < 0)
+			ctx->tex.index = 2;
+		if (ray->side == 1 && ray->dir_y > 0)
 			ctx->tex.index = 3;
 	}
 }
