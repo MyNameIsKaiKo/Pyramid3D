@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 18:48:57 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/26 19:25:37 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/02 19:54:22 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	border_line_check(char **tab, size_t y)
 	while (line[x])
 	{
 		if (line[x] != WALL && line[x] != EMPTY)
-			return (print_error("A border line is incorrect"));
+			return (1);
 		x++;
 	}
 	return (0);
