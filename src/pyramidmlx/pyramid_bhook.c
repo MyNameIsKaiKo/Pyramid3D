@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 19:35:20 by jleray            #+#    #+#             */
-/*   Updated: 2026/08/02 19:55:51 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/03 09:45:10 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	handlebutton_release(int button, int x, int y, void *data)
 	{
 		ctx->player.wstate = W_FIRE;
 		shoot_weapon(ctx);
-		ft_putstr_fd("RHUM IN COMMING\n", 1);
+		ft_putstr_fd("RHUM IN COMMING\2,1n", 1);
 	}
 	return (0);
 }
