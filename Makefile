@@ -1,7 +1,7 @@
 #COMPILE_________________________________
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -MMD -MP -g
+CFLAGS		= -Wall -Wextra -Werror -MMD -MP
 MAKEFLAGS	+= --no-print-directory
 
 NAME_BONUS	= cub3D_bonus
