@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/03 19:26:32 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/04 14:47:07 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,25 +94,13 @@ int	check_line_map(char *line_read, t_map *map)
 {
 	int	max_width;
 
+	if (ft_strncmp(line_read, "\n", ft_strlen(line_read)) == 0 && map->y == 0)
+		return (0);
 	if (map->y > 0 && ft_strlen(line_read) > 1)
 	{
 		if (ft_strncmp(line_read, "\n", ft_strlen(line_read)) != 0
 			&& ft_strlen(map->parse_map[map->y - 1]) == 0)
 			return (print_error("A border line is incorrect"));
-	}
-	if (ft_strncmp(line_read, "\n", ft_strlen(line_read)) == 0)
-	{
-		if (map->y == 0)
-			return (0);
-		else
-		{
-			if (BONUS && map->y - 1 >= 0
-				&& first_line(map->parse_map, map->y - 1))
-				return (print_error("A border line is incorrect"));
-			else if (!BONUS && map->y - 1 >= 0
-				&& border_line_check(map->parse_map, map->y - 1))
-				return (print_error("A border line is incorrect"));
-		}
 	}
 	max_width = ft_strlen(line_read);
 	if (max_width > map->x)
