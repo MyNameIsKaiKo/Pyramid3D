@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:36:39 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/04 17:33:58 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/01 18:35:55 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ static int	check_pnj(char c, size_t y, size_t x, t_ctx *ctx)
 		return (1);
 	if (data_sprite(ctx, y, x, type) > 0)
 		return (1);
-	if (around_floor (ctx->map->parse_map, y, x) > 0)
-			return (1);
 	return (0);
 }
 

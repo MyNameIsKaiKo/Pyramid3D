@@ -1,0 +1,36 @@
+1 ./texture/bonus/pirate_boat.xpm
+2 ./texture/bonus/pirate_boat_mousse.xpm
+3 ./texture/bonus/pirate_dolphin.xpm
+4 ./texture/bonus/pirate_cave.xpm
+5 ./texture/bonus/pirate_in_boat.xpm
+6 ./texture/bonus/pirate_floor.xpm
+
+L ./texture/assets/lutin/lutin1.xpm ./texture/assets/lutin/lutin2.xpm ./texture/assets/lutin/lutin3.xpm ./texture/assets/lutin/lutin4.xpm ./texture/assets/lutin/lutin5.xpm
+M ./texture/assets/moine/moine.xpm ./texture/assets/moine/moine2.xpm ./texture/assets/moine/moine3.xpm
+P ./texture/assets/pirate/pirate1.xpm ./texture/assets/pirate/pirate2.xpm ./texture/assets/pirate/pirate3.xpm
+
+W ./texture/bonus/W_idle.xpm ./texture/bonus/W_hold.xpm ./texture/bonus/W_fire.xpm
+
+F ./texture/bonus/pirate_floor.xpm
+C ./texture/bonus/pirate_ceiling.xpm
+
+                    1
+                   1M1
+                  10001
+                 1000002
+                100000001
+               20000000001
+              1000055500M01
+             100055444550001
+            100M054L0P4500001
+            10000540004500001
+            10M00555655500001
+            15500000000000001
+            30000000000550002
+            1000000MM00050001
+            10050000000050001
+            10050055550000001
+            10050000050000001
+            10M555500000M0003
+            200000000N0000003
+            11111111121111111

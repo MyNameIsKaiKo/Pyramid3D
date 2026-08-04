@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 11:54:46 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/04 17:59:34 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/26 16:07:27 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,6 @@ static int	valid_color(char **tab_color)
 	return (0);
 }
 
-static int	count_coma(char *color)
-{
-	int	coma;
-	int	i;
-
-	coma = 0;
-	i = 0;
-	while (color[i])
-	{
-		if (color[i] == ',')
-			coma++;
-		i++;
-	}
-	if (coma == 2)
-		return (0);
-	return (print_error("Number of coma in color is incorrect"));
-}
-
 int	parse_color(char **color)
 {
 	char	**tab_color;
@@ -74,8 +56,6 @@ int	parse_color(char **color)
 	{
 		if (!color[index_color])
 			return (print_error("Color is inacessible"));
-		if (!BONUS && count_coma(color[index_color]) > 0)
-			return (1);
 		tab_color = ft_split(color[index_color], ',');
 		if (!tab_color)
 			return (print_error("Malloc failed"));

@@ -1,0 +1,14 @@
+NO ./texture/texture1.xpm
+SO ./texture/texture2.xpm
+WE ./texture/texture3.xpm
+EA ./texture/texture4.xpm
+
+F 122,190,240
+C 74,44,12
+
+111111 111
+100101 111
+100001 111
+100N01 111
+111111 111
+1111111111

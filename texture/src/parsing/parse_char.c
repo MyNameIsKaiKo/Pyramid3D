@@ -6,13 +6,13 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 19:30:58 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/04 17:36:15 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/07/27 11:48:30 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	around_floor(char **tab, size_t y, size_t x)
+static int	around_floor(char **tab, size_t y, size_t x)
 {
 	if (space_in_map(tab, y, x) > 0
 		|| isopen_map(tab, y, x) > 0)
@@ -35,8 +35,6 @@ int	check_char(char **tab, size_t y, size_t x, t_map *map)
 	}
 	if (c == N_PLAYER || c == E_PLAYER || c == S_PLAYER || c == W_PLAYER)
 	{
-		if (around_floor (tab, y, x) > 0)
-			return (1);
 		data_player(map, y, x);
 		return (0);
 	}

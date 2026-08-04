@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:49:26 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/04 17:36:46 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/02 15:48:42 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int		parse_textures(char *line_read, t_ctx *ctx);
 int		parse_color(char **color);
 
 // -- parse_char Function --
-int		around_floor(char **tab, size_t y, size_t x);
 int		check_char(char **tab, size_t y, size_t x, t_map *map);
 
 // -- copy_map Function --
