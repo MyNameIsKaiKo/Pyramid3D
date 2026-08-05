@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 10:33:03 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/29 15:27:47 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/05 12:03:59 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	lutin_sprite(char **tab, t_ctx *ctx)
 	i = 1;
 	id = 0;
 	if (check_nb_frame(tab, MAXLFRAME + 1) > 0)
-		return (print_error("Lutin don't have five frame"));
+		return (print_error("Lutin don't have five frames"));
 	tab[MAXLFRAME] = ft_strtrim(tab[MAXLFRAME], "\n");
 	while (tab[i] && i < MAXLFRAME + 1)
 	{
@@ -33,7 +33,7 @@ int	lutin_sprite(char **tab, t_ctx *ctx)
 		id++;
 	}
 	if (i != MAXLFRAME + 1)
-		return (print_error("Lutin doesn't have five sprite"));
+		return (print_error("Lutin doesn't have five frames"));
 	return (0);
 }
 
@@ -45,7 +45,7 @@ int	moine_sprite(char **tab, t_ctx *ctx)
 	i = 1;
 	id = 0;
 	if (check_nb_frame(tab, MAXMFRAME + 1) > 0)
-		return (print_error("Moinu don't have thre frame"));
+		return (print_error("Moinu don't have three frames"));
 	tab[MAXMFRAME] = ft_strtrim(tab[MAXMFRAME], "\n");
 	while (tab[i] && i < MAXMFRAME + 1)
 	{
@@ -58,7 +58,7 @@ int	moine_sprite(char **tab, t_ctx *ctx)
 		id++;
 	}
 	if (i != MAXMFRAME + 1)
-		return (print_error("Moinutea doesn't have three sprite"));
+		return (print_error("Moinu doesn't have three frames"));
 	return (0);
 }
 
@@ -70,7 +70,7 @@ int	pirate_sprite(char **tab, t_ctx *ctx)
 	i = 1;
 	id = 0;
 	if (check_nb_frame(tab, MAXPFRAME + 1) > 0)
-		return (print_error("Pirate don't have three frame"));
+		return (print_error("Pirate don't have three frames"));
 	tab[MAXPFRAME] = ft_strtrim(tab[MAXPFRAME], "\n");
 	while (tab[i] && i < MAXPFRAME + 1)
 	{
@@ -83,7 +83,7 @@ int	pirate_sprite(char **tab, t_ctx *ctx)
 		id++;
 	}
 	if (i != MAXPFRAME + 1)
-		return (print_error("Pirate doesn't have three sprite"));
+		return (print_error("Pirate doesn't have three frames"));
 	return (0);
 }
 

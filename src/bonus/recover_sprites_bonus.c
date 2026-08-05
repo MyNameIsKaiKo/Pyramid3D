@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 10:33:03 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/29 15:27:47 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/05 12:03:09 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	moine_sprite(char **tab, t_ctx *ctx)
 	i = 1;
 	id = 0;
 	if (check_nb_frame(tab, MAXMFRAME + 1) > 0)
-		return (print_error("Moinu don't have thre frame"));
+		return (print_error("Moinu don't have three frame"));
 	tab[MAXMFRAME] = ft_strtrim(tab[MAXMFRAME], "\n");
 	while (tab[i] && i < MAXMFRAME + 1)
 	{

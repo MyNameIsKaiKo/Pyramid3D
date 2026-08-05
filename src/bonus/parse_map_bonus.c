@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:36:39 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/05 11:36:48 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/05 11:51:48 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ static int	fst_lst_line(char **tab, size_t max_y)
 	return (0);
 }
 
-static int	check_floor(char **tab, size_t y, size_t x, t_ctx *ctx)
+static int	check_floor(char **tab, size_t y, size_t x)
 {
+	if (ft_strlen(tab[y + 1]) < ft_strcharlen(tab[y], tab[y][x]))
+		return (print_error("The map is open"));
 	if (x == 0 && !(iswall(tab[y][x])))
 		return (print_error("The map is open"));
 	if (space_in_map(tab, y, x) > 0
@@ -87,7 +89,7 @@ static int	check_charbonus(char **tab, size_t y, size_t x, t_ctx *ctx)
 		return (0);
 	if (c == FLOOR)
 	{
-		if (check_floor(tab, y, x, ctx) > 0)
+		if (check_floor(tab, y, x) > 0)
 			return (1);
 		return (0);
 	}
