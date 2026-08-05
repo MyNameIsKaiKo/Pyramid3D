@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "cub.h"
-#include "cub_struct_def.h"
-#include "mlx.h"
 
 void	handle_mouse_state(t_ctx *ctx)
 {
@@ -28,6 +26,8 @@ void	handle_mouse_state(t_ctx *ctx)
 
 void	handle_door_state(t_ctx *ctx)
 {
+	if (!BONUS)
+		return ;
 	if (ctx->dstate == OPEN_DOOR)
 	{
 		ctx->dstate = CLOSE_DOOR;
