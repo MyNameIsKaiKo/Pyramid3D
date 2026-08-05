@@ -16,13 +16,13 @@ int	handlebutton(int button, int x, int y, void *data)
 {
 	t_ctx	*ctx;
 
-	(void) x;
-	(void) y;
+	(void)x;
+	(void)y;
 	ctx = (t_ctx *)data;
 	if (button == 1)
 		ctx->player.wstate = W_HOLD;
-	if (BONUS && button == 3
-		&& (player_pos(ctx) != 'o' && player_pos(ctx) != '6'))
+	if (BONUS && button == 3 && (player_pos(ctx) != 'o'
+			&& player_pos(ctx) != '6'))
 	{
 		if (ctx->dstate == OPEN_DOOR)
 		{
@@ -44,8 +44,8 @@ int	handlebutton_release(int button, int x, int y, void *data)
 {
 	t_ctx	*ctx;
 
-	(void) x;
-	(void) y;
+	(void)x;
+	(void)y;
 	ctx = (t_ctx *)data;
 	if (BONUS && button == 1 && ctx->player.wstate == W_HOLD)
 	{
