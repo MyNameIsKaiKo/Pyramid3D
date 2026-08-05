@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 10:33:03 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/05 12:03:09 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/05 12:09:26 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ int	weapon_recover(char *line, t_ctx *ctx)
 	char	**tab;
 	int		output;
 
+	if (ctx->player.weapon_p[0])
+		return (print_error("Weapon texture is duplicate"));
 	tab = ft_split(line, ' ');
 	if (!tab)
 		return (print_error("Malloc failed"));
