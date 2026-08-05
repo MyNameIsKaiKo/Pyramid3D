@@ -69,7 +69,7 @@ static int	check_pnj(char c, size_t y, size_t x, t_ctx *ctx)
 	if (data_sprite(ctx, y, x, type) > 0)
 		return (1);
 	if (around_floor (ctx->map->parse_map, y, x) > 0)
-			return (1);
+		return (1);
 	return (0);
 }
 

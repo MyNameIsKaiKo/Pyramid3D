@@ -66,6 +66,7 @@ int		copy_map(t_map **map);
 
 // -- parse_map Function --
 int		parse_map(t_map *map);
+int		is_valid_c(char c);
 int		check_line_map(char *line_read, t_map *map);
 
 // -- valid_map Function --

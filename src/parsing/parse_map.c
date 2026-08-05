@@ -25,6 +25,26 @@ int	space_in_map(char **tab, size_t y, size_t x)
 }
 
 /** @brief look around the floor, return error if map is open */
+// int	isopen_map(char **tab, size_t y, size_t x)
+// {
+	// char	top_case;
+	// char	left_case;
+	// char	right_case;
+	// char	bottom_case;
+// 
+	// top_case = tab[y - 1][x];
+	// left_case = tab[y][x - 1];
+	// right_case = tab[y][x + 1];
+	// bottom_case = tab[y + 1][x];
+	// if ((top_case != WALL && top_case != FLOOR && !isplayer(top_case))
+		// || (left_case != WALL && left_case != FLOOR && !isplayer(left_case))
+	// || (right_case != WALL && right_case != FLOOR && !isplayer(right_case))
+		// || (bottom_case != WALL && bottom_case != FLOOR
+			// && !isplayer(bottom_case)))
+		// return (print_error("Map is open or have a char invalid"));
+	// return (0);
+// }
+
 int	isopen_map(char **tab, size_t y, size_t x)
 {
 	char	top_case;
@@ -36,11 +56,8 @@ int	isopen_map(char **tab, size_t y, size_t x)
 	left_case = tab[y][x - 1];
 	right_case = tab[y][x + 1];
 	bottom_case = tab[y + 1][x];
-	if ((top_case != WALL && top_case != FLOOR && !isplayer(top_case))
-		|| (left_case != WALL && left_case != FLOOR && !isplayer(left_case))
-		|| (right_case != WALL && right_case != FLOOR && !isplayer(right_case))
-		|| (bottom_case != WALL && bottom_case != FLOOR
-			&& !isplayer(bottom_case)))
+	if (is_valid_c(top_case) || is_valid_c(left_case)
+		|| is_valid_c(right_case) || is_valid_c(bottom_case))
 		return (print_error("Map is open or have a char invalid"));
 	return (0);
 }

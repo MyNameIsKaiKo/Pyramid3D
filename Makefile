@@ -48,6 +48,7 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			parsing/parse_color.c \
 			parsing/parse_char.c \
 			parsing/parse_map.c \
+			parsing/parse_tools.c \
 			parsing/valid_map.c \
 			parsing/copy_map.c \
 			pyramidmlx/extract_texture.c \
