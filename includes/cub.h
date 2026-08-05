@@ -82,6 +82,8 @@ int		handlebutton_release(int button, int x, int y, void *data);
 int		handlekey_release(int keycode, void *map);
 int		handlekey_press(int keycode, void *map);
 int		close_app(t_ctx *ctx);
+void	handle_mouse_state(t_ctx *ctx);
+void	handle_door_state(t_ctx *ctx);
 
 // -- mlx_tools Function --
 void	my_mlx_pixel_put(t_ctx *ctx, int x, int y, int color);

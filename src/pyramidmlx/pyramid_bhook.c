@@ -35,6 +35,8 @@ int	handlebutton(int button, int x, int y, void *data)
 			door_swap(ctx, '6', 'o');
 		}
 	}
+	if (button == 2)
+		handle_mouse_state(ctx);
 	return (0);
 }
 

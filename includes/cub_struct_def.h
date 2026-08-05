@@ -51,6 +51,7 @@
 // -- Moving Keys --
 # define K_A 97
 # define K_D 100
+# define K_M 109
 # define K_S 115
 # define K_W 119
 
@@ -272,6 +273,7 @@ typedef struct s_mouse
 {
 	t_vec2			pos;
 	double			sensivity;
+	int				is_free;
 }					t_mouse;
 
 typedef struct s_sprite
