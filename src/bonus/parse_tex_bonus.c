@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 17:10:56 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/07/31 11:55:04 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/05 12:13:35 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	init_texture(char *line_read, char **tex, t_ctx *ctx, char *type)
 	size_t	len;
 
 	if (*tex)
-		return (1);
+		return (print_error("A texture is duplicate"));
 	len = ft_strlen(type) + 1;
 	if (ft_strncmp(type, "L ", len) == 0 || ft_strncmp(type, "M ",
 			len) == 0 || ft_strncmp(type, "P ", len) == 0)
