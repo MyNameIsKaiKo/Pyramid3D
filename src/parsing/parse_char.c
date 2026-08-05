@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 19:30:58 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/04 17:36:15 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/05 11:16:20 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	around_floor(char **tab, size_t y, size_t x)
 {
+	if (x == 0 && !(tab[y][x] >= NO_WALL && tab[y][x] <= WE_WALL))
+		return (print_error("The map is open"));
 	if (space_in_map(tab, y, x) > 0
 		|| isopen_map(tab, y, x) > 0)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/04 13:25:42 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/04 14:47:07 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/05 11:35:44 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	space_in_map(char **tab, size_t y, size_t x)
 {
 	if (!tab[y][x - 1] || !tab[y][x + 1]
-		|| !tab[y - 1][x] || !tab[y + 1][x])
+		|| !tab[y - 1][x]
+		|| !tab[y + 1][x])
 		return (print_error("Map is open"));
 	if (tab[y][x - 1] == EMPTY || tab[y][x + 1] == EMPTY
 		|| tab[y - 1][x] == EMPTY
@@ -25,26 +26,6 @@ int	space_in_map(char **tab, size_t y, size_t x)
 }
 
 /** @brief look around the floor, return error if map is open */
-// int	isopen_map(char **tab, size_t y, size_t x)
-// {
-	// char	top_case;
-	// char	left_case;
-	// char	right_case;
-	// char	bottom_case;
-// 
-	// top_case = tab[y - 1][x];
-	// left_case = tab[y][x - 1];
-	// right_case = tab[y][x + 1];
-	// bottom_case = tab[y + 1][x];
-	// if ((top_case != WALL && top_case != FLOOR && !isplayer(top_case))
-		// || (left_case != WALL && left_case != FLOOR && !isplayer(left_case))
-	// || (right_case != WALL && right_case != FLOOR && !isplayer(right_case))
-		// || (bottom_case != WALL && bottom_case != FLOOR
-			// && !isplayer(bottom_case)))
-		// return (print_error("Map is open or have a char invalid"));
-	// return (0);
-// }
-
 int	isopen_map(char **tab, size_t y, size_t x)
 {
 	char	top_case;
@@ -68,7 +49,7 @@ int	parse_map(t_map *map)
 	int	x;
 
 	if (!map->parse_map)
-		return (print_error("Don't have map"));
+		return (print_error("No map founded"));
 	if (border_line_check(map->parse_map, 0) > 0)
 		return (print_error("A border line is incorrect"));
 	if (border_line_check(map->parse_map, map->y - 1) > 0)

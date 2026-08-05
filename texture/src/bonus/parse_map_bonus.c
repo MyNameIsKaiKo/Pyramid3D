@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:36:39 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/01 18:35:55 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/05 10:51:18 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	parse_map_bonus(t_ctx *ctx)
 
 	map = ctx->map;
 	if (!map->parse_map)
-		return (print_error("Don't have map"));
+		return (print_error("No map founded"));
 	if (fst_lst_line(map->parse_map, map->y) > 0)
 		return (1);
 	y = 1;

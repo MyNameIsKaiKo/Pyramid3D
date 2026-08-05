@@ -6,7 +6,7 @@
 /*   By: ldepenne <ldepenne@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 11:36:39 by ldepenne          #+#    #+#             */
-/*   Updated: 2026/08/04 17:33:58 by ldepenne         ###   ########.fr       */
+/*   Updated: 2026/08/05 11:36:48 by ldepenne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ static int	fst_lst_line(char **tab, size_t max_y)
 	return (0);
 }
 
-static int	check_floor(char **tab, size_t y, size_t x)
+static int	check_floor(char **tab, size_t y, size_t x, t_ctx *ctx)
 {
+	if (x == 0 && !(iswall(tab[y][x])))
+		return (print_error("The map is open"));
 	if (space_in_map(tab, y, x) > 0
 		|| close_map(tab, y, x) > 0)
 		return (1);
@@ -53,6 +55,8 @@ static int	check_pnj(char c, size_t y, size_t x, t_ctx *ctx)
 	if (c == N_PLAYER || c == E_PLAYER || c == S_PLAYER || c == W_PLAYER)
 	{
 		data_player(ctx->map, y, x);
+		if (around_floor (ctx->map->parse_map, y, x) > 0)
+			return (1);
 		return (0);
 	}
 	if (c == MOINE)
@@ -65,7 +69,7 @@ static int	check_pnj(char c, size_t y, size_t x, t_ctx *ctx)
 	if (c == PIRATE)
 		type = T_PIRATE;
 	if (type == T_NULL)
-		return (1);
+		return (print_error("A char in map is incorrect"));
 	if (data_sprite(ctx, y, x, type) > 0)
 		return (1);
 	if (around_floor (ctx->map->parse_map, y, x) > 0)
@@ -83,7 +87,7 @@ static int	check_charbonus(char **tab, size_t y, size_t x, t_ctx *ctx)
 		return (0);
 	if (c == FLOOR)
 	{
-		if (check_floor(tab, y, x) > 0)
+		if (check_floor(tab, y, x, ctx) > 0)
 			return (1);
 		return (0);
 	}
@@ -95,7 +99,6 @@ static int	check_charbonus(char **tab, size_t y, size_t x, t_ctx *ctx)
 	}
 	if (check_pnj(c, y, x, ctx) == 0)
 		return (0);
-	print_error("A char in map is incorrect");
 	return (1);
 }
 
@@ -107,7 +110,7 @@ int	parse_map_bonus(t_ctx *ctx)
 
 	map = ctx->map;
 	if (!map->parse_map)
-		return (print_error("Don't have map"));
+		return (print_error("No map founded"));
 	if (fst_lst_line(map->parse_map, map->y) > 0)
 		return (1);
 	y = 1;
