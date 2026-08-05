@@ -45,6 +45,7 @@ SRC_FILES	= ../includes/gnl/get_next_line.c \
 			pyramidmlx/pyramid_draw_tools.c \
 			pyramidmlx/pyramid_init.c \
 			pyramidmlx/pyramid_khook.c \
+			pyramidmlx/khook_tools.c \
 			pyramidmlx/pyramid_bhook.c \
 			pyramidmlx/texture.c \
 			pyramidmlx/texture_scd.c \
