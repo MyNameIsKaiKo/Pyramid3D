@@ -21,6 +21,8 @@ int	handlebutton(int button, int x, int y, void *data)
 	ctx = (t_ctx *)data;
 	if (button == 1)
 		ctx->player.wstate = W_HOLD;
+	if (button == 2)
+		handle_mouse_state(ctx);
 	return (0);
 }
 

@@ -15,7 +15,7 @@
 void	mouse_init(t_ctx *ctx)
 {
 	mlx_mouse_hide(ctx->mlx, ctx->win);
-	ctx->mouse.sensivity = 0.0001;
+	ctx->mouse.sensivity = 0.00012;
 }
 
 int	mouse_handler(int x, int y, t_ctx *ctx)
@@ -25,6 +25,8 @@ int	mouse_handler(int x, int y, t_ctx *ctx)
 	t_vec2		delta;
 	double		tetha;
 
+	if (ctx->mouse.is_free)
+		return (0);
 	if (x == center_x && y == center_y)
 		return (0);
 	delta.x = x - center_x;
